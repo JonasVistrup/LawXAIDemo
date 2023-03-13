@@ -1,0 +1,71 @@
+BrokenLaw(X,paragraf 41 part. 1)<-SpeedNotReducedToMatchConditions(X,B,V),LosesControl(X,B);TfK 2003.596 V;TfK 2012.1070 V;TfK 2016.345/2 V
+BrokenLaw(X,paragraf 41 part. 1)<-SpeedNotReducedToMatchConditions(X,B,V),Accident(B);TfK 2000.353 V
+SpeedNotReducedToMatchConditions(X,B,V)<-SpeedNotReducedToMatchCarLoad(X,B);paragraf 41 stk. 1
+SpeedNotReducedToMatchConditions(X,B,V)<-SpeedNotReducedToMatchRoadConditions(X,B,V);paragraf 41 stk. 1;TfK 2003.596 V;TfK 2012.1070 V;
+
+SpeedNotReducedToMatchConditions(X,B,V)<-SpeedNotReducedToMatchVision(X,B,V);paragraf 41 stk. 1;paragraf 41 stk. 2.2;paragraf 41 stk. 2.5;TfK 2003.703/3 V;TfK 2007.146 Ø;TfK 2007.848 V;
+SpeedNotReducedToMatchVision(X,B,V)<-SpeedNotReducedLight(X,B,V);paragraf 41 stk. 1;paragraf 41 stk. 2.2;TfK 2003.703/3 V;TfK 2007.146 Ø;
+SpeedNotReducedToMatchVision(X,B,V)<-SpeedNotReducedSmoke(X,B,V);paragraf 41 stk. 1;TfK 2007.848 V;
+
+SpeedNotReducedToMatchVision(X,B,V)<-SpeedNotReducedWeather(X,B,V);paragraf 41 stk. 1;paragraf 41 stk. 2.2;TfK 2007.848 V;TfK 2015.1285/2 V;
+SpeedNotReducedWeather(X,B,V)<-SpeedNotReducedFog(X,B,V);paragraf 41 stk. 1;paragraf 41 stk. 2.2;TfK 2015.1285/2 V;
+SpeedNotReducedWeather(X,B,V)<-SpeedNotReducedRain(X,B,V);paragraf 41 stk. 1;paragraf 41 stk. 2.2;TfK 2015.1285/2 V;TfK 2012.784 Ø;
+
+SpeedNotReducedToMatchConditions(X,B,V)<-HastighedIkkeAfpassetBilistErfaring(X,B);paragraf 41 stk. 1;TfK 2002.640 V
+
+
+
+BrokenLaw(X,paragraf 41 part. 1)<-Drives(X,B,V),MaxSpeed(V,H),DistanceToNextCar(B,A),Stoplength(H,B,S),<(A,S);paragraf 41 stk.1;
+Stoplength(50km/t,B,17m)<-PassangerCar(B);paragraf 41 stk.1;
+Stoplength(80km/t,B,43m)<-PassangerCar(B);paragraf 41 stk.1;
+Stoplength(90km/t,B,54m)<-PassangerCar(B);paragraf 41 stk.1;
+Stoplength(110km/t,B,80m)<-PassangerCar(B);paragraf 41 stk.1;
+Stoplength(130km/t,B,112m)<-PassangerCar(B);paragraf 41 stk.1;
+Stoplength(50km/t,B,22m)<-Lorry(B);paragraf 41 stk.1;
+Stoplength(80km/t,B,54m)<-Lorry(B);paragraf 41 stk.1;
+Stoplength(90km/t,B,68m)<-Lorry(B);paragraf 41 stk.1;
+
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Urban(V);paragraf 41 stk. 2.1;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Intersection(V);paragraf 41 stk. 2.3;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),RoadBend(V);paragraf 41 stk. 2.3;TfK 2011.695 V
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Crosswalk(V);paragraf 41 stk. 2.4;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),InFrontOfHillTop(V);paragraf 41 stk. 2.5;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),RiskOfGlare(V);paragraf 41 stk. 2.6;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Small(V),MeetVehicle(B,M);paragraf 41 stk. 2.7;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Wet(V);paragraf 41 stk. 2.8;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Slippery(V);paragraf 41 stk. 2.8;TfK 2016.345/2 V
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),Greasy(V);paragraf 41 stk. 2.8;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),BusWaiting(V);paragraf 41 stk. 2.9;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),TramWaiting(V);paragraf 41 stk. 2.9;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),ChildrenOn(V);paragraf 41 stk. 2.10;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),ChildrenBy(V);paragraf 41 stk. 2.10;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),CreaturesOn(V);paragraf 41 stk. 2.11;
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),WorkedOn(V);paragraf 41 stk. 2.12;TfK 2011.695 V
+SpeedNotReducedToMatchConditions(X,B,V)<-NotLowSpeed(B),AccidentOn(V);paragraf 41 stk. 2.13;TfK 2000.353 V
+
+NotBrokenLaw(X,paragraf 41 part. 1)<-Drives(X,B,V),SpeedReducedToMatchConditions(X,B,V),LosesControl(X,B);TfK 2011.1023 V
+
+BrokenLaw(X, paragraf 41 part. 3)<-SuddenlyBreak(X,B),NoReasonForBreaking(X,B,V);TfK 2002.14/2 V
+BrokenLaw(X, paragraf 41 part. 3)<-ExaggeratedLowSpeed(B,V),NoReasonForLowSpeed(X,B,V);paragraf 41 part. 3
+NotBrokenLaw(X, paragraf 41 part. 3)<-Drives(X,B,V),CityRoad(V),Speed(B,10km/t);U 1985.473 Ø
+BrokenLaw(X, paragraf 41 part. 4)<-BadView(V),Drives(X,B,V),SpeedReducedToMatchConditions(X,B,V),SpeedReducedInconvenientOthers(X,B,V);paragraf 41 part. 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

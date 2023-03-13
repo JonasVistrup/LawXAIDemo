@@ -1,0 +1,54 @@
+BusHolder(V);bus holder på V for at optage eller afsætte passagerer
+LetbaneHolder(V);letbane holder på V for at optage eller afsætte passagerer
+BrudtLoven(X);X bryder loven
+HastighedIkkeAfpassetForhold(X,B,V);X afpasser ikke hastighed på B for de gældende forhold
+KørerMisterHerredømme(X,B);X mister herredømmet af B
+Uheld(B);B kommer i et uheld
+HastighedIkkeAfpassetBilBelastning(X,B);X afpasser ikke hastighed på B i forhold til belastningen på B
+HastighedIkkeAfpassetVejForhold(X,B,V);X afpasser ikke hastighed på B i forhold til V
+HastighedIkkeAfpassetUdsyn(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V
+HastighedIkkeAfpassetBelysning(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V pga. dårlig belysning
+HastighedIkkeAfpassetRøg(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V pga. røg
+HastighedIkkeAfpassetVejr(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V pga. vejr
+HastighedIkkeAfpassetTåge(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V pga. tåge
+HastighedIkkeAfpassetNedbør(X,B,V);X afpasser ikke hastighed på B i forhold til dårlig udsyn på V pga. nedbør
+HastighedIkkeAfpassetBilistErfaring(X,B);X afpasser ikke hastighed på B i forhold til X's manglede erfaring
+Kører(X,B,V);X kører B på V
+MaxHastighed(V,H);Max hastigheden på V er H
+AfstandTilNæsteBil(B,A);Afstanden mellem B og næste bil er A
+Standselængde(H,B,S);Standselængden mellem B og næste bil er S, når hastigheden er H
+<(A,B);A < B
+Personbil(B);B er en personbil
+Lastbil(B);B er en lastbil
+IkkeLavHastighed(B);B holder ikke lav hastighed
+TættereBebyggetOmråde(V);V er i et tættere bebygget område
+Vejkryds(V);V er et vejkryds
+Vejsving(V);V er et vejsving
+Fodgængerfelt(V);V er et fodgængerfelt
+ForanBakketop(V);V er foran en bakketop
+RisikoForBlænding(V);der er risiko for blænding ved V
+Smal(V);V er smal
+MøderKøretøj(B,M);B møder modkørende køretøj M
+Våd(V);V er våd
+Glat(V);V er glat
+Fedtet(V);V er fedtet
+BørnPå(V);Der er børn på V
+BørnVed(V);Der er børn ved V
+KreatuerPå(V);Der er kreatuer på V
+ArbejdesPå(V);Der arbejdes på V
+UheldstedPå(V);Der er et uheld på V
+PludseligtBremser(X,B);X bremser B pludseligt
+IngenGrundTilBremsning(X,B,V);der er ingen grund til at X bremse B på V
+OverdrevenLavHastighed(B,V);B kører med overdreven lav hastighed på V
+IngenGrundTilLavHastighed(X,B,V);Der er ingen grund til at X kører med lav hastighed i B på V
+Byvej(V);V er en byvej
+IkkeBrudtLoven(X);X bryder ikke loven
+DårligtFøre(V);Kørsel på V sker i dårlig føre
+HastighedAfpassetSåAndreTilstænkesUnødvendigt(X,B,V);X afpasser hastigheden på B så andre kører på V bliver tilsænket unødvendigt
+Hastighed(B,H);B kører med hastighed H
+IkkeAndenHastighedsGrænse(V);der er ikke sat anden hastigheds grænse på V
+Landevej(V);V er en landevej
+Motorvej(V);V er en motorvej
+Motortraffikvej(V);V er en motortraffikvej
+AndenHastighedsGrænseFastsat(V,M);der er sat anden hastigheds grænse M på V
+>(X,Y);X > Y
