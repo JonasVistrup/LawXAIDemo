@@ -1,0 +1,19 @@
+BrudtLoven(P,§28 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), SkaberFare(S), SkaberUlempe(S):§28 stk.1;
+
+BrudtLoven(P,§28 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,Loc,T), DelAf(Loc,V), Vej(V), Til(Loc,venstre), ~Ensrettet(V), ~Type(V,mindre_befærdet):§28 stk.2;
+BrudtLoven(P,§28 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), På(S,VK,T), Kørebane(VK), IkkeAnbragtPå(K,i længederetning\/ved yderkant,VK,T):§28 stk.2;
+BrudtLoven(P,§28 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,VPP,T), Type(VPP,parkeringsplads), UdenFor(VPP,tættere_bebygget_område), Anlagt(VK,i_umiddelbar_tilslutning_til_vejen), MuligtAt(P,benytte_parkeringsplads_til_højre,T), Til(VPP,venstre):§28 stk.2;
+
+BrudtLoven(P,§28 stk.3,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,F,T), Cykelsti(F)\/Sti(F)\/Fortov(F)\/[Rabat(F) /\ Type(F,yderrabat\/midterrabat)], Af(S,K), ~Cykel(K), ~Knallert(K):§28 stk.3;
+IkkeBrudtLoven(P,§28 stk.3,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), På(S,F,T), Rabat(F), Type(F,yderrabat), TilladtVægt(K,A), ~<(3500kg,A):§28 stk.3;
+IkkeBrudtLoven(P,§28 stk.3,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), På(S,F,T), Fortov(F), TilladtVægt(K,A), ~<(3500kg,A):§28 stk.3;
+
+BrudtLoven(P,§28 stk.4,T) <- Forlader(P,K,T), ~Sikre(P,køretøjet_ikke_kan_sætte_i_gang_af_sig_selv,T):§28 stk.4;
+BrudtLoven(P,§28 stk.4,T) <- Forlader(P,K,T), ~Sikre(P,køretøjet_ikke_kan_uberettiget_benyttes_af_andre,T):§28 stk.4;
+
+
+BrudtLoven(P,§28 stk.5,T) <- Åbning(A), Af(A,D), Køretøj(K), Dør(D), På(D,K,T), Udfører(P,A), Start(A,T), SkaberFare(A)\/SkaberUlempe(A):§28 stk.5;
+BrudtLoven(P,§28 stk.5,T) <- Handling(A), Type(A,påstigning), Til(A,K), Køretøj(K), Udfører(P,A), Start(A,T), SkaberFare(A)\/SkaberUlempe(A):§28 stk.5;
+BrudtLoven(P,§28 stk.5,T) <- Handling(A), Type(A,afstigning), Fra(A,K), Køretøj(K), Udfører(P,A), Start(A,T), SkaberFare(A)\/SkaberUlempe(A):§28 stk.5;
+BrudtLoven(P,§28 stk.5,T) <- Handling(A), Type(A,pålæsning), Til(A,K), Køretøj(K), Udfører(P,A), Start(A,T), SkaberFare(A)\/SkaberUlempe(A):§28 stk.5;
+BrudtLoven(P,§28 stk.5,T) <- Handling(A), Type(A,aflæsning), Fra(A,K), Køretøj(K), Udfører(P,A), Start(A,T), SkaberFare(A)\/SkaberUlempe(A):§28 stk.5;

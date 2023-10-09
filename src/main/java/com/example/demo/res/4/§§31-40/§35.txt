@@ -1,0 +1,22 @@
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,parkering), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,baglygter,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,parkering), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,positionslys,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,parkering), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,nummerpladebelysning,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,parkering), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,AndetLys,T), LysTændtVedParkeringILTTafTBB(AndetLys), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,standset), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,baglygter,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,standset), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,positionslys,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,standset), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,nummerpladebelysning,T), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+BrudtLoven(P,§35 stk.1,T) <- Manøvre(M,standset), Med(M,K), På(M,V), Vej(V), UdstyretMedLygter(K), Udfører(P,M), ~Tændt(K,AndetLys,T), LysTændtVedParkeringILTTafTBB(AndetLys), Lygtetændingstiden(T), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.1
+
+
+
+BrudtLoven(P,§35 stk.2,T) <- Manøvre(M,parkering), Med(M,K), På(M,V), Vej(V), ~UdstyretMedLygter(K), Lygtetændingstiden(T), ~AfmærkningEfterTTBBestemmelser(K), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.2
+BrudtLoven(P,§35 stk.2,T) <- Manøvre(M,standset), Med(M,K), På(M,V), Vej(V), ~UdstyretMedLygter(K), Lygtetændingstiden(T), ~AfmærkningEfterTTBBestemmelser(K), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb);§35 stk.2
+
+
+BrudtLoven(P,§35 stk.3,T) <- Manøvre(M,parkering), Med(M,K), Udfører(P,M), Tændt(K,Lygte,T), ~LysTændtVedParkeringILTTafTBB(Lygte), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb), ~=(Lygte,baglygter), ~=(Lygte,positionslys), ~=(Lygte,nummerpladebelysning);§35 stk.3
+BrudtLoven(P,§35 stk.3,T) <- Manøvre(M,standset), Med(M,K), Udfører(P,M), Tændt(K,Lygte,T), ~LysTændtVedParkeringILTTafTBB(Lygte), Start(M,Ta), Slut(M,Tb), <(Ta,T,Tb), ~=(Lygte,baglygter), ~=(Lygte,positionslys), ~=(Lygte,nummerpladebelysning);§35 stk.3
+
+
+~BrudtLoven(P,§35 stk.1) <- Manøvre(M,parkering), Med(M,K), MotordrevetKøretøj(K), Længde(K,Længde), Bredde(K,Bredde), På(M,VK), KantAf(VK,V), Langs(K,VK,T), By(V),  Udfører(P,M), Tændt(K,positionslys,T), Tændt(K,baglygteModVejensMidte,T), tilkoblet(K,K2), <(Længde,6m), <(Bredde,2m);§35 stk.1;§35 stk.4
+
+BrudtLoven(P,§35 stk.5) <- Gælder(§33, stk 1.2);§35 stk.5

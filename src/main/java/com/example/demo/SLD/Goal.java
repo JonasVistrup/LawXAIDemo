@@ -1,103 +1,99 @@
 package com.example.demo.SLD;
 
+
 import com.example.demo.Logic.High.Atom;
 import com.example.demo.Logic.High.AtomList;
 import com.example.demo.Logic.High.Clause;
 import com.example.demo.Logic.High.Substitution;
-import com.example.demo.Logic.Symbols.Constant;
-import com.example.demo.Logic.Symbols.PredicateUD;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-public class Goal extends AtomList {
+// Immutable
+public class Goal implements Iterable<Atom> {
 
-    public Trace trace;
+    private final AtomList atoms;
 
-    private Substitution sub;
+    private final Trace trace;
 
-    public Goal(Atom atom, Substitution substitution){
-        super(atom);
-        this.sub = substitution;
+    private final Substitution sub;
+
+    public Goal(AtomList list){
+        this.atoms = list;
+        this.sub = new Substitution();
         this.trace = new Trace();
     }
-    public Goal(Goal goal){
-        super(goal.atoms);
+
+    private Goal(Goal goal, AtomList toAdd, Atom toRemove){
+        this.atoms = goal.atoms.addAndRemove(toAdd,toRemove);
         this.sub = goal.sub;
         this.trace = goal.trace;
     }
 
-    public Goal(ArrayList<Atom> atoms, Substitution substitution){
-        super(atoms);
-        this.sub = substitution;
-        this.trace = new Trace();
+    private Goal(Goal goal, Substitution substitution){
+        this.atoms = goal.atoms.applySub(substitution);
+        this.sub = goal.sub;
+        this.trace = goal.trace;
     }
 
-    public Goal(ArrayList<Atom> atoms, Substitution substitution, Trace trace){
-        super(atoms);
-        this.sub = substitution;
-        this.trace = trace;
+    private Goal(Goal goal, Clause clause, int atomIndex, Substitution substitution){
+        this.atoms = goal.atoms.applyClause(clause, atomIndex, substitution);
+        this.sub = goal.sub.add(substitution);
+        this.trace = goal.trace.applyClause(clause, atomIndex);
     }
 
-    public Goal(AtomList list, Substitution substitution){
-        super(list);
-        this.sub = substitution;
-        this.trace = new Trace();
+    private Goal(Goal goal, int[] removedPositions, Substitution substitution) {
+        this.atoms = goal.atoms.removeAndSub(removedPositions, substitution);
+        this.sub = goal.sub.add(substitution);
+        this.trace = goal.trace.removeUDPs(removedPositions);
     }
 
 
     public Substitution sub(){
         return sub;
     }
+    public AtomList atoms(){ return atoms;}
+    public Trace trace(){ return trace;}
 
-    @Override
+
     public Goal addAndRemove(AtomList toAdd, Atom toRemove){
-        Goal copy = new Goal(this);
-        copy.atoms.remove(toRemove);
-        copy.atoms.addAll(toAdd.atoms());
-        return copy;
+        return new Goal(this, toAdd, toRemove);
     }
 
-    @Override
     public Goal applySub(Substitution substitution){
-        Goal goal = new Goal(super.applySub(substitution), sub.add(substitution));
-        goal.trace = this.trace;
-        return goal;
+        return new Goal(this, substitution);
     }
     public Goal applyClause(Clause clause, int atomIndex, Substitution unifier){
-        Goal goal = new Goal(this);
-        goal.sub = goal.sub.add(unifier);
-
-
-        goal.atoms.remove(atomIndex);
-        goal.atoms.addAll(clause.body.atoms());
-        goal = goal.applySub(unifier);
-        goal.trace = goal.trace.applyClause(clause, atomIndex);
-
-        return goal;
+        return new Goal(this, clause, atomIndex, unifier);
     }
 
-    public Goal runAndRemoveGroundPUDs() {
-        ArrayList<Atom> left = new ArrayList<>();
-        Goal result = new Goal(this);
-        for(int i = 0; i< atoms.size(); i++){
-            Atom a = atoms.get(i);
-            if(a.userDefined()){
-                List<Constant> constants = a.getConstantsIfGround();
-                if(constants != null){
-                    PredicateUD pud = (PredicateUD) a.predicate();
-                    if (pud.run(constants)) {
-                        result.atoms.remove(i);
-                        result.trace.applyClause(null, i);
-                        continue;
-                    }else{
-                        return null;
-                    }
-                }
-            }
-            left.add(a);
-        }
+    public Goal runAndRemoveGroundUDPs() {
+        int[] runnableUDPsPositions = this.atoms.getRunnableUDPsPositions();
+        if(runnableUDPsPositions.length == 0) return this;
 
-        return new Goal(left, this.sub, this.trace);
+        Substitution solution = this.atoms.runUDPs(runnableUDPsPositions);
+        if(solution == null) return null;
+
+        return new Goal(this, runnableUDPsPositions, solution).runAndRemoveGroundUDPs();
+    }
+
+    @Override
+    public Iterator<Atom> iterator() {
+        return atoms.iterator();
+    }
+
+    public boolean isEmpty() {
+        return this.atoms.isEmpty();
+    }
+
+    public int size() {
+        return this.atoms.size();
+    }
+
+    public Atom get(int i) {
+        return atoms.get(i);
+    }
+
+    public int nStandardAtoms() {
+        return atoms.nStandardAtoms();
     }
 }

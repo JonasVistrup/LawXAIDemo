@@ -1,0 +1,8 @@
+BrudtLoven(P,§4_stk.1,T) <- Trafikant(P,T), På(P,V,T), IkkeEfterkommer(P,Anvisning,T), GivesVed(Anvisning,A,T), På(A,V,T), Færdselstavle(V,A) \/ Signalanlæg(A) \/ [Afmærkning(A) /\ [Cykelsti(V) \/ Kørebane(V)]]:§4 stk.1:ØLD af 27. januar 1986:TfK 2007.566 Ø;
+BrudtLoven(P,§4_stk.1,T) <- Trafikant(P,T), På(P,V,T), IkkeEfterkommer(P,Anvisning,T), GivesVed(Anvisning,A,T):§4 stk.1:ØLD af 10. april 1959:TfK 2007.566 Ø;
+
+BrudtLoven(P,§4_stk.2,T) <- Trafikant(P,T), På(P,V,T), IkkeEfterkommer(P,Anvisning,T), GivesVed(Anvisning,A,T), På(A,V,T), Politiet(A) \/ BemyndigetTilRegulereFærslenAfTBB(A,T):§4 stk.2;
+
+IkkeBrudtLoven(P,§4_stk.1,T) <- Trafikant(P,T), På(P,V,T), IkkeEfterkommer(P,Anvisning,T), Type(Anvisning,ubetinget_vigepligt), GivesVed(Anvisning,A,T), På(A,V,T), Efterkommer(P,Anvisning2,T), GivesVed(Anvisning2,B,T), Signalanlæg(B), På(B,V,T):§4 stk.4;
+IkkeBrudtLoven(P,§4_stk.1,T) <- Trafikant(P,T), Fører(P,K,T), På(P,V,T), IkkeEfterkommer(P,Anvisning,T), GivesVed(Anvisning,A,T), På(A,V,T), Færdselstavle(V,A), Type(A,forbud_mod_overhaling_med_lasbil_vogntog_mv), Bus(K) \/ Lastbil(K) \/ Vogntog(K) \/ [På(Påhæng,K,T) /\ Påhængskøretøj(Påhæng)], Overhaler(K,K2,T), Hastighed(K,H1,T), Hastighed(K2,H2,T), -(H1,H2,H),<(20km/t,H), <(H,30km/t):§4 stk.1:Dispensation fra Transportministeriet fra en skrivelse af Justitsminiteriet D.31-08-2005;
+

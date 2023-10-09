@@ -1,0 +1,11 @@
+BrudtLoven(P,§14 stk.1,T) <- Fører(P,K,T), På(K,VKB,T), Køretøj(K), DelAf(VKB,V), Vej(V), DelAf(VKB2,V), ~=(VKB,VKB2), BestemtFor(VKB2,K):§14 stk.1;
+
+BrudtLoven(P,§14 skt.2,T) <- Fører(P,K,T), KnallertU#Plade(K), På(K,V,T), ~Cykelsti(V), MærkeretSom(V,til_lille_knallert):§14 stk.2;
+BrudtLoven(P,§14 skt.2,T) <- Fører(P,K,T), KnallertU#Plade(K), På(K,V,T), Cykelsti(V), Hastighed(K,A,T), ~Afpasset(A), SkaberUlempe(P) \/ SkaberFare(P):§14 stk.2;
+BrudtLoven(P,§14 skt.2,T) <- Fører(P,K,T), KnallertU#Plade(K) \/ Cykel(K), På(K,VC,T), DelAf(VC,V), Vej(V), Kørebane(VK), DelAf(VK,V), Retning(P,R), Færdsel(VK,Færdsel), Retning(Færdsel,R), Cykelsti(VC), MærkeretSom(VC,cykel_og_lille_knallert_kan_anvende_cykelsti_i_venstre_side):§14 skt.2;
+
+BrudtLoven(P,§14 skt.3,T) <- Fører(P,K,T), KnallertU#Plade(K) \/ Cykel(K), Brede(K,B), SkaberVæsenligUlempe(B):§14 skt.3;
+
+BrudtLoven(P,§14 stk.5,T) <- Fører(P,K,T), Hastighed(K,A,T), På(K,VVB,T), DelAf(VVB,V), Vognbane(VK), Kørebane(V), DelAf(VKS,V), Krybespor(VKS), ~=(VVB,VKS), AngivetHastighed(VKS,B), <(A,B):§14 stk.5;
+BrudtLoven(P,§14 stk.5,T) <- Fører(P,K,T), Hastighed(K,A,T), På(K,VKS,T), Krybespor(VKS), AngivetHastighed(VKS,B), <(B,A):§14 stk.5;
+BrudtLoven(P,§14 stk.5,T) <- Udkørsel(Kørsel), Udfører(P,Kørsel), Igang(Kørsel,T), Fra(Kørsel,VKS), Krybespor(VKS), SkaberFare(Kørsel) \/ SkaberUlempe(Kørsel):§14 stk.5;

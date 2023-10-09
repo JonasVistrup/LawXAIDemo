@@ -1,0 +1,7 @@
+Gående(P,T):[P] er gående på tidspunkt [T];
+Kørende(P,T):[P] er kørende på tidspunkt [T];
+Trafikant(P,T):[P] er trafikant på tidspunkt [T];
+Barn(P,T):[P] er et barn på tidspunkt [T];
+Skolepatrulje(A):[A] er en skolepatrulje;
+Ældre(P,T):[P] er et ældre menneske på tidspunkt [T];
+Politiet(P):[P] er polititet;

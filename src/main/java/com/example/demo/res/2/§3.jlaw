@@ -1,0 +1,5 @@
+BrudtLoven(P,§3 stk.1,T) <- Trafikant(P,T), [Udviser(P,A,T) /\ Type(A,uagtpågivenhed)] \/ [Optræder(P,A,T) /\ Type(A,hensynsløst)], SkaberFare(A)\/ForvolderSkade(A)\/SkaberUlempe(A)\/HindrerFærdslen(A)\/ForstyrrerFærdslen(A):§3 stk.1:U 1984.1041 Ø:U 2000.460 V:U 2000.1611 V:U 2004.1978 V:U 2004.2837 Ø:TfK 2015.345 Ø:TfK 2015.614 V;
+BrudtLoven(P,§3 stk.1,T) <- Trafikant(P,T), ~Viser(P,hensyn,P2,T), På(P,V,T), Bor(P2,V,T) \/ OpholderSig(P2,V,T):§3 stk.1:U 1984.1041 Ø:U 2000.1611 V:U 2004.2837 Ø:TfK 2015.345 Ø;
+
+BrudtLoven(P,§3 stk.2,T) <- Trafikant(P,T), ~Viser(P,særligt_hensyn,A,T), Barn(A,T) \/ Skolepatrulje(A) \/ Ældre(A,T) \/ [Lidelse(A,B) /\ FremgårAfOmstændighederne(B,T) /\ Type(B,svækket_syn\/svækket_hørelse\/legemlig_mangel_som_er_til_ulempe_for_dem_i_færdslen\/sygdom_som_er_til_ulempe_for_dem_i_færdslen)]:§3 stk.2;
+Barn(A,T) <- Alder(A,B), <(B,18år):Et barn er en person under 18år;

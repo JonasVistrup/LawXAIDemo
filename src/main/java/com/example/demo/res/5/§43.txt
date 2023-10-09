@@ -1,0 +1,54 @@
+BrudtLoven(X) <- Kører(X,K,V), Hastighed(K,H), MaxHastighed(K,M) >(H,M);§43 stk. 1
+
+!stk.1!
+MaxHastighed(K,80) <- TilladtVægt(K,T), Bus(K), >(T,3500), ~Tempo100Bus(K);§43 stk. 1;§43 stk. 10;
+MaxHastighed(K,100) <- TilladtVægt(K,T), Bus(K), >(T,3500), Tempo100Bus(K);§43 stk. 1;§43 stk. 10;
+
+!stk.2!
+MaxHastighed(K,70) <- TilladtVægt(K,T), Kører(P,K,V), ~Motorvej(V), >(T,3500), Lastbil(K);§43 stk. 2
+MaxHastighed(K,70) <- TilladtVægt(K,T), Kører(P,K,V), ~Motorvej(V), >(T,3500), Vogntog(K), På(V,K), Påhængskøretøj(V);§43 stk. 2
+
+!Camping!
+MaxHastighed(K,70) <- TilladtVægt(K,T), Kører(P,K,V), ~Motorvej(V), >(T,3500), Campingbil(K);§43 stk. 2;Samling: 2015-16, L 84, bilag 1, side 7;
+MaxHastighed(K,80) <- TilladtVægt(K,T), Kører(P,K,V), Motorvej(V), >(T,3500), Campingbil(K);§43 stk. 4;
+
+!stk.3!
+MaxHastighed(K,70) <- TilladtVægt(K,T), Bil(K), Kører(P,K,V), ~Motorvej(V), ~Tempo100Bil(K), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 3;§43 stk. 11;
+MaxHastighed(K,70) <- TilladtVægt(K,T), Motorcykel(K), Kører(P,K,V), ~Motorvej(V), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 3;
+MaxHastighed(K,80) <- TilladtVægt(K,T), Bil(K), Kører(P,K,V), ~Motorvej(V), Tempo100Bil(K), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 3;§43 stk. 11;
+
+!stk.4!
+MaxHastighed(K,80) <- TilladtVægt(K,T), Kører(P,K,V), Motorvej(V), >(T,3500), Lastbil(K);§43 stk. 4
+MaxHastighed(K,80) <- TilladtVægt(K,T), Kører(P,K,V), Motorvej(V), >(T,3500), Vogntog(K), På(V,K), Påhængskøretøj(V);§43 stk. 4
+MaxHastighed(K,80) <- TilladtVægt(K,T), Bil(K), Kører(P,K,V), Motorvej(V), ~Tempo100Bil(K), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 4;§43 stk. 11;
+MaxHastighed(K,80) <- TilladtVægt(K,T), Motorcykel(K), Kører(P,K,V), Motorvej(V), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 4;
+MaxHastighed(K,100) <- TilladtVægt(K,T), Bil(K), Kører(P,K,V), Motorvej(V), Tempo100Bil(K), <=(T,3500), På(V,K), Påhængskøretøj(V);§43 stk. 4;§43 stk. 11;
+
+!stk.5!
+MaxHastighed(K,30) <- Køretøj(K), På(V,K), ~Registreret(V), Påhængskøretøj(V);§43 stk. 5
+MaxHastighed(K,30) <- Traktor(K), ~Godkendt(K), ~Registreret(K);§43 stk. 5
+MaxHastighed(K,30) <- Motorredskab(K), ~Godkendt(K), ~Registreret(K);§43 stk. 5
+MaxHastighed(K,40) <- Traktor(K), Godkendt(K), ~AndenHastighedsGrænse(K);§43 stk. 5
+MaxHastighed(K,40) <- Traktor(K), Registreret(K), ~AndenHastighedsGrænse(K);§43 stk. 5
+MaxHastighed(K,40) <- Motorredskab(K), Godkendt(K), ~AndenHastighedsGrænse(K);§43 stk. 5
+MaxHastighed(K,40) <- Motorredskab(K), Registreret(K), ~AndenHastighedsGrænse(K);§43 stk. 5
+AndenHastighedsGrænse(K) <- AndenHastighedsGrænseFastsatPå(K,M,V);
+Registreret(K) <- RegistreretPå(K,D);
+
+BrudtLoven(X) <- AndenHastighedsGrænseFastsatPå(K,M,V), ~Påskrift(K,M,V);detailforskrifter for køretøjer, pkt. 2.03.001; §43 stk. 8 
+BrudtLoven(X) <- Kører(X,K,V), Hastighed(K,H), AndenHastighedsGrænseFastsatPå(K,M,V), >(H,M);detailforskrifter for køretøjer, pkt. 2.03.001; §43 stk. 8 
+Brudtloven(X) <- Kører(X,K,V), På(K,A), Påhængsredskab(A), MaxHastighed(A,H), <(30,H), ~Registreret(A);Lov om registrering af køretøjer § 2, stk.1 nr 6; registreringsbekendtgørelsen § 3, stk. 1. nr 6;TfK 2001.563 Ø;
+
+!stk.6!
+MaxHastighed(K,15) <- Mortorkøretøj(K), Hjulbeklædning(K);§43 stk. 5
+MaxHastighed(K,15) <- Vogntog(K), Hjulbeklædning(K);§43 stk. 5
+
+!skt.8!
+AndenHastighedsGrænseFastsatPå(K,80,V) <- ~Motorvej(V), Vogntog(K), BeregnetTilStøjmåling(K); §43 stk. 8; bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;
+AndenHastighedsGrænseFastsatPå(K,110,V) <- Motorvej(V), Vogntog(K), BeregnetTilStøjmåling(K); §43 stk. 8; bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;
+AndenHastighedsGrænseFastsatPå(K,80,V) <- ~Motorvej(V), Ambulance(K), Tempo100Ambulance(K); §43 stk. 8; bekendtgørelse af transport- bygnings- og boligministeren 2015-08-26 nr. 982;
+AndenHastighedsGrænseFastsatPå(K,110,V) <- Motorvej(V), Ambulance(K), Tempo100Ambulance(K); §43 stk. 8; bekendtgørelse af transport- bygnings- og boligministeren 2015-08-26 nr. 982;
+
+
+
+

@@ -1,0 +1,16 @@
+BrudtLoven(P,§27 stk.1,T) <- Kørende(P,T), Kørsel(Kørsel), Udfører(P,Kørsel), Møder(P,P2,T)\/Forbi(Kørsel,P2,T), Gående(P2,T), IkkeGiver(P,P2,god_tid_til_at_vige\/plads_på_vejen,T):§27 stk.1;
+
+BrudtLoven(P,§27 stk.2,T) <- Kørende(P,T), Kørsel(Kørsel), Udfører(P,Kørsel), Over(Kørsel,F), Fortov(F)\/Sti(F), Gående(P2,T), IkkeHolderFor(P,P2,T):§27 stk.2;
+BrudtLoven(P,§27 stk.2,T) <- Kørende(P,T), Kørsel(Kørsel), Udfører(P,Kørsel), Fra(Kørsel,A), Til(Kørsel,B), Kørebane(B), Type(A,udkørsel_fra_ejendom), Gående(P2,T), IkkeHolderFor(P,P2,T):§27 stk.2;
+
+BrudtLoven(P,§27 stk.3,T) <- Kørende(P,T), På(P,V,T), Type(V,gågade), IkkeUdviser(P,særlig_agtpågivenhed_overfor_gående\/særlig_hensynsfuldhed_overfor_gående,T):§27 stk.3;
+
+BrudtLoven(P,§27 stk.4,T) <- Kørende(P,T), På(P,V,T), Cykelsti(V), Ved(V,V2), Type(V2,busstoppested), Bus(B), På(B,V2,T), Afsætter(B,P2,T) \/ Optager(B,P2,T), IkkeHolderFor(P,P2,T), IkkePå(P2,areal_særligt_indrettet_til_dem,T):§27 stk.4;
+
+BrudtLoven(P,§27 stk.5,T) <- Kørende(P,T), Udfører(P,M), Manøvre(M), Igang(M,T), Type(M,svingning), På(M,V,T), Til(M,VKB), Kørebane(VKB), Vejkryds(V)\/Over(M,VKB)\/Fra(M,VKB), SkaberFareFor(P,P2,T), Passerer(P2,VKB,T), Gående(P2,T):§27 stk.5;
+
+BrudtLoven(P,§27 stk.6,T) <- Kørende(P,T), På(P,V,T), Ved(V,F), Fodgængerfelt(F), Færdsel(V,Færdsel), ReguleresAf(Færdsel,A),Politiet(A)\/Signalanlæg(A), Gående(P2,T), IkkeHolderFor(P,P2,T):§27 stk.6;
+
+BrudtLoven(P,§27 stk.7,T) <- Kørende(P,T), Fører(P,K,T), På(K,V,T), Ved(V,F), Fodgængerfelt(F), Færdsel(V,Færdsel), ~ReguleresAf(Færdsel,A), Hastighed(K,B,T), ~Afpasset(B), SkaberFare(B) \/ SkaberUlempe(B):§27 stk.7;
+
+BrudtLoven(P,§27 stk.8,T) <- Kørende(P,T), Manøvre(M), Type(M,standsning), Udfører(P,M), Igang(M,T), KunneUndgå(P,M):§27 stk.8;

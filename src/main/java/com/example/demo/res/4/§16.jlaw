@@ -1,0 +1,13 @@
+BrudtLoven(P,§16 stk.1,T) <- Manøvre(M), Type(M,svingning), Til(M,højre), ~GodTid(T,M,T1), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), DelAf(VVB,V),Kørebane(V),Vognbane(VVB),Vognbane(VVB2), DelAf(VVB2,V), HøjreFor(VVB2,VVB,T), <(T,T1):§16 stk.1;
+BrudtLoven(P,§16 stk.1,T) <- Manøvre(M), Type(M,svingning), Til(M,venstre), ~GodTid(T,M,T1), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), DelAf(VVB,V),Kørebane(V),Vognbane(VVB),Vognbane(VVB2), DelAf(VVB2,V), HøjreFor(VVB,VVB2,T),  <(T,T1):§16 stk.1;
+BrudtLoven(P,§16 stk.1,T) <- Manøvre(M), Type(M,lige_ud), ~GodTid(T,M,T1), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), MestHensigtmæssig(VVB,M,T), <(T,T1):§16 stk.1;
+
+BrudtLoven(P,§16 stk.2,T) <- Manøvre(M), Type(M,ændring_af_færdselsretning), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), På(M,VK,T), Vejkryds(VK), <(T,T1), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§16 stk.2;
+
+BrudtLoven(P,§16 stk.3,T) <- Manøvre(M), Type(M,svinging), Til(M,højre), Start(M,T), Fører(P,K,T), Udfører(P,M), På(Loc,K,T), På(Loc,V,T), Vognbane(V), ~Til(Loc,yderst_højre):§16 stk.3;
+BrudtLoven(P,§16 stk.3,T) <- Manøvre(M), Type(M,svinging), Til(M,venstre), Start(M,T), Fører(P,K,T), Udfører(P,M), På(Loc,K,T), På(Loc,V,T), Vognbane(V), ~Til(Loc,yderst_venstre):§16 stk.3;
+BrudtLoven(P,§16 stk.3,T) <- Manøvre(M), Type(M,svinging), Slut(M,T), Fører(P,K,T), Udfører(P,M), På(V,K,T), DelAf(V,VK), Vognbane(V), Kørebane(VK), DelAf(V2,VK), Vognbane(V), HøjreFor(V2,V,T):§16 stk.3;
+
+IkkeBrudtLoven(P,§16 stk.3,T) <- Manøvre(M), Type(M,svinging), Slut(M,T), Fører(P,K,T), Udfører(P,M), På(K,V,T), Vognbane(V), MestHensigtmæssig(V,M,T):§16 stk.4;
+
+BrudtLoven(P,§16 stk.5,T) <- Manøvre(M), Type(M,svinging), Til(M,venstre), På(M,VK,T), Vejkryds(VK), Modkørende(K,K2,T), Fører(P,K,T), Udfører(P,M), Manøvre(M2), Type(M,svinging), Til(M2,venstre), SkaberFare(M) \/ SkaberUlempe(M) \/ SkaberFare(M2) \/ SkaberUlempe(M2):§16 stk.5;

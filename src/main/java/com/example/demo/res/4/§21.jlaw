@@ -1,0 +1,14 @@
+BrudtLoven(P,§21 stk.1,T) <- Fører(P,K,T), Manøvre(M), Start(M,T), Udfører(P,M), Type(M,overhaling), Til(M,højre), Om(M,K2), Køretøj(K2), Fører(P2,K2,T), Manøvre(M2), Type(M2,svingning), Til(M2,venstre), ~Udfører(P,M), ~TydeligtForbedreder(P,M,T):§21 stk.1;
+BrudtLoven(P,§21 stk.1,T) <- Fører(P,K,T), Manøvre(M), Start(M,T), Udfører(P,M), Type(M,overhaling), Til(M,venstre), Om(M,K2), Køretøj(K2), Fører(P2,K2,T), Manøvre(M2), Type(M2,svingning), Til(M2,venstre), Udfører(P,M) \/ TydeligtForbedreder(P,M,T):§21 stk.1;
+
+IkkeBrudtLoven(P,§21 stk.1,T) <- Fører(P,K,T), Manøvre(M), Udfører(P,M), Type(M,overhaling), Start(M,T), Til(M,højre), Om(M,K2), Letbanekøretøj(K2), Udviser(P,særlig_agtpågivenhed,T), ~SpærrerUdsynFor(K2,P,T):§21 stk.2;
+
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), ~Sikre(P,M,kan_ske_uden_fare):§21 stk.3;
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), På(M,V,T), Vognbane(V), Modkørende(K2,K,T), Afstand(K,K2,A,T), ~TilstrækkeligtFor(A,M):§21 stk.3;
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Forankørende(K2,K,T), Fører(P2,K2,T), Tegn(P,Tegn,T), Type(Tegn,overhaling):§21 stk.3;
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Forankørende(K,K2,T), Fører(P2,K2,T), Manøvre(M2), Type(M2,overhaling), Igang(M2,T), Udfører(P2,M2):§21 stk.3;
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Fører(P,K,T), På(K,V,T), Færdsel(V,Færdsel), SkaberUlempeFor(M,Færdsel):§21 stk.3;
+
+BrudtLoven(P,§21 stk.4,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), UnødvendigtLang(M):§21 stk.4;
+
+IkkeBrudtLoven(P,§21,T) <- Fører(P,Kørsel,T), Af(Kørsel,K), Manøvre(M), Udfører(P,M), Type(M,overhaling), Igang(M,T), AnvendesTil(K,vejarbejde), Kørsel(Kørsel), FortagesMed(M,fornøden_forsigtighed), MestHensigtmæssig(M,vejarbejde,T):§21 stk.5;

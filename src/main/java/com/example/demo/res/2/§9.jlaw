@@ -1,0 +1,13 @@
+BrudtLoven(P,§9 stk.1,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T), ~Straks(P,standser,T):§9 stk.1;
+
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T), KommetTilSkadeI(P2,U), ~Hjælper(P,P2,T):§9 stk.2.1;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T), IkkeDeltagerI(P,foranstaltninger_til_sikring_af_færdslen_som_uheldet_giver_anledning_til,T):§9 stk.2.2;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T0), IndblandetI(P2,U), Anmoder(P2,P,navn,T), IkkeOpgiver(P,navn,P2):§9 stk.2.3;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T0), IndblandetI(P2,U), Anmoder(P2,P,bopæl,T), IkkeOpgiver(P,bopæl,P2):§9 stk.2.3;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T0), Ejer(P2,E,T0), IndblandetI(E,U), Anmoder(P2,P,navn,T), IkkeOpgiver(P,navn,P2):§9 stk.2.4;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T0), Ejer(P2,E,T0), IndblandetI(E,U), Anmoder(P2,P,bopæl,T), IkkeOpgiver(P,bopæl,P2):§9 stk.2.4;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), IndblandetI(P,U), Slut(U,T), ForvoldtPå(P,ikke_ubetydelig_skade,P2,T), ~Underretter(P,P2,U,T):§9 stk.2.5;
+BrudtLoven(P,§9 stk.2,T) <- Trafikant(P,T), Færdselsuheld(U), På(U,V,T), IndblandetI(P,U), Slut(U,T), Ejer(P2,E,T), ForvoldtPå(P,skade,E,T), ~Underretter(P,politiet,E,T) \/ ~Underretter(P,P2,E,T), ~KanModtageOplysninger(anden_person,U,V,T):§9 stk.2.6;
+
+BrudtLoven(P,§9 stk.3,T) <- Trafikant(P,T), Færdselsuheld(U), På(U,V,T), IndblandetI(P,U), Slut(U,T0), Dræbt(P2,U), ÆndrePåForholdene(P,V,T) \/ Fjerner(P,spor,T), <(T0,T):§9 stk.3;
+IkkeBrudtLoven(P,§9 stk.3,T) <- Trafikant(P,T), Færdselsuheld(U), På(U,V,T), IndblandetI(P,U), IndblandetI(K,U), Slut(U,T0), Dræbt(P2,U), Fjerner(P,K,T), SkaberFare(K), <(T0,T):§9 stk.3;

@@ -1,0 +1,24 @@
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,venstre), Manøvre(M2,svingning,K2,VVB,T), ~Udfører(K2,M2), ~TydeligtForbereder(K2,M2), ~Cykel&KnallertN1(K);§21 stk.1;TfK 2009.503 V
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,højre), Manøvre(M2,svingning,K2,VVB,T), Udfører(K2,M2), ~Cykel&KnallertN1(K);§21 stk.1
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,højre), Manøvre(M2,svingning,K2,VVB,T), TydeligtForbereder(K2,M2), ~Cykel&KnallertN1(K);§21 stk.1
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,venstre), Manøvre(M2,svingning,K2,VVB,T), ~Udfører(K2,M2), ~TydeligtForbereder(K2,M2), Cykel&KnallertN1(K), Cykel&KnallertN1(K2);§21 stk.1
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,højre), Manøvre(M2,svingning,K2,VVB,T), Cykel&KnallertN1(K), Cykel&KnallertN1(K2);§21 stk.1
+BrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), ~Til(M,højre), Manøvre(M2,svingning,K2,VVB,T), TydeligtForbereder(K2,M2), Cykel&KnallertN1(K), Cykel&KnallertN1(K2);§21 stk.1
+IkkeBrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), Til(M,højre), Cykel&KnallertN1(K), ~Cykel&KnallertN1(K2);§21 stk.1
+
+IkkeBrudtLoven(P,§21 stk.1) <- Kører(P,K,VVB,Ta,Tb), ForanKørende(K,K2,T), Manøvre(M,overhaling,K,VVB,T), Udfører(K,M), Til(M,højre), Letbanekøretøj(K2), ~SpærreUdsyn(P,VVB,K2), ~SkaberUlempe(M), ~SkaberFare(M);§21 stk.2
+
+BrudtLoven(P,§21 stk.3) <- Kører(P,K,VVB,Ta,Tb), Manøvre(M,overhaling,K,VVB,T), SkaberFare(M);§21 stk.3;TfK 2000.288 Ø;TfK 2005.505/2 V;TfK 2003.122 V;TfK 2004.185 V
+
+SkaberFare(M) <- Manøvre(M,overhaling,K,VVB,T), ManøvreBruger(M,VVB2), NærmestModkørende(K,K2,T), Afstand(K,K2,A,T), ~TilstrækkeligStrækningForManøvre(A,M);§21 stk.1.1;TfK 2000.288 Ø;TfK 2005.505/2 V;TfK 2003.122 V
+SkaberFare(M) <- Manøvre(M,overhaling,K,VVB,T), HindringForManøvre(M);§21 stk.1.1;TfK 2003.122 V
+SkaberFare(M) <- Manøvre(M,overhaling,K,VVB,T), ForanKørende(K,K2,T), Manøvre(M2,overhaling,K2,VVB,_), GiverTegn(K2,M2,T2), <(T2,T);§21 stk.1.2
+SkaberFare(M) <- Manøvre(M,overhaling,K,VVB,T), ForanKørende(K2,K,T), Manøvre(M2,overhaling,K2,VVB,T), Kører(P2,K2,VVB,_,_), Udføre(P2,M2);§21 stk.1.3;TfK 2003.122 V
+SkaberFare(M) <- Manøvre(M,overhaling,K,VVB,T), ManøvreBruger(M,VVB2), Retning(VVB,R), Modsat(R,R2), ~Retning(VVB2,R2), SkaberUlempe(M);§21 stk.1.4;TfK 2004.185 V;
+
+
+BrudtLoven(P,§21 stk.4) <- Kører(P,K,VVB,Ta,Tb), Manøvre(M,overhaling,K,VVB,T), Udfører(P,M), ForanKørende(K,K2,T1), ~TilstækkeligtAfstand(K,K2,T), <(T1,T);§21 stk.4;TfK 2013.137 Ø
+BrudtLoven(P,§21 stk.4) <- Kører(P,K,VVB,Ta1,Tb1), Manøvre(M,vognbaneskift,K,VVB,T1), Udfører(P,M), Til(M,venstre), Manøvre(M,vognbaneskift,K,VVB2,T2), ForanKørende(K,K2,T), , ~Udfører(P,M2), ~SkaberFare(M2), ~SkaberUlemple(M2), <(T,T1,T2);§21 stk.4
+
+
+BrudtLoven(P,§21 stk.5) <- Kører(P,K,VVB,Ta,Tb), Manøvre(M,overhaling,K,VVB,T), Udfører(P,M), ForanKørende(K,K2,T1), AnvendesTilVejarbedje(K2), ~UdføresMedFornødenForsigtighed(M), <(T1,T);§21 stk.5

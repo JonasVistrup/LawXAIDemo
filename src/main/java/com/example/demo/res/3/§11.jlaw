@@ -1,0 +1,8 @@
+Gående(P,T) <- På(P,ski,T):§11 stk.1;
+Gående(P,T) <- På(P,skøjter,T):§11 stk.1;
+Gående(P,T) <- Fører(P,barnevogn,T):§11 stk.1;
+Gående(P,T) <- Fører(P,legevogn,T):§11 stk.1;
+Gående(P,T) <- Skubber(P,kørestol,T):§11 stk.1;
+Kørende(P,T) <- Trækker(P,K,T), Motorcykel(K)\/Knallert(K)\/Cykel(K):§11 stk.1;
+På(P,skøjter,T) <- På(P,isskøjter,T):§11 skt.1;
+På(P,skøjter,T) <- På(P,rulleskøjter,T):§11 skt.1:U 2000.1486 Ø;

@@ -1,0 +1,11 @@
+BrudtLoven(P,§7 stk.2,T) <- Trafikant(P,T), Fører(P2,K,T), Udrykningskøretøj(K), Anvender(K,særlige_lyd_lyssignaler_fastsat_af_TBB,T), IkkeHolderÅben(P,V,T):§7 stk.2;
+
+Udrykningskøretøj(K) <- Motorkøretøj(K), Foran(K,hvid_dug), På(hvid_dug,K,T), Befordres(P,K,T), Type(P,alvorlig_syg\/tilskadekomne):§7 stk.4;
+BrudtLoven(P,§7 stk.4,T) <- Motorkøretøj(K), Foran(K,hvid_dug), På(hvid_dug,K,T), Befordres(P2,K,T0), Type(P2,alvorlig_syg\/tilskadekomne), ~GiverPolitietBesked(P,anvendelse_af_hvid_dug,T):§7 stk.4;
+BrudtLoven(P,§7 stk.4,T) <- Motorkøretøj(K), Foran(K,hvid_dug), På(hvid_dug,K,T), Befordres(P2,K,T0), Type(P2,alvorlig_syg\/tilskadekomne), ~GiverPolitietBesked(P,anvendelse_af_hvid_dug,T):§7 stk.4;
+BrudtLoven(P,§7 stk.4,T) <- UberettigetAnvendelseAf(P,hvid_dug,T):§7 stk.4;
+
+BrudtLoven(P,§7 stk.5,T) <- Uvedkommende(P,V,T), Nær(P,V,T), Uheldsted(V) \/ Brandsted(V), Hæmmer(P,redningsarbejdet):§7 stk.5;
+BrudtLoven(P,§7 stk.5,T) <- Uvedkommende(P,V,T), Nær(P,V,T), Brandsted(V), Hæmmer(P,slukningsarbejdet):§7 stk.5;
+
+BrudtLoven(P,§7 stk.6,T) <- Trafikant(P,T), IkkeGiverFriPassageFor(P,forsvarets_kolonner\/redningsberedskabets_kolonner\/grupper_af_børn_under_opsyn_af_leder\/ligtog\/sluttet_optog,T):§7 stk.6;

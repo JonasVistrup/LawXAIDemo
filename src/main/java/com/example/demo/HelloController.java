@@ -2,8 +2,10 @@ package com.example.demo;
 
 import com.example.demo.Logic.High.Atom;
 import com.example.demo.Logic.High.AtomList;
+import com.example.demo.Logic.High.Clause;
 import com.example.demo.SLD.Answer;
 import com.example.demo.SLD.History;
+import com.example.demo.SLD.XAI;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -46,8 +48,6 @@ public class HelloController implements Initializable {
 
     private ArrayList<String> facts = new ArrayList<>();
 
-    public XAI xai;
-
     private List<Answer> answers;
 
     @FXML
@@ -73,6 +73,37 @@ public class HelloController implements Initializable {
             factList.getItems().addAll(info);
             factInput.setText("");
             return;
+        }else if((""+factInput.getCharacters()).equals("case1")){
+            ArrayList<String> info = new ArrayList<>();
+            info.add("Køretøj(reg_nr_1)");
+            info.add("Befordres(tiltalte,reg_nr_1,0521)");
+            info.add("På(reg_nr_1,vej4,0521)");
+            //info.add("På(tiltalte,vej4,0521)");
+            info.add("Vej(vej4)");
+
+            info.add("Færdselsuheld(uheld)");
+            info.add("IndblandetI(tiltalte,uheld)");
+            info.add("På(uheld,vej4,0521)");
+            info.add("Slut(uheld,0521)");
+            info.add("Ejer(skadelidte,husmur,0521)");
+            info.add("ForvoldtPå(tiltalte,skade,husmur,0521)");
+
+            info.add("Køretøj(reg_nr_2)");
+            info.add("Bil(reg_nr_2)");
+            info.add("Befordres(tiltalte,reg_nr_2,1210)");
+            info.add("På(reg_nr_2,vej1,1210)");
+            info.add("Cykelsti(vej1)");
+            info.add("Sti(vej1)");
+            info.add("På(tiltalte,vej1,1210)");
+            info.add("IkkeEfterkommer(tiltalte,vej1_er_fællessti,1210)");
+            info.add("GivesVed(vej1_er_fællessti,skilt,T)");
+            info.add("På(skilt,vej1,T)");
+            info.add("Afmærkning(skilt)");
+
+            facts.addAll(info);
+            factList.getItems().addAll(info);
+            factInput.setText("");
+            return;
         }
         facts.add(""+ factInput.getCharacters());
         System.out.println("Added to facts: "+factInput.getCharacters());
@@ -88,9 +119,14 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onQueryClick(){
-        //AtomList query = new AtomList(this.xai.pb.parseAtom("BrudtLoven(X,Y)"));
-        AtomList query = new AtomList(this.xai.pb.parseAtom("BrokenLaw(X,Y)"));
-        answers = this.xai.query(new ArrayList<>(factList.getItems()),query);
+        AtomList query = new AtomList(XAI.pb.parseAtomOld("BrudtLoven(X,Y,T)"));
+        answers = XAI.query(new ArrayList<>(factList.getItems()),query);
+        for(Clause c: XAI.pb.getProgram()){
+            System.out.println(c);
+        }
+        System.out.println("Facts Size: "+factList.getItems().size());
+        System.out.println("Size: "+answers.size());
+
 
         explanationStack = new Stack<>();
         answerInfoStack = new Stack<>();
@@ -142,16 +178,59 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.xai = new XAI(strPath+ "predicates-ENG.txt");
-        this.xai.addRules(strPath+"paragraf-41-ENG.txt");
-        this.xai.addRules(strPath+"paragraf-42-ENG.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Køretøjer.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Matematik.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Personer.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Standard.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§2.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§3-9.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§10-13.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§14-20.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§21-40.txt");
+        XAI.addPredicates(strPath+"res/Predicates/VejDefinitioner.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Tid.txt");
+
+        XAI.addUDPs(strPath+"res/UDPs.txt");
+
+        XAI.addRules(strPath+"res/1/§2.jlaw");
+        XAI.addRules(strPath+"res/2/§3.jlaw");
+        XAI.addRules(strPath+"res/2/§4.jlaw");
+        XAI.addRules(strPath+"res/2/§5.jlaw");
+        XAI.addRules(strPath+"res/2/§6.jlaw");
+        XAI.addRules(strPath+"res/2/§7.jlaw");
+        XAI.addRules(strPath+"res/2/§8.jlaw");
+        XAI.addRules(strPath+"res/2/§9.jlaw");
+
+        XAI.addRules(strPath+"res/3/§10.jlaw");
+        XAI.addRules(strPath+"res/3/§11.jlaw");
+        XAI.addRules(strPath+"res/3/§12.jlaw");
+        XAI.addRules(strPath+"res/3/§13.jlaw");
+
+        XAI.addRules(strPath+"res/4/§14.jlaw");
+        XAI.addRules(strPath+"res/4/§15.jlaw");
+        XAI.addRules(strPath+"res/4/§16.jlaw");
+        XAI.addRules(strPath+"res/4/§17.jlaw");
+        XAI.addRules(strPath+"res/4/§18.jlaw");
+        XAI.addRules(strPath+"res/4/§19.jlaw");
+        XAI.addRules(strPath+"res/4/§20.jlaw");
+        XAI.addRules(strPath+"res/4/§21.jlaw");
+        XAI.addRules(strPath+"res/4/§22.jlaw");
+        XAI.addRules(strPath+"res/4/§23.jlaw");
+        XAI.addRules(strPath+"res/4/§24.jlaw");
+        XAI.addRules(strPath+"res/4/§25.jlaw");
+        XAI.addRules(strPath+"res/4/§26.jlaw");
+        XAI.addRules(strPath+"res/4/§27.jlaw");
+        XAI.addRules(strPath+"res/4/§28.jlaw");
+        XAI.addRules(strPath+"res/4/§29.jlaw");
+        XAI.addRules(strPath+"res/4/§30.jlaw");
     }
 
     @FXML
     protected void removeFact(){
         int pos = factList.getSelectionModel().getSelectedIndex();
         factList.getSelectionModel().clearSelection(pos);
-        factList.getItems().remove(pos);
+        if(pos<0) return;
+        if(pos<factList.getItems().size()) factList.getItems().remove(pos);
     }
 
     @FXML
@@ -182,6 +261,7 @@ public class HelloController implements Initializable {
     private void selectAnswer(){
         int pos = answerList.getSelectionModel().getSelectedIndex();
         answerList.getSelectionModel().clearSelection(pos);
+        if(pos < 0) return;
 
         explanationStack.add(new ArrayList<>(answerList.getItems()));
         answerList.getItems().clear();

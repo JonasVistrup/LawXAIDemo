@@ -1,0 +1,26 @@
+BrudtLoven(P,§23 stk.1) <- Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), På(VBB,VK), Vejkryds(VK), ~Undtaget(P,§23 stk.1,T);§23 stk.1;
+BrudtLoven(P,§23 stk.1) <- Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), Foran(K,VK,T), Vejkryds(VK), ~Undtaget(P,§23 stk.1,T);§23 stk.1;
+
+Undtaget(P,§23 stk.1,T) <- Overhaler(K,K2,T), Kører(P,K,VBB,Ta1,Tb1), Kører(P2,K2,VBB2,Ta2,Tb2), ~=(VBB,VBB2), Retning(VBB,R), Retning(VBB2,R);§23 stk.1.1a
+Undtaget(P,§23 stk.1,T) <- Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), Kører(P,K,VBB,Ta1,Tb1), Overhaler(K,K2,T), Kører(P2,K2,VBB2,Ta2,Tb2), Til(M,højre), Manøvre(M2,svining,K2,VBB2), Til(M2,venstre);§23 stk.1.1b
+
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), På(VBB,VK), Vejkryds(VK), ReguleresAf(VK, politi);§23 stk.1.1c
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), På(VBB,VK), Vejkryds(VK), ReguleresAf(VK, signalanlæg);§23 stk.1.1c
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), Foran(K,VK,T), Vejkryds(VK), ReguleresAf(VK, politi);§23 stk.1.1c
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), Foran(K,VK,T), Vejkryds(VK), ReguleresAf(VK, signalanlæg);§23 stk.1.1c
+
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), På(VBB,VK), Vejkryds(VK), På(VBB2,VK), Retning(VBB,R), Modsat(R,R2), Retning(VBB2,R2), UbetingetVigepligt(VBB2);§23 stk.1.1d
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), Foran(K,VK,T), Vejkryds(VK), På(VBB2,VK), Retning(VBB,R), Modsat(R,R2), Retning(VBB2,R2), UbetingetVigepligt(VBB2);§23 stk.1.1d
+
+BrudtLoven(P,§23 stk.2) <- Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), På(VBB,JBO), Jernbaneoverkøresel(JBO);§23 stk.1.2;
+BrudtLoven(P,§23 stk.2) <- Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), Foran(K,JBO,T), Jernbaneoverkøresel(JBO);§23 stk.1.2;
+
+BrudtLoven(P,§23 stk.3) <- Kører(P,K,VBB,Ta1,Tb1), På(VBB,V), Retning(VBB,R), Modsat(R,R2), #VognbanerIRetning(V,R2,A), #Vognbaner(V,A2), -(A2,A,1), OversigtenBegrænset(P,VBB);§23 stk.1.3;U 2007.1410 V
+
+Undtaget(P,§23 stk.1,T) <- Kører(P,K,VBB,Ta1,Tb1), Overhaler(K,K2,T), Cykel&KnallertN1(K2), #Hjul(K2,2);§23 stk.2;
+
+
+
+
+
+

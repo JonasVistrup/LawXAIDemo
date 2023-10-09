@@ -29,11 +29,17 @@ public class Clause {
      * @param head head of the clause
      * @param body body of the clause
      */
-    public Clause(Atom head, AtomList body, ArrayList<String> reasons){
+    public Clause(Atom head, AtomList body){
         this.head = head;
         this.body = body;
-        this.reasons = reasons;
+
+        this.reasons = new ArrayList<>();
         this.instances = new HashMap<>();
+    }
+
+    public Clause(Atom head, AtomList body, ArrayList<String> reasons){
+        this(head, body);
+        this.reasons = reasons;
     }
 
     /**

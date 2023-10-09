@@ -1,0 +1,6 @@
+BrudtLoven(P1,§20 stk.1) <- Kører(P1,K1,V,Ta1,Tb1), Kører(P2,K2,V,Ta2,Tb2), Møder(P1,P2), ~HolderTilstrækkeligAfstandMellem(P1,K1,K2);§20 stk.1;TfK 2016.1239 V;TfK 2016.1239 V;TfK 2001.359 V;FED 1996.1407 V
+BrudtLoven(P1,§20 stk.1) <- Kører(P1,K1,VKB1,Ta1,Tb1), Kører(P2,K2,VKB2,Ta2,Tb2), DelAf(VKB1,V), DelAf(VKB2,V), Møder(P1,P2), Færdes(P3,VKB1,højre), ~UdviserSærligAgtpågivnehed(P1,K1,T);§20 stk.1;TfK 2016.1239 V;TfK 2016.1239 V;TfK 2001.359 V;FED 1997.1132 V;FED 1996.1407 V
+BrudtLoven(P1,§20 stk.1) <- Kører(P1,K1,VKB1,Ta1,Tb1), Kører(P2,K2,VKB2,Ta2,Tb2), DelAf(VKB1,V), DelAf(VKB2,V), Møder(P1,P2), Delvisspærret(VKB1), Manøvre(M,standse,K1,VKB1,T), ~Udfører(P1,M), NødvendigtPga(M,vejSpærret&Mødkørende);§20 stk.1
+
+BrudtLoven(P1,§20 stk.2) <- Kører(P1,K1,VKB1,Ta1,Tb1), Kører(P2,K2,VKB2,Ta2,Tb2), DelAf(VKB1,V), DelAf(VKB2,V), Møder(P1,P2), AnvendesTilVejarbedje(K2), ~KøresMedFornødenForsigtighedMestHensigtsmæssig(P1,K1);§20 skt. 2
+

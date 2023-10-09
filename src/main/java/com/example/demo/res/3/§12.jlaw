@@ -1,0 +1,6 @@
+BrudtLoven(P,§12 stk.1,T) <- DelAf(P,O), Optog(O), Slut(O,T0), <(T0,T), På(P,V,T), Midterrabat(V):§12 stk.1;
+BrudtLoven(P,§12 stk.1,T) <- DelAf(P,O), Optog(O), Slut(O,T0), <(T0,T), På(P,Loc,T), På(Loc,V,T), Kørebane(V), Til(Loc,højre):§12 stk.1;
+BrudtLoven(P,§12 stk.1,T) <- DelAf(P,O), Optog(O), Slut(O,T0), <(T0,T), Ansvar(P,B1,T), Ansvar(P,B2,T), Ansvar(P,B3,T), HøjreFor(B1,B2,T), HøjreFor(B2,B3,T):§12 stk.1;
+BrudtLoven(P,§12 stk.1,T) <- DelAf(P,O), Optog(O), Slut(O,T0), <(T0,T), Ansvar(P,B,T), På(B,V,T), Cykelsti(V) \/ Midterrabat(V):§12 stk.1;
+
+BrudtLoven(P,§12 stk.1,T) <- Lystændingstiden(V,T), DelAf(P,O), Optog(O), På(O,V,T), Rabat(V) \/ Kørebane(V) \/ Cykelsti(V), ~LyserMed(O,hvidt_eller_gult_lys,fremad,T) \/ ~LyserMed(O,rødt_lys,bagud,T):§12 stk.1;

@@ -1,0 +1,7 @@
+BrudtLoven(P,§44 stk.1,T) <- Kører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], ~Motorkøretøj(K):§44 stk.1;
+BrudtLoven(P,§44 stk.1,T) <- Kører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], KonstruktivHastighed(K,H), <(H,50):§44 stk.1;
+BrudtLoven(P,§44 stk.1,T) <- Kører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], Maxhastighed(K,H), <(H,50):§44 stk.1;
+
+IkkeBrudtLoven(P,§44 stk.2,T) <- Køresel(Kø,K), Type(Kø, transport), Fører(P,Kø,T), Koblet(K,B,T), Blokvogn(B), PolitietTillader(Kø), ~KanRimeligtGennemføresPåAndenMåde(Kø):§44 stk.2;
+
+IkkeBrudtLoven(P,§44 stk.2,T) <- Køresel(Kø,K), Fra(Kø,VF), Frakørsel(VF), Til(Kø,VT), Tilkørsel(VT), Type(Kø, erhvervsuddanlse), Fører(P,Kø,T), PolitietTillader(Kø), ~KanRimeligtGennemføresPåAndenMåde(Kø), ~Knallert(K):§44 stk.3;

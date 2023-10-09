@@ -1,0 +1,5 @@
+BrudtLoven(P,§22 stk.1,T) <- Fører(P,K,T), Igang(M,T), Manøvre(M), Type(M,overhaling), Udfører(P2,M), Om(M,K), Manøvre(M2), På(M2,K,T), Start(M2,T), Type(M2,holde_til_venstre), ~Udfører(P,M2):§22 stk.1;
+BrudtLoven(P,§22 stk.1,T) <- Fører(P,K,T), Igang(M,T), Manøvre(M), Type(M,overhaling), Udfører(P2,M), Om(M,K), Manøvre(M2), Start(M2,T), Type(M2,accelere), Udfører(P,M2):§22 stk.1;
+
+BrudtLoven(P,§22 stk.2,T) <- Fører(P,K,T), På(K,V,T), OptagerMegetPlads(K,V,T) \/ [Hastighed(K,A,T) /\ Lav(A)], Smal(V) \/ Bugtet(V) \/ Modkørende(Færdsel,K,T), Færdsel(V,Færdsel), Kørebane(V), Forankørende(K,Færdsel2,T), Færdsel(V,Færdsel), ~SpecieltOpmærksomPå(P,Færdsel):§22 stk.2;
+BrudtLoven(P,§22 stk.2,T) <- Fører(P,K,T), På(K,V,T), OptagerMegetPlads(K,V,T) \/ [Hastighed(K,A,T) /\ Lav(A)], Smal(V) \/ Bugtet(V) \/ Modkørende(Færdsel,K,T), Færdsel(V,Færdsel), Kørebane(V), Forankørende(K,K2,T), Fører(P2,K2,T), Udfører(P2,M), Igang(M,T), Manøvre(M), Type(M,overhaling), Af(M,K), Manøvre(M2), ~Udfører(P,M2), Type(M2,deaccelere\/kører_ind_til_siden\/standse), NødvendigtFor(M2,M):§22 stk.2;

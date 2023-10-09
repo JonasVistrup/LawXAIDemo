@@ -1,0 +1,29 @@
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),På(S,F,T), Fodgængerfelt(F)\/[Udkørsel(F)/\Fra(F,C)/\Cykelsti(C)]:§29 stk.1.1;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),Af(S,K), På(S,VK,T), Fodgængerfelt(F)\/[Udkørsel(F)/\Fra(F,C)/\Cykelsti(C)/\[Langs(F,VK)\/Tværs(F,VK)]], Afstand(K,F,A,T), <(T,5m):§29 stk.1.1;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),På(S,V,T), Vejkryds(V):§29 stk.1.2;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S),Udfører(P,S), Igang(S,T), På(S,V,T), Af(S,K), Kørebane(V),Kørebane(V2),Tværs(V,V2),Afstand(K,V2,A,T),<(A,10m):§29 stk.1.2;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),På(S,V,T), Af(S,K), Kørebane(V),Cykelsti(C), UdmunderSammen(V,C,Loc), Afstand(K,Loc,A,T),<(A,10m):§29 stk.1.2;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),På(S,V,T), Jernbaneoverkørsel(V)\/Type(V,overkørsel):§29 stk.1.3;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),Af(S,K), På(S,V,T), SpærrerUdsynFor(K,A,T), Færdselstavle(V,A):§29 stk.1.4;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T),På(S,V,T), Bro(V)\/Tunnel(V)\/Type(V,viadukt):§29 stk.1.5;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T)\/Nær(S,V,T), Type(V,bakketop)\/Type(V,uoverskueligt_vejsving):§29 stk.1.6;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Af(S,K), Kørebane(V), Igang(S,T), Før(V,VK), Vejkryds(VK), Type(V,ved hjælp af spærrelinjer er inddelt i vognbaner), Afstand(K,V,A,T), <(A,5m):§29 stk.1.7;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), Type(VSL,spærrelinje), Afstand(VSL,K,A,T), <(A,3m), IkkeMellem(punkteret_linje,VSL,K):§29 stk.1.8;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), Krybespor(V):§29 stk.1.9;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), MærkeretFor(V,holdeplads_for_hyrevogne):§29 stk.1.10;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), Kørsel(Kørsel), Af(Kørsel,KL), Letbanekøretøj(KL), Hindrer(S,Kørsel):§29 stk.1.11;
+
+
+BrudtLoven(P,§29 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), På(S,V,T), MærkeretSom(V,busstoppested):§29 stk.2;
+BrudtLoven(P,§29 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), På(S,V,T), Af(S,K), Ved(V,B), Type(B,busstoppested), ~MærkeretSom(V,busstoppested), Afmærkning(X), På(X,B,T), Type(X,skilt), Afstand(X,K,A,T), <(A,12m):§29 stk.2;
+
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), Udfører(P,S), På(S,V,T), Af(S,K), Type(V2,jernbaneoverkørsel), Afstand(K,V2,A,T), <(A,30m):§29 stk.3.1;
+
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), Udfører(P,S), Igang(S,T), UdFor(S,V), [Type(V,indkørsel)/\Til(V,E)]\/[Type(V,udkørsel)/\Fra(V,E)],Ejendom(E),Kørsel(Kørsel),Fra(Kørsel,E)\/Til(Kørsel,E),VæsentligtVanskeliggøres(S,Kørsel):§29 stk.3.2;
+
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), Udfører(P,S), På(S,V,T), Kørebane(V), IkkeTættereBebyggetOmråde(V):§29 stk.3.3;
+
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), VedSidenAf(K,K2,T), Udfører(P,S), På(S,V,T), Af(S,K), Køretøj(K2), VedSidenAf(K2,kørebanens_kant,T), ~Knallert(K), ~Cykel(K), ~Motorcykel(K):§29 stk.3.4;
+
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), Udfører(P,S), På(S,V,T), Adgang(A),Til(A,K2), Køretøj(K2), Hindres(A,S):§29 stk.3.5;
+BrudtLoven(P,§29 stk.3,T) <- Parkering(S), Udfører(P,S), På(S,V,T), Kørsel(A),Af(A,K2),Fra(A,V), Køretøj(K2), Hindres(A,S):§29 stk.3.5;

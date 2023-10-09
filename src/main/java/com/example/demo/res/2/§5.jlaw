@@ -1,0 +1,11 @@
+BrudtLoven(P,§5 stk.1,T) <- Trafikant(P,T), På(P,V,T), Jernbaneoverkørsel(V), IkkeUdviser(P,særlig_forsigtighed,T):§5 stk.1;
+BrudtLoven(P,§5 stk.1,T) <- Trafikant(P,T), På(P,V,T), Jernbaneoverkørsel(V), NærmerSig(Tog,V,T), Tog(Tog), Se(P,Tog,T) \/ Hører(P,Tog,T):§5 stk.1;
+BrudtLoven(P,§5 stk.1,T) <- Trafikant(P,T), På(P,V,T1), Jernbaneoverkørsel(V), IkkeAfpassetHastighedSå(P,K,standsning_kan_ske_før_sporene,T), <(T,T0):§5 stk.1;
+BrudtLoven(P,§5 stk.1,T) <- Trafikant(P,T), Jernbaneoverkørsel(V), Ophold(O), På(O,V,T), Af(P,V), Unødigt(O):§5 stk.1;
+
+BrudtLoven(P,§5 stk.2,T) <- Trafikant(P,T), På(P,V,T), Jernbaneoverkørsel(V), GivesVed(Anvisning,S,T), Signalanlæg(S), Type(Anvisning,pligt_til_standsning):§5 stk.2;
+BrudtLoven(P,§5 stk.2,T) <- Trafikant(P,T), På(P,V,T), Jernbaneoverkørsel(V), Bom(B), For(B,V), Lukket(B,T) \/ Lukkes(B,T) \/ Åbnes(B,T):§5 stk.2;
+BrudtLoven(P,§5 stk.2,T) <- Trafikant(P,T), På(P,V,T), Jernbaneoverkørsel(V), Tilkendegiver(jernbanens_personale,tog_nærmer_sig,T):§5 stk.2;
+
+BrudtLoven(P,§5 stk.3,T) <- Trafikant(P,T), Jernbaneoverkørsel(V), Standsning(S), Af(S,K), På(S,Loc,T), Afstand(Loc,V,A,T), BetryggendeAfstand(A):§5 stk.3;
+BrudtLoven(P,§5 stk.3,T) <- Trafikant(P,T), Jernbaneoverkørsel(V), Standsning(S), Af(S,K), På(S,Loc,T), Efter(Loc,A), Bom(A) \/ Signalanlæg(A), Til(A,V):§5 stk.3;

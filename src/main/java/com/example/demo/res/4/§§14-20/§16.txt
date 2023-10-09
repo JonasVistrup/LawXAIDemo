@@ -1,0 +1,16 @@
+BrudtLoven(X,§16 stk.1) <- Kører(X,K,B), VejkrydsFremad(B), DelAfVej(B,V), FærdselsRetning(K,R), ToEllerFlereBanerIRetning(V,R), SkalSvingeTilHøjre(X), ~BaneLængstTilHøjreISammeRetning(B);§16 stk.1
+BrudtLoven(X,§16 stk.1) <- Kører(X,K,B), VejkrydsFremad(B), DelAfVej(B,V), FærdselsRetning(K,R), ToEllerFlereBanerIRetning(V,R), SkalSvingeTilVenstre(X), ~BaneLængstTilVenstreISammeRetning(B);§16 stk.1
+
+BrudtLoven(X,§16 stk.2) <- Kører(X,K,B), ØnskerAtÆndreFærdselRetning(X), ~SikreUdførelsenKanFortagesUdenFare(X,K,B)§16 stk.2
+BrudtLoven(X,§16 stk.2) <- Kører(X,K,B), ØnskerAtÆndreFærdselRetning(X), ~SikreUdførelsenKanFortagesUdenUlempe(X,K,B);§16 stk.2
+
+
+BrudtLoven(X,§16 stk.3) <- Kører(X,K,B), DelAfVej(B,V), SkalSvingeTilHøjre(X), ~KøretøjetFøresSåLangtModHøjreKantSomMuligt(X,K,V);§16 stk.3
+BrudtLoven(X,§16 stk.3) <- Kører(X,K,B), DelAfVej(B,V), SvingerTilHøjre(X), ~SvingetErSåLilleSomMuligt(X,K,V);§16 stk.3
+BrudtLoven(X,§16 stk.3) <- Kører(X,K,B), DelAfVej(B,V), SkalSvingeTilVenstre(X), ~Ensrettet(V), ~KøretøjetErFørtIndModKørebanensMidte(K,V);§16 stk.3
+BrudtLoven(X,§16 stk.3) <- Kører(X,K,B), DelAfVej(B,V), SkalSvingeTilVenstre(X), Ensrettet(V), ~KøretøjetFøresSåLangtModVenstreKantSomMuligt(K,V);§16 stk.3
+BrudtLoven(X,§16 stk.3) <- Kører(X,K,B), DelAfVej(B,V1), SvingerTil(K,V2), ~ToEllerFlereBanerIRetning(V,R), ~BefinderSigTilHøjre(K,V2);§16 stk.4,§16 stk.3
+
+BrudtLoven(X,§16 stk.4) <- Kører(X,K,B), DelAfVej(B,V1), SvingerTil(K,V2), ToEllerFlereBanerIRetning(V,R), ~SvingingUdføreseMestHensigtMæssig(K,V1,V2);§16 stk.3;§16 stk.4
+
+BrudtLoven(X,§16 stk.5) <- Kører(X,K1,B), DelAfVej(B,V), SvingerTilVenstre(X), SvingerIVejkryds(K1,VK), ModkørendeSvingerTilVenstre(VK,K2), ~BeggeKanSvingeUdenFare/Ulempe(K1,K2,VK);§16 stk.5

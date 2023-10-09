@@ -1,0 +1,25 @@
+BrudtLoven(P,§18 stk.1) <- Kører(P,K,VB,Ta,Tb), Manøvre(M,vending,P,K,VB,T2), ~SikreUdførelseUdenFare(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.1
+BrudtLoven(P,§18 stk.1) <- Kører(P,K,VB,Ta,Tb), Manøvre(M,bakning,P,K,VB,T2), ~SikreUdførelseUdenFare(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.1
+BrudtLoven(P,§18 stk.1) <- Kører(P,K,VB,Ta,Tb), Manøvre(M1,vending,P,K,VB,T2), ~Retning(M1,forlænsTilVenstre), ForholdendeTillader(VB,M2), Retning(M2,forlænsTilVenstre);§18 stk.1
+
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,igangsætning,P,K,KB,Ta), SkaberFare(M), <(T,Ta);§18 stk.2;TfK 2001.72 Ø
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,igangsætning,P,K,KB,Ta), SkaberUlempe(M), <(T,Ta);§18 stk.2;TfK 2001.72 Ø
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,vognbaneskift,P,K,KB,T2), ~SikreUdførelseUdenFare(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.2
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,vognbaneskift,P,K,KB,T2), ~SikreUdførelseUdenUlempe(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.2
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,ændringAfPlaceringTilSiden,P,K,KB,T2), ~SikreUdførelseUdenFare(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.2
+BrudtLoven(P,§18 stk.2) <- Kører(P,K,KB,Ta,Tb), Manøvre(M,ændringAfPlaceringTilSiden,P,K,KB,T2), ~SikreUdførelseUdenUlempe(P,M,T1), <(Ta,T1,T2,Tb);§18 stk.2
+
+BrudtLoven(P,§18 stk.3) <- Kører(P,K,AB,Ta,Tb), Kører(P,K,VB,Tb,Tc), ~TilpasseHastighedTilFærdselI(K,VB,T), <(Ta,T,Tb);§18 stk.3
+BrudtLoven(P,§18 stk.3) <- Kører(P,K,AB,Ta,Tb), Kører(P,K,VB,Tb,Tc), Manøvre(M,vognbaneskift,P,K,KB,Tb), SkaberFare(M);§18 stk.3
+BrudtLoven(P,§18 stk.3) <- Kører(P,K,AB,Ta,Tb), Kører(P,K,VB,Tb,Tc), Manøvre(M,vognbaneskift,P,K,KB,Tb), SkaberUlempe(M);§18 stk.3
+BrudtLoven(P1,§18 stk.3) <- Kører(P1,K1,VB,Ta1,Tb1), Kører(P2,K2,AB,Ta2,Tb2), Kører(P2,K2,VB,Tb2,Tc2), Manøvre(M2,vognbaneskift,P2,K2,V,Tb2), ~Udføre(P1,M1), Manøvre(M1,decelerer,K1,VB,T), NødvendigtPga(M1,M2), <(Ta1,T,Tb2,Tb1);§18 stk.3
+
+BrudtLoven(P,§18 stk.4) <- Kører(P,K,KB,Ta,Tb), #VognbanerForminskes(KB,T2), ~TilpasserKøresel(K,KB,T1), <(Ta,T1,T2,Tb);§18 stk.4
+BrudtLoven(P,§18 stk.4) <- Kører(P,K,KB1,Ta,Tb), Kører(P,K,KB2,Tb,Tc), SammenløberTil(KB1,KB3,KB2), ~TilpasserKøresel(K,KB,T), <(Ta,T,Tb);§18 stk.4
+
+BrudtLoven(P,§18 stk.5) <- Kører(P,K,VB,Ta,Tb), Kører(P,K,DB,Tb,Tc), StartAf(DB,L), ~KørerPå(K,L,Tb);§18 stk.5
+BrudtLoven(P,§18 stk.5) <- Kører(P,K,VB1,Ta,Tb), Kører(P,K,VB2,Tb,Tc), BenyttesTilVisArtFærdsel(VB2), StartAf(VB2,L), ~KørerPå(K,L,Tb);§18 stk.5
+
+SkaberUlempe(M1) <- Kører(P2,K2,V,Ta,Tb), Manøvre(M2,decelerer,K2,V,T), NødvendigtPga(M2,M1);
+SkaberUlempe(M1) <- Kører(P2,K2,V,Ta,Tb), Manøvre(M2,ændreRetning,K2,V,T), NødvendigtPga(M2,M1);
+

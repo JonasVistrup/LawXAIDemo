@@ -1,0 +1,10 @@
+BrudtLoven(P,§38 stk.1) <- Kører(P,K,_,Ta,Tb), MotordrevetKøretøj(K), AfgiverUnødigStøj(K,T), <(Ta,T,Tb);§38 stk.1
+BrudtLoven(P,§38 stk.1) <- Kører(P,K,_,Ta,Tb), MotordrevetKøretøj(K), UdviklerUnødigRøg(K,T), <(Ta,T,Tb);§38 stk.1
+BrudtLoven(P,§38 stk.1) <- Kører(P,K,_,Ta,Tb), MotordrevetKøretøj(K), UdvilkerUnødigGasarter(K,T), <(Ta,T,Tb);§38 stk.1
+
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), I(K,Bebyggelse,T), Bebyggelse(Bebyggelse), UnødvendigtKøresel(K,T), ForstyrrendeKøresel(K,T);§38 stk.2
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), Ved(K,Bebyggelse,T), Bebyggelse(Bebyggelse), UnødvendigtKøresel(K,T), ForstyrrendeKøresel(K,T);§38 stk.2
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), I(K,Bebyggelse,T), Bebyggelse(Bebyggelse), ~AfpassedHastighedSåAndreIkkeUnødvendigtForstyres(K,T);§38 stk.2
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), Ved(K,Bebyggelse,T), Bebyggelse(Bebyggelse), ~AfpassedHastighedSåAndreIkkeUnødvendigtForstyres(K,T);§38 stk.2
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), I(K,Bebyggelse,T), Bebyggelse(Bebyggelse), ~AfpassedKøremådeSåAndreIkkeUnødvendigtForstyres(K,T);§38 stk.2
+BrudtLoven(P,§38 stk.2) <- Kører(P,K,V,Ta,Tb), Ved(K,Bebyggelse,T), Bebyggelse(Bebyggelse), ~AfpassedKøremådeSåAndreIkkeUnødvendigtForstyres(K,T);§38 stk.2

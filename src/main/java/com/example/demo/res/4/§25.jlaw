@@ -1,0 +1,1 @@
+BrudtLoven(P,§25 stk.1,T) <- Fører(P,K,T), På(K,V,T), NærmerSig(K,F,T), Fodgængerfelt(F), Manøvre(M), Udfører(P,M), Igang(M,T), Om(M,K2), SpærrerUdsynFor(K2,P,T):§25 stk.1;

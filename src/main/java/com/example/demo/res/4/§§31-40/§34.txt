@@ -1,0 +1,1 @@
+BrudtLoven(P,§34 stk.1) <- Kører(P,K,_,Ta,Tb), Lystændingstid(T), ~AfmærketEfterBestemmelseFraTBB(K,T);§34 stk.1

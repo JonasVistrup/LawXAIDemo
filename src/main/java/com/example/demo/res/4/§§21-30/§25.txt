@@ -1,0 +1,2 @@
+BrudtLoven(P,§25) <- Kører(P,K,VBB,Ta,Tb), Manøvre(M,overhaling,K,VBB,T), Udfører(P,M), FuldtUdsynHindretAf(VBB,M);§25
+BrudtLoven(P,§25) <- Kører(P,K,VBB,Ta,Tb), Manøvre(M,forbikøresel,K,VBB,T), Udfører(P,M), FuldtUdsynHindretAf(VBB,M);§25

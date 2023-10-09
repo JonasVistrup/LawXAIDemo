@@ -1,5 +1,6 @@
 package com.example.demo.SLD;
 
+
 import com.example.demo.Logic.High.Atom;
 import com.example.demo.Logic.High.AtomList;
 import com.example.demo.Logic.High.Clause;
@@ -11,7 +12,7 @@ import java.util.List;
 public class History{
 
     public List<HistoryNode> tops;
-    public List<HistoryNode> frontier;
+    List<HistoryNode> frontier;
 
     public History(AtomList query, Trace trace, Substitution substitution){
         tops = new ArrayList<>();
@@ -21,17 +22,19 @@ public class History{
             tops.add(node);
             frontier.add(node);
         }
-        for(int i = 0; i<trace.clausesUsed.size(); i++){
-            int pos = trace.posClausesApplied.get(i);
-            Clause clauseUsed = trace.clausesUsed.get(i);
+        for(int i = 0; i<trace.clausesUsed.length; i++){
+            int pos = trace.posClausesApplied[i];
+            Clause clauseUsed = trace.clausesUsed[i];
 
             HistoryNode node = frontier.remove(pos);
-            node.clauseUsed = clauseUsed.applySub(substitution);
-            node.children = new ArrayList<>();
-            for(Atom atom: node.clauseUsed.body){
-                node.children.add(new HistoryNode(atom));
+            if(clauseUsed != null) {
+                node.clauseUsed = clauseUsed.applySub(substitution);
+                node.children = new ArrayList<>();
+                for (Atom atom : node.clauseUsed.body) {
+                    node.children.add(new HistoryNode(atom));
+                }
+                frontier.addAll(node.children);
             }
-            frontier.addAll(node.children);
         }
     }
 

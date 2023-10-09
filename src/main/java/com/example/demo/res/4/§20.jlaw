@@ -1,0 +1,5 @@
+BrudtLoven(P,§20 stk.1,T) <- Kørende(P,T), Kørende(P2,T), Fører(P,K,T), Fører(P2,K2,T), Møder(K,K2,T), AfstandTilSiden(K,K2,A,T), ~Tilstrækkelig(A):§20 stk.1;
+BrudtLoven(P,§20 stk.1,T) <- Kørende(P,T), Kørende(P2,T), Fører(P,K,T), Fører(P2,K2,T), Møder(K,K2,T), UdviserFor(P,særlig_agtpågivenhed,P3,T), Trafikant(P3,T), På(P3,Loc,T),DelAf(Loc,V), Til(Loc,højre), På(K,V,T):§20 stk.1;
+BrudtLoven(P,§20 stk.1,T) <- Kørende(P,T), Kørende(P2,T), Fører(P,K,T), Fører(P2,K2,T), Møder(K,K2,T), På(K,V,T), På(K2,V,T), Spæring(S), På(S,V,T), Til(S,højre), Manøvre(M), Type(M,Standsning), ~Udfører(P,M), Nødvendigt(M), På(M,V,T), Af(M,K), Start(M,T):§20 stk.1;
+
+IkkeBrudtLoven(P,§20 stk.1,T) <- Fører(P,Kørsel,T), Af(Kørsel,K), Møder(K,K2,T), Fører(P2,K2,T), AnvendesTil(K,vejarbejde), Kørsel(Kørsel), FortagesMed(Kørsel,fornøden_forsigtighed), MestHensigtmæssig(Kørsel,vejarbejde,T):§20 stk.2;

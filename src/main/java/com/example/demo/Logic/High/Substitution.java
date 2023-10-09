@@ -1,5 +1,6 @@
 package com.example.demo.Logic.High;
 
+
 import com.example.demo.Logic.Symbols.Term;
 import com.example.demo.Logic.Symbols.Variable;
 
@@ -8,7 +9,7 @@ import java.util.Map;
 
 
 /**
- * A set of substitutions.
+ * A set of substitutions. Immutable.
  */
 public class Substitution {
     private final HashMap<Variable, Term> subs;

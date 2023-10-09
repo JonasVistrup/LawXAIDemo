@@ -1,0 +1,51 @@
+BrudtLoven(P,§32 stk.1,T) <- Kører(P,K,V,T), NødvendigtAtHendledeOpmærksomhed(P,P2,T), ~LydSignalerer(P,P2,T), ~LysSignalerer(P,P2,T);§32 stk.1
+BrudtLoven(P,§32 stk.1,T) <- Kører(P,K,V,T), NødvendigtAtHendledeOpmærksomhed(P,P2,T), ~LysSignalerer(P,P2,T), Lygtetændingstiden(T), ~FarenErOverhængende(P2,T);§32 stk.1
+BrudtLoven(P,§32 stk.1,T) <- Kører(P,K,V,T), ~NødvendigtAtHendledeOpmærksomhed(P,P2,T), LydSignalerer(P,P2,T);§32 stk.1;U 1961.864 H
+BrudtLoven(P,§32 stk.1,T) <- Kører(P,K,V,T), NødvendigtAtHendledeOpmærksomhed(P,P2,T), LydSignalerer(P,P2,T), ~NødvendigtAtHendledeOpmærksomhed(P,P2,T1), LydSignalerer(P,P2,T1), <(T,T1);§32 stk.1
+LysSignalerer(P,P2,T) <- Kører(P,K,V,T), BlinkerMedFjernLys(K,P2,T);§32 stk.1
+LysSignalerer(P,P2,T) <- Kører(P,K,V,T), BlinkerMedNærLys(K,P2,T);§32 stk.1
+
+BrudtLoven(P,§32 stk.2,T) <- Udfører(P,M), Manøvre(M,igangsætning,K,VK,T), Kanten(VK,V), ~GiverTegnFor(P,M,T1), <(T1,T);§32 stk.2
+BrudtLoven(P,§32 stk.2,T) <- Udfører(P,M), Manøvre(M,vending,K,VK,T), ~GiverTegnFor(P,M,T1), <(T1,T);§32 stk.2
+BrudtLoven(P,§32 stk.2,T) <- Udfører(P,M), Manøvre(M,svigning,K,VK,T), ~GiverTegnFor(P,M,T1), <(T1,T);§32 stk.2
+BrudtLoven(P,§32 stk.2,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), ~GiverTegnFor(P,M,T1), <(T1,T);§32 stk.2
+BrudtLoven(P,§32 stk.2,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), ~GiverTegnForVia(P,M,blinklys,T1), ~GiverTegnForVia(P,M,armRækkesVandretUdTilSiden,T1), <(T1,T);§32 stk.2
+
+BrudtLoven(P,§32 stk.3,T) <- BrudtTBBReglerOmHavariBlink(P,T);§32 stk.3
+
+BrudtLoven(P,§32 stk.4,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), ~GiverTegnForVia(P,M,stoplygte,T1), ~GiverTegnForVia(P,M,armRækkesOpIVejret,T1), <(T1,T);§32 stk.4
+BrudtLoven(P,§32 stk.4,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,stoplygte,T1), ~GiverTegnForVia(P,M,armRækkesOpIVejret,T1), <(T1,T);§32 stk.4
+
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), Tvetydigt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), Tvetydigt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), Tvetydigt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), Tvetydigt(Tegn), <(T1,T);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,standser,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,stoplygte), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.4;§32 stk.5;
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,decelerer,K,VK,T), TegnKrævetTilVejledningForAndre(P,M), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesOpIVejret), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.4;§32 stk.5;
+
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,igangsætning,K,VK,T), Kanten(VK,V), GiverTegnFor(P,M,T1), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,igangsætning,K,VK,T), Kanten(VK,V), GiverTegnFor(P,M,T1), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,igangsætning,K,VK,T), Kanten(VK,V), GiverTegnFor(P,M,T1), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vending,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vending,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vending,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,svigning,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,svigning,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,svigning,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,blinklys), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,blinklys), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,blinklys), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesVandretUdTilSiden), ~TydeligtSynligt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesVandretUdTilSiden), Tvetydigt(Tegn), <(T1,T);§32 stk.2;§32 stk.5
+BrudtLoven(P,§32 stk.5,T) <- Udfører(P,M), Manøvre(M,vognbaneskift,K,VK,T), GiverTegnForVia(P,M,Tegn,T1), Type(Tegn,armRækkesVandretUdTilSiden), Slut(M,T2), Slut(Tegn,T3), <(T1,T,T2,T3);§32 stk.2;§32 stk.5
+
+BrudtLoven(P,§32a stk.1,T) <- Kører(P,K,V,T), Letbanekøretøj(K), LydSignalerer(P,P2,K), ~NødvendigtAtHendledeOpmærksomhed(P,P2,T);§32a stk.1

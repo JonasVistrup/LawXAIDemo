@@ -1,0 +1,11 @@
+BrudtLoven(P,§6 stk.1,T) <- Spring(S), Udfører(P,S),Igang(S,T) Fra(S,K), Køretøj(K), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,springe_af_et_køretøj_i_bevægelse,T):§6 stk.1;
+BrudtLoven(P,§6 stk.1,T) <- Spring(S), Udfører(P,S), Igang(S,T), Fra(S,K) \/ Til(S,K), Køretøj(K), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,springe_på_et_køretøj_i_bevægelse,T):§6 stk.1;
+BrudtLoven(P,§6 stk.1,T) <- Ophold(O), På(O,Trinbræt,T), Køretøj(K), På(Trinbræt, K,T), Trinbræt(Trinbræt), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,opholde_sig_på_et_køretøjs_trinbræt,T):§6 stk.1;
+
+BrudtLoven(P,§6 stk.2,T) <- Fører(P,K,T), Trækker(K,slæde\/trækvogn,T):§6 stk.2;
+BrudtLoven(P,§6 stk.2,T) <- Fører(P,K,T), Trækker(K,P2,T), LøberPå(P2,ski\/skøjter\/rulleskøjter,T):§6 stk.2;
+BrudtLoven(P,§6 stk.2,T) <- Fører(P2,K,T), Trækker(K,P,T), LøberPå(P,ski\/skøjter\/rulleskøjter,T):§6 stk.2;
+
+BrudtLoven(P,§6 stk.3,T) <- Fører(P,rullebræt,T), På(P,V,T), Vej(V):§6 stk.3;
+BrudtLoven(P,§6 stk.3,T) <- Laver(P,A,T), Type(A,glidebane\/kælkebane), På(A,V,T), Vej(V):§6 stk.3;
+BrudtLoven(P,§6 stk.3,T) <- På(P,V,T), Vej(V), ~Type(V,legegade), Laver(P,A,T), Type(A,leg) \/ Type(A,bold_spil), SkaberUlempe(A):§6 stk.3;

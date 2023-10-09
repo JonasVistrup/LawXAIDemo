@@ -1,0 +1,22 @@
+BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), SkaberFare(Kø,T) \/ SkaberUlempe(Kø,T):§49 stk.1;
+BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), På(Kø,V), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), Manøvre(M), Type(M,overhaling), Af(M,C), GiverTegnForVia(P2,M,_,T1), ~[FærdselsforholdTillader(V,føring ved siden af andet køretøj,T) \/ FærdselsforholdNødvendiggør(V,føring ved siden af andet køretøj,T)] , <(T1,T):§49 stk.1;
+BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), #Hjul(C,A), <(2,A):§49 stk.1;
+
+BrudtLoven(P,§49 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), På(Kø,VVB,T), Vognbane(VVB), DelAf(VVB,VKB), Kørebane(VKB), DelAf(VVB2,VKB), HøjreFor(VVB2,VVB), ~[Manøvre(M) /\ Udfører(P,M,T) /\ Type(M,overhaling)]:§49 stk.2;
+BrudtLoven(P,§49 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), På(Kø,VVB,T), Vognbane(VVB), ~HøjreSide(C,VVB), ~[Manøvre(M) /\ Udfører(P,M,T) /\ Type(M,overhaling)]:§49 stk.2;
+
+IkkeBrudtLoven(P,§16 stk.1,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Før(C,VK,T), Vejkryds(VK), Skal(P,M,T), På(Kø,VVB,T), HøjreSide(C,VVB):§49 stk.3;
+IkkeBrudtLoven(P,§16 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Før(C,VK,T), Vejkryds(VK), Skal(P,M,T), På(Kø,VVB,T), HøjreSide(C,VVB):§49 stk.3;
+
+BrudtLoven(P,§49 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Før(C,VK,T), Vejkryds(VK), Skal(P,M,T), På(Kø,VVB,T), ~HøjreSide(C,VVB):§49 stk.3;
+
+BrudtLoven(P,§49 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), Fod(P,F1), Fod(P,F2), ~=(F1,F2), Pedal(C,Pedal), ~På(F1,Pedal), ~På(F2,Pedal):§49 stk.4;
+BrudtLoven(P,§49 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), ~Styret(C,Styr), ~[Hånd(P,Hånd) /\ På(Hånd,Styr)]:§49 skt.4;
+
+BrudtLoven(P,§49 stk.5,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), På(C,F), [Fortov(F) \/ Gangsti(F)], ~AndetFølger(Kø,§14 stk.4):§49 skt.5;
+
+BrudtLoven(P,§49 stk.6,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), HolderFast(P,A), [Køretøj(A) \/ Letbanekøretøj(A) \/ [Passager(A,K2) /\ [Køretøj(K2) \/ Letbanekøretøj(K2)]]]:§49 skt.6;
+
+BrudtLoven(P,§49 stk.7,T) <- Udfører(P,M,T), Type(M,henstillig), Af(M,C), Cykel(C), ~Aflåst(C,T), ~Kortvarig(M):§49 stk.7;
+
+

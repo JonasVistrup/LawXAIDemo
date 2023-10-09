@@ -1,0 +1,26 @@
+BrudtLoven(P,§22 stk.1) <- Kører(P1,K1,VVB,Ta1,Tb1), Kører(P2,K2,VVB,Ta2,Tb2), ForanKørende(K2,K1), Udfører(P2,M), Manøvre(M,overhældning,K2,VVB,T), OpmærksomPå(P1,M,T), ~HolderTil(K1,højre,T);§22 stk.1
+BrudtLoven(P,§22 stk.1) <- Kører(P1,K1,VVB,Ta1,Tb1), Kører(P2,K2,VVB,Ta2,Tb2), ForanKørende(K2,K1), Udfører(P2,M), Manøvre(M2,overhældning,K2,VVB,T), OpmærksomPå(P1,M2,T), Manøvre(M1,accelerer,K1,VVB,T), Udfører(P1,M1);§22 stk.1
+
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Bugtet(L), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Bugetet(L), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), ~SærligOpmærksomPå(P,K2);
+
+
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Bugtet(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Bugetet(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,decelerer,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Smal(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Bugtet(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Bugetet(L), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), LavHastighed(K,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+BrudtLoven(P,§22 stk.2) <- Kører(P,K,VVB,Ta,Tb), OptagerMegetPlads(K,L,T), Loc(K,L,T), Modkøresel(VVB,T), ForanKørende(K2,K), Kører(P2,K2,VVB,_,_), Manøvre(M2,overhældning,K2,VVB,T), Udfører(P2,M2), Manøvre(M,holdeInd,K,VVB,T), gøreletter(M,M2), ~Udfører(P,M);§22 stk.2
+
+Modkøresel(VVB,T) <- Retning(VVB,R1), Modsat(R1,R2), DelAfVej(VVB,V), DelAfVej(VVB2,V), Retning(VVB2,R2), Kører(_,_,VBB2,Ta,Tb), <(Ta,T,Tb);

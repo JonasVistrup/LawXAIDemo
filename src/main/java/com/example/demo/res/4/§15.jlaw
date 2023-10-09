@@ -1,0 +1,12 @@
+BrudtLoven(P,§15 stk.1,T) <- Kørende(P,T), Fører(P,K,T), På(K,Loc,T), DelAf(Loc,VKB), Kørebane(VKB), ~Til(Loc,højre), UnderHensynTil(P,anden_færdsel_og_forhold,holde_mod_højre,T):§15 stk.1;
+
+
+BrudtLoven(P,§15 stk.2,T) <- Fører(P,K,T), Køretøj(K), På(K,VVB,T), Vognbane(VVB), ~Ensrettet(VVB), DelAf(VVB,VKB), Kørebane(VKB), DelAf(VVB2,VKB), DelAf(VVB3,VKB), HøjreFor(VVB2,VVB,T), HøjreFor(VVB3,VVB2,T):§15 stk.2;
+
+BrudtLoven(P,§15 stk.3,T) <- Fører(P,K,T), Foran(K2,K), Hastighed(K,A,T), ~Afpasset(A), FareFor(K,påkørsel):§15 stk.3;
+BrudtLoven(P,§15 stk.3,T) <- Fører(P,K,T), Foran(K2,K), DelAf(V,B),Landevej(B)\/Motorvej(B)\/Motortrafikvej(B), Afstand(K,K2,A,T), NokTil(A,overhalende_køretøjer_uden_fare_kan_føres_ind):§15 stk.3;
+
+BrudtLoven(P,§15 stk.4,T) <- Helleanlæg(H)\/Færdselsfyr(H), Køretøj(K), Fører(P,K,T), På(K,V,T), HøjreFor(H,P,T), ~MærkeretSom(H,tilladt_at_køre_venstre_om), ~Ensrettet(V):§15 stk.4;
+BrudtLoven(P,§15 stk.4,T) <- Helleanlæg(H)\/Færdselsfyr(H), Køretøj(K), Fører(P,K,T), På(K,V,T), HøjreFor(H,P,T), Ensrettet(V), ~På(H,V,T):§15 stk.4;
+
+IkkeBrudtLoven(P,§15,T) <- Fører(P,Kørsel,T), AnvendesTil(K,vejarbejde), Kørsel(Kørsel), Nødvendigt(Kørsel), FortagesMed(Kørsel,fornøden_forsigtighed):§15 stk.5;

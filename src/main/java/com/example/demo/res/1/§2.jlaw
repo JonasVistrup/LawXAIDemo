@@ -1,0 +1,73 @@
+Bil(K) <- Motorkøretøj(K), #hjul(K,H), ~<(H,4):§2.2;
+Bil(K) <- Motorkøretøj(K), #hjul(K,3), EgenVægt(K,V), ~<(V,400):§2.2;
+
+Blokvogn(K) <- MotordrevetKøretøj(K), UdlukketFraRegistrering(K,vægt\/akseltryk\/dimensioner\/øvrig_konstruktion), BeregnetTil(K,tungt_gods) \/ BeregnetTil(K,omfangsrigt_gods):§2.3;
+
+EgenVægt(K,V) <- Model(K,M), Vægt(M,V1), AltTilbehørSomNormaltMedfører(K,T), Vægt(T,V2), +(V1,V2,V):§2.4;
+
+Fodgængerfelt(F) <- Vej(F), BestemtFor(F,gående), MærkeretFor(F,gående), Krydser(F,V), Kørebane(V) \/ Cykelsti(V):§2.5;
+
+Knallert(K) <- #hjul(K,3), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§ 2.7;
+Knallert(K) <- #hjul(K,2), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§2.7;
+Knallert(K) <- #hjul(K,3), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A):§2.7;
+Knallert(K) <- #hjul(K,2), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A), ~Elcykel(K), ~Segway(K):§2.7;
+Knallert45(K) <- Knallert(K), KonstruktivHastighed(K,B), <(30,B):§2.7;
+KnallertU#Plade(K) <- Knallert(K), KonstruktivHastighed(K,B), ~<(30,B):§2.7;
+
+Krybespor(V) <- Vognbane(V), Færdselstavle(V,langsomtkørende):§2.8;
+
+Kørebane(V) <- BestemtFor(V,kørende), ~Cykelsti(V), ~Ridesti(V):§2.9;
+
+Køretøj(K) <- IndrettetTil(K,kørsel_på_vej), ~KørerPå(K,skinner):§2.10;
+
+KørerPå(K,skinner) <- KørerPå(K,eget_spor):§2.11;
+Letbanekøretøj(K) <- KørerPå(K,eget_letbanespor), Transportmiddel(K), IndrettetTil(K,befordring_af_passagerer):§2.11;
+Letbanekøretøj(K) <- KørerPå(K,eget_letbanespor), Transportmiddel(K), IndrettetTil(K,til_arbejde_på_letbanespor):§2.11;
+
+Lystændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solopgang(D,V,TOpgang), <(TDato,TOpgang):§2.12;
+Lystændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solnedgang(D,V,TNedgang), <(Nedgang,TDato):§2.12;
+Lystændingstiden(V,T) <- DårligFøre(V,T):§2.12;
+
+Motorcykel(K) <- Motorkøretøj(K), #hjul(K,3), EgenVægt(K,V), <(V,400):§2.13;
+Motorcykel(K) <- Motorkøretøj(K), #hjul(K,2), EgenVægt(K,V), <(V,400):§2.13;
+
+MotordrevetKøretøj(K) <- Motor(K,M), ~Kørestol15(K):§2.14;
+Motorkøretøj(K) <- MotordrevetKøretøj(K), IndrettetTil(K,person_befordring), ~Knallert(K):§2.15;
+Motorkøretøj(K) <- MotordrevetKøretøj(K), IndrettetTil(K,gods_transport), ~Knallert(K):§2.15;
+Motorkøretøj(K) <- MotordrevetKøretøj(K), KonstruktivHastighed(K,A), <(40,A), ~Knallert(K):§2.15;
+Motorredskab(K) <- MotordrevetKøretøj(K), IndrettetSom(K,arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A):§2.16;
+Motorredskab(K) <- MotordrevetKøretøj(K), BestemtTil(K,at_føres_af_en_gående):§2.16;
+Motorvej(V) <- FærdselForbeholdt(V,motorkøretøjer), MærkeretSom(V,motorvej):§2.17;
+Motortrafikvej(V) <- FærdselForbeholdt(V,motorkøretøjer), MærkeretSom(V,motortrafikvej):§2.17;
+
+Parkeret(K,V,T) <- Hensætning(K,V,Hensætning), Start(Hensætning,Tstart), Slut(Hensætning,Tslut), -(Tslut,Tstart,M), ~<(M,3m), ~Årsag(Hensætning,afstigning\/påstigning\/aflæsning\/pålæsning\/uheld\/teknisk_fejl), ~<(T,Tstart), ~<(Tslut,T):§2.18;
+Parkeret(K,V,T) <- Hensætning(K,V,Hensætning), Start(Hensætning,Tstart), Slut(Hensætning,Tslut), -(Tslut,Tstart,M), ~<(M,18t), Årsag(Hensætning,teknisk_fejl\/uheld), ~<(T,Tstart), ~<(Tslut,T):§2.18;
+
+Påhængskøretøj(K) <- Køretøj(K), IndrettetTil(K,at_blevet_trukket_af_andet_køretøj):§2.19;
+Påhængsredskab(K,T) <- Påhængskøretøj(K), ~Påhængsvogn(K), ~Sættevogn(K,T):§2.20;
+Påhængsredskab(K,T) <- Campingvogn(K):§2.20;
+Påhængsvogn(K) <- Påhængsvogn(K), IndrettetTil(K,befordring_af_personer\/befordring_af_gods), ~Sættevogn(K,T):§2.21;
+Sidevogn(K,T) <- #hjul(K,1), På(K,K1,T), Køretøj(K1), #hjul(K,2), IndrettetTil(K,befordring_af_personer\/befordring_af_gods):§2.22;
+Sættevogn(K,T) <- Påhængskøretøj(K), IndrettetTil(K,befordring_af_personer\/befordring_af_gods), Trækker(K1,K,T), LastHvilerPå(K,K1):§2.23;
+
+Trafikant(P,T) <- På(P,V,T), Vej(V):§2.25;
+Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Køretøj(K):§2.25;
+Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Letbanekøretøj(K):§2.25;
+
+Traktor(K) <- MotordrevetKøretøj(K), IndrettetTil(K,at_trække_andet_køretøj\/at_trække_arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A):§2.26;
+
+TættereBebyggetOmråde(V) <- DelAf(V,O), MærkeretSom(O,tættere_bebygget_område):§2.27;
+
+Vej(V) <- Gade(V):§2.28;
+Vej(V) <- Cykelsti(V):§2.28;
+Vej(V) <- Fortov(V):§2.28;
+Vej(V) <- Plads(V):§2.28;
+Vej(V) <- Bro(V):§2.28;
+Vej(V) <- Tunnel(V):§2.28;
+Vej(V) <- Passage(V):§2.28;
+Vej(V) <- Sti(V):§2.28;
+
+Vejkryds(V) <- Vejforgrening(V):§2.29;
+Vejkryds(V) <- Vejudmunding(V):§2.29;
+
+Vognbane(V) <- DelAf(V,VK), Kørebane(VK), BaneSomKørebanenKanDelesI(V,VK), Brede(V,A), TilstrækkeligtFor(A,at_kunne_benyttes_af_en_række_køretøjer_med_4_hjul):§2.30;

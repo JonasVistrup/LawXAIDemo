@@ -1,0 +1,3 @@
+Gående(P,T) <- Type(P,invalid), Fører(P,K,T), Kørestol(K), Hastighed(K,A,T), AlmindeligGanghastighed(B), <(B,A):§13 stk.1;
+AlmindeligGanghastighed(6km/t) <-:Standard ganghastighed grænse;
+

@@ -1,0 +1,16 @@
+BrudtLoven(P,§18 stk.1,T) <- Kørende(P,T), Manøvre(M), Udfører(P,M), Type(M,vending\/bakning), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§18 skt.1;
+BrudtLoven(P,§18 stk.1,T) <- Kørende(P,T), Manøvre(M), Af(M,K), Start(M,T1), Slut(M,T), Udfører(P,M), Type(M,vending), ~Retning(M,forlæns_til_venstre), Manøvre(M2), Af(M,K), Type(M2,vending), Retning(M2,forlæns_til_venstre), Start(M2,T1), Slut(M2,T), ForholdeneTillader(M2):§18 stk.1;
+
+BrudtLoven(P,§18 stk.2,T) <- Kørende(P,T), Manøvre(M), Udfører(P,M), Af(M,K), Type(M,Type), ÆndrerPlaceringTilSiden(M,K), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§18 stk.2;
+ÆndrerPlaceringTilSiden(M,K) <- Manøvre(M), Af(M,K), Type(M,vognbaneskift\/igangsætning_fra_vejen):§18 stk.2;
+BrudtLoven(P,§18 stk.2,T) <- Kørende(P,T), Manøvre(M), Udfører(P,M), Af(M,K), Type(M,standsning\/hurtigt_nedsætte_hastighed), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§18 stk.2;
+
+BrudtLoven(P,§18 stk.3,T) <- Kørende(P,T), Manøvre(M), Udfører(P,M), Type(M,vognbaneskift), Fra(M,VTB), Slut(M,T), Tilkørselsbane(VTB), Til(M,VM), Vognbane(VM), Færdsel(VM,Færdsel), Hastighed(K,A,T), Hastighed(Færdsel,B,T),Tilpasset(A,B):§18 stk.3;
+BrudtLoven(P,§18 stk.3,T) <- Kørende(P,T), Manøvre(M), Udfører(P,M), Type(M,vognbaneskift), Fra(M,VTB), Tilkørselsbane(VTB), SkaberFare(M)\/SkaberUlempe(M):§18 stk.3;
+BrudtLoven(P,§18 stk.3,T) <- Kørende(P2,T), Manøvre(M), Udfører(P2,M), Type(M,vognbaneskift), Fra(M,VTB), Tilkørselsbane(VTB), SkaberFare(M)\/SkaberUlempe(M), Manøvre(M2), ~Udfører(P,M2), Fører(P,K,T), På(K,V,T), Til(M,V), Slut(M,T), Type(M2,nedsætter_hastighed), Nødvendigt(M2):§18 stk.3;
+
+BrudtLoven(P,§18 stk.4,T) <- Kørebane(VK), Fører(P,K,T), På(K,VK,T), Til(VK,VK2), #(VK,A,vognbaner), #(VK2,B,vognbaner), <(B,A), ~Udfører(P,Tilpasning), Tilpasning(Tilpasning), Hastighed(K,Hastighed,T), Af(Tilpasning,Hastighed), Efter(Tilpasning,de_ændret_forhold):§18 stk.4;
+
+BrudtLoven(P,§18 stk.4,T) <- Kørebane(VK1), Kørebane(VK2), LøberSammen(VK1,VK2), Fører(P,K,T), På(K,VK,T), ~Udfører(P,Tilpasning), Tilpasning(Tilpasning), Hastighed(K,Hastighed,T), Af(Tilpasning,Hastighed), Efter(Tilpasning,de_ændret_forhold):§18 stk.4;
+
+BrudtLoven(P,§18 stk.5,T) <- Fører(P,K,T), Manøvre(M), Udfører(P,M), Type(M,vognbaneskift), Til(M,VFB), Frakørselsbane(VFB)\/BestemtFor(VFK,K)\/BestemtFor(VFK,svingning), Slut(M,T), På(K,Loc,T), ~Start(Loc,VFB):§18 stk.5;

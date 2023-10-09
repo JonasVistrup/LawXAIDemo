@@ -1,0 +1,11 @@
+BrudtLoven(P,§46 stk.1,T) <- Køresel(Kø,K), Fører(P,Kø,T), Over(Kø,VMR,T), Midterrabat(VMR):§46 stk.1;
+BrudtLoven(P,§46 stk.1,T) <- Køresel(Kø,K), Fører(P,Kø,T), Gennem(Kø,Åbning,T), Midterrabat(VMR), Åbning(VMR,Åbning):§46 stk.1;
+
+BrudtLoven(P,§46 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,VM), Motorvej(VM), Type(M,[vending \/ bakning]):§46 stk.2:TfK 2011.838 Ø;
+BrudtLoven(P,§46 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motorvej(L), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), ~Ved(L,nødtelefon):§46 stk.2;
+BrudtLoven(P,§46 stk.2, T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motorvej(L), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2;
+BrudtLoven(P,§46 stk.2,T) <- Manøvre(M), Udfører(P,M,T),  På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motorvej(VM), Type(M,vending \/ bakning):§46 stk.2;
+BrudtLoven(P,§46 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motorvej(VM), Type(M,parkering \/ standsning), ~Rasteplads(L), ~Parkeringsplads(L), ~Ved(L,nødtelefon):§46 stk.2;
+BrudtLoven(P,§46 stk.2, T) <- Manøvre(M), Udfører(P,M,T), På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motorvej(VM), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2;
+
+BrudtLoven(P,§46 stk.3,T) <- Køresel(Kø,K), Fører(P,Kø,T), [Bil(K) /\ TilladtTotalvægt(K,A) /\  <(3500kg,A)] \/ [Vogntog(K) /\ Længde(K,A), <(7m,A)], På(Kø,VVB,T), Vognbane(VBB), DelAf(VBB,VK), Kørebane(VK), DelAf(VBB1,VK), DelAf(VBB2,VK), Vognbane(VBB1), Vognbane(VBB2), ~=(VBB,VBB1), ~=(VBB,VBB2), ~=(VBB1,VBB2), HøjreFor(VBB1,VBB), HøjreFor(VBB2,VBB):§46 stk.3;

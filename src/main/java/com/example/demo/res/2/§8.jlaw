@@ -1,0 +1,3 @@
+BrudtLoven(P,§8 stk.1,T) <- Beskader(P,A,T), Afmærkning(A), ~BringerStraksIOrden(P,A,T), MuligtAtBringeIOrden(A,T):§8 stk.1;
+BrudtLoven(P,§8 stk.1,T) <- Beskader(P,A,T0), Afmærkning(A), ~MuligtAtBringeIOrden(A,T), ~Advarder(P,politiet,beskadet_afmærking,T), <(T0,T):§8 stk.1;
+BrudtLoven(P,§8 stk.1,T) <- Beskader(P,A,T0), Afmærkning(A), ~MuligtAtBringeIOrden(A,T), Nødvendigt(at_advare_andre_trafikanter), ~Advarder(P,andre_trafikanter,beskadet_afmærking,T), <(T0,T):§8 stk.1;

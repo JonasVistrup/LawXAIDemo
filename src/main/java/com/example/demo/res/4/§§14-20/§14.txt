@@ -1,0 +1,21 @@
+!Stk. 1!
+Brudtloven(X,§14 stk.1) <- Kører(X,K,B), BaneAnlagtFor(B,T), ~TypeKøretøj(K,B);§14 stk.1;U 2001.1200 Ø
+Cykelist(X) <- Kører(X,K,B), Cykel(K)
+
+!Stk. 2!
+Brudtloven(X,§14 stk.2) <- Kører(X,K,B), DelAfVej(B,V), Knallert(K), ~CykelSti(B), ~AndetVejTilgivet(V,B);§14 stk.2
+Brudtloven(X,§14 stk.2) <- Kører(X,K,B), CykelSti(B), HastighedFremkalderFareForØvrigeFærdsel(K,B);§14 stk.2
+Brudtloven(X,§14 stk.2) <- Kører(X,K,B), CykelSti(B), HastighedSkaberUlempeForØvrigeFærdsel(K,B);§14 stk.2
+Brudtloven(X,§14 stk.2) <- Cykelist(X), Kører(X,K,B), KørerImodFærdselsretning(X,B);§14 stk.2
+
+!Stk. 3!
+Brudtloven(X,§14 stk.3) <- Kører(X,K,B), CykelSti(B), LastSkaberUlempeForØvrigeFærdsel(K,B);§14 stk.3
+
+!Stk. 4!
+Brudtloven(X,§14 stk.4) <- BrudtTBBBOmAnvendFortov/Gangsti(X,B), KlarAfskiltCyklist&GåFærdes(B);§14 stk.4
+
+!Stk. 5!
+Brudtloven(X,§14 stk.5) <- Kører(X,K,S1), Hastighed(V,H1), DelAfKørebane(S1,B), HarSpor(B,S2), KrybeSpor(S2), KrypeSportAngivetHastighed(S2,H2), <(H1,H2) ~=(B1,B2);§14 stk.5
+Brudtloven(X,§14 stk.5) <- Kører(X,K,S), Hastighed(V,H1), KrybeSpor(S), KrypeSportAngivetHastighed(S,H2), <(H2,H1);§14 stk.5
+Brudtloven(X,§14 stk.5) <- Kører(X,K,S1), Skifter(K,S2,S1), KrybeSpor(S2), SkiftetForsagerFareForAndre(K,S2,S1);§14 stk.5
+Brudtloven(X,§14 stk.5) <- Kører(X,K,S1), Skifter(K,S2,S1), KrybeSpor(S2), SkiftetForsagerUlempeForAndre(K,S2,S1);§14 stk.5

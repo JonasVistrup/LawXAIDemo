@@ -1,0 +1,4 @@
+BrudtLoven(P,§33a stk.1,T) <- Kører(P,K,T), ~Lygtetændingstiden(T), ~Tændt(K,nærlys,T), MotordrevetKøretøj(K), ~Motorredskab(K);§33a stk.1;
+BrudtLoven(P,§33a stk.1,T) <- Kører(P,K,T), ~Lygtetændingstiden(T), ~Tændt(K,nærlys,T), Motorredskab(K), Forsynet(K,nærlys);§33a stk.1;
+
+~BrudtLoven(P,§33a stk.1,T) <- Kører(P,K,T), FritagetForNærlysPligtAfTTB(K,T);§33a stk.2

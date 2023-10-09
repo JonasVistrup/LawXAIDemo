@@ -1,0 +1,32 @@
+!§11!
+Gående(X) <- StårPåSki(X);§11
+Gående(X) <- StårPåSkøjter(X);§11
+Gående(X) <- FørerBarnevogn(X);§11
+Gående(X) <- FørerLegevogn(X);§11
+Gående(X) <- SkubberKørestol(X);§11
+Gående(X) <- TrækkerCykel(X);§11
+Gående(X) <- TrækkerKnallert(X);§11
+Kørende(X) <- TrækkerMotorcykel(X);§11;U 1963.270 Ø
+
+StårPåSkøjter(X) <- StårPåIsSkøjter(X);§11
+StårPåSkøjter(x) <- StårPåRulleSkøjter(X);§11;U 2000.1486 Ø
+
+!§12!
+Brudtloven(X,§12) <- Gående(X), DelAfSluttetOptog(X), Benytter(X,F), Midterrabat(F);§12
+Brudtloven(X,§12) <- Gående(X), DelAfSluttetOptog(X), Benytter(X,V), ~Rabat(V), , MuligtAtFærdesPåNærlæggendeRabat(V);§12
+
+Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,F), Midterrabat(F);§12
+Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Kørebane(V), HarFortov(V);§12
+Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Kørebane(V), HarGangsti(V);§12
+Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Kørebane(V), HarEgnetRabat(V);§13
+Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Cykelsti(V);§12
+
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Rabat(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Rabat(V), ~RødtLysBagud(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Kørebane(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Kørebane(V), ~RødtLysBagud(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Cykelsti(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Cykelsti(V), ~RødtLysBagud(O);§12
+
+!§13!
+Gående(X) <- Invalid(X), FørerKørestol(X), KørerMedGanghastighed(X);

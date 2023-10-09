@@ -1,0 +1,7 @@
+BrudtLoven(P,§19 stk.1,T) <- Fører(P,K,T), DelAf(V,B), By(B), NærmerSig(K,VS,T), Stoppested(VS), Standsning(S), Af(S,K2), Bus(K2), Igang(S,T), Tegn(K2,Tegn,T), Til(Tegn,igangsætning), Manøvre(M), Af(M,K), Start(M,T), Type(M,deacceleration), ~Udfører(P,M):§19 stk.1;
+BrudtLoven(P,§19 stk.1,T) <- Fører(P,K,T), DelAf(V,B), By(B), NærmerSig(K,VS,T), Stoppested(VS), Standsning(S), Af(S,K2), Bus(K2), Igang(S,T), Tegn(K2,Tegn,T), Til(Tegn,igangsætning), Manøvre(M), Af(M,K), Start(M,T), Type(M,standning), ~Udfører(P,M), Nødvendigt(M):§19 stk.1;
+Igang(S,T) <- Start(S,T0), Slut(S,T1), <(T0,T), <(T,T1):Noget er igang fra start til slut;
+
+BrudtLoven(P,§19 stk.2,T) <- Fører(P,K,T), NærmerSig(K,VS,T), Stoppested(VS), Standsning(S), Af(S,K2), Bus(K2), Igang(S,T), Optager(K2,P2,T)\/Afsætter(K2,P2,T), Passager(P2), ~Udviser(P,særlig_agtpågivenhed,T):§19 stk.2;
+BrudtLoven(P,§19 stk.2,T) <- Fører(P,K,T), NærmerSig(K,VS,T), Stoppested(VS), Manøvre(M), Af(M,K2), Type(M,igangsætning), Udfører(P2,M), Fører(P2,K2,T), Bus(K2), Type(K2,skolebus),~Udviser(P,særlig_agtpågivenhed,T):§19 stk.2;
+BrudtLoven(P,§19 stk.2,T) <- Fører(P,K,T), NærmerSig(K,VS,T), Stoppested(VS), Manøvre(M), Af(M,K2), Type(M,igangsætning), Udfører(P2,M), Fører(P2,K2,T), Bus(K2), Type(K2,skolebus),~SpecieltOpmærksomPå(P,børn_befinder_sig_på_kørebanen\/børn_befinder_sig_på_vej_uden_for_kørebane):§19 stk.2;

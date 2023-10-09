@@ -1,0 +1,9 @@
+~BrudtLoven(P,§35, T) <- På(K,V,T), Oplyst(V,O), KøretøjetTydeligtKanIagtagesPåAfstandPga(K,O,T);§36 stk.1
+~BrudtLoven(P,§35, T) <- Standset(K,V,T), Parkeringsplads(V);§36 stk.1
+~BrudtLoven(P,§35, T) <- Parkeret(K,V,T), AfmærketFor(V,parkering);§36 stk.1
+~BrudtLoven(P,§35, T) <- Standset(K,V,T), AfmærketFor(V,parkering);§36 stk.1
+~BrudtLoven(P,§35, T) <- Parkeret(K,V,T), Parkeringsplads(V);§36 stk.1
+
+~BrudtLoven(P,§35, T) <- Parkeret(K,V,T), Cykel(K), #Hjul(K,2), YdersteKant(V,Kant), HenstiltLangs(K,Kant,T);§36 stk.2
+~BrudtLoven(P,§35, T) <- Parkeret(K,V,T), Knallert(K), #Hjul(K,2), YdersteKant(V,Kant), HenstiltLangs(K,Kant,T);§36 stk.2
+~BrudtLoven(P,§35, T) <- Parkeret(K,V,T), Motorcykel(K), #Hjul(K,2), YdersteKant(V,Kant), HenstiltLangs(K,Kant,T);§36 stk.2

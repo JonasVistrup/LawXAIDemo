@@ -1,0 +1,2 @@
+Type(M,forbikørsel) <- Udfører(P,M), Igang(M,T), Fører(P,K,T), På(K,V,T), Færdsel(V,Færdsel), Tæt(Færdsel), Hastighed(K,A,T), Foran(K2,K), BestemmesAf(A,K2), Af(M,K3), Foran(K4,K3), Hastighed(K3,A2,T), BestemmesAf(A,K4), På(K3,V2,T), Vognbane(V), Vognbane(V2), ~=(V1,V2):§24 stk.1;
+Type(M,forbikørsel) <- Udfører(P,M), Igang(M,T), Fører(P,K,T), På(K,V,T), Af(M,K3), På(K3,V2,T), Vognbane(V), Vognbane(V2), ~=(V1,V2), BestemtFor(V,K), ~BestemtFor(V,K3):§24 stk.2;

@@ -1,0 +1,10 @@
+BrudtLoven(P,§23 stk.1,T) <- Fører(P,K,T), På(K,V,T), Manøvre(M), Igang(M,T), Type(M,overhaling), Udfører(P,M), Vejkryds(V) \/ [Foran(VK,V) /\ Vejkryds(VK)], ~Undtagelse(M,§23 stk.1):§23 stk.1;
+Undtagelse(M,§23 stk.1) <- På(M,V,T), Retning(V,R), Af(M,K2), På(K2,V2,T), Retning(V2,R), ~=(V,V2):§23 stk.1.a;
+Undtagelse(M,§23 stk.1) <- Fører(P2,K2,T), Af(M,K2), Start(M,T), Manøvre(M2), Type(M2,svining), Til(M2,venstre), Til(M,højre):§23 stk.1.b;
+Undtagelse(M,§23 stk.1) <- På(M,VK,T) \/ [På(M,V,T) /\ Foran(V,VK)], Vejkryds(VK), ReguleresAf(VK,A), Politiet(A) \/ Signalanlæg(A):§23 stk.1.c;
+Undtagelse(M,§23 stk.1) <- På(M,VK,T) \/ [På(M,V,T) /\ Foran(V,VK)], Vejkryds(VK), Færdsel(VK,Færdsel), UbetingetVigepligt(Færdsel,T):§23 stk.1.c;
+
+BrudtLoven(P,§23 stk.2,T) <- Fører(P,K,T), På(K,V,T), Manøvre(M), Type(M,overhaling), Igang(M,T), Udfører(P,M), Jernbaneoverkørsel(V) \/ [Foran(VK,V) /\ Jernbaneoverkørsel(VK)]:§23 stk.2;
+
+BrudtLoven(P,§23 stk.3,T) <- Fører(P,K,T), På(K,V,T), Manøvre(M), Type(M,overhaling), Igang(M,T), Udfører(P,M), [På(K,V1,T) /\ Foran(V,V1)] \/ [På(K,V,T) /\ [UoverskueligBakke(V) \/ Vejkurve(V)]], På(K,VK,T), Kørebane(VK), Vognbane(VVB1), Vognbane(VVB2), DelAf(VVB1,VK), DelAf(VVB2,VK), ~=(VVB1,VVB2), Modkørende(K,Færdsel,T), Færdsel(V,Færdsel), IkkeMåForkomme(Færdsel):§23 stk.3;
+

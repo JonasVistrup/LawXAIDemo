@@ -1,0 +1,2 @@
+BrudtLoven(P,§45 stk.1,T) <- Køresel(Kø,K), Fører(P,Kø,T), Type(Kø,indkørsel), Til(Kø,VM), Fra(Kø,V), Motorvej(VM), ~Begyndelse(VM,V), ~Tilkørsel(V):§45 stk.1:U 2016.320 Ø;
+BrudtLoven(P,§45 stk.2,T) <- Køresel(Kø,K), Fører(P,Kø,T), Type(Kø,udkørsel), Til(Kø,VM), Fra(Kø,V), Motorvej(VM), ~Endepunkt(VM,V), ~Frakørsel(V):§45 stk.2;
