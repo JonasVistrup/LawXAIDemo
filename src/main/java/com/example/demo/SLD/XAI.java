@@ -93,7 +93,7 @@ public class XAI {
             query.add(pb.parseAtomOld(atomRep));
         }
 
-        return SLDResolution.findSubstitutions(new AtomList(query));
+        return null;//SLDResolution.findSubstitutions(new AtomList(query));
     }
 
     public static AndOrHistory query(List<String> facts, AtomList query){

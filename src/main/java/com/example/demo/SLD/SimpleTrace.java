@@ -13,4 +13,8 @@ public class SimpleTrace {
         this.child = child;
         this.substitution = substitution;
     }
+
+    public void fillDictonary(){
+
+    }
 }

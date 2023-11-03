@@ -3,6 +3,8 @@ package com.example.demo.SLD;
 
 import com.example.demo.Logic.High.*;
 
+import java.util.*;
+
 /**
  * A class for performing SLD Resolution.
  */
@@ -12,13 +14,12 @@ public class SLDResolution {
      * @param query a list of atoms
      * @return all valid substitutions.
      */
-    public static AtomTrace findSubstitutions(AtomList query){
+    public static List<Substitution> findSubstitutions(AtomList query, HashMap<Atom, Set<Clause>> groundClausesUsed){
         Goal startingGoal = new Goal(query);
         TraceNode root = new TraceNode(startingGoal);
-        if(inOrderTraversal(XAI.pb.getProgram(), 1, root)){
-            UnifiedTrace uTrace = new UnifiedTrace(root.generateTraces());
-
-            return new AtomTrace(root.generateTraces());
+        List<Substitution> answers = new ArrayList<>();
+        if(inOrderTraversal(XAI.pb.getProgram(), 1, root, new ArrayList<>(), answers, groundClausesUsed)){
+            return answers;
         }else{
             return null;
         }
@@ -30,8 +31,21 @@ public class SLDResolution {
      * @param program the program.
      * @param level the current level of the SLD-tree.
      */
-    private static boolean inOrderTraversal(Program program, int level, TraceNode current){
-        if(current.goal.isEmpty()) return true;
+    private static boolean inOrderTraversal(Program program, int level, TraceNode current, List<Clause> usedOnThePath, List<Substitution> answers, HashMap<Atom,Set<Clause>> groundClauses){
+        if(current.goal.isEmpty()){
+            answers.add(current.goal.sub());
+            for(Clause used: usedOnThePath){
+                Clause instance = used.applySub(current.goal.sub());
+                if(groundClauses.containsKey(instance.head)){
+                    groundClauses.get(instance.head).add(instance);
+                }else{
+                    Set<Clause> clauses = new HashSet<>();
+                    clauses.add(instance);
+                    groundClauses.put(instance.head,clauses);
+                }
+            }
+            return true;
+        }
 
         if(current.goal.nStandardAtoms() == 0) return false;
 
@@ -46,7 +60,12 @@ public class SLDResolution {
                 Goal nextGoal = current.goal.applyClause(instance, 0, unifier).runAndRemoveGroundUDPs();
                 if(nextGoal == null) return false;
                 TraceNode child = new TraceNode(nextGoal);
-                if(inOrderTraversal(program, level+1, child)) current.addChild(child);
+                usedOnThePath.add(instance);
+                if(inOrderTraversal(program, level+1, child, usedOnThePath, answers, groundClauses)){
+                    current.addChild(child);
+                }else{
+                    usedOnThePath.remove(instance);
+                }
             }
         }
         return !current.children.isEmpty();
