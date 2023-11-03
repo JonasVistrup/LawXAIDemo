@@ -116,4 +116,12 @@ public class Clause {
     public Clause applySub(Substitution sub){
         return new Clause(head.applySub(sub), body.applySub(sub), this.reasons);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Clause)) return false;
+        Clause o = (Clause) obj;
+
+        return this.head.equals(o.head) && this.body.equals(o.body);
+    }
 }

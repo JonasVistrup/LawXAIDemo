@@ -81,7 +81,7 @@ public class XAI {
     }
 
 
-    public static List<Answer> query(List<String> facts, String queryRep){
+    public static AndOrHistory query(List<String> facts, String queryRep){
         pb.removeAllFacts();
         for(String s: facts){
             pb.addFact(s);
@@ -96,7 +96,7 @@ public class XAI {
         return SLDResolution.findSubstitutions(new AtomList(query));
     }
 
-    public static List<Answer> query(List<String> facts, AtomList query){
+    public static AndOrHistory query(List<String> facts, AtomList query){
         pb.removeAllFacts();
         for(String s: facts){
             pb.addFact(s);

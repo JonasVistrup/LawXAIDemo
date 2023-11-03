@@ -1,8 +1,0 @@
-BrudtLoven(X)<-Kører(X,B,V),Byvej(V),Hastighed(B,H),IkkeAndenHastighedsGrænse(V),>(H,50);paragraf 42 stk. 1.1;paragraf 42 stk. 4
-BrudtLoven(X)<-Kører(X,B,V),Landevej(V),Hastighed(B,H),IkkeAndenHastighedsGrænse(V),>(H,80);paragraf 42 stk. 1.2
-BrudtLoven(X)<-Kører(X,B,V),Motorvej(V),Hastighed(B,H),>(H,130);paragraf 42 stk. 2
-BrudtLoven(X)<-Kører(X,B,V),Motortraffikvej(V),Hastighed(B,H),>(H,80);paragraf 42 stk. 3
-BrudtLoven(X)<-Kører(X,B,V),Hastighed(B,H),AndenHastighedsGrænseFastsat(V,M),>(H,M);paragraf 42 stk. 4;paragraf 42 stk. 5
-
-
-

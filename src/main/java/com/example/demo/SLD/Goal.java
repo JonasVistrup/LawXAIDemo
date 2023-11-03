@@ -31,7 +31,7 @@ public class Goal implements Iterable<Atom> {
 
     private Goal(Goal goal, Substitution substitution){
         this.atoms = goal.atoms.applySub(substitution);
-        this.sub = goal.sub;
+        this.sub = goal.sub.add(substitution);
         this.trace = goal.trace;
     }
 
@@ -95,5 +95,12 @@ public class Goal implements Iterable<Atom> {
 
     public int nStandardAtoms() {
         return atoms.nStandardAtoms();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Goal)) return false;
+        Goal o = (Goal) obj;
+        return this.atoms.equals(o.atoms);
     }
 }

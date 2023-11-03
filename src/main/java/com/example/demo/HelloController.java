@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.Logic.High.Atom;
 import com.example.demo.Logic.High.AtomList;
 import com.example.demo.Logic.High.Clause;
+import com.example.demo.SLD.AndOrHistory;
 import com.example.demo.SLD.Answer;
 import com.example.demo.SLD.History;
 import com.example.demo.SLD.XAI;
@@ -120,7 +121,7 @@ public class HelloController implements Initializable {
     @FXML
     protected void onQueryClick(){
         AtomList query = new AtomList(XAI.pb.parseAtomOld("BrudtLoven(X,Y,T)"));
-        answers = XAI.query(new ArrayList<>(factList.getItems()),query);
+        AndOrHistory answers = XAI.query(new ArrayList<>(factList.getItems()),query);
         for(Clause c: XAI.pb.getProgram()){
             System.out.println(c);
         }

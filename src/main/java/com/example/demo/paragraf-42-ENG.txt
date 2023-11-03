@@ -1,7 +1,0 @@
-BrokenLaw(X,paragraf 42 part. 1.1)<-Drives(X,B,V),CityRoad(V),Speed(B,H),NoOtherSpeedLimit(V),>(H,50);paragraf 42 part. 1.1
-BrokenLaw(X,paragraf 42 part. 4)<-Drives(X,B,V),CityRoad(V),Speed(B,H),NoOtherSpeedLimit(V),>(H,50);paragraf 42 part. 4
-BrokenLaw(X,paragraf 42 part. 1.2)<-Drives(X,B,V),CountryRoad(V),Speed(B,H),NoOtherSpeedLimit(V),>(H,80);paragraf 42 part. 1.2
-BrokenLaw(X,paragraf 42 part. 2)<-Drives(X,B,V),Highway(V),Speed(B,H),>(H,130);paragraf 42 part. 2
-BrokenLaw(X,paragraf 42 part. 3)<-Drives(X,B,V),MotorRoad(V),Speed(B,H),NoOtherSpeedLimit(V),>(H,80);paragraf 42 part. 3
-BrokenLaw(X,paragraf 42 part. 4)<-Drives(X,B,V),Speed(B,H),DifferentSpeedLimit(V,M),>(H,M);paragraf 42 part. 4
-BrokenLaw(X,paragraf 42 part. 5)<-Drives(X,B,V),Speed(B,H),DifferentSpeedLimit(V,M),>(H,M);paragraf 42 part. 5

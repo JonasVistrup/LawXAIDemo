@@ -5,6 +5,8 @@ import com.example.demo.Logic.Symbols.Predicates.UDFunction;
 import com.example.demo.Logic.Symbols.Predicates.UDRelation;
 import com.example.demo.Logic.Symbols.Variable;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class AtomList implements Iterable<Atom>{
     private final Atom[] standardAtoms;
     private final Atom[] functionAtoms;
     private final Atom[] relationAtoms;
+
+    private boolean sorted = false;
 
     /**
      * Constructs an empty list of atoms.
@@ -79,7 +83,20 @@ public class AtomList implements Iterable<Atom>{
                 this.relationAtoms[relationAtomsCounter++] = a;
             }
         }
+        Arrays.sort(this.functionAtoms);
     }
+
+    public void sort(){
+        if(sorted) return;
+
+        Arrays.sort(this.standardAtoms);
+        Arrays.sort(this.functionAtoms);
+        Arrays.sort(this.relationAtoms);
+
+        sorted = true;
+    }
+
+
 
 
     private AtomList(AtomList list, Atom atom, boolean add){
@@ -470,5 +487,16 @@ public class AtomList implements Iterable<Atom>{
 
     public int nStandardAtoms() {
         return this.standardAtoms.length;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof AtomList)) return false;
+        AtomList o = (AtomList) obj;
+
+        this.sort();
+        o.sort();
+
+        return Arrays.equals(this.standardAtoms,o.standardAtoms) && Arrays.equals(this.functionAtoms,o.functionAtoms) && Arrays.equals(this.relationAtoms, o.relationAtoms);
     }
 }
