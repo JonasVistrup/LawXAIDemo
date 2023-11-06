@@ -1,6 +1,7 @@
 package com.example.demo.Logic.High;
 
 
+import com.example.demo.Logic.Symbols.Constant;
 import com.example.demo.Logic.Symbols.Term;
 import com.example.demo.Logic.Symbols.Variable;
 
@@ -125,5 +126,42 @@ public class Substitution {
     private static boolean relevantSub(Variable from, AtomList relevantQuery) {
         if(relevantQuery == null) return true;
         return relevantQuery.containsTerm(from);
+    }
+
+    public Substitution relevantSubsetSubstitution(AtomList relevantQuery){
+        Substitution result = new Substitution();
+        for(Atom a: relevantQuery){
+            for(Term from: a.args){
+                if(from instanceof Variable && result.getSubstitution((Variable) from) == null){
+                    Term to = getSubstitution((Variable) from);
+                    if(to != null){
+                        result = result.add(new Substitution((Variable) from,to));
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Substitution)) return false;
+        Substitution o = (Substitution) obj;
+        for(Variable v: this.subs.keySet()){
+            Term result1 = this.getSubstitution(v);
+            Term result2 = o.getSubstitution(v);
+            if(result2 == null) return false;
+            if(result1 instanceof Variable != result2 instanceof Variable) return false;
+            if(result1 instanceof Constant && result1 != result2) return false;
+        }
+
+        for(Variable v: o.subs.keySet()){
+            Term result1 = this.getSubstitution(v);
+            Term result2 = o.getSubstitution(v);
+            if(result1 == null) return false;
+            if(result1 instanceof Variable != result2 instanceof Variable) return false;
+            if(result1 instanceof Constant && result1 != result2) return false;
+        }
+        return true;
     }
 }

@@ -201,6 +201,9 @@ public class Atom implements Comparable<Atom>{
         if(!(obj instanceof Atom)){
             return false;
         }
+        if(this.toString().equals("BrudtLoven(tiltalte,§4_stk.1,1210)")){
+            System.out.println("in here");
+        }
         return this.compareTo((Atom) obj) == 0;
     }
 
@@ -208,5 +211,10 @@ public class Atom implements Comparable<Atom>{
 
     public String explain(){
         return this.predicate.explain(this.args);
+    }
+
+    @Override
+    public int hashCode() {
+        return toString().hashCode();
     }
 }

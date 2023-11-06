@@ -1,18 +1,13 @@
 package com.example.demo.SLD;
 
 
-import com.example.demo.Logic.High.Atom;
-import com.example.demo.Logic.High.AtomList;
-import com.example.demo.Logic.High.Clause;
+import com.example.demo.Logic.High.*;
 import com.example.demo.Logic.ProgramBuilder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class XAI {
 
@@ -81,28 +76,29 @@ public class XAI {
     }
 
 
-    public static AndOrHistory query(List<String> facts, String queryRep){
+    public static List<Substitution> query(List<String> facts, AtomList query, HashMap<Atom, List<Clause>> groundClausesUsed){
         pb.removeAllFacts();
         for(String s: facts){
             pb.addFact(s);
         }
 
-        String[] atomListRep = queryRep.replaceAll(" ","").replaceAll("\\),\\(",");(").split(";");
-        ArrayList<Atom> query = new ArrayList<>();
-        for(String atomRep: atomListRep){
-            query.add(pb.parseAtomOld(atomRep));
-        }
+        List<Substitution> substitutions = SLDResolution.findSubstitutions(query, groundClausesUsed);
 
-        return null;//SLDResolution.findSubstitutions(new AtomList(query));
+        return removeDuplicates(substitutions,query);
     }
 
-    public static AndOrHistory query(List<String> facts, AtomList query){
-        pb.removeAllFacts();
-        for(String s: facts){
-            pb.addFact(s);
+    private static List<Substitution> removeDuplicates(List<Substitution> substitutions, AtomList query){
+        Program p = pb.getProgram();
+        List<Substitution> uniqueSubstitutions = new ArrayList<>();
+        for(Substitution s: substitutions){
+            boolean uniqueSubstitution = true;
+            Substitution onlyRelevant = s.relevantSubsetSubstitution(query);
+            for(Substitution s2: uniqueSubstitutions){
+                if(s2.equals(onlyRelevant)) uniqueSubstitution = false;
+            }
+            if(uniqueSubstitution) uniqueSubstitutions.add(onlyRelevant);
         }
-
-        return SLDResolution.findSubstitutions(query);
+        return uniqueSubstitutions;
     }
 
 

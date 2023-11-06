@@ -14,16 +14,13 @@ public class SLDResolution {
      * @param query a list of atoms
      * @return all valid substitutions.
      */
-    public static List<Substitution> findSubstitutions(AtomList query, HashMap<Atom, Set<Clause>> groundClausesUsed){
+    public static List<Substitution> findSubstitutions(AtomList query, HashMap<Atom, List<Clause>> groundClausesUsed){
         Goal startingGoal = new Goal(query);
         TraceNode root = new TraceNode(startingGoal);
         List<Substitution> answers = new ArrayList<>();
-        if(inOrderTraversal(XAI.pb.getProgram(), 1, root, new ArrayList<>(), answers, groundClausesUsed)){
-            return answers;
-        }else{
-            return null;
-        }
+        inOrderTraversal(XAI.pb.getProgram(), 1, root, new ArrayList<>(), answers, groundClausesUsed);
 
+        return answers;
     }
 
     /**
@@ -31,15 +28,16 @@ public class SLDResolution {
      * @param program the program.
      * @param level the current level of the SLD-tree.
      */
-    private static boolean inOrderTraversal(Program program, int level, TraceNode current, List<Clause> usedOnThePath, List<Substitution> answers, HashMap<Atom,Set<Clause>> groundClauses){
+    private static boolean inOrderTraversal(Program program, int level, TraceNode current, List<Clause> usedOnThePath, List<Substitution> answers, HashMap<Atom,List<Clause>> groundClauses){
         if(current.goal.isEmpty()){
             answers.add(current.goal.sub());
             for(Clause used: usedOnThePath){
                 Clause instance = used.applySub(current.goal.sub());
                 if(groundClauses.containsKey(instance.head)){
-                    groundClauses.get(instance.head).add(instance);
+                    List<Clause> clausesList = groundClauses.get(instance.head);
+                    if(!clausesList.contains(instance)) clausesList.add(instance);
                 }else{
-                    Set<Clause> clauses = new HashSet<>();
+                    List<Clause> clauses = new ArrayList<>();
                     clauses.add(instance);
                     groundClauses.put(instance.head,clauses);
                 }
