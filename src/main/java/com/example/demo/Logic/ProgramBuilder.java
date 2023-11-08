@@ -5,6 +5,10 @@ import com.example.demo.Logic.Symbols.Constant;
 import com.example.demo.Logic.Symbols.Predicates.*;
 import com.example.demo.Logic.Symbols.Term;
 import com.example.demo.Logic.Symbols.Variable;
+import com.example.demo.Logic.UserDefined.Less;
+import com.example.demo.Logic.UserDefined.Minus;
+import com.example.demo.Logic.UserDefined.Mul;
+import com.example.demo.Logic.UserDefined.Plus;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -23,6 +27,8 @@ public class ProgramBuilder {
     private final ArrayList<Clause> clauses = new ArrayList<>();
     private ArrayList<Atom> facts = new ArrayList<>();
     private String line = "NO LINE";
+
+    private int counter = 0;
 
 
     /**
@@ -363,32 +369,186 @@ public class ProgramBuilder {
 
 
     public ArrayList<AtomList> parseArgs(Predicate p, String[] argsRep){
-        ArrayList<Arguments> argumentsList = new ArrayList<>();
-        argumentsList.add(new Arguments());
-        for(String argRep: argsRep){
-            ArrayList<Arguments> newArgumentsList = new ArrayList<>();
-            for(Term t: parseArg(argRep)){
-                for(Arguments arguments: argumentsList){
-                    newArgumentsList.add(arguments.add(t));
+        ArrayList<AtomList> sugars = new ArrayList<>();
+        sugars.add(new AtomList());
+        ArrayList<Arguments> differentTerms = new ArrayList<>();
+        differentTerms.add(new Arguments());
+        for(String rep: argsRep){
+            ArrayList<AtomList> nextSugars = new ArrayList<>();
+            ArrayList<Arguments> nextDifferentTerms = new ArrayList<>();
+
+            ArrayList<AtomList> sugarInner = new ArrayList<>();
+            ArrayList<Term> termsInner = parseArgGroup(rep, sugarInner);
+            for(int i = 0; i<termsInner.size(); i++){
+                Term t = termsInner.get(i);
+                AtomList sugar = sugarInner.get(i);
+                for(int j = 0; j<differentTerms.size(); j++){
+                    nextSugars.add(sugars.get(j).add(sugar));
+                    nextDifferentTerms.add(differentTerms.get(j).add(t));
                 }
             }
-            argumentsList = newArgumentsList;
+            sugars = nextSugars;
+            differentTerms = nextDifferentTerms;
         }
 
-        ArrayList<AtomList> result = new ArrayList<>();
-        for(Arguments arguments: argumentsList){
-            result.add(new AtomList(new Atom(p, arguments)));
+        ArrayList<AtomList> results = new ArrayList<>();
+        for(int i = 0; i<differentTerms.size(); i++){
+            results.add(sugars.get(i).add(new Atom(p, differentTerms.get(i))));
         }
-        return result;
+
+        return results;
     }
 
-    public Arguments parseArg(String argRep){
-        Arguments arguments = new Arguments();
+    private ArrayList<Term> parseArgGroup(String argRep, ArrayList<AtomList> sugar) {
+        ArrayList<Term> alternatives = new ArrayList<>();
         String[] argParts = argRep.split("\\\\/");
-        for(String argPart: argParts){
-            arguments = arguments.add(getTerm(argPart));
+        if(!containsUDPSugar(argRep)) {
+            for (String part : argParts) {
+                alternatives.add(getTerm(part));
+                sugar.add(new AtomList());
+            }
+        }else{
+            Term t = getTerm("Var"+(counter++));
+            for(String part: argParts){
+                if(containsUDPSugar(part)){
+                    alternatives.add(t);
+                    sugar.add(generateUDPSugar(part,t));
+                }else{
+                    alternatives.add(getTerm(part));
+                    sugar.add(new AtomList());
+                }
+            }
         }
-        return arguments;
+        return alternatives;
+    }
+
+
+    public Arguments parseArg(String argRep, ArrayList<AtomList> extraAtoms){
+        if(containsUDPSugar(argRep)){
+            Term t = getTerm("Var"+(counter++));
+            Arguments arguments = new Arguments();
+            String[] argParts = argRep.split("\\\\/");
+            for (String argPart : argParts) {
+                if(containsUDPSugar(argPart)){
+
+                }else {
+                    arguments = arguments.add(getTerm(argPart));
+                }
+            }
+            arguments.add(t);
+            return arguments;
+        }else {
+            Arguments arguments = new Arguments();
+            String[] argParts = argRep.split("\\\\/");
+            for (String argPart : argParts) {
+                arguments = arguments.add(getTerm(argPart));
+            }
+            return arguments;
+        }
+    }
+
+    public AtomList generateUDPSugar(String termPart, Term t){
+        if(moreThanOneUDPSugar(termPart)) throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains more than one UDPSugar");
+        if(termPart.contains("<")){
+            if(termPart.charAt(termPart.length()-1) == '<'){
+                return new AtomList(new Atom(new Less(), new Arguments(getTerm(termPart.substring(0,termPart.length()-1)),t)));
+            }else if(termPart.charAt(0) == '<'){
+                return new AtomList(new Atom(new Less(), new Arguments(t,getTerm(termPart.substring(1)))));
+            }else{
+                throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            }
+
+        } else if (termPart.contains(">")) {
+            if(termPart.charAt(termPart.length()-1) == '>'){
+                return new AtomList(new Atom(new Less(), new Arguments(t,getTerm(termPart.substring(0,termPart.length()-1)))));
+            }else if(termPart.charAt(0) == '>'){
+                return new AtomList(new Atom(new Less(), new Arguments(getTerm(termPart.substring(1)),t)));
+            }else{
+                throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            }
+
+        } else if (termPart.contains("=>") || termPart.contains(">=")) {
+            if(termPart.indexOf("=>") == 0 || termPart.indexOf(">=") == 0){
+                return new AtomList(parseAtomOld("~<("+t.toString()+","+termPart.substring(2)+")"));
+            }else if(termPart.indexOf("=>") == termPart.length()-2 || termPart.indexOf(">=") == termPart.length()-2){
+                return new AtomList(parseAtomOld("~<("+termPart.substring(2)+","+t.toString()+")"));
+            }else{
+                throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            }
+
+        } else if (termPart.contains("=<") || termPart.contains("<=")) {
+            if(termPart.indexOf("=<") == 0 || termPart.indexOf("<=") == 0){
+                return new AtomList(parseAtomOld("~<("+termPart.substring(2)+","+t.toString()+")"));
+            }else if(termPart.indexOf("=<") == termPart.length()-2 || termPart.indexOf("<=") == termPart.length()-2){
+                return new AtomList(parseAtomOld("~<("+t.toString()+","+termPart.substring(2)+")"));
+            }else{
+                throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            }
+
+        } else if (termPart.contains("+")){
+            String[] plusTerms = termPart.split("\\+");
+            if(plusTerms.length != 2 || plusTerms[0].isEmpty() || plusTerms[1].isEmpty()) throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            return new AtomList(new Atom(new Plus(), new Arguments(getTerm(plusTerms[0]), getTerm(plusTerms[1]), t)));
+
+        }else if (termPart.contains("-")){
+            String[] minusTerms = termPart.split("-");
+            if(minusTerms.length != 2 || minusTerms[0].isEmpty() || minusTerms[1].isEmpty()) throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            return new AtomList(new Atom(new Minus(), new Arguments(getTerm(minusTerms[0]), getTerm(minusTerms[1]), t)));
+
+        }else if (termPart.contains("*")){
+            String[] multiTerms = termPart.split("\\*");
+            if(multiTerms.length != 2 || multiTerms[0].isEmpty() || multiTerms[1].isEmpty()) throw new IllegalArgumentException("In Line:"+line+".\n Term "+termPart+" contains are incorrectly formated");
+            return new AtomList(new Atom(new Mul(), new Arguments(getTerm(multiTerms[0]), getTerm(multiTerms[1]), t)));
+
+        }else{
+            throw new IllegalStateException("UDPSugar term not implemented");
+        }
+    }
+
+    private boolean moreThanOneUDPSugar(String termPart) {
+        if(termPart.contains("<")){
+            int i = termPart.indexOf("<");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+1));
+
+        } else if (termPart.contains(">")) {
+            int i = termPart.indexOf(">");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+1));
+
+        } else if (termPart.contains("=>")) {
+            int i = termPart.indexOf("=>");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+2));
+
+        } else if (termPart.contains(">=")) {
+            int i = termPart.indexOf(">=");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+2));
+
+        } else if (termPart.contains("=<")){
+            int i = termPart.indexOf("=<");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+2));
+
+        } else if (termPart.contains("<=")) {
+            int i = termPart.indexOf("<=");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+2));
+
+        } else if (termPart.contains("+")){
+            int i = termPart.indexOf("+");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+1));
+
+        }else if (termPart.contains("-")){
+            int i = termPart.indexOf("-");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+1));
+
+        }else if (termPart.contains("*")){
+            int i = termPart.indexOf("*");
+            return containsUDPSugar(termPart.substring(0,i) + termPart.substring(i+1));
+
+        }else{
+            return false;
+        }
+    }
+
+    private boolean containsUDPSugar(String str){
+        return str.contains("<") || str.contains(">") || str.contains("=>") || str.contains(">=") || str.contains("=<") || str.contains("<=") || str.contains("+") || str.contains("-") || str.contains("*"); //TODO support division and Inequality
     }
 
     /**
@@ -427,6 +587,8 @@ public class ProgramBuilder {
 
 
     private Term getTerm(String name) {
+        if(illegalTerm(name)) throw new IllegalArgumentException("In Line: "+line+".\nTerm "+name+" is a reserved keyword");
+
         if (terms.containsKey(name)) {
             return terms.get(name);
         } else {
@@ -442,6 +604,19 @@ public class ProgramBuilder {
             //    throw new IllegalArgumentException("Terms must either be all uppercase for variables or all lowercase for constants");
             //}
         }
+    }
+
+    private boolean illegalTerm(String name) {
+        return name.startsWith("Var") && isInt(name.substring(3));
+    }
+
+    private boolean isInt(String intRep){
+        try{
+            int i = Integer.parseInt(intRep);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
 
