@@ -1,0 +1,3 @@
+
+
+BrudtLoven(P,§60d,T) <- Frataget(P,Kørekort,<T), IkkeAfleverer(P,Kørekort,Popo), Polititet(Popo)

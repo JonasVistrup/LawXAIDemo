@@ -1,4 +1,4 @@
-#(V,A,B):[V] har [A] af type [B]; 
+#(V,A,B):[V] har antal [A] af type [B]; 
 Afpasset(A):[A] er afpasset;
 AfstandTilSiden(A,B,C,T):Afstanden til siden mellem [A] og [B] er [C] på tidspunkt [T];
 Afsætter(A,B,T):[A] afsætter [B] på tidspunkt [T];

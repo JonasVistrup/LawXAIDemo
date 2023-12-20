@@ -21,12 +21,12 @@ Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,
 Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Kørebane(V), HarEgnetRabat(V);§13
 Brudtloven(X,§12) <- HarAnsvarFor(X,Y), GruppeBørn(Y), Gående(Y), Benytter(Y,V), Cykelsti(V);§12
 
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Rabat(V), ~HvidtLysFremad(O);§12
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Rabat(V), ~RødtLysBagud(O);§12
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Kørebane(V), ~HvidtLysFremad(O);§12
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Kørebane(V), ~RødtLysBagud(O);§12
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Cykelsti(V), ~HvidtLysFremad(O);§12
-Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lystændingstiden(T), Benytter(X,V), Cykelsti(V), ~RødtLysBagud(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Rabat(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Rabat(V), ~RødtLysBagud(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Kørebane(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Kørebane(V), ~RødtLysBagud(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Cykelsti(V), ~HvidtLysFremad(O);§12
+Brudtloven(X,§12) <- Gående(X), DelAfOptog(X,O), NuværendeTid(T), Lygtetændingstiden(T), Benytter(X,V), Cykelsti(V), ~RødtLysBagud(O);§12
 
 !§13!
 Gående(X) <- Invalid(X), FørerKørestol(X), KørerMedGanghastighed(X);

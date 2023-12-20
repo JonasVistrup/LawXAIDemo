@@ -1,0 +1,3 @@
+Frataget(P,Kørekort,T) <- Fratager(Popo,Kørekort,T), Nægter(P,Test,T), Nødvendigt(Test,A), Er(A,afgørelse_om_betingelserne_til_kørekort_er_opfyldt):§60;
+
+BrudtLoven(P,§60d,T) <- Frataget(P,Kørekort,<T), IkkeAfleverer(P,Kørekort,Popo), Politiet(Popo), Type(Kørekort,kørekort), For(Kørekort,P):§60d;

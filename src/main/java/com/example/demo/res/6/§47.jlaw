@@ -1,9 +1,9 @@
-BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), ~PlaceresSåVidtMuligtUdenFor(K,KB,T):§47 stk.1;
-BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), ~StraksFjernesFra(K,KB,T), ~TræfferForanstaltningerForAdvarningAf(P,andre trafikanter,T):§47 stk.1;
-BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Reparation(R), Udfører(P,R,T1), På(R,K), ~NødvendigtFor(R, køretøjet snarest muligt kan fjernes fra motorvejen), <(T,T1):§47 stk.1;
+BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), IkkeEr(K,placeret_så_vidt_muligt_udenfor_kørebanen,T):§47 stk.1;
+BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Fjernelse(F), Af(F,K), Fra(F,KB), ~Udfører(P,F,T) \/ ~Straks(F), Træffer(P,foranstaltninger_for_advarning_af_andre_trafikanter,T):§47 stk.1;
+BrudtLoven(P,§47 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Er(R,reparation), Udfører(P,R,T1), På(R,K), ~NødvendigtFor(R, køretøjet snarest muligt kan fjernes fra motorvejen), <(T,T1):§47 stk.1;
 
-BrudtLoven(P,§47 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Reparation(R), Udfører(P,R,T1), På(R,K), Kræver(R, inddragelse af en del af kørebanen), NødvendigtFor(R, køretøjet snarest muligt kan fjernes fra motorvejen), ~PolitietTillader(R), <(T,T1):§47 stk.2;
-BrudtLoven(P,§47 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Fjernelse(F,K), Udfører(P,F,T1), På(R,K), Kræver(F, inddragelse af en del af kørebanen), ~PolitietTillader(F), <(T,T1):§47 stk.2;
+BrudtLoven(P,§47 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Er(R,reparation), Udfører(P,R,T1), På(R,K), Kræver(R, inddragelse af en del af kørebanen), NødvendigtFor(R, køretøjet snarest muligt kan fjernes fra motorvejen), IkkeTillader(Popo,R), Politiet(Popo), <(T,T1):§47 stk.2;
+BrudtLoven(P,§47 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motorvej(KB), Type(M, standsning), Begrundelse(M, tvunget), Fjernelse(F), Af(F,K), Udfører(P,F,T1), På(R,K), Kræver(F, inddragelse af en del af kørebanen), IkkeTillader(Popo,F), Politiet(Popo), <(T,T1):§47 stk.2;
 
 
 

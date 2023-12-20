@@ -23,6 +23,7 @@ Landevej(V):[V] er en landevej;
 Vej(V):[V] er en vej;
 Vejforgrening(V):[V] er en vejforgrening;
 Vejkryds(V):[V] er et vejkryds;
+Vejsving(V):[V] er et vejsving;
 Vejudmunding(V):[V] er en vejudmunding;
 Vognbane(V):[V] er en vognbane;
 
@@ -34,6 +35,10 @@ Helleanlæg(V):[V] er et helleanlæg;
 Færdselsfyr(V):[V] er et færdselsfyr;
 Tilkørselsbane(V):[V] er en tilkørselsbane;
 Frakørselsbane(V):[V] er en frakørselsbane;
+Tilkørsel(V):[V] er en tilkørsel;
+Frakørsel(V):[V] er en frakørsel;
 Stoppested(V):[V] er et stoppested;
 Vejkurve(V):[V] er en vejkurve;
 UoverskueligBakke(V):[V] er en uoverskuelig bakke;
+Parkeringsplads(V):[V] er en parkeringsplads;
+Rasteplads(V):[V] er en rasteplads;

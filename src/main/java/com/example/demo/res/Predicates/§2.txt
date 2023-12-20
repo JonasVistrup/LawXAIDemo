@@ -22,3 +22,5 @@ Slagvolumen(M,A):Slagvolumen for [M] er [A];
 TilladtVægt(K,A):Tilladte vægt af [K] med driftsmidler, fører og last givet ved registrering eller godkendelse er [A];
 Trækker(A,B,T):[A] trækker [B] på tidspunkt [T];
 UdlukketFraRegistrering(K,A):[K] er udlukket fra registrering pga. [A];
+BenyttesTil(A,B):[A] benyttes til [B];
+Begrundelse(A,B):Begrundelsen for [A] er [B];

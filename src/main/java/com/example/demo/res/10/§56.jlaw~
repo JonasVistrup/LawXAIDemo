@@ -1,0 +1,1 @@
+BrudtLoven(P,§56_stk.1,T), <- IkkeHar(P,Kørekort,T), Type(Kørekort,kørekort), Fører(P,K,T), Motorkøretøj(K) \/ Knallert45(K);

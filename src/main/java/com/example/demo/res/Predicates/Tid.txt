@@ -1,6 +1,6 @@
 Dato(T,D):Datoen for tidspunkt [T] er [D];
 Dagenstid(T,TDato):Dagenstid for [T] er [TDato];
-Lystændingstiden(V,T):[T] er i lystændingstiden for [V];
+Lygtetændingstiden(V,T):[T] er i lygtetændingstiden for [V];
 Solopgang(D,V,T):Solopgang for datoen [D] på [V] er [T];
 Solnedgang(D,V,T):Solnedgang for datoen [D] på [V] er [T];
 

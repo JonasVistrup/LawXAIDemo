@@ -1,0 +1,1 @@
+BrudtLoven(P,§37_stk.1,T) <- Holder(P,C,T), Er(C,cykelløb), IkkeTillader(Politi,C), Politiet(C):;
