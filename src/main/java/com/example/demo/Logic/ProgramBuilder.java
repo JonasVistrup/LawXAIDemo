@@ -28,7 +28,7 @@ public class ProgramBuilder {
     private ArrayList<Atom> facts = new ArrayList<>();
     private String line = "NO LINE";
 
-    private int counter = 1;
+    private int counter = 0;
 
 
     /**
@@ -39,14 +39,8 @@ public class ProgramBuilder {
         ArrayList<Clause> allClauses = new ArrayList<>(this.clauses);
         ArrayList<String> reasons = new ArrayList<>();
         reasons.add("Faktum");
-
-        ArrayList<String> temporalReason = new ArrayList<>();
-        reasons.add("Er sandt på et tidspunkt hvis altid sandt");
         for(Atom a: facts){
             allClauses.add(new Clause(a, new AtomList(), reasons));
-            if(!a.hasTemporalTerm() && !(a.predicate() instanceof PredicateUD)){
-                allClauses.add(new Clause(new Atom(a.predicate(), a.args.add(generateTerm("Var0"))), new AtomList(a), temporalReason));
-            }
         }
         return new Program(allClauses);
     }
@@ -414,7 +408,7 @@ public class ProgramBuilder {
                 sugar.add(new AtomList());
             }
         }else{
-            Term t = generateTerm("Var"+(counter++));
+            Term t = getTerm("Var"+(counter++));
             for(String part: argParts){
                 if(containsUDPSugar(part)){
                     alternatives.add(t);
@@ -431,7 +425,7 @@ public class ProgramBuilder {
 
     public Arguments parseArg(String argRep, ArrayList<AtomList> extraAtoms){
         if(containsUDPSugar(argRep)){
-            Term t = generateTerm("Var"+(counter++));
+            Term t = getTerm("Var"+(counter++));
             Arguments arguments = new Arguments();
             String[] argParts = argRep.split("\\\\/");
             for (String argPart : argParts) {
@@ -593,10 +587,11 @@ public class ProgramBuilder {
 
 
     private Term getTerm(String name) {
+        if(illegalTerm(name)) throw new IllegalArgumentException("In Line: "+line+".\nTerm "+name+" is a reserved keyword");
+
         if (terms.containsKey(name)) {
             return terms.get(name);
         } else {
-            if(illegalTerm(name)) throw new IllegalArgumentException("In Line: "+line+".\nTerm "+name+" is a reserved keyword");
             if (name.toLowerCase().equals(name)) {
                 Constant constant = new Constant(name);
                 terms.put(name, constant);
@@ -608,22 +603,6 @@ public class ProgramBuilder {
             }// else {
             //    throw new IllegalArgumentException("Terms must either be all uppercase for variables or all lowercase for constants");
             //}
-        }
-    }
-
-    private Term generateTerm(String name) {
-        if (terms.containsKey(name)) {
-            return terms.get(name);
-        } else {
-            if (name.toLowerCase().equals(name)) {
-                Constant constant = new Constant(name);
-                terms.put(name, constant);
-                return constant;
-            } else { //if(name.toUpperCase().equals(name)) {
-                Variable var = new Variable(name);
-                terms.put(name, var);
-                return var;
-            }
         }
     }
 
@@ -648,7 +627,7 @@ public class ProgramBuilder {
 
         if (predicates.containsKey(name)) {
             res = predicates.get(name);
-            if (res.nArgs() != numberOfArgs && (res.nArgs() +1 != numberOfArgs || (res instanceof PredicateUD && !(res instanceof UDNegation)))) {
+            if (res.nArgs() != numberOfArgs) {
                 throw new IllegalArgumentException("In Line: "+line+".\n Logic.Predicate " + name + " contains an inconsistent of arguments");
             }
         } else {

@@ -38,7 +38,7 @@ public class PredicateStd extends Predicate {
      */
     @Override
     public String toString(Arguments args) {
-        assert args.size() == nArgs() || args.size() == nArgs() + 1;
+        assert args.size() == nArgs();
         if(nArgs() == 0) return toString();
 
         StringBuilder builder = new StringBuilder(toString());
