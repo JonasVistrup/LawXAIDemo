@@ -1,10 +1,7 @@
 package com.example.demo.Logic.High;
 
 
-import com.example.demo.Logic.Symbols.Predicates.Predicate;
-import com.example.demo.Logic.Symbols.Predicates.PredicateStd;
-import com.example.demo.Logic.Symbols.Predicates.UDFunction;
-import com.example.demo.Logic.Symbols.Predicates.UDRelation;
+import com.example.demo.Logic.Symbols.Predicates.*;
 import com.example.demo.Logic.Symbols.Term;
 
 import java.util.HashMap;
@@ -50,7 +47,7 @@ public class Atom implements Comparable<Atom>{
      */
 
     public Atom(Predicate predicate, List<Term> args){
-        if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
         if(predicate instanceof PredicateStd) {
             this.type = Type.STANDARD;
         }else if (predicate instanceof UDFunction) {
@@ -64,12 +61,15 @@ public class Atom implements Comparable<Atom>{
     }
 
     public Atom(Predicate predicate, Arguments args){
-        if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
-        if(predicate instanceof PredicateStd) {
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        if((predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof UDNegation)) throw new IllegalArgumentException("Illegal use of double negation");
+        if(predicate instanceof PredicateStd || (predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd)) {
             this.type = Type.STANDARD;
         }else if (predicate instanceof UDFunction) {
+            if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match function predicate");
             this.type = Type.FUNCTION;
         }else {
+            if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match relation predicate " +predicate);
             this.type = Type.RELATION;
         }
         this.predicate = predicate;
@@ -110,7 +110,7 @@ public class Atom implements Comparable<Atom>{
      * @param args non-temporal arguments of atom.
      */
     public Atom(PredicateStd predicate, List<Term> args){
-        if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
         this.type = Type.STANDARD;
         this.predicate = predicate;
         this.args = new Arguments(args);
@@ -207,6 +207,9 @@ public class Atom implements Comparable<Atom>{
         return this.compareTo((Atom) obj) == 0;
     }
 
+    public boolean hasTemporalTerm(){
+        return this.predicate.nArgs() + 1 == this.args.size();
+    }
 
 
     public String explain(){

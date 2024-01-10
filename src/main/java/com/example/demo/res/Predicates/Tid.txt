@@ -4,6 +4,6 @@ Lystændingstiden(V,T):[T] er i lystændingstiden for [V];
 Solopgang(D,V,T):Solopgang for datoen [D] på [V] er [T];
 Solnedgang(D,V,T):Solnedgang for datoen [D] på [V] er [T];
 
-Start(A,T):[A] starter på tidspunkt [T];
-Slut(A,T):[A] slutter på tidspunkt [T];
+Start(A):[A] starter;
+Slut(A):[A] slutter;
 

@@ -282,7 +282,7 @@ public class HelloController implements Initializable {
         answerList.getItems().clear();
 
         if(active.clause.body.isEmpty()){
-            this.answerInfo.setText(active.clause.head.explain() + " er givet");
+            this.answerInfo.setText(active.clause.head.explain() + " er givet af "+active.clause.head.toString());
         }else {
             this.answerInfo.setText(active.clause.head.explain() + " fordi");
         }

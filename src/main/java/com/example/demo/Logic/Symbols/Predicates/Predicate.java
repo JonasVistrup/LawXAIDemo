@@ -40,12 +40,15 @@ public abstract class Predicate {
         this.termPos = termPos;
     }
     public String explain(Arguments args){
-        if(nArgs != args.size()) throw new IllegalArgumentException("Must be given "+nArgs+" terms.");
+        if(nArgs != args.size() && nArgs+1 != args.size()) throw new IllegalArgumentException("Must be given "+nArgs+" terms or "+nArgs+" terms and a temporal term.");
 
         StringBuilder res = new StringBuilder(explanation.get(0));
         for(int i = 0; i<termPos.size(); i++){
             res.append(args.get(termPos.get(i)));
             res.append(explanation.get(i+1));
+        }
+        if(nArgs+1 == args.size()){
+            res.append(" på tidspunkt ").append(args.get(nArgs));
         }
         return res.toString();
     }

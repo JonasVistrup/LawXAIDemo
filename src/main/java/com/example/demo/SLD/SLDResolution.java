@@ -61,9 +61,9 @@ public class SLDResolution {
                 usedOnThePath.add(instance);
                 if(inOrderTraversal(program, level+1, child, usedOnThePath, answers, groundClauses)){
                     current.addChild(child);
-                }else{
-                    usedOnThePath.remove(instance);
                 }
+                usedOnThePath.remove(instance);
+
             }
         }
         return !current.children.isEmpty();
