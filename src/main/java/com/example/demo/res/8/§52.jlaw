@@ -1,18 +1,20 @@
 BrudtLoven(P,§52 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Motorcykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T):§52 stk.1;
 
-BrudtLoven(P,§52 stk.2,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), ~Type(Kø,trækning), På(Kø,F,T), Fortov(F) \/ Gangsti(F), ~[Type(Kø,overkørsel)/\Over(Kø,F,T) /\ UdkørselFraEjendom(VS) /\ [Fra(Kø,VS)\/ Til(Kø,VS)]]:§52 stk.2:§27 stk.2;
+BrudtLoven(P,§52 stk.2,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), ~Type(Kø,trækning), På(Kø,F,T), Fortov(F) \/ Sti(F), ~[Type(Kø,overkørsel)/\Over(Kø,F,T) /\ Frakørsel(VS), Fra(VS,E), Ejendom(E) /\ [Fra(Kø,VS)\/ Til(Kø,VS)]]:§52 stk.2:§27 stk.2;
 
-BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), Bagsæde(C,Bagsæde), SidderPå(P,Bagsæde), ~SidderMedEtBenPåHverSideAf(P,C):§52 stk.3;
+BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), DelAf(B2,P), ~=(B1,B2), :§52 stk.3;
+BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), Type(B1,ben), Type(B2,ben), DelAf(B2,P), ~=(B1,B2), :§52 stk.3;
+BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), Ikke(P,en_person_med_to_ben):§52 stk.3;
 
-BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), #PersonerBefordres(C,A), #PersonerBeregnet(C,B), <(B,A):§51 skt.6;
-BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), På(S,C,T), Sidevogn(S), Fører(P,Kø,T), #PersonerBefordres(S,A), #PersonerBeregnet(S,B), <(B,A), ~[Befordres(P2,S), Alder(P2,Alder), <(Alder,10)]:§52 skt.4;
-BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), På(S,C,T), Sidevogn(S), Fører(P,Kø,T), #PersonerBefordres(S,A), #PersonerBeregnet(S,B), Befordres(P2,S), Alder(P2,Alder), <(Alder,10), +(B,1,B1), <(B1,A):§52 skt.4;
+BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), #(C,A,personer_befordret), #(C,B,personer_berenget), <(B,A):§51 skt.6;
+BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), På(S,C,T), Sidevogn(S), Fører(P,Kø,T), #(S,A,personer_befordret), #(S,B,personer_berenget), <(B,A), Befordres(P2,S), Alder(P2,Alder), <(Alder,10):§52 skt.4;
+BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), På(S,C,T), Sidevogn(S), Fører(P,Kø,T), #(S,A,personer_befordret), #(S,B,personer_berenget), Befordres(P2,S), Alder(P2,Alder), <(Alder,10), +(B,1,B1), <(B1,A):§52 skt.4;
 
-BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #Hjul(C,2), Fører(P,Kø,T), Befordres(P2,C), Alder(P2,A), <(A,5), Højde(P2,H), <(H,135cm):§52 skt.5;
-BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #Hjul(C,2), Fører(P,Kø,T), Befordres(P2,C), ~Anvender(P2,børnesæde\/sikkerhedsudstyr der opfylder §68 krav,T), Højde(P2,H), <(H,135cm):§52 skt.5;
-BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #Hjul(C,3), Fører(P,Kø,T), Befordres(P2,C), Alder(P2,A), <(A,5), ~ForsynetMed(C,sikkerhedssele):§52 skt.5;
+BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #(C,2,hjul), Fører(P,Kø,T), Befordres(P2,C), Alder(P2,A), <(A,5), Højde(P2,H), <(H,135cm):§52 skt.5;
+BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #(C,2,hjul), Fører(P,Kø,T), Befordres(P2,C), IkkeAnvender(P2,børnesæde\/sikkerhedsudstyr der opfylder §68 krav,T), Højde(P2,H), <(H,135cm):§52 skt.5;
+BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), #(C,3,hjul), Fører(P,Kø,T), Befordres(P2,C), Alder(P2,A), <(A,5), ~ForsynetMed(C,sikkerhedssele):§52 skt.5;
 BrudtLoven(P,§52 stk.5,T) <- Kørsel(Kø,C), Motorcykel(C), På(S,C,T), Sidevogn(S), Fører(P,Kø,T), Befordres(P2,S), Alder(P2,A), <(A,5), ~ForsynetMed(S,sikkerhedssele):§52 skt.5;
 
-BrudtLoven(P,§52 stk.6,T) <- Kørsel(Kø,C), Motorcykel(C), #Hjul(C,2), Befordres(P2,C), Alder(P2,A), <(A,18), PolitietKræver(P2,afgive højdemåling,T), Nægter(P,afgive højdemåling,T):§52 stk.6;
+BrudtLoven(P,§52 stk.6,T) <- Kørsel(Kø,C), Motorcykel(C), #(C,2,hjul), Befordres(P2,C), Alder(P2,A), <(A,18), Kræver(Popo,højdemåling,T), Politiet(Popo), Nægter(P,afgive højdemåling,T):§52 stk.6;
 
 

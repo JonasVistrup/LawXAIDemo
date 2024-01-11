@@ -1,0 +1,5 @@
+BrudtLoven(P,§35_stk.1,T) <- Standsning(S) \/ Parkering(S), På(S,V,T), Udfører(P,S), Af(S,K), Vej(V), IkkeTændt(L,T), På(L,K), Type(L,positionslys\/baglygte\/nummerpladebelysning), Lygtetændingstiden(V,T):§35_stk.1;
+
+IkkeBrudtLoven(P,§35_stk.1,T) <- Standsning(S) \/ Parkering(S), På(S,V,T), MotordrevetKøretøj(K), Længde(K,<=6m), Brede(K,<=2), I(V,B), By(B), Udfører(P,S), Af(S,K), Vej(V), Anvender(P,L,<T), På(L,K), Type(L,positionslys), Anvender(P,L2,<T), På(L2,K), Type(L2,baglygte), Mod(L2,vejens_midte), Langs(K,vejens_kant,T), Lygtetændingstiden(V,T):§35_stk.4:§35_stk.1;
+
+

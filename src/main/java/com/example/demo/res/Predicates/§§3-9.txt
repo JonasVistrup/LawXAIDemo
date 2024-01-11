@@ -11,6 +11,7 @@ IkkeDeltagerI(P,A,T):[P] deltager ikke i [A] på tidspunkt [T];
 Dræbt(P,A):[P] er blevet dræbt at [A];
 Efterkommer(P,A,T):[P] efterkommer [A] på tidspunkt [T];
 Ejer(P,A,T):[P] ejer [A] på tidspunkt [T];
+Ejendom(E):[E] er en ejendom;
 Fjerner(P,A,T):[P] fjerner [A] på tidspunkt [T];
 ForstyrrerFærdslen(A):[A] forstyrrer færdslen;
 ForvolderSkade(A):[A] forvolder skade;

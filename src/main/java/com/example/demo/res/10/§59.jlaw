@@ -1,0 +1,1 @@
+IkkeHar(P,Kørekort,T) <- Erhverver(P,Kørekort,T0), -(T,T0,Ta), <(15år,Ta), Type(Kørekort,kørekort), For(Kørekort,P):§59 stk.1;

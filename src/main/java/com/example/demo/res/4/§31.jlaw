@@ -1,0 +1,11 @@
+BrudtLoven(P,§31_stk.1,T) <- Køretøj(K), Standsning(S) \/ Parkering(S), Af(S,K), Udfører(P,S), På(S,Spor)\/[På(S,Loc)/\Afstand(Loc,Spor,<2m,T)], Er(Spor,spor), På(Spor,V,T), Vej(V) \/ Er(V,havneplads) \/ [Ligende(V,V2) /\ [Vej(V2) \/ Er(V,havneplads)]], IkkeKan(P,være_opmærksom_på_eventuel_trafik_ad_sporet,T):§31 stk.1;
+BrudtLoven(P,§31_stk.1,T) <- Køretøj(K), Standsning(S) \/ Parkering(S), Af(S,K), Udfører(P,S), På(S,Spor)\/[På(S,Loc)/\Afstand(Loc,Spor,<2m,T)], Er(Spor,spor), På(Spor,V,T), Vej(V) \/ Er(V,havneplads) \/ [Ligende(V,V2) /\ [Vej(V2) \/ Er(V,havneplads)]], Kan(P,se_tog_nærmer_sig\/se_skinnekøretøj_nærmer_sig\/høre_tog_nærmer_sig\/høre_skinnekøretøj_nærmer_sig,T), ~Fjerner(P,K,T):§31 stk.1;
+
+IkkeBrudtLoven(P,§28,T) <- Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S,T), Begrundet(S,A),Færdselsuheld(A)\/Type(A,motorfejl\/anden_årsag):§31 stk.2;
+IkkeBrudtLoven(P,§29,T) <- Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S,T), Begrundet(S,A),Færdselsuheld(A)\/Type(A,motorfejl\/anden_årsag):§31 stk.2;
+
+BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), Flytning(F), Af(F,K), ~Fra(F,et_passende_sted), Til(F,et_passende_sted), Muligt(F,T), ~Udfører(P,F,T):§31 stk.2;
+BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), IkkeStraksFjerner(P,K,T), IkkeAdvarder(P,andre_trafikanter):§31 stk.2;
+BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), MotordrevetKøretøj(K), Standsning(S), Af(S,K), Udfører(P,S), IkkeStraksFjerner(P,K,T), ~Knallert(K), ~Motorcykel(K), Afmærkning(A), Advarder(A,kørende_der_nærmer_sig), Type(A,trekant_advarselsanordning), ~Udfører(P,A):§31 stk.2;
+
+BrudtLoven(P,§31_stk.3,T) <- Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), På(S,Spor,T), Er(Spor,spor), IkkeStraksFjerner(P,K,T), IkkeAdvarder(P,førere_af_skinnekøretøj):§31 stk.3;

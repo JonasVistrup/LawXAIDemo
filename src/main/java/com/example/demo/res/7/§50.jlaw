@@ -1,8 +1,8 @@
-BrudtLoven(P,§50 stk.1,T) <- Kørsel(Kø,C), Cykel(C), Fører(B,Kø,T), Alder(B,A), PligtTilOpsyn(P,B), ~Ledsager(P2,B) \/ ~Kontroller(P2,B), <(B,6):§50 skt.1;
+BrudtLoven(P,§50 stk.1,T) <- Kørsel(Kø,C), Cykel(C), Fører(B,Kø,T), Alder(B,A), PligtTilOpsyn(P,B), IkkeLedsager(P2,B) \/ IkkeKontroller(P2,B), <(B,6):§50 skt.1;
 
-BrudtLoven(P,§50 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), #PersonerBefordres(C,A), #PersonerBeregnet(C,B), <(B,A):§50 skt.2;
+BrudtLoven(P,§50 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), #(C,A,personer_befordret), #(C,B,personer_berenget), <(B,A):§50 skt.2;
 
-BrudtLoven(P,§50 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Medføres(C,G,T), Genstand(G), [Længde(G,A) /\ <(3m,A)] \/ [Bredde(G,B) /\ <(1m,B)]:§50 skt.3;
-BrudtLoven(P,§50 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Medføres(C,G,T), Genstand(G), Hindre(G,fuldt herredømme,C,T) \/ Hindre(G,behørig tegngivning,C,T):§50 skt.3;
+BrudtLoven(P,§50 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), På(G,C,T), Type(G,genstand), [Længde(G,A) /\ <(3m,A)] \/ [Bredde(G,B) /\ <(1m,B)]:§50 skt.3;
+BrudtLoven(P,§50 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), På(G,C,T), Type(G,genstand), Hindrer(G,fuldt herredømme,C,T) \/ Hindrer(G,behørig tegngivning,C,T):§50 skt.3;
 
 

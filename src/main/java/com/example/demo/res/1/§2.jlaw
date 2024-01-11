@@ -24,9 +24,9 @@ KørerPå(K,skinner) <- KørerPå(K,eget_spor):§2.11;
 Letbanekøretøj(K) <- KørerPå(K,eget_letbanespor), Transportmiddel(K), IndrettetTil(K,befordring_af_passagerer):§2.11;
 Letbanekøretøj(K) <- KørerPå(K,eget_letbanespor), Transportmiddel(K), IndrettetTil(K,til_arbejde_på_letbanespor):§2.11;
 
-Lystændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solopgang(D,V,TOpgang), <(TDato,TOpgang):§2.12;
-Lystændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solnedgang(D,V,TNedgang), <(Nedgang,TDato):§2.12;
-Lystændingstiden(V,T) <- DårligFøre(V,T):§2.12;
+Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solopgang(D,V,TOpgang), <(TDato,TOpgang):§2.12;
+Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solnedgang(D,V,TNedgang), <(Nedgang,TDato):§2.12;
+Lygtetændingstiden(V,T) <- DårligFøre(V,T):§2.12;
 
 Motorcykel(K) <- Motorkøretøj(K), #hjul(K,3), EgenVægt(K,V), <(V,400):§2.13;
 Motorcykel(K) <- Motorkøretøj(K), #hjul(K,2), EgenVægt(K,V), <(V,400):§2.13;

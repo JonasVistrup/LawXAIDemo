@@ -2,6 +2,7 @@ BrudtLoven(P,A,T):[P] har brudt [A] af færdselsloven på tidspunkt [T];
 IkkeBrudtLoven(P,A,T):[P] har ikke brudt [A] af færdselsloven på tidspunkt [T];
 
 AnvendesTil(A,B):[A] anvendes til [B];
+Gør(A,B,C):[A] gør [B] på [C];
 BestemtFor(A,B):[A] er bestemt for [B];
 BestemtTil(A,B):[A] er bestemt til [B];
 IndrettetTil(K,A):[K] er indrettet til [A];
@@ -10,6 +11,7 @@ FortagesMed(K,A):[K] fortages med [A];
 MærkeretFor(A,B):[A] er mærkeret for [B];
 MærkeretSom(A,B):[A] er mærkeret som [B];
 TilstrækkeligtFor(A,B):[A] er tilstrækkeligt for [B];
+Utilstrækkelighed(U):[U] er en utilstrækkelighed;
 TilstrækkeligtSom(A,B):[A] er tilstrækkeligt som [B];
 
 SkaberUlempeFor(A,B):[A] skaber ulempe for [B];
@@ -18,8 +20,11 @@ Hæmmer(A,B):[A] hæmmer [B];
 Unødigt(A):[A] er unødigt;
 Nødvendigt(A):[A] er nødvendigt;
 NødvendigtFor(A,B):[A] er nødvendigt for [B];
+IkkeNødvendigtFor(A,B):[A] er ikke nødvendigt for [B];
 FareFor(A,B):[A] er i fare for [B];
 UnødvendigtLang(A):[A] er unødvendigt lang;
+Begynder(A,B):[A] på beynder med [B];
+Ender(A,B):[A] ender med [B];
 
 Foran(A,B):[A] er foran [B];
 Til(A,B):[A] er til [B];
@@ -30,6 +35,11 @@ Før(A,B):[A] er før [B];
 Efter(A,B):[A] er efter [B];
 Om(A,B):[A] er om [B];
 Igang(A,T):[A] er i gang på tidspunkt [T];
+Mod(A,B):[A] er mod [B];
+
+Længde(A,B):[A] har længde [B];
+Bredde(A,B):[A] har bredde [B];
+Højde(A,B):[A] har højde [B];
 
 HøjreFor(A,B,T):[A] er til højre for [B] på tidspunkt [T];
 VenstreFor(A,B):[A] er venstre for [B];

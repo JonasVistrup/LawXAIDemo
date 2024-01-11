@@ -1,4 +1,4 @@
-BrudtLoven(X) <- Kører(X,B,V),Hastighed(B,H),MaxHastighed(V,M),>(H,M);§42.
+BrudtLoven(P,§42_stk.1,T) <- Fører(P,K,T),Hastighed(K,H,T), På(K,V,T), MaxHastighed(V,M),>(H,M):§42_stk.1;
 
 MaxHastighed(V,50) <- Byvej(V), ~AndenHastighedsGrænse(V);§42 stk. 1.1;§42 stk. 4
 MaxHastighed(V,80) <- Landevej(V), ~AndenHastighedsGrænse(V);§42 stk. 1.2

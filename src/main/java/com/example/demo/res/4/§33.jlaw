@@ -1,0 +1,27 @@
+BrudtLoven(P,§33_stk.1,T) <- Kørsel(Kø), Udfører(P,Kø), På(Kø,V,T), Lygtetændingstiden(V,T), Påbudt(L,Kø,T), Type(L,lygte), IkkeTændt(L,T):§33_stk.1;
+IkkeBrudtLoven(P,§33_stk.1,T) <- Kørsel(Kø), Udfører(P,Kø), Af(Kø,K), På(Kø,V,T), Lygtetændingstiden(V,T), Påbudt(L,Kø,T), Type(L,lygte), IkkeTændt(L,T), Type(L,baglygte), Type(K,sammenkoblede_køretøjer), Ikke(L,bagest_på_vogntoget):§33_stk.1;
+IkkeBrudtLoven(P,§33_stk.1,T) <- Kørsel(Kø), Udfører(P,Kø), Af(Kø,K), På(Kø,V,T), Lygtetændingstiden(V,T), Påbudt(L,Kø,T), Type(L,lygte), IkkeTændt(L,T), Type(L,nummerpladebelysning), Type(K,sammenkoblede_køretøjer), IkkeVed(L,vogntogets_bageste_nummerplade):§33_stk.1;
+
+Påbudt(L,Kø,T) <- Kørsel(Kø), Type(L,fjernlys), Udfører(P,Kø), Synsvidde(P,S,T), Skaber(S,U), Utilstrækkelighed(U), HensynTil(U,køretøjets_hastighed), Til(U,sikker_kørsel):§33_stk.2;
+
+BrudtLoven(P,§33_stk.3,T) <- Anvender(P,L,T), Type(L,lygte), Type(L,fjernlys), På(P,V,T), Er(V,tilstrækkeligt_oplyst), Lygtetændingstiden(V,T):§33_stk.3;
+BrudtLoven(P,§33_stk.3,T) <- Anvender(P,L,T), Type(L,lygte), Type(L,fjernlys), Møder(P,K2,T), Fører(P2,K2,T), Køretøj(K2), Blændning(B), Kan(L,B,T), Af(B,P2), Lygtetændingstiden(V,T), På(P,V,T):§33_stk.3;
+BrudtLoven(P,§33_stk.3,T) <- Anvender(P,L,T), På(P,V,T), Type(L,lygte), Type(L,fjernlys), Møder(P,K2,T), Fører(P2,K2,T), Tog(K2), Blændning(B), Kan(L,B,T), Af(B,P2), Langs(K2,V,T), Lygtetændingstiden(V,T):§33_stk.3;
+
+BrudtLoven(P,§33_stk.4,T) <- IkkeAnvender(P,L,T), Type(L,lygte), Type(L,nærlys), På(P,V,T), Er(V,tilstrækkeligt_oplyst), Lygtetændingstiden(V,T):§33_stk.3:§33_stk.4;
+BrudtLoven(P,§33_stk.4,T) <- IkkeAnvender(P,L,T), Type(L,lygte), Type(L,nærlys), Type(L2,fjernlys), Møder(P,K2,T), Fører(P2,K2,T), Køretøj(K2), Blændning(B), Kan(L2,B,T), Af(B,P2), Lygtetændingstiden(V,T):§33_stk.3:§33_stk.4;
+BrudtLoven(P,§33_stk.4,T) <- IkkeAnvender(P,L,T), På(P,V,T), Type(L,lygte), Type(L,nærlys), Type(L2,fjernlys), Møder(P,K2,T), Fører(P2,K2,T), Tog(K2), Blændning(B), Kan(L2,B,T), Af(B,P2), Langs(K2,V,T), Lygtetændingstiden(V,T):§33_stk.3:§33_stk.4;
+
+BrudtLoven(P,§33_stk.5,T) <- Anvender(P,L,T), Type(L,lygte), Type(L,tågelygte), IkkeI(P,tåge), IkkeI(P,kraftig_nedbør), På(P,V,T), Lygtetændingstiden(V,T):§33_stk.5;
+BrudtLoven(P,§33_stk.5,T) <- Type(L,lygte), Type(L,hjælpelygte), Anvendelse(A), Af(A,L), Udfører(P,A,T), Til(A,andet_formål_end_det_hvortil_lygterne_er_bestemt), På(P,V,T), Lygtetændingstiden(V,T):§33_stk.5;
+
+BrudtLoven(P,§33_stk.6,T) <- Anvender(P,L,T), På(P,V,T), Type(L,lygte), Fører(P2,K2,T), Blændning(B), Kan(L,B,T), Af(B,P2), Lygtetændingstiden(V,T):§33_stk.6;
+
+BrudtLoven(P,§33_stk.7,T) <- Anvendelse(A), Af(A,L), Type(L,lygte\/refleksordning), Er(L,udfærdigt_i_medfør_af_loven), Lygtetændingstiden(V,T):§33_stk.7;
+BrudtLoven(P,§33_stk.7,T) <- Anvendelse(A), Af(A,L), Type(L,lygte\/refleksordning), Er(L,udfærdigt_i_medfør_af_loven), ~Lygtetændingstiden(V,T):§33_stk.7:§33a_stk.3;
+
+BrudtLoven(P,§33a_stk.1,T) <- ~Lygtetændingstiden(V,T), Kørsel(Kø), På(Kø,V), Udfører(P,Kø), IkkeAnvender(P,L,T), IkkeAnvender(P,L2,T), IkkeAnvender(P,L3,T), Type(L,nærlys), Type(L2,tågelygte), Type(L3,særlig_kørlys), Af(Kø,K), MotordrevetKøretøj(K):§33a_stk.1;
+BrudtLoven(P,§33a_stk.1,T) <- ~Lygtetændingstiden(V,T), Kørsel(Kø), På(Kø,V), Udfører(P,Kø), IkkeAnvender(P,L,T), Type(L,nærlys), Af(Kø,K), Motorredskab(K), ForsynetMed(K,L):§33a_stk.1;
+BrudtLoven(P,§33a_stk.1,T) <- ~Lygtetændingstiden(V,T), Kørsel(Kø), På(Kø,V), Udfører(P,Kø), Anvender(P,L,T), Anvender(P,L2,T), Type(L,nærlys), Type(L2,tågelygte), Af(Kø,K), MotordrevetKøretøj(K):§33a_stk.1:VLD af 15. januar 2015 (sag S-2234-14);
+
+

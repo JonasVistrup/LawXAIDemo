@@ -1,0 +1,41 @@
+Med(A,B):[A] er med [B];
+Fordi(A,B):[A] er fordi [B];
+Har(A,B):[A] har [B];
+Via(A,B):[A] er via [B];
+Gennem(A,B):[A] er gennem [B];
+Kræver(A,B):[A] kræver [B];
+
+Standselængde(K,A):[K] har standselængde [A];
+Bremselængde(K,A):[K] har bremselængde [A];
+Reaktionslængde(K,A):[K] har reaktionslængde [A];
+Reaktionstid(P,Tid):[P] har reaktionstid [Tid];
+ForventetBremsepræstation(K,P):[K] har forventet bremsepræstation [P];
+
+RegistreringsDato(K,D):[K] er registreret på datoen [D];
+HastighedMprS(K,H):[K] har hastigheden [H] i enheden meter per sekund;
+IkkePassendeLav(A):[A] er ikke passende lav;
+
+RisikoFor(P,A):[P] har risiko for [A];
+Uheld(U):[U] er et uheld;
+
+MaxHastighed(V,H):Man må maksimalt [H] på [V];
+AndenHastighedsGrænse(V):[V] har en anden hastigheds grænse;
+AndenHastighedsGrænseFastsat(V,M):[V] har hastigheds grænse [M];
+Registreret(V):[V] er registreret;
+Godkendt(V):[V] er godkendt;
+Påskrift(A,B):[A] har påskrift [B];
+
+RullefeltResultat(K,A):Rullefelt resultat på [K] er [A];
+Måling(A):[A] er en måling;
+Gyldig(A):[A] er gyldig;
+Kalibreret(A,D):[A] er sidst kalibreret [D];
+
+Fjernelse(F):[F] er en fjernelse;
+HøjreSide(A,B):[A] er på den højre side af [B];
+VedSiden(A,B):[A] er ved siden af [B];
+
+PligtTilOpsyn(A,B):[A] har pligt til at holde opsyn med [B];
+IkkeLedsager(P,B):[P] ledsager ikke [B];
+IkkeKontroller(P,B):[P] kontrollere ikke [B];
+Hindrer(A,B,C):[A] hindre [B] for [C];
+Nægter(A,B):[A] nægter [B];

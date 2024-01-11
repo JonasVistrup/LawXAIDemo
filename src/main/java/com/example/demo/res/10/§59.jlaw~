@@ -1,0 +1,1 @@
+IkkeHar(P,Kørekort,T) <- Erhverver(P,Kørkørt,T0), -(T,T0,Ta), <(15år,Ta)

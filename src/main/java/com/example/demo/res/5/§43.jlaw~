@@ -1,0 +1,42 @@
+BrudtLoven(P,§43,T) <- Fører(P,K,T), Hastighed(K,H,T), MaxHastighed(K,M,T) <(M,H):§43 stk. 1;
+
+MaxHastighed(K,80) <- TilladtVægt(K,T), Bus(K), <(T,3500), ~Tempo100Bus(K):§43 stk. 1:§43 stk. 10;
+MaxHastighed(K,100) <- TilladtVægt(K,T), Bus(K), <(T,3500), Tempo100Bus(K):§43 stk. 1:§43 stk. 10;
+
+MaxHastighed(K,70,T) <- TilladtVægt(K,Vægt), På(K,V,T), ~Motorvej(V), <(3500,Vægt), Lastbil(K):§43 stk. 2;
+MaxHastighed(K,70,T) <- TilladtVægt(K,Vægt), På(K,V,T), ~Motorvej(V), <(3500,Vægt), Vogntog(K), På(K2,K), Påhængskøretøj(K2):§43 stk. 2;
+
+MaxHastighed(K,70) <- TilladtVægt(K,Vægt), På(K,V,T), ~Motorvej(V), <(3500,Vægt), Campingbil(K):§43 stk. 2:Samling: 2015-16, L 84, bilag 1, side 7;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Campingbil(K):§43 stk. 4;
+
+MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), ~Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
+MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), ~Motorvej(V), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
+
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Lastbil(K):§43 stk. 4;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Vogntog(K), På(K2,K), Påhængskøretøj(K2):§43 stk. 4;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), ~Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), Motorvej(V), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4;
+MaxHastighed(K,100) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
+
+MaxHastighed(K,30) <- Køretøj(K), På(V,K), ~Registreret(V), Påhængskøretøj(V):§43 stk. 5;
+MaxHastighed(K,30) <- Traktor(K), ~Godkendt(K), ~Registreret(K):§43 stk. 5;
+MaxHastighed(K,30) <- Motorredskab(K), ~Godkendt(K), ~Registreret(K):§43 stk. 5;
+MaxHastighed(K,40) <- Traktor(K), Godkendt(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
+MaxHastighed(K,40) <- Traktor(K), Registreret(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
+MaxHastighed(K,40) <- Motorredskab(K), Godkendt(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
+MaxHastighed(K,40) <- Motorredskab(K), Registreret(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
+AndenHastighedsGrænse(K) <- AndenHastighedsGrænseFastsat(K,H);
+Registreret(K) <- RegistreringsDato(K,D);
+
+BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), AndenHastighedsGrænseFastsat(K,M), På(M,V), ~Påskrift(K,Påskrift,T), Om(Påskrift,M):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
+BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(K,V), Hastighed(K,H), AndenHastighedsGrænseFastsat(K,M), På(M,V), <(M,H):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
+BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(A,K), Påhængsredskab(A), MaxHastighed(A,H), <(30,H), ~Registreret(A):Lov om registrering af køretøjer §2, stk.1 nr 6: registreringsbekendtgørelsen §3, stk. 1. nr 6:TfK 2001.563 Ø;
+
+MaxHastighed(K,15) <- Motorkøretøj(K)\/Vogntog(K), Har(K,massive_hjulbeklædning):§43 stk.6;
+
+
+AndenHastighedsGrænseFastsat(K,80_uden_for_motorvej,V) <- ~Motorvej(V), Vogntog(K), BeregnetTilStøjmåling(K): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;
+AndenHastighedsGrænseFastsat(K,110_,V) <- Motorvej(V), Vogntog(K), BeregnetTilStøjmåling(K): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;
+AndenHastighedsGrænseFastsatPå(K,80,V) <- ~Motorvej(V), Ambulance(K), Tempo100Ambulance(K): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2015-08-26 nr. 982;
+AndenHastighedsGrænseFastsatPå(K,110,V) <- Motorvej(V), Ambulance(K), Tempo100Ambulance(K): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2015-08-26 nr. 982;

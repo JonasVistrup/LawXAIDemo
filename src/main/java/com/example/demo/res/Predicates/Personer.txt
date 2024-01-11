@@ -1,3 +1,4 @@
+Person(P):[P] er en person;
 Gående(P,T):[P] er gående på tidspunkt [T];
 Kørende(P,T):[P] er kørende på tidspunkt [T];
 Trafikant(P,T):[P] er trafikant på tidspunkt [T];
