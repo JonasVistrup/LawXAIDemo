@@ -227,6 +227,24 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/4/§28.jlaw");
         XAI.addRules(strPath+"res/4/§29.jlaw");
         XAI.addRules(strPath+"res/4/§30.jlaw");
+
+        XAI.addRules(strPath+"res/4/§31.jlaw");
+        XAI.addRules(strPath+"res/4/§32.jlaw");
+        XAI.addRules(strPath+"res/4/§33.jlaw");
+        XAI.addRules(strPath+"res/4/§34.jlaw");
+        XAI.addRules(strPath+"res/4/§35.jlaw");
+        XAI.addRules(strPath+"res/4/§36.jlaw");
+        XAI.addRules(strPath+"res/4/§37.jlaw");
+        XAI.addRules(strPath+"res/4/§38.jlaw");
+        XAI.addRules(strPath+"res/4/§39.jlaw");
+        XAI.addRules(strPath+"res/4/§40.jlaw");
+        XAI.addRules(strPath+"res/4/§41.jlaw");
+        XAI.addRules(strPath+"res/4/§42.jlaw");
+        XAI.addRules(strPath+"res/4/§43.jlaw");
+        XAI.addRules(strPath+"res/4/§44.jlaw");
+        XAI.addRules(strPath+"res/4/§45.jlaw");
+        XAI.addRules(strPath+"res/4/§45.jlaw");
+        XAI.addRules(strPath+"res/4/§46.jlaw");
     }
 
     @FXML
