@@ -8,7 +8,7 @@ import com.example.demo.SLD.SLDResolution;
 
 public class UDNegation extends UDRelation {
 
-    private final Predicate predicate;
+    public final Predicate predicate;
 
     public UDNegation(Predicate predicate){
         super(predicate.toString(), predicate.nArgs());

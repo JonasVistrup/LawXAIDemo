@@ -1,5 +1,5 @@
-BrudtLoven(P,A,T):[P] har brudt [A] af færdselsloven på tidspunkt [T];
-IkkeBrudtLoven(P,A,T):[P] har ikke brudt [A] af færdselsloven på tidspunkt [T];
+BrudtLoven(P,A):[P] har brudt [A] af færdselsloven;
+IkkeBrudtLoven(P,A):[P] har ikke brudt [A] af færdselsloven;
 
 AnvendesTil(A,B):[A] anvendes til [B];
 Gør(A,B,C):[A] gør [B] på [C];
@@ -23,7 +23,7 @@ NødvendigtFor(A,B):[A] er nødvendigt for [B];
 IkkeNødvendigtFor(A,B):[A] er ikke nødvendigt for [B];
 FareFor(A,B):[A] er i fare for [B];
 UnødvendigtLang(A):[A] er unødvendigt lang;
-Begynder(A,B):[A] på beynder med [B];
+Begynder(A,B):[A] på begynder med [B];
 Ender(A,B):[A] ender med [B];
 
 Foran(A,B):[A] er foran [B];
@@ -34,28 +34,28 @@ For(A,B):[A] er for [B];
 Før(A,B):[A] er før [B];
 Efter(A,B):[A] er efter [B];
 Om(A,B):[A] er om [B];
-Igang(A,T):[A] er i gang på tidspunkt [T];
+Igang(A):[A] er i gang;
 Mod(A,B):[A] er mod [B];
 
 Længde(A,B):[A] har længde [B];
 Bredde(A,B):[A] har bredde [B];
 Højde(A,B):[A] har højde [B];
 
-HøjreFor(A,B,T):[A] er til højre for [B] på tidspunkt [T];
+HøjreFor(A,B):[A] er til højre for [B];
 VenstreFor(A,B):[A] er venstre for [B];
 NokTil(A,B):[A] er nok til [B];
 
-Åbnet(A,T):[A] er åbnet  på tidspunkt [T];
-Lukket(A,T):[A] er lukket på tidspunkt [T];
-Lukkes(A,T):[A] lukkes på tidspunkt [T];
-Åbnes(A,T):[A] åbnes på tidspunkt [T];
+Åbnet(A):[A] er åbnet;
+Lukket(A):[A] er lukket;
+Lukkes(A):[A] lukkes;
+Åbnes(A):[A] åbnes;
 
-Se(A,B,T):[A] kan se [B] på tidspunkt [T];
-Hører(A,B,T):[A] kan høre [B] på tidspunkt [T];
+Se(A,B):[A] kan se [B];
+Hører(A,B):[A] kan høre [B];
 Udfører(A,B):[A] udfører [B];
-Laver(P,B,T):[P] laver [B] på tidspunkt [T];
+Laver(P,B):[P] laver [B];
 
-På(A,B,T):[A] er på [B] på tidspunkt [T];
+På(A,B):[A] er på [B];
 DelAf(A,B):[A] er en del af [B];
 Krydser(A,B):[A] krydser [B];
 Type(A,B):[A] er af type [B];
@@ -67,6 +67,6 @@ Brede(A,B):Breden af [A] er [B];
 Højre(A,B):Højden af [A] er [B];
 Vægt(A,B):Vægten af [A] er [B];
 Alder(A,B):Alderen af [A] er [B];
-Afstand(A,B,C,T):Afstanden mellem [A] og [B] er [C] på tidspunkt [T];
+Afstand(A,B,C):Afstanden mellem [A] og [B] er [C];
 
 Kørsel(A):[A] er en kørsel;

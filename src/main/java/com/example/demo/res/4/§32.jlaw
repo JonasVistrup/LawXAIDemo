@@ -21,5 +21,5 @@ BrudtLoven(P,§32_stk.5,T) <- Kørende(P,T), På(P,V), ~Motorvej(V), Tegn(Tegn),
 
 BrudtLoven(P,§32_stk.5,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,standser\/hurtigt_nedsætter_hastigheden), Udfører(P,M,T), Udfører(P,Tegn,T0), Ved(Tegn,stoplygte), IkkeGodTidIForholdTil(T0,M)\/Ikke(Tegn,tydeligt_synlig\/utvetydig):§32 stk.4:§32 stk.5;
 
-BrudtLoven(P,§32a_stk.1,T) <- Fører(P,K,T), Letbanekøretøj(K), Tegn(Tegn), Udfører(P,Tegn,T), IkkeNødvendigtFor(Tegn,at_gøre_andre_trafikanter_opmærksom_på_letbanekøretøjet);
+BrudtLoven(P,§32a_stk.1,T) <- Fører(P,K,T), Letbanekøretøj(K), Tegn(Tegn), Udfører(P,Tegn,T), IkkeNødvendigtFor(Tegn,at_gøre_andre_trafikanter_opmærksom_på_letbanekøretøjet):§32a stk.1;
 

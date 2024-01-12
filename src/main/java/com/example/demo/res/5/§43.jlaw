@@ -26,8 +26,8 @@ MaxHastighed(K,40) <- Traktor(K), Godkendt(K), ~AndenHastighedsGrænse(K):§43 s
 MaxHastighed(K,40) <- Traktor(K), Registreret(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
 MaxHastighed(K,40) <- Motorredskab(K), Godkendt(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
 MaxHastighed(K,40) <- Motorredskab(K), Registreret(K), ~AndenHastighedsGrænse(K):§43 stk. 5;
-AndenHastighedsGrænse(K) <- AndenHastighedsGrænseFastsat(K,H+);
-Registreret(K) <- RegistreringsDato(K,D);
+AndenHastighedsGrænse(K) <- AndenHastighedsGrænseFastsat(K,H):Hvis grænse H er sat for K, så er der sat en grænse for K;
+Registreret(K) <- RegistreringsDato(K,D):Hvis K er blevet registret på en dato, så er K blevet registreret;
 
 BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), AndenHastighedsGrænseFastsat(K,M), På(M,V), ~Påskrift(K,Påskrift,T), Om(Påskrift,M):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
 BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(K,V), Hastighed(K,H), AndenHastighedsGrænseFastsat(K,M), På(M,V), <(M,H):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
@@ -35,8 +35,8 @@ BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(A,K), Påhængsredskab(A), MaxH
 
 MaxHastighed(K,15) <- Motorkøretøj(K)\/Vogntog(K), Har(K,massive_hjulbeklædning):§43 stk.6;
 
-På(80_uden_for_motorvej,V) <- ~Motorvej(V);
-På(110_på_motorvej,V) <- Motorvej(V);
+På(80_uden_for_motorvej,V) <- ~Motorvej(V):Skal begrundes;
+På(110_på_motorvej,V) <- Motorvej(V):Skal begrundes;
 
 AndenHastighedsGrænseFastsat(K,80_uden_for_motorvej,V) <- ~Motorvej(V), Vogntog(K), BeregnetTil(K,støjmåling): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;
 AndenHastighedsGrænseFastsat(K,110_på_motorvej,V) <- Motorvej(V), Vogntog(K), BeregnetTil(K,støjmåling): §43 stk. 8: bekendtgørelse af transport- bygnings- og boligministeren 2009-10-26 nr. 1042;

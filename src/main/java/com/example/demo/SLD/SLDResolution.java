@@ -29,6 +29,9 @@ public class SLDResolution {
      * @param level the current level of the SLD-tree.
      */
     private static boolean inOrderTraversal(Program program, int level, TraceNode current, List<Clause> usedOnThePath, List<Substitution> answers, HashMap<Atom,List<Clause>> groundClauses){
+        if(level > 10){
+            System.out.println("Deep");
+        }
         if(current.goal.isEmpty()){
             answers.add(current.goal.sub());
             for(Clause used: usedOnThePath){
@@ -61,9 +64,9 @@ public class SLDResolution {
                 usedOnThePath.add(instance);
                 if(inOrderTraversal(program, level+1, child, usedOnThePath, answers, groundClauses)){
                     current.addChild(child);
-                }else{
-                    usedOnThePath.remove(instance);
                 }
+                usedOnThePath.remove(instance);
+
             }
         }
         return !current.children.isEmpty();

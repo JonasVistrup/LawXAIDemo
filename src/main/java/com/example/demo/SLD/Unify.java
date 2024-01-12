@@ -17,7 +17,7 @@ public class Unify {
      */
     static Substitution findMGU(Atom selectedAtom, Atom head) {
 
-        if(head.predicate() != selectedAtom.predicate()){
+        if(head.predicate() != selectedAtom.predicate() || head.hasTemporalTerm() != selectedAtom.hasTemporalTerm()){
             return null;
         }
         Substitution sub = new Substitution();

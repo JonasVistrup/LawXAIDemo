@@ -2,7 +2,7 @@ ForsøgerAtFøre(P,K):[P] forsøger at føre [K];
 Koncentration(P,A,B,C):[P]s koncentration af [A] i [B] er [C];
 Indtaget(P,A):[P] har indtaget [A];
 Indtagelse(I):[I] er en indtagelse;
-FarligtStof(A):[A] er klassifikiseret som farligt stof for færdselssikkerheden i følge transport-, bygnings- og boligministeren;
+FarligtStof(A):[A] er klassificeret som farligt stof for færdselssikkerheden i følge transport-, bygnings- og boligministeren;
 Pga(A,B):[A] er pga. [B];
 OverladerFøringTil(P,K,P2):[P] overlader føring af [K] til [P2];
 ErFor(A,B,C):[A] er [B] for [C];

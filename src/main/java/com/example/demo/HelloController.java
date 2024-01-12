@@ -191,6 +191,9 @@ public class HelloController implements Initializable {
         XAI.addPredicates(strPath+"res/Predicates/§§10-13.txt");
         XAI.addPredicates(strPath+"res/Predicates/§§14-20.txt");
         XAI.addPredicates(strPath+"res/Predicates/§§21-40.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§31-40.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§41-50.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§51-60.txt");
         XAI.addPredicates(strPath+"res/Predicates/VejDefinitioner.txt");
         XAI.addPredicates(strPath+"res/Predicates/Tid.txt");
 
@@ -227,6 +230,39 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/4/§28.jlaw");
         XAI.addRules(strPath+"res/4/§29.jlaw");
         XAI.addRules(strPath+"res/4/§30.jlaw");
+
+        XAI.addRules(strPath+"res/4/§31.jlaw");
+        XAI.addRules(strPath+"res/4/§32.jlaw");
+        XAI.addRules(strPath+"res/4/§33.jlaw");
+        XAI.addRules(strPath+"res/4/§34.jlaw");
+        XAI.addRules(strPath+"res/4/§35.jlaw");
+        XAI.addRules(strPath+"res/4/§36.jlaw");
+        XAI.addRules(strPath+"res/4/§37.jlaw");
+        XAI.addRules(strPath+"res/4/§38.jlaw");
+        XAI.addRules(strPath+"res/4/§39.jlaw");
+        //XAI.addRules(strPath+"res/4/§40.jlaw");
+
+        XAI.addRules(strPath+"res/5/§41.jlaw");
+        XAI.addRules(strPath+"res/5/§42.jlaw");
+        XAI.addRules(strPath+"res/5/§43.jlaw");
+        XAI.addRules(strPath+"res/6/§44.jlaw");
+        XAI.addRules(strPath+"res/6/§45.jlaw");
+        XAI.addRules(strPath+"res/6/§46.jlaw");
+        XAI.addRules(strPath+"res/6/§47.jlaw");
+        XAI.addRules(strPath+"res/6/§48.jlaw");
+        XAI.addRules(strPath+"res/7/§49.jlaw");
+        XAI.addRules(strPath+"res/7/§50.jlaw");
+
+        XAI.addRules(strPath+"res/8/§51.jlaw");
+        XAI.addRules(strPath+"res/8/§52.jlaw");
+        XAI.addRules(strPath+"res/10/§53.jlaw");
+        XAI.addRules(strPath+"res/10/§54.jlaw");
+        XAI.addRules(strPath+"res/10/§55.jlaw");
+        XAI.addRules(strPath+"res/10/§56.jlaw");
+        //XAI.addRules(strPath+"res/10/§57.jlaw");
+        XAI.addRules(strPath+"res/10/§58.jlaw");
+        XAI.addRules(strPath+"res/10/§59.jlaw");
+        XAI.addRules(strPath+"res/10/§60.jlaw");
     }
 
     @FXML

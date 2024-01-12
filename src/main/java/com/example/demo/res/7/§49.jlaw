@@ -1,5 +1,5 @@
 BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), SkaberFare(Kø,T) \/ SkaberUlempe(Kø,T):§49 stk.1;
-BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), På(Kø,V), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), Manøvre(M), Type(M,overhaling), Af(M,C), Tegn(T), For(T,M), Udfører(P2,T), ~Tillader(færdselsforholdende,føring ved siden af andet køretøj,T), ~Nødvendigt(føring ved siden af andet køretøj,T)] , <(T1,T):§49 stk.1;
+BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), På(Kø,V), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), Manøvre(M), Type(M,overhaling), Af(M,C), Tegn(T), For(T,M), Udfører(P2,T), ~Tillader(færdselsforholdende,føring ved siden af andet køretøj,T), ~Nødvendigt(føring ved siden af andet køretøj,T) , <(T1,T):§49 stk.1;
 BrudtLoven(P,§49 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Cykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T), #(C,A,hjul), <(2,A):§49 stk.1;
 
 BrudtLoven(P,§49 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), På(Kø,VVB,T), Vognbane(VVB), DelAf(VVB,VKB), Kørebane(VKB), DelAf(VVB2,VKB), HøjreFor(VVB2,VVB), ~[Manøvre(M) /\ Udfører(P,M,T) /\ Type(M,overhaling)]:§49 stk.2;
@@ -10,7 +10,7 @@ IkkeBrudtLoven(P,§16 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Fø
 
 BrudtLoven(P,§49 stk.3,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Før(C,VK,T), Vejkryds(VK), Skal(P,M,T), På(Kø,VVB,T), ~HøjreSide(C,VVB):§49 stk.3;
 
-BrudtLoven(P,§49 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), DelAf(F1,P), Er(F1,fod), DelAf(F1,P), Er(F2,fod), ~=(F1,F2), DelAf(Pedal.C), Er(Pedal,pedal), IkkePå(F1,Pedal), ~På(F2,Pedal):§49 stk.4;
+BrudtLoven(P,§49 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), DelAf(F1,P), Er(F1,fod), DelAf(F1,P), Er(F2,fod), ~=(F1,F2), DelAf(Pedal,C), Er(Pedal,pedal), IkkePå(F1,Pedal), ~På(F2,Pedal):§49 stk.4;
 BrudtLoven(P,§49 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), DelAf(Styr,C), Type(C,styr), DelAf(H1,P), Er(H1,hånd), IkkePå(H1,Styr), DelAf(H2,P), Er(H2,hånd), IkkePå(H2,Styr), ~=(H1,H2) :§49 skt.4;
 
 BrudtLoven(P,§49 stk.5,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Cykel(C), På(C,F), Fortov(F) \/ Sti(F), ~AndetFølger(Kø,§14 stk.4):§49 skt.5;

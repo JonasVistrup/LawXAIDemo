@@ -10,14 +10,14 @@ BrudtLoven(P,§51 stk.2,T) <- Kørsel(Kø,C), Cykel(C), Fører(P,Kø,T), Før(C,
 
 BrudtLoven(P,§51 stk.3,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), ~Type(Kø,trækning), På(Kø,F,T), Fortov(F) \/ Sti(F), ~[Type(Kø,overkørsel)/\Over(Kø,F,T)/\ Fra(Kø,VS) /\ Type(VS,sidevej)]:§51 stk.3;
 
-BrudtLoven(P,§51 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Knallert(C), DelAf(F1,P), Er(F1,fod), DelAf(F1,P), Er(F2,fod), ~=(F1,F2), DelAf(Pedal.C), Er(Pedal,pedal), IkkePå(F1,Pedal), ~På(F2,Pedal):§51 stk.4;
+BrudtLoven(P,§51 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Knallert(C), DelAf(F1,P), Er(F1,fod), DelAf(F1,P), Er(F2,fod), ~=(F1,F2), DelAf(Pedal,C), Er(Pedal,pedal), IkkePå(F1,Pedal), ~På(F2,Pedal):§51 stk.4;
 BrudtLoven(P,§51 stk.4,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Knallert(C), DelAf(Styr,C), Type(C,styr), DelAf(H1,P), Er(H1,hånd), IkkePå(H1,Styr), DelAf(H2,P), Er(H2,hånd), IkkePå(H2,Styr), ~=(H1,H2):§51 skt.4;
 
 BrudtLoven(P,§51 stk.5,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Knallert(C), Holder(P,A), Køretøj(A) \/ Letbanekøretøj(A) \/ [Passager(A,K2) /\ [Køretøj(K2) \/ Letbanekøretøj(K2)]]:§51 skt.5;
 
 BrudtLoven(P,§51 stk.6,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), #(C,A,personer_befordret), #(C,B,personer_berenget), <(B,A):§51 skt.6;
 
-BrudtLoven(P,§51 stk.7,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), Alder(B,A), Befordres(B,C), #(C,3,hjul), DelAf(Plads,C), Type(Plads,passersiddeplads),  ~ForsynetMed(Plads,sikkerhedssele)], <(B,5):§51 skt.7;
+BrudtLoven(P,§51 stk.7,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), Alder(B,A), Befordres(B,C), #(C,3,hjul), DelAf(Plads,C), Type(Plads,passersiddeplads),  ~ForsynetMed(Plads,sikkerhedssele), <(B,5):§51 skt.7;
 
 BrudtLoven(P,§51 stk.8,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), På(G,C,T), Type(G,genstand), [Længde(G,A) /\ <(2m,A)] \/ [Bredde(G,B) /\ <(0.7m,B)]:§51 skt.8;
 BrudtLoven(P,§51 stk.8,T) <- Kørsel(Kø,C), Knallert(C), Fører(P,Kø,T), På(G,C,T), Type(G,genstand), Hindrer(G,fuldt herredømme,C,T) \/ Hindrer(G,behørig tegngivning,C,T)\/ SkaberUlempe(G,T):§51 skt.8;

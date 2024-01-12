@@ -11,7 +11,7 @@ BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Af(S,K
 BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), Type(VSL,spærrelinje), Afstand(VSL,K,A,T), <(A,3m), IkkeMellem(punkteret_linje,VSL,K):§29 stk.1.8;
 BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), Krybespor(V):§29 stk.1.9;
 BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), MærkeretFor(V,holdeplads_for_hyrevogne):§29 stk.1.10;
-BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), Kørsel(Kørsel), Af(Kørsel,KL), Letbanekøretøj(KL), Hindrer(S,Kørsel):§29 stk.1.11;
+BrudtLoven(P,§29 stk.1,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), Igang(S,T), På(S,V,T), Kørsel(Kørsel), Af(Kørsel,KL), Letbanekøretøj(KL), Hindrer(S,Kørsel,KL):§29 stk.1.11;
 
 
 BrudtLoven(P,§29 stk.2,T) <- Standsning(S)\/Parkering(S), Udfører(P,S), På(S,V,T), MærkeretSom(V,busstoppested):§29 stk.2;

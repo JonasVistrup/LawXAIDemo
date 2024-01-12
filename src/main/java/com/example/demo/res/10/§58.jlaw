@@ -1,1 +1,2 @@
-Nægtes(P,Kørekort,T) <- Type(Kørekort,kørekort), Til(Kørekort,motorkøretøj), Til(Kørekort,erhvervsmæssig_ befordring_af_personer), Nægtelse(N), Af(N,Kørekort), For(N,P), Pga(N,betingelse_i_straffelovens_§78_stk.2);
+Nægtes(P,Kørekort,T) <- Type(Kørekort,kørekort), Til(Kørekort,motorkøretøj), Til(Kørekort,erhvervsmæssig_ befordring_af_personer), Nægtelse(N), Af(N,Kørekort), For(N,P), Pga(N,betingelse_i_straffelovens_§78_stk.2):§58 stk.1;
+

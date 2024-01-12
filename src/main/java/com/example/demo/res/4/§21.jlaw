@@ -5,7 +5,7 @@ IkkeBrudtLoven(P,§21 stk.1,T) <- Fører(P,K,T), Manøvre(M), Udfører(P,M), Typ
 
 BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), ~Sikre(P,M,kan_ske_uden_fare):§21 stk.3;
 BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), På(M,V,T), Vognbane(V), Modkørende(K2,K,T), Afstand(K,K2,A,T), ~TilstrækkeligtFor(A,M):§21 stk.3;
-BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Forankørende(K2,K,T), Fører(P2,K2,T), Tegn(P,Tegn,T), Type(Tegn,overhaling):§21 stk.3;
+BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Forankørende(K2,K,T), Fører(P2,K2,T), Tegn(Tegn), Udfører(P,Tegn,T), Type(Tegn,overhaling):§21 stk.3;
 BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Forankørende(K,K2,T), Fører(P2,K2,T), Manøvre(M2), Type(M2,overhaling), Igang(M2,T), Udfører(P2,M2):§21 stk.3;
 BrudtLoven(P,§21 stk.3,T) <- Kørende(P,T), Manøvre(M), Start(M,T), Type(M,overhaling), Udfører(P,M), Fører(P,K,T), På(K,V,T), Færdsel(V,Færdsel), SkaberUlempeFor(M,Færdsel):§21 stk.3;
 

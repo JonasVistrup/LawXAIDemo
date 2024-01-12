@@ -18,7 +18,7 @@ BrudtLoven(P,§10 Stk.5,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Køreb
 
 BrudtLoven(P,§10 Stk.6,T) <- Gående(P,T), Laver(P,Passage,T), Kørebane(V)\/Cykelsti(V), Type(Passage,lige_over_vej):§10 stk.6;
 
-BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,Politi), Politiet(Politiet), Tegn(Politiet,Tegn,T), Til(Tegn,P), Type(Tegn,må_ikke_passerer):§10 stk.7;
-BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,S), Signalanlæg(S), Tegn(S,Tegn,T), Til(Tegn,P), Type(Tegn,rødt):§10 Stk.7;
+BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,Politi), Politiet(Politiet), Tegn(Tegn), Udfører(Politiet,Tegn,T), Til(Tegn,P), Type(Tegn,må_ikke_passerer):§10 stk.7;
+BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,S), Signalanlæg(S), Tegn(Tegn), Udfører(S,Tegn,T), Til(Tegn,P), Type(Tegn,rødt):§10 Stk.7;
 
 

@@ -19,7 +19,7 @@ IkkeI(A,B):[A] er ikke i [B];
 IkkeKan(A,B):[A] kan ikke [B];
 IkkeStraksFjerner(P,K):[P] fjerner ikke straks [K];
 IkkeTillader(A,B):[A] tillader ikke [B];
-Tillader(A;B):[A] tillader [B];
+Tillader(A,B):[A] tillader [B];
 IkkeTændt(L):[L] er ikke tændt;
 IkkeUdfører(A,B):[A] udfører ikke [B];
 IkkeVed(A,B):[A] er ikke ved [B];

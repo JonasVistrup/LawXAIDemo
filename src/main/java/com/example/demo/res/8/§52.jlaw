@@ -1,9 +1,9 @@
 BrudtLoven(P,§52 stk.1,T) <- Kørsel(Kø,C), Fører(P,Kø,T), Kørsel(Kø2,K), Motorcykel(C), Retning(Kø,R,T), Retning(Kø2,R,T), VedSiden(C,K,T):§52 stk.1;
 
-BrudtLoven(P,§52 stk.2,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), ~Type(Kø,trækning), På(Kø,F,T), Fortov(F) \/ Sti(F), ~[Type(Kø,overkørsel)/\Over(Kø,F,T) /\ Frakørsel(VS), Fra(VS,E), Ejendom(E) /\ [Fra(Kø,VS)\/ Til(Kø,VS)]]:§52 stk.2:§27 stk.2;
+BrudtLoven(P,§52 stk.2,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), ~Type(Kø,trækning), På(Kø,F,T), Fortov(F) \/ Sti(F), ~[Type(Kø,overkørsel)/\Over(Kø,F,T) /\ Frakørsel(VS) /\ Fra(VS,E) /\ Ejendom(E) /\ [Fra(Kø,VS)\/ Til(Kø,VS)]]:§52 stk.2:§27 stk.2;
 
-BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), DelAf(B2,P), ~=(B1,B2), :§52 stk.3;
-BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), Type(B1,ben), Type(B2,ben), DelAf(B2,P), ~=(B1,B2), :§52 stk.3;
+BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), DelAf(B2,P), ~=(B1,B2):§52 stk.3;
+BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), DelAf(B1,P), Type(B1,ben), Type(B2,ben), DelAf(B2,P), ~=(B1,B2):§52 stk.3;
 BrudtLoven(P,§52 stk.3,T) <- Kørsel(Kø,C), Motorcykel(C), DelAf(Bagsæde,C), Type(Bagsæde,bagsæde), På(P,Bagsæde), Ikke(P,en_person_med_to_ben):§52 stk.3;
 
 BrudtLoven(P,§52 stk.4,T) <- Kørsel(Kø,C), Motorcykel(C), Fører(P,Kø,T), #(C,A,personer_befordret), #(C,B,personer_berenget), <(B,A):§51 skt.6;

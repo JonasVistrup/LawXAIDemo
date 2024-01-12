@@ -6,6 +6,6 @@ IkkeBrudtLoven(P,§29,T) <- Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S,T
 
 BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), Flytning(F), Af(F,K), ~Fra(F,et_passende_sted), Til(F,et_passende_sted), Muligt(F,T), ~Udfører(P,F,T):§31 stk.2;
 BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), IkkeStraksFjerner(P,K,T), IkkeAdvarder(P,andre_trafikanter):§31 stk.2;
-BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), MotordrevetKøretøj(K), Standsning(S), Af(S,K), Udfører(P,S), IkkeStraksFjerner(P,K,T), ~Knallert(K), ~Motorcykel(K), Afmærkning(A), Advarder(A,kørende_der_nærmer_sig), Type(A,trekant_advarselsanordning), ~Udfører(P,A):§31 stk.2;
+BrudtLoven(P,§31_stk.2,T) <- BrudtLoven(P,§28\/§29,T), MotordrevetKøretøj(K), Standsning(S), Af(S,K), Udfører(P,S), IkkeStraksFjerner(P,K,T), ~Knallert(K), ~Motorcykel(K), Afmærkning(A), Advarder(A,kørende_der_nærmer_sig,K), Type(A,trekant_advarselsanordning), ~Udfører(P,A):§31 stk.2;
 
 BrudtLoven(P,§31_stk.3,T) <- Køretøj(K), Standsning(S), Af(S,K), Udfører(P,S), På(S,Spor,T), Er(Spor,spor), IkkeStraksFjerner(P,K,T), IkkeAdvarder(P,førere_af_skinnekøretøj):§31 stk.3;
