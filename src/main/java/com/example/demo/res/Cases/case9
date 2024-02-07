@@ -1,0 +1,5 @@
+Fører(tiltalte,reg_nr,)
+Foran(forankørende,reg_nr)
+Hastighed(reg_nr,122,0724)
+FareFor(reg_nr,påkørsel)
+Afstand(reg_nr,forankørende,afstand_mellem_reg_nr_og_forankørende,0724)

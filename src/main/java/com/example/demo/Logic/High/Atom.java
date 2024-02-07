@@ -63,13 +63,15 @@ public class Atom implements Comparable<Atom>{
     public Atom(Predicate predicate, Arguments args){
         if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
         if((predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof UDNegation)) throw new IllegalArgumentException("Illegal use of double negation");
-        if(predicate instanceof PredicateStd || (predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd)) {
+        if(predicate instanceof PredicateStd){//|| (predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd)) {
             this.type = Type.STANDARD;
         }else if (predicate instanceof UDFunction) {
             if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match function predicate");
             this.type = Type.FUNCTION;
         }else {
-            if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match relation predicate " +predicate);
+            if(predicate.nArgs() != args.size() && !(predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd && predicate.nArgs()+1 == args.size())){
+                throw new IllegalArgumentException("Number of arguments does not match relation predicate " +predicate);
+            }
             this.type = Type.RELATION;
         }
         this.predicate = predicate;

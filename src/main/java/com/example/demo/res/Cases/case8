@@ -1,0 +1,8 @@
+Fører(tiltalte,reg_nr_1,1150)
+Motorkøretøj(reg_nr_1)
+IkkeHar(tiltalte,kørekort,1150)
+Type(kørekort,kørekort)
+Fører(tiltalte,reg_nr_2,1355)
+Motorkøretøj(reg_nr_2)
+IkkeHar(tiltalte,kørekort,1355)
+IkkeHar(tiltalte,sikkerhedssele_påført,1355)

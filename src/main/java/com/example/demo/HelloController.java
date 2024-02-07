@@ -4,6 +4,8 @@ import com.example.demo.Logic.High.Atom;
 import com.example.demo.Logic.High.AtomList;
 import com.example.demo.Logic.High.Clause;
 import com.example.demo.Logic.High.Substitution;
+import com.example.demo.Logic.Symbols.Predicates.PredicateUD;
+import com.example.demo.Logic.Symbols.Predicates.UDNegation;
 import com.example.demo.SLD.Answer;
 import com.example.demo.SLD.History;
 import com.example.demo.SLD.XAI;
@@ -15,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.*;
 
@@ -52,7 +56,8 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onFactInputClick(){
-        if((""+factInput.getCharacters()).equals("test")){
+        String factString = ""+factInput.getCharacters();
+        if(factString.equals("test")){
             ArrayList<String> info = new ArrayList<>();
             info.add("Kører(jonas,bil,vej)");
             info.add("Hastighed(bil,60)");
@@ -65,7 +70,7 @@ public class HelloController implements Initializable {
             factList.getItems().addAll(info);
             factInput.setText("");
             return;
-        }else if((""+factInput.getCharacters()).equals("basic")){
+        }else if(factString.equals("basic")){
             ArrayList<String> info = new ArrayList<>();
             info.add("SpeedNotReducedToMatchConditions(jonas,bil,vej)");
             info.add("LosesControl(jonas,bil)");
@@ -73,32 +78,8 @@ public class HelloController implements Initializable {
             factList.getItems().addAll(info);
             factInput.setText("");
             return;
-        }else if((""+factInput.getCharacters()).equals("case1")){
-            ArrayList<String> info = new ArrayList<>();
-            info.add("Køretøj(reg_nr_1)");
-            info.add("Befordres(tiltalte,reg_nr_1,0521)");
-            info.add("På(reg_nr_1,vej4,0521)");
-            //info.add("På(tiltalte,vej4,0521)");
-            info.add("Vej(vej4)");
-
-            info.add("Færdselsuheld(uheld)");
-            info.add("IndblandetI(tiltalte,uheld)");
-            info.add("På(uheld,vej4,0521)");
-            info.add("Slut(uheld,0521)");
-            info.add("Ejer(skadelidte,husmur,0521)");
-            info.add("ForvoldtPå(tiltalte,skade,husmur,0521)");
-
-            info.add("Køretøj(reg_nr_2)");
-            info.add("Bil(reg_nr_2)");
-            info.add("Befordres(tiltalte,reg_nr_2,1210)");
-            info.add("På(reg_nr_2,vej1,1210)");
-            info.add("Cykelsti(vej1)");
-            info.add("Sti(vej1)");
-            info.add("På(tiltalte,vej1,1210)");
-            info.add("IkkeEfterkommer(tiltalte,vej1_er_fællessti,1210)");
-            info.add("GivesVed(vej1_er_fællessti,skilt,T)");
-            info.add("På(skilt,vej1,T)");
-            info.add("Afmærkning(skilt)");
+        }else if(factString.startsWith("case")){
+            ArrayList<String> info = parseCase(factString);
 
             facts.addAll(info);
             factList.getItems().addAll(info);
@@ -115,6 +96,19 @@ public class HelloController implements Initializable {
         //factList.setItems(oList);
         //factList.refresh();
 
+    }
+
+    private ArrayList<String> parseCase(String casePath){
+        ArrayList<String> result = new ArrayList<>();
+        try{
+            Scanner scanner = new Scanner(new File(strPath+"res/Cases/"+casePath));
+            while (scanner.hasNextLine()) {
+                result.add(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            throw new IllegalStateException("file is missing at location "+casePath);
+        }
+        return result;
     }
 
     @FXML
@@ -199,6 +193,7 @@ public class HelloController implements Initializable {
 
         XAI.addUDPs(strPath+"res/UDPs.txt");
 
+        XAI.addRules(strPath+"res/logical-rules.jlaw");
         XAI.addRules(strPath+"res/1/§2.jlaw");
         XAI.addRules(strPath+"res/2/§3.jlaw");
         XAI.addRules(strPath+"res/2/§4.jlaw");
@@ -278,6 +273,7 @@ public class HelloController implements Initializable {
         int pos = answerList.getSelectionModel().getSelectedIndex();
         answerList.getSelectionModel().clearSelection(pos);
         if(pos < 0 || answerList.getItems().size() <= pos) return;
+        if(active != null && active.atom != null && active.atom.predicate() instanceof PredicateUD) return;
 
         if(active == null){
             selectAnswer(pos);
@@ -300,11 +296,17 @@ public class HelloController implements Initializable {
         answerList.getItems().clear();
 
         this.answerInfo.setText(active.atom.explain() + " begrundet:");
-        int i = 1;
-        List<Clause> clauses = this.groundClausesUsed.get(active.atom);
-        for(Clause clause: clauses){
-            answerList.getItems().add("("+i+"): "+clause.reasons.get(0));
-            i++;
+        if(active.atom.predicate() instanceof UDNegation){
+            answerList.getItems().add(((UDNegation) active.atom.predicate()).predicate.explain(active.atom.args) + " kan ikke vises");
+        } else if (active.atom.predicate() instanceof PredicateUD) {
+            answerList.getItems().add("Af definitionen af "+active.atom.predicate().toString());
+        } else {
+            int i = 1;
+            List<Clause> clauses = this.groundClausesUsed.get(active.atom);
+            for (Clause clause : clauses) {
+                answerList.getItems().add("(" + i + "): " + clause.reasons.get(0));
+                i++;
+            }
         }
     }
 

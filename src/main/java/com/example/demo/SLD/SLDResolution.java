@@ -55,11 +55,14 @@ public class SLDResolution {
         if(!program.clauses.containsKey(selected.predicate())) return false;
 
         for(Clause clause: program.clauses.get(selected.predicate())){
+            if(clause.head.equals(XAI.pb.parseAtomOld("MaxHastighed(V,50km/t)"))){
+                System.out.println("Tested");
+            }
             Clause instance = clause.getInstance(level);
             Substitution unifier = Unify.findMGU(selected, instance.head);
             if (unifier != null) {
                 Goal nextGoal = current.goal.applyClause(instance, 0, unifier).runAndRemoveGroundUDPs();
-                if(nextGoal == null) return false;
+                if(nextGoal == null) continue;
                 TraceNode child = new TraceNode(nextGoal);
                 usedOnThePath.add(instance);
                 if(inOrderTraversal(program, level+1, child, usedOnThePath, answers, groundClauses)){

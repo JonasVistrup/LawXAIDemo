@@ -35,7 +35,7 @@ public class Plus extends UDFunction {
             Number second = (Number) args.get(1);
             return new Substitution((Variable) args.get(2), first.add(second));
 
-        }else if(args.get(0) instanceof Constant && args.get(2) instanceof Constant){
+        }else if(args.get(0) instanceof Number && args.get(2) instanceof Number){
             Number first = (Number) args.get(0);
             Number result = (Number) args.get(2);
             return new Substitution((Variable) args.get(2), result.subtract(first));
