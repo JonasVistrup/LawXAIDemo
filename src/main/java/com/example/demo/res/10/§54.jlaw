@@ -1,4 +1,5 @@
-BrudtLoven(P,§54_stk.1,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), FarligtStof(Stof), Er(Stof,bevidsthedspåvirkende), Koncentration(P,Stof,blodet,>0,T\/>T), Indtagelse(I), Udfører(P,I), Af(P,Stof), IkkeEr(I,sket_i_overensstemmelse_med_lovlig_recept):§54_stk.1;
+BrudtLoven(P,§54_stk.1,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), FarligtStof(Stof), Er(Stof,bevidsthedspåvirkende), [~EuforiserendeListe(Stof,Kategori) /\Koncentration(P,Stof,blodet,Mængde,T\/>T)/\IkkeEr(Mængde,ubetydelig)]\/[Bagatelgrænse(Stof,Grænse)/\Koncentration(P,Stof,blodet,>Grænse,T\/>T)], Indtagelse(I), Udfører(P,I), Af(P,Stof), IkkeEr(I,sket_i_overensstemmelse_med_lovlig_recept):§54_stk.1;
+BrudtLoven(P,§54_stk.1,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), FarligtStof(Stof), Er(Stof,bevidsthedspåvirkende), Koncentration(P,Stof,blodet,>0,T\/>T), Indtagelse(I), Udfører(P,I), Af(P,Stof), ~Er(I,sket_i_overensstemmelse_med_lovlig_recept):§54_stk.1;
 
 BrudtLoven(P,§54_stk.2,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), Er(F,førelsen_af_køretøjet_på_en_ubetryggende_måde), I(F,K), Udfører(P,F,T), Pga(F,sygdom\/svækkelse\/overanstrengelse\/mangel_på_søvn\/påvirkning_af_opstemmende_midler\/påvirkning_af_bedøvende_midler):§54_stk.2;
 
@@ -7,3 +8,126 @@ BrudtLoven(P,§54_stk.3,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),Cykel(K)\/E
 BrudtLoven(P,§54_stk.4,T) <- OverladerFøringTil(P,K,P2,T), MotordrevetKøretøj(K)\/Cykel(K)\/Er(K,hest\/hestekøretøj), Er(F,førelsen_af_køretøjet_på_en_ubetryggende_måde), I(F,K), Udfører(P2,F,>T), Pga(F,sygdom\/svækkelse\/overanstrengelse\/mangel_på_søvn\/påvirkning_af_opstemmende_midler\/påvirkning_af_bedøvende_midler\/påvirkining_af_spiritus):§54_stk.4;
 
 BrudtLoven(P,§54_stk.5,T) <- Person(P2), Indtaget(P2,spiritus,T0), <(T0,T), På(P2,Sted,T0), Type(Sted,serveringsted), Er(Sted,offentligt_tilgængelig), ErFor(P,vært,Sted)\/[ErFor(P3,vært,Sted)/\ ErFor(P,medhjælper,P3)], GrundTilAtAntage(P,F,T), OverladerFøringTil(P,K,P2,T), MotordrevetKøretøj(K)\/Cykel(K)\/Er(K,hest\/hestekøretøj), Er(F,førelsen_af_køretøjet_på_en_ubetryggende_måde), I(F,K), Udfører(P2,F,>T), Pga(F,påvirkining_af_spiritus), ~Hindre(P,F,T), ~Tilkalder(P,politet):§54_stk.5;
+
+
+FarligtStof(Stof)<-EuforiserendeListe(Stof,a\/b\/d\/e):BEK nr 655 af 19/06/2007 §1 stk.1;
+
+EuforiserendeListe(cannabis,a)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(heroin,a)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(lsd,a)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(præpareret_opium,a)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(planten_papaver_somnifer_L,a)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+EuforiserendeListe(amfetamin,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(cocain,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(dextromoramid,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(dextropropoxyphen,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(fentanyl,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(hydrocodon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(hydromorphon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(ketobemidon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(kokablad,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(mbdb,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(mdma,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(metamfetamin,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(methadon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(methylphenidat,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(morphin,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(opium,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(oxycodon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(oxymorphon,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(pethidin,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(pma,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(pmma,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(tetrahydrocannabinol,b)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+EuforiserendeListe(buprenorphin,d)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(flunitrazepam,d)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(pentazocin,d)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(pentobarbital,d)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+EuforiserendeListe(alprazolam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(amfepramon,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(barbital,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(bromazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(brotizolam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(chlordiazepoxid,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(clobazam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(clonazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(diazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(estazolam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(lorazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(lormetazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(meprobamat,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(midazolam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(nitrazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(nordazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(oxazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(phenobarbital,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(phentermin,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(temazepam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(triazolam,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(zolpidem,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+EuforiserendeListe(zopiclon,e)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+
+Bagatelgrænse(cannabis,0.001mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(heroin,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(lsd,0.0005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(præpareret_opium,0.0005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(planten_papaver_somnifer_L,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+Bagatelgrænse(amfetamin,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(cocain,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(dextromoramid,0.075mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(dextropropoxyphen,0.050mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(fentanyl,0.001mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(hydrocodon,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(hydromorphon,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(ketobemidon,0.025mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(kokablad,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(mbdb,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(mdma,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(metamfetamin,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(methadon,0.050mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(methylphenidat,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(morphin,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(opium,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(oxycodon,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(oxymorphon,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(pethidin,0.10mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(pma,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(pmma,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(tetrahydrocannabinol,0.001mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+Bagatelgrænse(buprenorphin,0.0005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(flunitrazepam,0.005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(pentazocin,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(pentobarbital,1.0mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+Bagatelgrænse(alprazolam,0.005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(amfepramon,0.003mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(barbital,5.0mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(bromazepam,0.050mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(brotizolam,0.002mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(chlordiazepoxid,0.20mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(clobazam,0.10mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(clonazepam,0.005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(diazepam,0.100mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(estazolam,0.050mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(lorazepam,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(lormetazepam,0.005mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(meprobamat,5.0mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(midazolam,0.050mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(nitrazepam,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(nordazepam,0.100mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(oxazepam,0.100mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(phenobarbital,10mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(phentermin,0.030mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(temazepam,0.020mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(triazolam,0.002mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(zolpidem,0.080mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+Bagatelgrænse(zopiclon,0.010mg/kg_blod)<-:BEK nr 655 af 19/06/2007 bilag 1;
+
+
+

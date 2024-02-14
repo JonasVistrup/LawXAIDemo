@@ -37,3 +37,5 @@ Udrykningskøretøj(K):[K] er et udrykningskøretøj;
 Øvrigekøretøj(K):[K] er et køretøj uden fra vejdirektoratets opdellinger;
 Kørestol15(K):[K] er en kørestol som har en konstruktiv maximal hastighed på 15km/t;
 Kørestol(K):[K] er en kørestol;
+
+Kører(P,K,V,T0,T1):[P] kører [K] på [V] fra [T0] til [T1];
