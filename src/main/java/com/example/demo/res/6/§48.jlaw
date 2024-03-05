@@ -5,12 +5,12 @@ BrudtLoven(P,§48 stk.1,T) <- Fører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørse
 BrudtLoven(P,§48 stk.1,T) <- Kørsel(Kø,K), Af(Kø,K), Udfører(P,Kø,T), Type(Kø,indkørsel), Til(Kø,VM), Fra(Kø,V), Motortrafikvej(VM), ~Begynder(VM,V), ~Tilkørsel(V):§45 stk.1:§48 stk.1;
 BrudtLoven(P,§48 stk.2,T) <- Kørsel(Kø,K), Af(Kø,K), Udfører(P,Kø,T), Type(Kø,udkørsel), Til(Kø,VM), Fra(Kø,V), Motortrafikvej(VM), ~Ender(VM,V), ~Frakørsel(V):§45 stk.2:§48 stk.1;
 
-BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,VM), Motortrafikvej(VM), Type(M,[vending \/ bakning]):§46 stk.2:§48 stk.1;
-BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motortrafikvej(L), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), ~Ved(L,nødtelefon):§46 stk.2:48 stk.1;
-BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motortrafikvej(L), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2:§48 stk.1;
-BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T),  På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motortrafikvej(VM), Type(M,vending \/ bakning):§46 stk.2:§48 stk.1;
+BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,VM), Motortrafikvej(VM), Type(M,vending \/ bakning):§46 stk.2:§48 stk.1;
+BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motortrafikvej(L), Type(M,parkering \/ standsning), ~Rasteplads(L), ~Parkeringsplads(L), ~Ved(L,nødtelefon):§46 stk.2:48 stk.1;
+BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), Motortrafikvej(L), Type(M,parkering \/ standsning), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2:§48 stk.1;
+BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T),  På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motortrafikvej(VM), Type(M,vending \/ barking):§46 stk.2:§48 stk.1;
 BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motortrafikvej(VM), Type(M,parkering \/ standsning), ~Rasteplads(L), ~Parkeringsplads(L), ~Ved(L,nødtelefon):§46 stk.2:§48 stk.1;
-BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motortrafikvej(VM), Type(M,[parkering \/ standsning]), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2:§48 stk.1;
+BrudtLoven(P,§48 stk.2,T) <- Manøvre(M), Udfører(P,M,T), På(M,L), [Tilkørsel(L) /\ Til(L,VM)] \/ [Frakørsel(L) /\ Fra(L,VM)], Motortrafikvej(VM), Type(M,parkering \/ standsning), ~Rasteplads(L), ~Parkeringsplads(L), Ved(L,nødtelefon), ~Begrundelse(M,anvendlse af nødtelefon):§46 stk.2:§48 stk.1;
 
 BrudtLoven(P,§48 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motortrafikvej(KB), Type(M,standsning), Begrundelse(M, tvunget), IkkeEr(K,placeret_så_vidt_muligt_udenfor_kørebanen,T):§47 stk.1:§48 stk.1;
 BrudtLoven(P,§48 stk.1,T) <- Manøvre(M), Udfører(P,M,T), På(M,KB), Kørebane(KB), Motortrafikvej(KB), Type(M,standsning), Begrundelse(M, tvunget), Fjernelse(F), Af(F,K), Fra(F,KB), IkkeUdfører(P,F,T0)\/IkkeStraks(F), ~Træffer(P,foranstaltninger_for_advarning_af_andre_trafikanter):§47 stk.1:§48 stk.1;

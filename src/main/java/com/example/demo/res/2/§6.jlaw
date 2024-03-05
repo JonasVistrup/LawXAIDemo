@@ -1,4 +1,4 @@
-BrudtLoven(P,§6 stk.1,T) <- Spring(S), Udfører(P,S),Igang(S,T) Fra(S,K), Køretøj(K), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,springe_af_et_køretøj_i_bevægelse,T):§6 stk.1;
+BrudtLoven(P,§6 stk.1,T) <- Spring(S), Udfører(P,S),Igang(S,T), Fra(S,K), Køretøj(K), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,springe_af_et_køretøj_i_bevægelse,T):§6 stk.1;
 BrudtLoven(P,§6 stk.1,T) <- Spring(S), Udfører(P,S), Igang(S,T), Fra(S,K) \/ Til(S,K), Køretøj(K), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,springe_på_et_køretøj_i_bevægelse,T):§6 stk.1;
 BrudtLoven(P,§6 stk.1,T) <- Ophold(O), På(O,Trinbræt,T), Køretøj(K), På(Trinbræt, K,T), Trinbræt(Trinbræt), Hastighed(K,A,T), <(0km/t,A), ~SærligtGodkendt(P,opholde_sig_på_et_køretøjs_trinbræt,T):§6 stk.1;
 

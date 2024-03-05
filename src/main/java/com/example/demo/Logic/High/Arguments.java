@@ -119,4 +119,15 @@ public class Arguments implements Iterable<Term>, Comparable<Arguments>{
         terms.add(other);
         return new Arguments(terms);
     }
+
+    @Override
+    public String toString() {
+        if(args.length==0) return "";
+        StringBuilder b = new StringBuilder();
+        for(Term t: args){
+            b.append(t).append(",");
+        }
+        b.deleteCharAt(b.length()-1);
+        return b.toString();
+    }
 }
