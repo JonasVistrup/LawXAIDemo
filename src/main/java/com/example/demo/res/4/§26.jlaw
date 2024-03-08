@@ -6,7 +6,7 @@ UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Fra(Kørsel,V)
 UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Fra(Kørsel,V), Vej(V), Over(V,F), Fortov(F)\/Cykelsti(F)\/Rabat(F), Til(Kørsel,V2), Kørebane(V2), HævetOver(F,V2):§26 stk.3;
 UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Af(Kørsel,K), Knallert(K)\/Cykel(K), Fra(Kørsel,V), Cykelsti(V), Ikke(V,anlagt_i_forbindelse_med_vej), Til(Kørsel,V2)\/Over(Kørsel,V2), Vej(V2):§26 stk.3;
 
-HøjreVigepligt(P,T) <-  Kørsel(Kø1), Kørsel(Kø2), Skærer(Kø,Kø2,T), Udfører(P,Kø1), Udfører(P2,Kø1), Af(Kø1,K), Af(Kø2,K2), HøjreFor(K2,K,T) ~AndetFølger(P,§18,T):§26 stk.4;
+HøjreVigepligt(P,T) <-  Kørsel(Kø1), Kørsel(Kø2), Skærer(Kø,Kø2,T), Udfører(P,Kø1), Udfører(P2,Kø1), Af(Kø1,K), Af(Kø2,K2), HøjreFor(K2,K,T), ~AndetFølger(P,§18,T):§26 stk.4;
 
 BrudtLoven(P,§26 stk.5,T) <- UbetingetVigepligt(P,T)\/HøjreVigepligt(P,T), IkkeTilkendegiver(P,opfylde_vigpligten,T):§26 stk.5;
 BrudtLoven(P,§26 stk.5,T) <- UbetingetVigepligt(P,T)\/HøjreVigepligt(P,T), Kørsel(Kørsel), Udfører(P,Kørsel), Start(Kørsel,T), SkaberFare(Kørsel)\/SkaberUlempe(Kørsel):§26 stk.5;

@@ -46,7 +46,7 @@ constant: CONSTANT;
 variable: VARIABLE;
 inner_atom: atom; 
 
-string: (CONSTANT | VARIABLE | math | LPAR | RPAR | LBRACKET | RBRACKET | LTUBORG | RTUBORG | RAISED)+;
+string: (CONSTANT | VARIABLE | math | LPAR | RPAR | LBRACKET | RBRACKET | LTUBORG | RTUBORG | RAISED | COMMA)+;
 math: PLUS | MINUS | TIMES | DIVIDE | EQUAL | SMALLER | BIGGER;
 
 LARROW: [ ]*[<][-][ ]*;
@@ -69,7 +69,7 @@ LBRACKET: [ ]*[[][ ]*;
 RBRACKET: [ ]*[\]][ ]*;
 LTUBORG: [ ]*[{][ ]*;
 RTUBORG: [ ]*[}][ ]*;
-RAISED: [ ]*[\\^][ ]*;
+RAISED: [\\^];
 NEGATED: [~];
-VARIABLE: ([\p{Lu}]|[#])([\p{L} #0-9_]|[.]|[§])*([\p{L}#0-9_]|[.]|[§])*;
-CONSTANT: ([\p{Ll}]|[§]|[0-9])([\p{L} 0-9_]|[.]|[/]|[§])*([\p{L}#0-9_]|[.]|[§])*;
+VARIABLE: ([\p{Lu}]|[#])(([\p{L} #0-9_]|[.]|[§])*([\p{L}#0-9_]|[.]|[§])+)*;
+CONSTANT: ([\p{Ll}]|[§]|[0-9])(([\p{L} 0-9_]|[.]|[/]|[§])*([\p{L}#0-9_]|[.]|[§])+)*;

@@ -1,12 +1,10 @@
 package com.example.demo.Grammar;
 
-import com.example.demo.Logic.High.Arguments;
-import com.example.demo.Logic.High.Atom;
-import com.example.demo.Logic.High.AtomList;
-import com.example.demo.Logic.High.Clause;
+import com.example.demo.Logic.High.*;
 import com.example.demo.Logic.ProgramParser;
 import com.example.demo.Logic.Symbols.Term;
 import javafx.util.Pair;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -98,6 +96,27 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
     }
 
     @Override public List<AtomList> visitAtom(LawXAIParser.AtomContext ctx) {
+        if(ctx.term() != null) return visitAtom(ctx,visitTerm(ctx.term()).getKey());
+        String p_string = visitPredicate(ctx.predicate());
+
+        Pair<List<List<Arguments>>,List<AtomList>> pair = visitArgument(ctx.argument());
+        List<List<Arguments>> ORargumentsList = pair.getKey();
+        List<AtomList> ORAtoms = pair.getValue();
+
+        List<AtomList> result = new ArrayList<>();
+        for(int i = 0; i<ORargumentsList.size(); i++) {
+            List<Arguments> ANDargList = ORargumentsList.get(i);
+            List<Atom> next = new ArrayList<>();
+            for (Arguments args : ANDargList) {
+                next.add(pp.parseAtom(p_string,args));
+            }
+
+            result.add(new AtomList(next).add(ORAtoms.get(i)));
+        }
+        return result;
+    }
+
+    private List<AtomList> visitAtom(LawXAIParser.AtomContext ctx, Term reification) {
         String p_string = visitPredicate(ctx.predicate());
 
         Pair<List<List<Arguments>>,List<AtomList>> pair = visitArgument(ctx.argument());
@@ -109,13 +128,15 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
             List<Arguments> ANDargList = ORargumentsList.get(i);
             List<Atom> next = new ArrayList<>();
             for(Arguments args: ANDargList){
-                next.add(pp.parseAtomOld(p_string+"("+args.toString()+")"));
+                next.add(pp.parseAtom(p_string,args,reification));
             }
 
             result.add(new AtomList(next).add(ORAtoms.get(i)));
         }
         result.addAll(pair.getValue());
         return result;
+
+
     }
 
     @Override public String visitPredicate(LawXAIParser.PredicateContext ctx) {
@@ -149,16 +170,14 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
         List<Pair<List<List<Term>>,List<AtomList>>> children = ctx.g_term().stream().map(this::visitG_term).collect(Collectors.toList());
 
 
-        List<List<Arguments>> res1 = new ArrayList<>();
-        List<AtomList> res2 = new ArrayList<>();
+        Pair<List<List<Arguments>>,List<AtomList>> result = new Pair<>(ORlist,current);
 
 
         for(Pair<List<List<Term>>,List<AtomList>> pair: children){
-            ORlist = ParseG_term1(ORlist,pair.getKey());
-            current = ParseG_term2(current, pair.getValue());
+            result = ParseG_term(result, pair);
         }
 
-        return new Pair<>(ORlist,current);
+        return result;
     }
 
 
@@ -196,56 +215,264 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
     }
 
     @Override public Pair<List<List<Term>>,List<AtomList>> visitG_term(LawXAIParser.G_termContext ctx) {
-        return null; //TODO
+        if(ctx.term() != null){
+            return termToG_term(visitTerm(ctx.term()));
+        }else if(ctx.c_term() != null){
+            return visitC_term(ctx.c_term());
+        }else if (ctx.d_term() != null){
+            return visitD_term(ctx.d_term());
+        }else{
+            throw new IllegalStateException("PARSE EXCEPTION: G_term has no valid children");
+        }
+    }
+
+    private Pair<List<List<Term>>,List<AtomList>> termToG_term(Pair<Term, List<AtomList>> pair){
+        List<List<Term>> outer = new ArrayList<>();
+        outer.add(new ArrayList<>());
+        outer.get(0).add(pair.getKey());
+        return new Pair<>(outer,pair.getValue());
     }
 
     @Override public Pair<List<List<Term>>,List<AtomList>> visitD_term(LawXAIParser.D_termContext ctx) {
-        return null; //TODO
+        List<List<Term>> nextTerms = new ArrayList<>();
+        List<AtomList> nextAtomlist = new ArrayList<>();
+        for(LawXAIParser.Not_d_termContext not_d: ctx.not_d_term()){
+            Pair<List<List<Term>>,List<AtomList>> child = visitNot_d_term(not_d);
+            nextTerms.addAll(child.getKey());
+            nextAtomlist.addAll(child.getValue());
+        }
+        return new Pair<>(nextTerms,nextAtomlist);
     }
 
     @Override public Pair<List<List<Term>>,List<AtomList>> visitC_term(LawXAIParser.C_termContext ctx) {
-        return null; //TODO
+        List<List<Term>> resultTerms = emptyTwoDArray();
+        List<AtomList> resultAtomlist = new ArrayList<>();
+        resultAtomlist.add(new AtomList());
+
+        for(LawXAIParser.Not_c_termContext not_c: ctx.not_c_term()){
+            Pair<List<List<Term>>,List<AtomList>> childPair = visitNot_c_term(not_c);
+            List<List<Term>> childTerms = childPair.getKey();
+            List<AtomList> childAtoms = childPair.getValue();
+            assert childTerms.size() == childAtoms.size();
+
+            List<List<Term>> nextTerms = new ArrayList<>();
+            List<AtomList> nextAtomlist = new ArrayList<>();
+            for(int i = 0; i<childTerms.size(); i++){
+                List<Term> andTerms = childTerms.get(i);
+                AtomList andAtoms = childAtoms.get(i);
+
+                for(List<Term> currentTerms: resultTerms){
+                    List<Term> combined = new ArrayList<>(currentTerms);
+                    combined.addAll(andTerms);
+                    nextTerms.add(combined);
+                }
+
+                for(AtomList currentAtomlist: resultAtomlist){
+                    nextAtomlist.add(currentAtomlist.add(andAtoms));
+                }
+            }
+            resultTerms = nextTerms;
+            resultAtomlist = nextAtomlist;
+        }
+        return new Pair<>(resultTerms,resultAtomlist);
+    }
+
+    private <T> List<List<T>> twoDArrayWithSingleElm(T elm){
+        List<List<T>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        result.get(0).add(elm);
+        return result;
+    }
+
+    private <T> List<T> arrayWithElm(T elm){
+        List<T> result = new ArrayList<>();
+        result.add(elm);
+        return result;
+    }
+    private <T> List<List<T>> emptyTwoDArray(){
+        List<List<T>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        return result;
     }
 
     @Override public Pair<List<List<Term>>,List<AtomList>> visitNot_d_term(LawXAIParser.Not_d_termContext ctx) {
-        return null; //TODO
+        if(ctx.c_term() != null) return visitC_term(ctx.c_term());
+        else return termToG_term(visitTerm(ctx.term()));
     }
 
     @Override public Pair<List<List<Term>>,List<AtomList>> visitNot_c_term(LawXAIParser.Not_c_termContext ctx) {
-        return null; //TODO
+        if(ctx.d_term() != null) return visitD_term(ctx.d_term());
+        else return termToG_term(visitTerm(ctx.term()));
     }
     @Override public Pair<Term, List<AtomList>> visitTerm(LawXAIParser.TermContext ctx) {
         Term t;
         if(ctx.variable() != null){
-            return new Pair<>(visitVariable(ctx.variable()),new ArrayList<>());
+            return new Pair<>(visitVariable(ctx.variable()),arrayWithElm(new AtomList()));
         }else if(ctx.constant() != null){
-            return new Pair<>(visitConstant(ctx.constant()),null);
-        }else if(ctx.inner_atom() != null){
+            return new Pair<>(visitConstant(ctx.constant()),arrayWithElm(new AtomList()));
+        }else if(ctx.inner_atom() != null) {
             return visitInner_atom(ctx.inner_atom());
+        }else if(ctx.mathTerm() != null){
+            Pair<Term,Atom> res = visitMathTerm(ctx.mathTerm());
+            List<AtomList> atoms = new ArrayList<>();
+            atoms.add(new AtomList(res.getValue()));
+            return new Pair<>(res.getKey(), atoms);
         }else{
             throw new IllegalStateException("PARSE EXCEPTION: String does not have CONSTANT nor VARIABLE child");
         }
+    }
 
-    } //TODO math_term
+    @Override public Pair<Term, Atom> visitMathTerm(LawXAIParser.MathTermContext ctx) {
+        if(ctx.plusTerm() != null) return visitPlusTerm(ctx.plusTerm());
+        else if (ctx.minusTerm() != null) return visitMinusTerm(ctx.minusTerm());
+        else if (ctx.timesTerm() != null) return visitTimesTerm(ctx.timesTerm());
+        else if (ctx.divideTerm() != null) return visitDivideTerm(ctx.divideTerm());
+        else if (ctx.smallerTerm() != null) return visitSmallerTerm(ctx.smallerTerm());
+        else if (ctx.biggerTerm() != null) return visitBiggerTerm(ctx.biggerTerm());
+        else if (ctx.equalTerm() != null) return visitEqualTerm(ctx.equalTerm());
+        else throw new IllegalStateException("PARSE EXCEPTION: mathTerm has no valid child");
+    }
 
-    @Override public Pair<Term, List<Atom>> visitMathTerm(LawXAIParser.MathTermContext ctx) { return null; }
+    private Pair<Term, Atom> parseEquation(String mathSymbol, ParseTree child1, ParseTree child2){
+        Term t = pp.genUniqueVariable();
+        Term first;
+        Term second;
+        if(child1 instanceof LawXAIParser.ConstantContext){
+            first = visitConstant((LawXAIParser.ConstantContext)child1);
+        }else{
+            first = visitVariable((LawXAIParser.VariableContext)child1);
+        }
 
-    @Override public Pair<Term, List<Atom>> visitPlusTerm(LawXAIParser.PlusTermContext ctx) { return null; }
+        if(child2 instanceof LawXAIParser.ConstantContext){
+            second = visitConstant((LawXAIParser.ConstantContext)child2);
+        }else{
+            second = visitVariable((LawXAIParser.VariableContext)child2);
+        }
 
-    @Override public Pair<Term, List<Atom>> visitMinusTerm(LawXAIParser.MinusTermContext ctx) { return null; }
+        return new Pair<>(t, pp.parseAtomOld(mathSymbol+"("+first.toString()+","+second.toString()+","+t.toString()+")"));
+    }
 
-    @Override public Pair<Term, List<Atom>> visitTimesTerm(LawXAIParser.TimesTermContext ctx) { return null; }
+    @Override public Pair<Term, Atom> visitPlusTerm(LawXAIParser.PlusTermContext ctx) {
+        return parseEquation("+",ctx.children.get(0), ctx.children.get(2));
+    }
 
-    @Override public Pair<Term, List<Atom>> visitDivideTerm(LawXAIParser.DivideTermContext ctx) { return null; }
 
-    @Override public Pair<Term, List<Atom>> visitEqualTerm(LawXAIParser.EqualTermContext ctx) { return null; }
 
-    @Override public Pair<Term, List<Atom>> visitSmallerTerm(LawXAIParser.SmallerTermContext ctx) { return null; }
+    @Override public Pair<Term, Atom> visitMinusTerm(LawXAIParser.MinusTermContext ctx) {
+        return parseEquation("-",ctx.children.get(0), ctx.children.get(2));
+    }
 
-    @Override public Pair<Term, List<Atom>> visitBiggerTerm(LawXAIParser.BiggerTermContext ctx) { return null;}
+    @Override public Pair<Term, Atom> visitTimesTerm(LawXAIParser.TimesTermContext ctx) {
+        return parseEquation("*",ctx.children.get(0), ctx.children.get(2));
+    }
+
+    @Override public Pair<Term, Atom> visitDivideTerm(LawXAIParser.DivideTermContext ctx) {
+        return parseEquation("/",ctx.children.get(0), ctx.children.get(2));
+    }
+
+    @Override public Pair<Term, Atom> visitEqualTerm(LawXAIParser.EqualTermContext ctx) {
+        Term generated = pp.genUniqueVariable();
+        Term specified;
+        if(ctx.children.get(0) instanceof LawXAIParser.ConstantContext){
+            specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(0));
+        }else if(ctx.children.get(0) instanceof LawXAIParser.VariableContext){
+            specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(0));
+        }else if(ctx.NEGATED() != null){
+            if(ctx.children.get(2) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(2));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(2));
+            }
+        }else{
+            if(ctx.children.get(1) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(1));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(1));
+            }
+        }
+
+        if(ctx.NEGATED() != null){
+            return new Pair<>(generated, pp.parseAtomOld("~=("+specified+","+generated+")"));
+        }
+
+        return new Pair<>(generated, pp.parseAtomOld("=("+specified+","+generated+")"));
+    }
+
+    @Override public Pair<Term, Atom> visitSmallerTerm(LawXAIParser.SmallerTermContext ctx) {
+        Term generated = pp.genUniqueVariable();
+        Term specified;
+        if(ctx.children.get(0) instanceof LawXAIParser.ConstantContext){
+            specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(0));
+
+            if(ctx.NEGATED() != null) return new Pair<>(generated, pp.parseAtomOld("~<("+specified+","+generated+")"));
+            else return new Pair<>(generated, pp.parseAtomOld("<("+specified+","+generated+")"));
+
+
+        }else if(ctx.children.get(0) instanceof LawXAIParser.VariableContext){
+            specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(0));
+
+            if(ctx.NEGATED() != null) return new Pair<>(generated, pp.parseAtomOld("~<("+specified+","+generated+")"));
+            else return new Pair<>(generated, pp.parseAtomOld("<("+specified+","+generated+")"));
+
+        }else if(ctx.NEGATED() != null){
+            if(ctx.children.get(2) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(2));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(2));
+            }
+            return new Pair<>(generated, pp.parseAtomOld("~<("+generated+","+specified+")"));
+        }else{
+            if(ctx.children.get(1) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(1));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(1));
+            }
+            return new Pair<>(generated, pp.parseAtomOld("<("+generated+","+specified+")"));
+        }
+    }
+
+    @Override public Pair<Term, Atom> visitBiggerTerm(LawXAIParser.BiggerTermContext ctx) {
+        Term generated = pp.genUniqueVariable();
+        Term specified;
+        if(ctx.children.get(0) instanceof LawXAIParser.ConstantContext){
+            specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(0));
+
+            if(ctx.NEGATED() != null) return new Pair<>(generated, pp.parseAtomOld("~<("+generated+","+specified+")"));
+            else return new Pair<>(generated, pp.parseAtomOld("<("+generated+","+specified+")"));
+
+
+        }else if(ctx.children.get(0) instanceof LawXAIParser.VariableContext){
+            specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(0));
+
+            if(ctx.NEGATED() != null) return new Pair<>(generated, pp.parseAtomOld("~<("+generated+","+specified+")"));
+            else return new Pair<>(generated, pp.parseAtomOld("<("+generated+","+specified+")"));
+
+        }else if(ctx.NEGATED() != null){
+            if(ctx.children.get(2) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(2));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(2));
+            }
+            return new Pair<>(generated, pp.parseAtomOld("~<("+specified+","+generated+")"));
+        }else{
+            if(ctx.children.get(1) instanceof LawXAIParser.ConstantContext){
+                specified = visitConstant((LawXAIParser.ConstantContext) ctx.children.get(1));
+            }else{
+                specified = visitVariable((LawXAIParser.VariableContext) ctx.children.get(1));
+            }
+            return new Pair<>(generated, pp.parseAtomOld("<("+specified+","+generated+")"));
+        }
+    }
 
     @Override public Pair<Term, List<AtomList>> visitInner_atom(LawXAIParser.Inner_atomContext ctx) {
-        return null;
+        Term t;
+        if(ctx.atom().term() != null){
+            t = visitTerm(ctx.atom().term()).getKey();
+            return new Pair<>(t,visitAtom(ctx.atom()));
+        }else {
+            t = pp.genUniqueVariable();
+            return new Pair<>(t, visitAtom(ctx.atom(),t));
+        }
     }
 
     @Override public String visitString(LawXAIParser.StringContext ctx) {
@@ -258,12 +485,10 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
         }
     }
     @Override public Term visitConstant(LawXAIParser.ConstantContext ctx) {
-        System.out.println(ctx.CONSTANT().toString());
         return pp.getTerm(ctx.CONSTANT().toString());
     }
 
     @Override public Term visitVariable(LawXAIParser.VariableContext ctx) {
-        System.out.println(ctx.VARIABLE().toString());
         return pp.getTerm(ctx.VARIABLE().toString());
     }
 

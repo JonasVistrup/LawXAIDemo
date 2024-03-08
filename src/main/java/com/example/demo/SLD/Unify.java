@@ -35,7 +35,16 @@ public class Unify {
                 }
             }
         }
+        if(selectedAtom.hasReificationTerm() && head.hasReificationTerm()){
+            Substitution unifier = unify(selectedAtom.reification(), head.reification());
+            if(unifier == null){
+                return null;
+            }else{
+                sub = sub.add(unifier);
+            }
+        }
 
+        if(selectedAtom.hasReificationTerm() != head.hasReificationTerm()) return null; //TODO improve
         return sub;
     }
 

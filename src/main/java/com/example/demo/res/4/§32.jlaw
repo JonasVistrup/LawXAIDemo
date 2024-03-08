@@ -3,16 +3,16 @@ BrudtLoven(P,§32_stk.1,T) <- Lygtetændingstiden(V,T), Kørende(P), På(P,V,T),
 BrudtLoven(P,§32_stk.1,T) <- Lygtetændingstiden(V,T), Kørende(P), På(P,V,T), NødvendigtFor(A,forebygge_fare\/afværge_fare), Type(A,henledning_af_opmærksomhed), Ved(A,lydsignal), Udfører(P,A,T), Udføren(A,P), På(A,faren), Vare(A,længere_end_nødvendigt),  Af(A,andre_trafikanter):§32 stk.1;
 Ved(A,lyssignal) <- Ved(A,blink_med_køretøjets_fjernlys\/blink_med_køretøjets_nærlys):§32 stk.1;
 
-BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,igangsætning_fra_vejen\/vendning\/svingning), Udfører(P,M,T), ~[Udfører(P,Tegn,T0) /\ <(T0,T)]:§32 stk.2;
-BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,Motorvej), Motorvej(Motorvej), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), Udfører(P,M,T), ~[Udfører(P,Tegn,T0) /\ <(T0,T)]:§32 stk.2;
-BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,V), ~Motorvej(V), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), NødvendigtFor(Tegn,vejledning_for_den_øvrige_færdsel), Udfører(P,M,T), ~[Udfører(P,Tegn,T0) /\ <(T0,T)]:§32 stk.2;
+BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,igangsætning_fra_vejen\/vendning\/svingning), Udfører(P,M,T), Udfører(P,Tegn,T0), <(T0,T):§32 stk.2:TODO FIX;
+BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,Motorvej), Motorvej(Motorvej), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), Udfører(P,M,T), Udfører(P,Tegn,T0), <(T0,T):§32 stk.2:TODO FIX;
+BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,V), ~Motorvej(V), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), NødvendigtFor(Tegn,vejledning_for_den_øvrige_færdsel), Udfører(P,M,T), Udfører(P,Tegn,T0), <(T0,T):§32 stk.2:TODO fix;
 
 BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,igangsætning_fra_vejen\/vendning\/svingning), Udfører(P,M,T), Udfører(P,M,<T), IkkeVed(Tegn,blinklys), IkkeVed(Tegn,arm_rækkes_vandred_ud_til_siden):§32 stk.2;
 BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,Motorvej), Motorvej(Motorvej), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), Udfører(P,M,T), Udfører(P,Tegn,<T), IkkeVed(Tegn,blinklys), IkkeVed(Tegn,arm_rækkes_vandred_ud_til_siden):§32 stk.2;
 BrudtLoven(P,§32_stk.2,T) <- Kørende(P,T), På(P,V), ~Motorvej(V), Tegn(Tegn), For(Tegn,M), Type(M,vognbaneskift\/ikke_ubetydelig_ændring_af_køretøjets_placering_til_siden), NødvendigtFor(Tegn,vejledning_for_den_øvrige_færdsel), Udfører(P,M,T), Udfører(P,Tegn,<T), IkkeVed(Tegn,blinklys), IkkeVed(Tegn,arm_rækkes_vandred_ud_til_siden):§32 stk.2;
 
-BrudtLoven(P,§32_stk.4,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,standser\/hurtigt_nedsætter_hastigheden), Udfører(P,M,T), ~[Udfører(P,Tegn,T0) /\ <(T0,T)], Ved(Tegn,stoplygte) \/ Ved(Tegn,arm_rækkes_i_vejret), NødvendigtFor(Tegn,vejledning_for_andre):§32 stk.4;
-BrudtLoven(P,§32_stk.4,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,standser\/hurtigt_nedsætter_hastigheden), Udfører(P,M,T), ~[Udfører(P,Tegn,T0) /\ <(T0,T)], IkkeVed(Tegn,stoplygte), IkkeVed(Tegn,arm_rækkes_i_vejret), NødvendigtFor(Tegn,vejledning_for_andre):§32 stk.4;
+BrudtLoven(P,§32_stk.4,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,standser\/hurtigt_nedsætter_hastigheden), Udfører(P,M,T), Udfører(P,Tegn,T0), <(T0,T), Ved(Tegn,stoplygte) \/ Ved(Tegn,arm_rækkes_i_vejret), NødvendigtFor(Tegn,vejledning_for_andre):§32 stk.4:TODO fix ;
+BrudtLoven(P,§32_stk.4,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,standser\/hurtigt_nedsætter_hastigheden), Udfører(P,M,T), Udfører(P,Tegn,T0), <(T0,T), IkkeVed(Tegn,stoplygte), IkkeVed(Tegn,arm_rækkes_i_vejret), NødvendigtFor(Tegn,vejledning_for_andre):§32 stk.4:TODO fix;
 
 
 BrudtLoven(P,§32_stk.5,T) <- Kørende(P,T), Tegn(Tegn), For(Tegn,M), Type(M,igangsætning_fra_vejen\/vendning\/svingning), Udfører(P,M,T), Udfører(P,Tegn,T0), IkkeGodTidIForholdTil(T0,M) \/ Ikke(Tegn,tydeligt_synlig\/utvetydig):§32 stk.2:§32 stk.5;

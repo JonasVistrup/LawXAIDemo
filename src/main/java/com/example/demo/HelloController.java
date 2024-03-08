@@ -113,11 +113,11 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onQueryClick(){
-        activeAtom = XAI.pb.parseAtomOld("BrudtLoven(X,Y,T)");
+        activeAtom = XAI.pp.parseAtomOld("BrudtLoven(X,Y,T)");
         query = new AtomList(activeAtom);
         groundClausesUsed = new HashMap<>();
         answers = XAI.query(new ArrayList<>(factList.getItems()),query, groundClausesUsed);
-        for(Clause c: XAI.pb.getProgram()){
+        for(Clause c: XAI.pp.getProgram()){
             System.out.println(c);
         }
         System.out.println("Facts Size: "+factList.getItems().size());
@@ -193,7 +193,6 @@ public class HelloController implements Initializable {
 
         XAI.addUDPs(strPath+"res/UDPs.txt");
 
-        XAI.addRules(strPath+"res/logical-rules.jlaw");
         XAI.addRules(strPath+"res/1/§2.jlaw");
         XAI.addRules(strPath+"res/2/§3.jlaw");
         XAI.addRules(strPath+"res/2/§4.jlaw");
@@ -229,7 +228,7 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/4/§31.jlaw");
         XAI.addRules(strPath+"res/4/§32.jlaw");
         XAI.addRules(strPath+"res/4/§33.jlaw");
-        XAI.addRules(strPath+"res/4/§34.jlaw");
+        //XAI.addRules(strPath+"res/4/§34.jlaw");
         XAI.addRules(strPath+"res/4/§35.jlaw");
         XAI.addRules(strPath+"res/4/§36.jlaw");
         XAI.addRules(strPath+"res/4/§37.jlaw");

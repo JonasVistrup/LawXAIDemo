@@ -3,7 +3,7 @@ BrudtLoven(P,§41_stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Til
 BrudtLoven(P,§41_stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Er(H,større_end_at_føreren_bevarer_fuldt_herredømme_over_køretøjet):§41 stk.1;
 
 BrudtLoven(P,§41_stk.1,T) <- Fører(P,K,T), Foran(K,K2,T), Afstand(K,K2,A,T), Standselængde(K,A<,T):§41 stk. 1;
-Standselængde(K,A1+A2,T) <- Reaktionslængde(K,A1,T), Bremselængde(K,A2,T): 1999/1 LSF 263 stk. 2.3;
+Standselængde(K,A3,T) <- Reaktionslængde(K,A1,T), Bremselængde(K,A2,T), +(A1,A2,A3): 1999/1 LSF 263 stk. 2.3;
 Reaktionslængde(K,A,T) <- Hastighed(K,H), Fører(P,K,T), Reaktionstid(P,Tid,T), X(H,T,A):Udregning;
 Reaktionstid(P,1.5,T) <-:Givet ved lov;
 Bremselængde(K,A,T) <- ForventetBremsepræstation(K,P,T), HastighedMprS(K,H,T), X(H,H,H2), +(P,P,2P), /(H2,2P,A): ([slut hastighed]^2-[start hastighed]^2)/2[bremsepræstantion] = [afstand]:Udregning;

@@ -7,8 +7,8 @@ EgenVægt(K,V) <- Model(K,M), Vægt(M,V1), AltTilbehørSomNormaltMedfører(K,T),
 
 Fodgængerfelt(F) <- Vej(F), BestemtFor(F,gående), MærkeretFor(F,gående), Krydser(F,V), Kørebane(V) \/ Cykelsti(V):§2.5;
 
-Knallert(K) <- #hjul(K,3), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§ 2.7;
-Knallert(K) <- #hjul(K,2), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§2.7;
+Knallert(K) <- #hjul(K,3), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), ~<(45,B):§ 2.7;
+Knallert(K) <- #hjul(K,2), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), ~<(45,B):§2.7;
 Knallert(K) <- #hjul(K,3), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A):§2.7;
 Knallert(K) <- #hjul(K,2), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A), ~Elcykel(K), ~Segway(K):§2.7;
 Knallert45(K) <- Knallert(K), KonstruktivHastighed(K,B), <(30,B):§2.7;
