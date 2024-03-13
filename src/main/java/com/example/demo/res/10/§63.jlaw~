@@ -1,0 +1,1 @@
+BrudtLoven(P,§63 stk.1 nr.1) <- Fører(P,K,T), KnallertU#Plade(K), ~Erhverver(P,K), Kørekort(K), Til(K,lille knallert\/stor knallert\/bil\/motorcykel)

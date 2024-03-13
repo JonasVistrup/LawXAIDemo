@@ -1,0 +1,2 @@
+BrudtLoven(P,§65 stk.1 nr.1,T) <- Ejer(P,K,T), Oplysning(O), Af(O,hvilke personer der som førere har benyttet køretøjet), Anmoder(Popo,P,O,T), IkkeAfleverer(P,O,Popo,T), Politiet(Popo):§65 stk.1 nr.1;
+BrudtLoven(P,§65 stk.2 nr.1,T) <- Ejer(P,K,T)\/Fører(P,K,T), Til(OverladerFøring(P,K),P2), IkkeKan(P2,lovligt føre køretøjet):§65 stk.2 nr.1;

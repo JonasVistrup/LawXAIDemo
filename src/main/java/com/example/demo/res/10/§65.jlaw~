@@ -1,0 +1,1 @@
+BrudtLoven(P,§65 stk.1 nr.1,T) <- Ejer(P,K,T), Oplysning(O), Af(O,hvilke personer der som førere har benyttet køretøjet)
