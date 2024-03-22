@@ -1,0 +1,3 @@
+Lov#(A,B):[A] er paragraf [B];
+Stk#(A,B):[A] er stk. [B];
+Nr#(A,B):[A] er nr. [B];

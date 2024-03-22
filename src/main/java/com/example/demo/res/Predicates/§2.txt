@@ -1,10 +1,9 @@
-#hjul(K,A):[K] har [A] hjul;
 Akseltryk(K,T):Hjulene på aksel på [K] overføres tryk [T] til vejen;
 AltTilbehørSomNormaltMedfører(K,T):[T] er alt tilbehør som normalt medfører [K];
 BaneSomKørebanenKanDelesI(V,VK):[V] er en bane som [VK] kan deles i;
 Befordres(P,K):[P] befordres af [K];
 DårligFøre(V):Trafikanter på [V] har dårligt føre;
-EgenVægt(K,A):Vægten af [K] med driftsmidler men uden fører og last er [A];
+Egenvægt(K,A):Vægten af [K] med driftsmidler men uden fører og last er [A];
 Elmotor(K,M):[M] er en elmotor i [K];
 FaktiskVægt(K,A):Vægten af [K] med driftsmidler, fører og last er [A];
 Forbrændingsmotor(K,M):[K] har forbrændingsmotor [M];

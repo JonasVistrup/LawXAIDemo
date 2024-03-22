@@ -1,0 +1,1 @@
+BrudtLoven(P,§77 stk.1 nr.1,T) <- Undersøgelse(U), Af(U,K), Kræver(Popo,U), Nægter(P,U,T), Politiet(Popo):;

@@ -1,0 +1,1 @@
+BrudtLoven(P,§83a stk.1 nr.1,T) <- Campingvogn(K), Befordres(P,K,T):§83a stk.1 nr.1;

@@ -1,0 +1,1 @@
+BrudtLoven(P,§79 stk.1 nr.1,T) <- TPMBestemmelse(A,§79 stk.1 nr.1), Udlejning(U), Af(U,K), Motorkøretøj(K), Ejer(P,U), Udfører(P,U,T), IkkeFølger(U,A):§79 skt.1 nr.1;

@@ -1,0 +1,29 @@
+BrudtLoven(P,§80 stk.1 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Igang(Kørsel,T), Bil(K)\/Knallert(K)\/Motorcykel(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P,SS,T), Benytter(P,Sæde,T):§80 stk.1 nr.1;
+IkkeBrudtLoven(P,§80 stk.1 nr.1,T) <- Bakning(Bakning), Af(Bakning,K), Igang(Bakning,T), Bil(K)\/Knallert(K)\/Motorcykel(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P,SS,T), Benytter(P,Sæde,T):§80 stk.1 nr.1:§80 stk.1 nr.2;
+IkkeBrudtLoven(P,§80 stk.1 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Igang(Kørsel,T), På(Kørsel,V), Parkeringsplads(V)\/Type(V,servicestation\/værkstedsområde)\/[Type(V,Type), LigendeForhold(V,parkeringsplads\/servicestation\/værkstedsområde)], Bil(K)\/Knallert(K)\/Motorcykel(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P,SS,T), Benytter(P,Sæde,T):§80 stk.1 nr.1:§80 stk.2 nr.1;
+
+IkkeBrudtLoven(P,§80 stk.1 nr.1,T) <- TPMLempelse(A,§80 stk.3 nr.1), Følger(Kørsel,A), Kørsel(Kørsel), Af(Kørsel,K), Igang(Kørsel,T), Bil(K)\/Knallert(K)\/Motorcykel(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P,SS,T), Benytter(P,Sæde,T):§80 stk.1 nr.1:§80 stk.3 nr.1;
+
+BrudtLoven(P,§80 stk.4 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Fører(P,K,T), Igang(Kørsel,T), Bil(K)\/Knallert(K)\/Motorcykel(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P2,SS,T), Benytter(P2,Sæde,T), Alder(P2,<15år):§80 stk.1 nr.1:§80 stk.4 nr.1;
+IkkeBrudtLoven(P,§80 stk.4 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Fører(P,K,T), Igang(Kørsel,T), Bus(K), Siddeplads(Sæde), I(Sæde,K), Har(Sæde,SS), Type(SS,sikkerhedssele), IkkeAnvender(P2,SS,T), Benytter(P2,Sæde), Følger(P,A), TPMLempelse(A,§80 stk.4 nr.2) :§80 stk.4 nr.1:§80 stk.4 nr.2;
+
+BrudtLoven(P,§80a stk.1 nr.1,T) <- Fører(P,K,T), Befordres(P2,K,T), [Bil(K) /\ ~Bus(B)]\/Motorcykel(K)\/Knallert(K)], Siddeplads(S), Type(S,passersiddeplads), I(S,K), Har(S,SS), Type(SS,sikkerhedssele), Benytter(P2,S,T), IkkeAnvender(P2,G), Type(G,godkent sikkerhedsudtyr), Til(G,S), Barn(P2), Højde(P2,<135cm):§80a stk.1 nr.1;
+BrudtLoven(P,§80a stk.2 nr.1,T) <- Fører(P,K,T), Befordres(P2,K,T), [Bil(K) /\ ~Bus(K)]\/Motorcykel(K)\/Knallert(K)], IkkeHar(K,passagersiddepladser forsynet med sikkerhedsseler), Barn(P2), Alder(P2,<3år):§80a stk.2 nr.1;
+BrudtLoven(P,§80a stk.2 nr.1,T) <- Fører(P,K,T), Befordres(P2,K,T), [Bil(K) /\ ~Bus(K)]\/Motorcykel(K)\/Knallert(K)], IkkeHar(K,passagersiddepladser forsynet med sikkerhedsseler), Barn(P2), Alder(P2,~<3år), På(P2,forsæde):§80a stk.2 nr.1;
+
+BrudtLoven(P,§80a stk.3 nr.1,T) <- Fører(P,K,T), Befordres(P2,K,T), [Bil(K) /\ ~Bus(K)]\/Motorcykel(K)\/Knallert(K)], Siddeplads(S), Type(S,passersiddeplads), Med(S,FrontAir), Type(FrontAir,frontAirbag), IkkeEr(FrontAir,deaktivetet), I(S,K), Benytter(P2,S,T), Barn(P2), I(P2,BB), Type(BB,bagudvendende barnestol), På(BB,S):§80a stk.3 nr.1;
+
+BrudtLoven(P,§80a stk.4 nr.1,T) <- Bus(K), Befordres(P2,K,T), Siddeplads(S), Har(S,SS), Type(SS,sikkerhedsudstyr), Benytter(P2,S,T), IkkeAnvender(P2,SS,T):§80a stk.4 nr.1;
+
+BrudtLoven(P,§80a stk.7 nr.1,T) <- Politiet(Popo), Kræver(Popo,M,T), Måling(M), Af(M,højde\/vægt), Af(M,P2), Nægter(P,M,T), Befordres(P2,K,<T), Bil(K)\/Motorcykel(K)\/Knallert(K):§80a stk.7 nr.1;
+
+BrudtLoven(P,§80b stk.1 nr.1,T) <- Befordres(P,K,T), Bil(K), #(K,A,passagerer på forsædet), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.4 nr.1;
+BrudtLoven(P,§80b stk.1 nr.2,T) <- Befordres(P,K,T), Bil(K), #(K,A,passagerer på bagsæderne), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.1 nr.2:§80b stk.4 nr.1; 
+
+IkkeBrudtLoven(P,§80b stk.1 nr.2,T) <- Bil(K), #(K,A,passagerer på bagsæderne), #(K,0,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.1 nr.2:§80b stk.4 nr.1; 
+
+IkkeBrudtLoven(P,§80b stk.1 nr.1,T) <- Befordres(P,K,T), Alder(P,<15år), Bil(K), #(K,A,passagerer på forsædet), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.4 nr.1;
+IkkeBrudtLoven(P,§80b stk.1 nr.2,T) <- Befordres(P,K,T), Alder(P,<15år), Bil(K), #(K,A,passagerer på bagsæderne), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.1 nr.2:§80b stk.4 nr.1;
+
+BrudtLoven(P,§80b stk.1 nr.1,T) <- Fører(P,K,T), Bil(K), #(K,A,passagerer på forsædet), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.4 nr.2;
+BrudtLoven(P,§80b stk.1 nr.2,T) <- Fører(P,K,T), Bil(K), #(K,A,passagerer på bagsæderne), #(K,B,passagersiddepladser, som er forsynet med sikkerhedsseler), <(B,A):§80b stk.1 nr.1:§80b stk.1 nr.2:§80b stk.4 nr.2; 

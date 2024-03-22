@@ -1,0 +1,1 @@
+BrudtLoven(P,§81 stk.1 nr.1,T) <- Fører(P,K,T)\/[Befordres(P,K,T)/\Alder(P,>15år)], Motorcykel(K) \/ [Bil(K) /\ [#(K,3,hjul) \/ [#(K,4,hjul) /\ [Egenvægt(K,<450kg)/\Til(K,personbefordring)]\/[Egenvægt(K,<600kg)/\Til(K,godstransport)]]]] \/ Knallert(K), 

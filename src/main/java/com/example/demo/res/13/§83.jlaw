@@ -1,0 +1,3 @@
+BrudtLoven(P,§83 stk.1 nr.1,T) <- Befordres(P,K,T), TPMBestemmelse(A,§83 stk.1 nr.1), IkkeFølger(P,A,T):§83 stk.1 nr.1;
+
+BrudtLoven(P,§83a stk.1 nr.1,T) <- Campingvogn(K), Befordres(P,K,T):§83a stk.1 nr.1;

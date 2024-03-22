@@ -1,0 +1,9 @@
+BrudtLoven(P,§82 stk.1 nr.1,T) <- Person(A)\/Type(A,gods),Fører(P,K,T),Pga(IkkeHar(P,frit udsyn\/tilstrækkelig mulighed for at manøvrere køretøjet),A):§82 stk.1 nr.1:FM 1990.96/2 V;
+
+BrudtLoven(P,§82 skt.2 nr.1,T) <- Befordres(P2,K,T), Fører(P,K,T), Kan(A,opstå), Fare(F), For(F,P)\/[For(F,P2)/\Person(P2)], Person(P):§82 skt.2 nr.2;
+
+BrudtLoven(P,§82 stk.3 nr.1,T) <- Type(G,gods), Anbragning(A), Af(A,G), Udfører(P,A,T), Pga(F,A), Kan(F,frembydes), [Fare(F)/\For(F,P2)/\Person(P2)]\/[Skade(F)/\På(F,E)/\Ejendom(E)]:§82 skt.3 nr.1;
+BrudtLoven(P,§82 stk.3 nr.2,T) <- Type(G,gods), Anbragning(A), Af(A,G), Udfører(P,A,T), Kan(A,slæbe af på vejbanen\/falde af på vejbanen\/forårsage forsyrrende støvdannelse\/vanskeliggøre færdsel\/volde unødig støj):§82 skt.3 nr.2;
+
+BrudtLoven(P,§82 stk.4 nr.1,T) <- Type(G,last\/gods), Anbragning(A), Af(A,G), Udfører(P,A,T), IkkeFølger(A,B), TPMBestemmelse(B,§82 stk.4 nr.1,T):§82 stk.4 nr.1;
+BrudtLoven(P,§82 stk.5 nr.1,T) <- Type(G,farligt gods), Anbragning(A), Af(A,G), Udfører(P,A,T), IkkeFølger(A,B), TPMBestemmelse(B,§82 stk.5 nr.1,T):§82 stk.5 nr.1;
