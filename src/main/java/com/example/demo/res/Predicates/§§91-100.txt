@@ -1,0 +1,4 @@
+HarPligt(A,B):[A] har pligt til [B];
+IkkeHarPligt(A,B):[A] har pligt til [B];
+Parkant(P):[P] er en parkant;
+Angivelse(A):[A] er en angivelse;

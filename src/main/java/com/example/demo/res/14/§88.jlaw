@@ -1,0 +1,10 @@
+BrudtLoven(P,§88 stk.1 nr.1,T) <- Type(K,hest\/kreatur), Færdring(F), På(F,V,T), Vej(V), Af(F,K), Lader(P,F), IkkeEr(K,forsvarligt bevogtet,T):§88 stk.1 nr.1;
+BrudtLoven(P,§88 stk.1 nr.2,T) <- Type(A,tøjring), Udfører(P,A,T), Af(A,K), Type(K,hest\/kreatur), Kan(K,når ind på vej,T):§88 stk.1 nr.2;
+BrudtLoven(P,§88 stk.1 nr.3,T) <- Ejer(P,K,T), Type(K,hest\/kreatur), IkkeEr(K,indhegnet forsvarligt,T):§88 stk.1 nr.3;
+
+BrudtLoven(P,§88 stk.2 nr.1,T) <- Færdring(F), Af(F,K,T), Type(K,hund), Type(Fø,føring), Af(Fø,K,T), Af(Fø,P,T), Fra(Fø,K), MotordrevetKøretøj(K)\/Type(K,hestekøretøj):§88 stk.2 nr.1;
+BrudtLoven(P,§88 stk.2 nr.1,T) <- Færdring(F), Af(F,K,T), Type(K,hund), Type(Fø,føring), Af(Fø,K,T), Af(Fø,P,T), Er(P,ridende):§88 stk.2 nr.1;
+
+IkkeBrudtLoven(P,§88 stk.1 nr.1,T) <- Type(K,hest\/kreatur), Færdring(F), På(F,V,T), Vej(V), Af(F,K), Lader(P,F), IkkeEr(K,forsvarligt bevogtet,T), I(V,A), Type(A,naturnationalpark), IkkeEr(V,en væsentlig færdselsåre):§88 stk.1 nr.1:§88 stk.3 nr.1;
+
+IkkeBrudtLoven(P,Lov,T) <- TPMLempelse(A,§88a), For(A,Lov), Følger(P,A,T):§88a;

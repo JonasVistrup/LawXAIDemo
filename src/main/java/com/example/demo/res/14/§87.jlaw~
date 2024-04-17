@@ -1,0 +1,1 @@
+BrudtLoven(P,§87 stk.1 nr.1,T) <- Henkastning(A)\/Efterladning(A), Af(A,B), Udfører(P,A,T), KanVære(), Fare(F)\/Ulempe(F), For(F,færdslen)

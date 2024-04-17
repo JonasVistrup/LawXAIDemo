@@ -1,0 +1,7 @@
+BrudtLoven(P,§86 skt.1 nr.1,T) <- Kørsel(Kø), Af(Kø,K), Udfører(P,Kø,T), Blokvogn(K), IkkeFølger(K,A,T), TPMBestemmelse(A,Lov), Lov#(Lov,§84\/§85), IkkeHar(P,politiets tilladelse,T):§86 stk.1 nr.1;
+BrudtLoven(P,§86 skt.1 nr.2,T) <- Kørsel(Kø), Af(Kø,K), Udfører(P,Kø,T),Blokvogn(K), Til(Kø,Transport), Er(Transport,transport), Kan(Transport,med rimelighed gennemføres på anden måde):§86 stk.1 nr.2;
+
+BrudtLoven(P,§86 stk.2 nr.1,T) <- Kørsel(Kø), Af(Kø,K), Udfører(P,Kø,T), Blokvogn(K), TPMBestemmelse(A,§86 stk.2 nr.1), IkkeFølger(Kø,A,T):§86 stk.2 nr.1;
+
+BrudtLoven(P,§86a stk.1 nr.1,T) <- TPMBestemmelse(A,§86a stk.1 nr.1), IkkeFølger(P,A,T):§86a stk.1 nr.1;
+IkkeBrudtLoven(P,§86a skt.1 nr.1,T) <- TPMLempelse(A,§86a stk.2 nr.1), Følger(P,A,T):§86a stk.1 nr.1:§86a stk.2 nr.1;

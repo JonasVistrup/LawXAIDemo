@@ -1,0 +1,1 @@
+Kan(Popo,r,T) <- ReguleresAf(Popo,Færdsel,T){r}, 
