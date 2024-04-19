@@ -1,0 +1,6 @@
+Gående(jonas)
+Fodgængerfelt(gåfelt)
+Passerer(jonas,byvej)
+Kørebane(byvej)
+Nær(jonas,gåfelt)
+Afstand(jonas,gåfelt,1 minuts gågang)

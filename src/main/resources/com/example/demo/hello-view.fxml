@@ -28,4 +28,5 @@
      </items>
    </SplitPane>
    <Button fx:id="queryButton" mnemonicParsing="false" onAction="#onQueryClick" text="Query" />
+   <ToggleButton fx:id="forImod" mnemonicParsing="false" onMouseClicked="#forImodToggle" prefHeight="26.0" prefWidth="50.0" text="For" />
 </VBox>

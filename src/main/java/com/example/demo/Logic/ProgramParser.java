@@ -131,7 +131,7 @@ public class ProgramParser {
      * @return atom which the string representation corresponds to
      */
     public Atom parseAtomOld(String atomRep) {
-        atomRep = atomRep.replaceAll(" ", "");
+        //atomRep = atomRep.replaceAll(" ", "");
         String[] strArguments;
         if (atomRep.length() == 0) {
             throw new IllegalArgumentException("In Line: "+line+".\n Atom representation must not be empty");
@@ -202,7 +202,7 @@ public class ProgramParser {
             return terms.get(name);
         } else {
             if(illegalTerm(name)) throw new IllegalArgumentException("In Line: "+line+".\nTerm "+name+" is a reserved keyword");
-            if (name.toLowerCase().equals(name)) {
+            if (!Character.isUpperCase(name.charAt(0))) {
                 Constant constant = new Constant(name);
                 terms.put(name, constant);
                 return constant;

@@ -41,6 +41,9 @@ public class HelloController implements Initializable {
     @FXML
     private Label answerInfo;
 
+    @FXML
+    private ToggleButton forImod;
+
     private ClauseAtom active;
 
     private Stack<ClauseAtom> stack;
@@ -93,12 +96,15 @@ public class HelloController implements Initializable {
             factInput.setText("");
             return;
         }
+        Atom a = XAI.pp.parseAtomOld(""+factInput.getCharacters());
+        this.atomFacts.add(a);
+        if(a.predicate().hasExplanation()) factList.getItems().add(a.explain());
+        else factList.getItems().add(a.toString());
+
         facts.add(""+ factInput.getCharacters());
         System.out.println("Added to facts: "+factInput.getCharacters());
 
 
-        ObservableList<String> oList = factList.getItems();
-        oList.add(factInput.getCharacters()+"");
         factInput.setText("");
         //factList.setItems(oList);
         //factList.refresh();
@@ -121,9 +127,14 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onQueryClick(){
-        activeAtom = XAI.pp.parseAtomOld("BrudtLoven(X,Y,T)");
-
+        if(forImod.isSelected()){
+            activeAtom = XAI.pp.parseAtomOld("IkkeBrudtLoven(X,Y,T)");
+        }else{
+            activeAtom = XAI.pp.parseAtomOld("BrudtLoven(X,Y,T)");
+        }
+        this.active = null;
         query = new AtomList(activeAtom);
+
         groundClausesUsed = new HashMap<>();
         //answers = XAI.query(new ArrayList<>(factList.getItems()),query, groundClausesUsed);
         answers = XAI.query(query,atomFacts, groundClausesUsed);
@@ -159,6 +170,12 @@ public class HelloController implements Initializable {
     }
 
     @FXML
+    protected void forImodToggle(){
+        if(forImod.isSelected()) forImod.setText("Imod");
+        else forImod.setText("For");
+    }
+
+    @FXML
     protected void onBackClick() {
         if(active == null) return;
 
@@ -177,7 +194,7 @@ public class HelloController implements Initializable {
 
     private void setupAnswers(){
         answerList.getItems().clear();
-        answerInfo.setText("Select an answer for explanation");
+        answerInfo.setText("Vælg et svar for forklaring");
         for(Substitution answer: answers) {
             query.applySub(answer);
             for(Atom a:query.applySub(answer)){
@@ -332,10 +349,15 @@ public class HelloController implements Initializable {
         if(active == null){
             selectAnswer(pos);
         }else{
-            stack.add(active);
+
+            //stack.add(active);
             if(active.clause == null) {
+                Clause c = groundClausesUsed.get(active.atom).get(pos);
+                if(c.body.size() == 1 && c.body.get(0).predicate() == c.head.predicate()) return;//TODO remove
+                stack.add(active);
                 selectClause(pos);
             }else{
+                stack.add(active);
                 selectAtom(pos);
             }
         }
@@ -358,14 +380,19 @@ public class HelloController implements Initializable {
             int i = 1;
             List<Clause> clauses = this.groundClausesUsed.get(active.atom);
             for (Clause clause : clauses) {
-                answerList.getItems().add("(" + i + "): " + clause.reasons.get(0));
+                if(clause.reasons.size() == 0){
+                    answerList.getItems().add("Faktum");
+                }
+                else answerList.getItems().add("(" + i + "): " + clause.reasons.get(0));
                 i++;
             }
         }
     }
 
     private void selectClause(int pos) {
-        active = new ClauseAtom(groundClausesUsed.get(active.atom).get(pos));
+        Clause c = groundClausesUsed.get(active.atom).get(pos);
+        if(c.body.size() == 1 && c.body.get(0).predicate() == c.head.predicate()) return;//TODO remove
+        active = new ClauseAtom(c);
 
         setupClause();
     }

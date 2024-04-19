@@ -2,6 +2,7 @@ package com.example.demo.Logic.Symbols.Predicates;
 
 
 import com.example.demo.Logic.High.Arguments;
+import com.example.demo.Logic.Symbols.Constant;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public abstract class Predicate {
             res.append(args.get(termPos.get(i)));
             res.append(explanation.get(i+1));
         }
-        if(nArgs+1 == args.size()){
+        if(nArgs+1 == args.size() && args.get(nArgs) instanceof Constant){
             res.append(" på tidspunkt ").append(args.get(nArgs));
         }
         return res.toString();

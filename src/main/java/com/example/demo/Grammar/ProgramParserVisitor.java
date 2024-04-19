@@ -25,7 +25,12 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
     }
 
     @Override public List<Clause> visitClause(LawXAIParser.ClauseContext ctx) {
-        ArrayList<String> reasonings = ctx.reasonings() != null? visitReasonings(ctx.reasonings()): new ArrayList<>();
+        ArrayList<String> reasoningsPrelim = ctx.reasonings() != null? visitReasonings(ctx.reasonings()): new ArrayList<>();
+        ArrayList<String> reasonings = new ArrayList<>();
+        for(String reason: reasoningsPrelim){
+            if(reason.equals("[]")) reasonings.add("Argument");
+            else reasonings.add(reason);
+        }
         Atom head = visitHead(ctx.head());
         List<Clause> result = new ArrayList<>();
         if(ctx.body() == null){

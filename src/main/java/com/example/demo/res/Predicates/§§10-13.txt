@@ -4,6 +4,7 @@ Betræder(P,V):[P] betræder [V];
 EgnetTil(A,B):[A] er egnet til [B];
 Færdsel(V,F):[V] har færdsel [F];
 LyserMed(A,B,C):[A] lyser med [B] i retningen [C];
+IkkeNær(A,B):[A] er ikke nær [B];
 Nær(A,B):[A] er nær [B];
 Optog(O):[O] er et optog;
 Passerer(P,V):[P] passere [V];
