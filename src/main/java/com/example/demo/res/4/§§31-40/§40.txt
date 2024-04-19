@@ -1,1 +1,0 @@
-~BrudtLoven(P,Paragraf,T) <- Paragraf#(Paragraf,A), <(9,A,41), FravigetAfTBB(P,Paragraf,T); §40

@@ -1,6 +1,0 @@
-MaxHastighed(K,45) <- Knallert45(K);§43b
-MaxHastighed(K,30) <- KnallertU#Plade(K);§43b
-Brudtloven(X) <- Kører(X,K,V), Knallert45(K), RullefeltResultat(K,A), >(A,60);§28 stk.1;
-Brudtloven(X) <- Kører(X,K,V), KnallertU#Plade(K), RullefeltResultat(K,A), >(A,40);§28 stk.1;
-RullefeltResultat(K,A) <- RullefeltMåling(R,K,M), Floor(M,M1), -(M1,1,A), GyldigRullefelt(R);Rigspolitiets Brugervejledning for BM45 rullefeltet afsnit 7.6;{Jeg kan ikke finde vejledningen som der bliver referet til}
-GyldigRullefelt(R) <- DagensDato(D), RullefeltKalibrerede(R,D1), -(D,00/06/00,D2), Før(D2,D1);Rigspolitiets Brugervejledning for BM45 rullefeltet afsnit 10;{Jeg kan ikke finde vejledningen som der bliver referet til}

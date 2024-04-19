@@ -50,7 +50,7 @@ public class XAI {
                 lineNumber++;
                 String line = scanner.nextLine();
                 if(line.length() == 0 || line.charAt(0) == '!') continue;
-                String[] parts = removeEOL(line).split(":");
+                String[] parts = removeEOL(line, lineNumber, predicatePath).split(":");
                 if(parts.length!=2) throw new IllegalStateException("Predicate in {"+line+"} has no explanation or is not correctly formatted");
                 try {
                     pp.addPredicate(parts[0], parts[1]);
@@ -84,7 +84,7 @@ public class XAI {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if(line.length() == 0 || line.charAt(0) == '!') continue;
-                String[] parts = removeEOL(line).split(":");
+                String[] parts = removeEOL(line, -1, rulesPath).split(":");
                 if(parts.length<2) throw new IllegalStateException("Clause in {"+line+"} has no reasons or is incorrectly formatted");
                 ArrayList<String> reasons = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length));
                 //pp.parseClause(parts[0],reasons,line);
@@ -94,17 +94,25 @@ public class XAI {
         }
     }
 
-    private static String removeEOL(String line) {
+    private static String removeEOL(String line, int linenr, String path) {
         for(int i = line.length()-1; i>=0; i--){
             if(line.charAt(i) == ';') return line.substring(0,i);
-            if(line.charAt(i) != ' ') throw new IllegalStateException("Predicate in {"+line+"} does not end with ;");
+            if(line.charAt(i) != ' ') throw new IllegalStateException("File:"+path+"; Line "+linenr+"; Predicate in {"+line+"} does not end with ;");
         }
-        throw new IllegalStateException("Predicate in {"+line+"} does not end with ;");
+        throw new IllegalStateException("File:"+path+"; Line "+linenr+"; Predicate in {"+line+"} does not end with ;");
     }
 
 
     public static List<Substitution> query(List<String> stringfacts, AtomList query, HashMap<Atom, List<Clause>> groundClausesUsed){
         facts = stringfacts.stream().map(pp::parseAtomOld).collect(Collectors.toList());
+        Program p = getProgram();
+        List<Substitution> substitutions = SLDResolution.findSubstitutions(query, groundClausesUsed);
+
+        return removeDuplicates(substitutions,query);
+    }
+
+    public static List<Substitution> query(AtomList query, List<Atom> atomfacts, HashMap<Atom, List<Clause>> groundClausesUsed){
+        facts = atomfacts;
         Program p = getProgram();
         List<Substitution> substitutions = SLDResolution.findSubstitutions(query, groundClausesUsed);
 

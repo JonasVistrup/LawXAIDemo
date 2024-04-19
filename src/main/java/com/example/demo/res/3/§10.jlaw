@@ -15,9 +15,11 @@ BrudtLoven(P,§10 Stk.4,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Køreb
 BrudtLoven(P,§10 Stk.4,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(K), Ophold(O), Af(O,P), På(P,V,T), Unødigt(O):§10 Stk.4;
 
 BrudtLoven(P,§10 Stk.5,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(V), Fodgængerfelt(F) \/ [Bro(F) /\ Type(F,fodgængerbro)] \/ [Tunnel(F) /\ Type(F,fodgængertunnel)], Nær(P,F,T):§10 stk.5;
+Nær(P,F,T) <- Gående(P,T), Fodgængerfelt(F), Afstand(P,F,A,T), ~<(30m,A):Færdselsloven med kommentarer side 210;
+Afstand(P,B,80 meter,T) <- Gående(P,T), Afstand(P,B,1 minut,T):https://www.quora.com/How-far-can-a-person-walk-in-one-minute;
+Afstand(P,B,104 meter,T) <- Gående(P,T), Afstand(P,B,1 minut,T):https://www.quora.com/How-far-can-a-person-walk-in-one-minute;
 
 BrudtLoven(P,§10 Stk.6,T) <- Gående(P,T), Laver(P,Passage,T), Kørebane(V)\/Cykelsti(V), Type(Passage,lige_over_vej):§10 stk.6;
-
 BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,Politi), Politiet(Politiet), Tegn(Tegn), Udfører(Politiet,Tegn,T), Til(Tegn,P), Type(Tegn,må_ikke_passerer):§10 stk.7;
 BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,S), Signalanlæg(S), Tegn(Tegn), Udfører(S,Tegn,T), Til(Tegn,P), Type(Tegn,rødt):§10 Stk.7;
 

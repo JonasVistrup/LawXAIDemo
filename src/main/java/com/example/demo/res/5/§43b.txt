@@ -1,1 +1,0 @@
-MaxHastighed(K,80) <- TilladtVægt(K,T), Letbanekøretøj(K), >(T,3500), ~AndenHastighedsGrænse(K), ~KørerPåLukketBane(K);§43 stk. 1;§43b;

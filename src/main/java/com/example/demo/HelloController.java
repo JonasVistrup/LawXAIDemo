@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class HelloController implements Initializable {
 
@@ -51,6 +52,7 @@ public class HelloController implements Initializable {
 
 
     private ArrayList<String> facts = new ArrayList<>();
+    private List<Atom> atomFacts = new ArrayList<>();
 
     private List<Substitution> answers;
 
@@ -80,9 +82,14 @@ public class HelloController implements Initializable {
             return;
         }else if(factString.startsWith("case")){
             ArrayList<String> info = parseCase(factString);
-
+            List<Atom> atoms = info.stream().map(XAI.pp::parseAtomOld).collect(Collectors.toList());
+            this.atomFacts.addAll(atoms);
+            for(Atom a: atoms){
+                if(a.predicate().hasExplanation())  factList.getItems().add(a.explain());
+                else  factList.getItems().add(a.toString());
+            }
             facts.addAll(info);
-            factList.getItems().addAll(info);
+            //factList.getItems().addAll(info);
             factInput.setText("");
             return;
         }
@@ -106,7 +113,8 @@ public class HelloController implements Initializable {
                 result.add(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
-            throw new IllegalStateException("file is missing at location "+casePath);
+            System.out.println("file is missing at location "+casePath);
+            return result;
         }
         return result;
     }
@@ -114,9 +122,11 @@ public class HelloController implements Initializable {
     @FXML
     protected void onQueryClick(){
         activeAtom = XAI.pp.parseAtomOld("BrudtLoven(X,Y,T)");
+
         query = new AtomList(activeAtom);
         groundClausesUsed = new HashMap<>();
-        answers = XAI.query(new ArrayList<>(factList.getItems()),query, groundClausesUsed);
+        //answers = XAI.query(new ArrayList<>(factList.getItems()),query, groundClausesUsed);
+        answers = XAI.query(query,atomFacts, groundClausesUsed);
         for(Clause c: XAI.pp.getProgram()){
             System.out.println(c);
         }
@@ -169,13 +179,22 @@ public class HelloController implements Initializable {
         answerList.getItems().clear();
         answerInfo.setText("Select an answer for explanation");
         for(Substitution answer: answers) {
-            answerList.getItems().add(query.applySub(answer).toString());
+            query.applySub(answer);
+            for(Atom a:query.applySub(answer)){
+                answerList.getItems().add(a.explain());
+            }
+            //answerList.getItems().add(query.applySub(answer).toString());
         }
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        for(File predicateFile: new File(strPath+"res/Predicates").listFiles()){
+            if(predicateFile.isFile()){
+                XAI.addPredicates(predicateFile.getPath());
+            }
+        }/*
         XAI.addPredicates(strPath+"res/Predicates/Køretøjer.txt");
         XAI.addPredicates(strPath+"res/Predicates/Matematik.txt");
         XAI.addPredicates(strPath+"res/Predicates/Personer.txt");
@@ -188,9 +207,11 @@ public class HelloController implements Initializable {
         XAI.addPredicates(strPath+"res/Predicates/§§31-40.txt");
         XAI.addPredicates(strPath+"res/Predicates/§§41-50.txt");
         XAI.addPredicates(strPath+"res/Predicates/§§51-60.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§61-90.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§91-100.txt");
         XAI.addPredicates(strPath+"res/Predicates/VejDefinitioner.txt");
         XAI.addPredicates(strPath+"res/Predicates/Tid.txt");
-
+*/
         XAI.addUDPs(strPath+"res/UDPs.txt");
 
         XAI.addRules(strPath+"res/1/§2.jlaw");
@@ -257,6 +278,37 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/10/§58.jlaw");
         XAI.addRules(strPath+"res/10/§59.jlaw");
         XAI.addRules(strPath+"res/10/§60.jlaw");
+
+        XAI.addRules(strPath+"res/10/§61.jlaw");
+        XAI.addRules(strPath+"res/10/§63.jlaw");
+        XAI.addRules(strPath+"res/10/§64.jlaw");
+        XAI.addRules(strPath+"res/10/§65.jlaw");
+        XAI.addRules(strPath+"res/10/§66.jlaw");
+
+        XAI.addRules(strPath+"res/11/§67.jlaw");
+        XAI.addRules(strPath+"res/11/§68.jlaw");
+        XAI.addRules(strPath+"res/11/§69.jlaw");
+        XAI.addRules(strPath+"res/11/§70.jlaw");
+        XAI.addRules(strPath+"res/11/§77.jlaw");
+        XAI.addRules(strPath+"res/11/§79.jlaw");
+
+        XAI.addRules(strPath+"res/12/§80.jlaw");
+        XAI.addRules(strPath+"res/12/§81.jlaw");
+
+        XAI.addRules(strPath+"res/13/§82.jlaw");
+        XAI.addRules(strPath+"res/13/§83.jlaw");
+        XAI.addRules(strPath+"res/13/§84.jlaw");
+        XAI.addRules(strPath+"res/13/§85.jlaw");
+        XAI.addRules(strPath+"res/13/§86.jlaw");
+
+        XAI.addRules(strPath+"res/14/§87.jlaw");
+        XAI.addRules(strPath+"res/14/§88.jlaw");
+
+        XAI.addRules(strPath+"res/15/§89.jlaw");
+        XAI.addRules(strPath+"res/15/§90.jlaw");
+        XAI.addRules(strPath+"res/15/§91.jlaw");
+        XAI.addRules(strPath+"res/15/§92.jlaw");
+        XAI.addRules(strPath+"res/15/§93.jlaw");
     }
 
     @FXML
@@ -264,7 +316,10 @@ public class HelloController implements Initializable {
         int pos = factList.getSelectionModel().getSelectedIndex();
         factList.getSelectionModel().clearSelection(pos);
         if(pos<0) return;
-        if(pos<factList.getItems().size()) factList.getItems().remove(pos);
+        if(pos<factList.getItems().size()) {
+            factList.getItems().remove(pos);
+            atomFacts.remove(pos);
+        }
     }
 
     @FXML

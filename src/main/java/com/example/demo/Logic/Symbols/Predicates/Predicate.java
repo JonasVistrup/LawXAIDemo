@@ -25,6 +25,10 @@ public abstract class Predicate {
         this.nArgs = nArgs;
     }
 
+    public boolean hasExplanation(){
+        return explanation!=null;
+    }
+
 
     public boolean IDB() {
         return false;
