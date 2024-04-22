@@ -1,1 +1,0 @@
-BrudtLoven(K,§67 stk.1 nr.1,T) <- Køretøj(K), Stand(S), I(K,S), Skaber(S,fare for andre\/ulempe for andre\/skade for vejene); 

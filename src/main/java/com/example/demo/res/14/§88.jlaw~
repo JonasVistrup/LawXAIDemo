@@ -1,1 +1,0 @@
-BrudtLoven(P,§88 stk.1 nr.1,T) <- Type(K,hest\/kreatur), Færdring(F), På(F,V,T), Vej(V), Af(F,K), Lader(P,F), IkkeEr(K,forsvarligt bevogtet,T)

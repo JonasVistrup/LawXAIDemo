@@ -1,1 +1,0 @@
-HarPligt(P,A,T) <- Parkant(P), Angivelse(A), Af(A,T0), Parkering(S), Udfører(P,S,T0), Er(S,tidsmæssigt begrænset)

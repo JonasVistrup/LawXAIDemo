@@ -1,1 +1,0 @@
-Fører(P,K,T) <- UnderOpsyn(Øvelses(Fører(P2,K,T)),P), Er(P,kørelære\/kærelæreraspirant):;
