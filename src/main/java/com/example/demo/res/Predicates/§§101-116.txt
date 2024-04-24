@@ -1,0 +1,6 @@
+ErstantningsAnsvarlig(P,A):[P] er erstatnings ansvarlig for [A];
+IkkeErstantningsAnsvarlig(P,A):[P] er ikke erstatnings ansvarlig for [A];
+Ansvarlighed(A):[A] er en ansvarlighed;
+Voldelse(V):[V] er en voldelse;
+Erstatning(E):[E] er en erstatning;
+Medvirkning(M):[M] er en medvirkning;

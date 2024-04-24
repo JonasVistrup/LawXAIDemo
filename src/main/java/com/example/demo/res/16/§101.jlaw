@@ -1,0 +1,10 @@
+ErstantningsAnsvarlig(P,S,T) <- Ansvarlighed(A), For(A,K), Har(P,A,T), MotordrevetKøretøj(K), Er(K,brug som trafikmiddel,T), Færdselsuheld(U)\/Type(U,eksplosion)\/[Type(U,brand)/\Af(U,B)/\Type(B,brændstofanlæg)/\I(B,K)], Skade(S), Voldelse(Vo), Ved(Vo,U), Udfører(K,Vo,T), Af(Vo,S):§101 stk.1 nr.1:Retspraksis FoK Side 993;
+IkkeErstantningsAnsvarlig(P,S,T) <- Ansvarlighed(A), For(A,K), Har(P,A,T), MotordrevetKøretøj(K), Færdselsuheld(U)\/Type(U,eksplosion)\/[Type(U,brand)/\Af(U,B)/\Type(B,brændstofanlæg)/\I(B,K)], Skade(S), Er(Vo,indirekte), Voldelse(Vo), Ved(Vo,U), Udfører(K,Vo,T), Af(Vo,S):§101 stk.1 nr.1:U 2021.4845 H;
+
+Kan(E,nedsættes) <- Erstatning(E), For(E,S), Skade(S), Type(S,personskade\/persontab), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig):§101 stk.2 nr.1;
+Kan(E,bortfalde) <- Erstatning(E), For(E,S), Skade(S), Type(S,personskade\/persontab), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig):§101 stk.2 nr.1;
+Kan(E,nedsættes) <- Erstatning(E), For(E,S), Skade(S), Type(S,personskade\/persontab), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Ved(M,grov uagtsomhed):§101 stk.2 nr.2;
+Kan(E,bortfalde) <- Erstatning(E), For(E,S), Skade(S), Type(S,personskade\/persontab), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Ved(M,grov uagtsomhed):§101 stk.2 nr.2;
+
+Kan(E,nedsættes) <- Erstatning(E), For(E,S), Skade(S), Type(S,tingsskade), Ejer(P2,S), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig\/uagtsom):§101 stk.3 nr.1;
+Kan(E,bortfalde) <- Erstatning(E), For(E,S), Skade(S), Type(S,tingsskade), Ejer(P2,S), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig\/uagtsom):§101 stk.3 nr.1;

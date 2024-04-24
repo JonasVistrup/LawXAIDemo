@@ -1,0 +1,2 @@
+Har(P,A,T) <-Ansvarlighed(A), Efter(A,§§101-103), For(A,K), Fører(P,K,T)\/Ejer(P,K,T)\/Benytter(P,K,T), Køretøj(K):§104 stk.1;
+Har(P,A,T) <-Ansvarlighed(A), Efter(A,lovgivningens almindelige regler), For(A,K), Fører(P,K,T), Køretøj(K):§104 stk.2;
