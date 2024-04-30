@@ -1,0 +1,1 @@
+Hæfter(F,P2,T) <- Type(P2,skadelidte), Type(F,forsikringsselskab), ErstantningsAnsvarlig(P,S,T), Skade(S), På(S,P2), Dækning(D), Type(D,ansvarforsikring), Er(K,D), Hos(D,F), Har(P,A,T), Ansvarlighed(A), For(A,K):§108 skt.1 nr.1;

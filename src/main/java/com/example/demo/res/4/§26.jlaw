@@ -1,6 +1,7 @@
 BrudtLoven(P,§26 stk.1,T) <- Kørende(P,T), Fører(P,K,T), IkkeIagttager(P,særlig_forsigtighed,T):§26 skt.1;
 
-UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Til(Kørsel,V)\/Over(Kørsel,V), På(Kørsel,V2,T), MærkeretSom(V2,ubetinget_vigepligt):§26 stk.2;
+BrudtLoven(P,§26_stk.2,T) <- UbetingetVigepligt(P,T), IkkeOpfylder(P,vigepligt,T):§26 stk.2;
+UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel,T), Til(Kørsel,V)\/Over(Kørsel,V), På(Kørsel,V2,T), MærkeretSom(V2,ubetinget_vigepligt):§26 stk.2;
 
 UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Fra(Kørsel,V), Type(V,parkeringsplads)\/Type(V,ejendom)\/Type(V,grundstykke)\/Type(V,tankstation)\/Type(V,område_uden_for_vej):§26 stk.3;
 UbetingetVigepligt(P,T) <- Kørsel(Kørsel), Udfører(P,Kørsel), Fra(Kørsel,V), Vej(V), Over(V,F), Fortov(F)\/Cykelsti(F)\/Rabat(F), Til(Kørsel,V2), Kørebane(V2), HævetOver(F,V2):§26 stk.3;

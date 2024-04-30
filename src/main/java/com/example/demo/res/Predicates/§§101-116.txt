@@ -4,3 +4,4 @@ Ansvarlighed(A):[A] er en ansvarlighed;
 Voldelse(V):[V] er en voldelse;
 Erstatning(E):[E] er en erstatning;
 Medvirkning(M):[M] er en medvirkning;
+Dækning(D):[D] er en dækning;

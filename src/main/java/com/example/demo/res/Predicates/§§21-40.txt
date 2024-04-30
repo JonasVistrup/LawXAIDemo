@@ -35,3 +35,4 @@ Ved(A,B):[A] er ved [B];
 VedSidenAf(A,B):[A] er ved siden af [B];
 VæsentligtVanskeliggøres(A,B):[A] væsentligt vanskeliggøre [B];
 Åbning(A):[A] er en åbning;
+IkkeOpfylder(P,A):[P] opfylder ikke [A];

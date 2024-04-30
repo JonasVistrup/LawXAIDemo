@@ -1,0 +1,5 @@
+Har(P,F,T) <- Type(F,forsikringspligt), For(F,K), Ejer(P,K,T) \/ [Type(Va,varig rådighed) /\ Har(P,Va,T) /\ Over(Va,K)], Skal(K,registreres\/godkendes):§106 skt.1 nr.1;
+
+Har(P,F,T) <- Type(F,forsikringspligt), For(F,K), Benytter(P,K,T) \/ [Lader(P,A,T)/\Type(A,brugning)/\Af(A,vejen)/\Af(A,K)], IkkeSkal(K,registreres/\godkendes):§106 skt.2 nr.1;
+
+Kan(P,A,T) <- Type(A,pålægelse af gebyrer), For(P,F), Har(P,F,T), Type(F,forsikringspligt), IkkeOpfylder(P,F,T):§106 skt.3 nr.1;

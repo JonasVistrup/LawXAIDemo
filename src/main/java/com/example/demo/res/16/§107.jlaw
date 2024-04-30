@@ -1,0 +1,3 @@
+Er(K,D) <- Motorkøretøj(K), Dækning(D), Af(D,K), Type(D,ansvarforsikring), TPMBestemmelse(A,§107 skt.1 nr.1), Følger(D,A):§107 skt.1 nr.1;
+
+IkkeEr(K,D) <- Motorkøretøj(K), Dækning(D), Af(D,K), Type(D,ansvarforsikring), TPMBestemmelse(A,§107 skt.1 nr.1), IkkeFølger(D,A):§107 skt.1 nr.1;

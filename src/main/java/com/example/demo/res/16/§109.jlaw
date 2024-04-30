@@ -1,0 +1,3 @@
+Er(K,U) <- Undtagelse(U), Fra(U,§105), MotordrevetKøretøj(K), Tilhører(K,S), Er(S,staten\/en kommune):§109 skt.1 nr.1;
+
+Hæfter(K,S) <- IkkeEr(K,D), Dækning(D), MotordrevetKøretøj(K), Tilhører(K,S), Er(S,staten\/en kommune):§109 skt.3 nr.1;

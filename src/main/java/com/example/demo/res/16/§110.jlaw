@@ -1,0 +1,1 @@
+Skal(F,Til,T) <- Type(Til,tilsigelse), Af(Til,P), Har(P,A,T), Ansvarlighed(A), For(A,S), På(S,P2), Type(P2,skadeslidte), Anlægger(P2,Sag), Type(Sag,sag), Mod(Sag,F):§110 skt.3 nr.1;

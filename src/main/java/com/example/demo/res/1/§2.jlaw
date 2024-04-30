@@ -56,6 +56,7 @@ Trafikant(P,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Køretøj(K):§2.25;
 Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Letbanekøretøj(K):§2.25;
 
 Traktor(K) <- MotordrevetKøretøj(K), IndrettetTil(K,at_trække_andet_køretøj\/at_trække_arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A):§2.26;
+MotordrevetKøretøj(K) <- Traktor(K):§2.26;
 
 TættereBebyggetOmråde(V) <- DelAf(V,O), MærkeretSom(O,tættere_bebygget_område):§2.27;
 
