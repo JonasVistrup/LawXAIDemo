@@ -1,3 +1,0 @@
-ErstantningsAnsvarlig(P,A):[P] er erstatnings ansvarlig for [A];
-Ansvarlighed(A):[A] er en ansvarlighed;
-Voldelse(V):[V] er en voldelse;
