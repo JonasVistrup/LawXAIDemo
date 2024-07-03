@@ -1,0 +1,13 @@
+BrudtLoven(P,§00,T) <- Kræver(P2,F){Kræver}, Kan(P2,Kræver), Fører(P,K,T):OBS. Skal noterets;
+
+Kan(Popo,F) <- Politiet(Popo), Kræver(Popo,F), Flytning(F), Af(F,K), Køretøj(K), Fører(P,K), BrudtLoven(P,§28\/§29,T):§123 stk.1 nr.1;
+Kan(Popo,F) <- Politiet(Popo), Kræver(Popo,F), Flytning(F), Af(F,K), Køretøj(K), Fører(P,K), Er(K,havareret\/defekt):§123 stk.1 nr.2;
+Kan(Popo,F) <- Politiet(Popo), Kræver(Popo,F), Flytning(F), Af(F,K), Køretøj(K), Fører(P,K), Er(K,registreringspligtig), Er(K,uden nummerplade):§123 stk.1 nr.3;
+
+Er(K,registeringspligtig) <- Køretøj(K), Motorkøretøj(K):LBK nr 186 af 01/03/2020 §2 Stk.1 Nr.1;
+Er(K,registeringspligtig) <- Køretøj(K), Traktor(K), ~Er(K,til egentransport til og fra arbejdssted eller til og fra reparatør), ~Er(K,som trækkraft for arbejdsredskab til og fra arbejdssted eller til og fra reparatør for arbejdsredskaber), ~Er(K,som trækkraft for påhængsvogn, der er tom eller medfører arbejdsredskab, som er knyttet til traktorens funktion, til og fra arbejdssted eller til og fra reparatør for påhængsvogne), ~Er(K,til prøvekørsel eller lignende tidsbegrænset kørsel efter tilladelse fra politiet):LBK nr 186 af 01/03/2020 §2 Stk.1 Nr.2:LBK nr 186 af 01/03/2020 §3 Stk.1;
+Er(K,registeringspligtig) <- Køretøj(K), Knallert45(K):LBK nr 186 af 01/03/2020 §2 Stk.1 Nr.3;
+Er(K,registeringspligtig) <- Køretøj(K), Campingvogn(K):LBK nr 186 af 01/03/2020 §2 Stk.1 Nr.5;
+
+
+Kan(Popo,F) <- Politiet(Popo), Kræver(Popo,F), Flytning(F), Af(F,K), Cykel(K), På(K,V), Vej(V), Er(V,offentlig):§123a stk.1 nr.1;
