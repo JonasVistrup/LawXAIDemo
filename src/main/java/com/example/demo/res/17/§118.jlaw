@@ -3,7 +3,7 @@ StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lo
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,9), Stk#(Lov,1):§118 stk.1 nr.1;
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,2\/3\/4\/5\/6):§118 stk.1 nr.1;
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,10\/12):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,Nummer), =<(14,Nummer), =<(Nummer,52):§118 stk.1 nr.1;
+StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,Nummer), ~<(Nummer,14), ~<(52,Nummer):§118 stk.1 nr.1;
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,3\/4\/5):§118 stk.1 nr.1;
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,55a), Stk#(Lov,1):§118 stk.1 nr.1;
 StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,60d):§118 stk.1 nr.1;
@@ -35,8 +35,8 @@ Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, [Lov#(Lov,38) /\ 
 Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,46), Stk#(Lov,2), Nr#(Lov,2), Fører(P,K,T), TilladtVægt(K,>3500kg):§118 stk.9 nr.1;
 
 Indtil(Fængsel,1 år og 6 måneder) <- Fængsling(Fængsel), StraffesMed(P,Fængsel,§118 stk.11 nr.1,T):§118 stk.11;
-StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), [Lov#(Lov,37), Stk#(Lov,4)]:§118 stk.11 nr.1;
-StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43), Hastighed(K,<200km/t,T)]:§118 stk.11 nr.2;
+StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,37), Stk#(Lov,4):§118 stk.11 nr.1;
+StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43), Hastighed(K,<200km/t,T):§118 stk.11 nr.2;
 StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43), Hastighed(K,H,T), <(100km/t,H), På(K,V,T), MaxHastighed(K,M), /(H,M,>2):§118 stk.11 nr.3;
 
 

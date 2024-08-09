@@ -14,7 +14,7 @@ Knallert(K) <- #(K,2,hjul), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A), ~
 Knallert45(K) <- Knallert(K), KonstruktivHastighed(K,B), <(30,B):§2.7;
 KnallertU#Plade(K) <- Knallert(K), KonstruktivHastighed(K,B), ~<(30,B):§2.7;
 
-Krybespor(V) <- Vognbane(V), Færdselstavle(V,langsomtkørende):§2.8;
+Krybespor(V) <- Vognbane(V), Færdselstavle(A), På(A,V), For(V,langsomtkørende):§2.8;
 
 Kørebane(V) <- BestemtFor(V,kørende), ~Cykelsti(V), ~Ridesti(V):§2.9;
 

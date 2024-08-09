@@ -10,7 +10,7 @@ BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.6,T) <- Fører(P,K,T), Knalle
 Mellem(frakendelse,2 år,10 år,T) <- FrakendtFørerretKnallert(P,Lov,T){frakendelse}:§128 skt.3;
 
 FrakendtFørerretKnallert(P,§129 stk.2 nr.1,T) <- SkyldigIForholdTil(P,spirituskøresel,T), Koncentration(P,alkohold,blodet,>1.2promille,T)\/Koncentration(P,alkohol,udåndingsluft,>0.6mg/liter,T\/>T):§129 skt.2 nr.1;
-FrakendtFørerretKnallert(P,§129 stk.2 nr.2,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0,009mg/kg,T):§129 stk.2 nr.2;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.2,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
 FrakendtFørerretKnallert(P,§129 stk.2 nr.2,T) <- BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54), Stk#(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
 FrakendtFørerretKnallert(P,§129 stk.2 nr.3,T) <- Fører(P,K,T), Knallert(K), Forvolder(P,S), Skade(S), På(S,A), Person(A)\/Type(A,ting), TilsidesætterHensyn(P,T):§129 stk.2 nr.3;
 FrakendtFørerretKnallert(P,§129 stk.2 nr.4,T) <- Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54):§129 stk.2 nr.4;

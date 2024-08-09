@@ -3,7 +3,7 @@ Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,T/\T0), Køretøj(K
 
 Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,T), Køretøj(K), SkyldigIForholdTil(P,spritkørsel,færdselsloven,T), Politiet(Popo), Koncentration(P,alkohol,blodet,2promille,T) \/ Koncentration(P,alkohol,udåndingsluften,1mg/liter,T):§133a stk.2 nr.1;
 
-Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), Køretøj(K), Politiet(Popo), SkyldigI(P,Lov,T), [Lov#(Lov,126) /\ Stk#(Lov,1) /\ Nr#(Lov,1\/2\/3\/5] \/ [Lov#(Lov,129b) /\ Stk#(Lov,1)/\ Nr#(Lov,1)], SkyldigI(P,Lov1,T), SkyldigI(P,Lov2,T0), ~=(Lov1,Lov2), <(T0,T), -(T,T0,<3år), [Lov#(Lov,126) /\ Stk#(Lov,1) /\ Nr#(Lov,4\/10\/11] \/ [Lov#(Lov,126) /\ Stk#(Lov,6)/\ Nr#(Lov,1)]:§133a stk.3 nr.2:§133a stk.3 nr.1;
+Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), Køretøj(K), Politiet(Popo), SkyldigI(P,Lov,T), [Lov#(Lov,126) /\ Stk#(Lov,1) /\ Nr#(Lov,1\/2\/3\/5)] \/ [Lov#(Lov,129b) /\ Stk#(Lov,1)/\ Nr#(Lov,1)], SkyldigI(P,Lov1,T), SkyldigI(P,Lov2,T0), ~=(Lov1,Lov2), <(T0,T), -(T,T0,<3år), [Lov#(Lov,126) /\ Stk#(Lov,1) /\ Nr#(Lov,4\/10\/11)] \/ [Lov#(Lov,126) /\ Stk#(Lov,6)/\ Nr#(Lov,1)]:§133a stk.3 nr.2:§133a stk.3 nr.1;
 
 Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), Køretøj(K), Politiet(Popo), SkyldigI(P,Lov,T), Lov#(Lov,126), Stk#(Lov,1), Nr#(Lov,1\/2), SkyldigI(P,spirituskørsel,T0)\/[BrudtLoven(P,Lov2,T0)/\Lov#(Lov2,54)/\Stk#(Lov2,1\/2)], <(T0,T), -(T,T0,<3år):§133a Stk.4;
 
@@ -23,10 +23,10 @@ Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), KnallertU#Plad
 
 Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), KnallertU#Plade(K), Politiet(Popo), SkyldigI(P,Lov,T), Lov#(Lov,129), Stk#(Lov,3), Nr#(Lov,1\/2), FrakendtFørerretKnallert(P,Lov2,T0), <(T0,T), -(T,T0,<3år):§133a Stk.10;
 
-Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), KnallertU#Plade(K), Politiet(Popo), SkyldigI(P,Lov,T),[Lov#(Lov,63)/\Stk#(Lov,1)/\ Nr#(Lov,1)]\/[Lov#(Lov,117c)/\Stk#(Lov,1)/\ Nr#(Lov,4)], SkyldigI(P,Lov1,§133a Stk.11 Nr.2,T0), SkyldigI(P,Lov2,§133a Stk.11 Nr.2,T1), ~=(Lov1,Lov2), <(T0,T1), <(T1,T), -(T,T0,<5år):§133a Stk.10;
+Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,TT), KnallertU#Plade(K), Politiet(Popo), SkyldigI(P,Lov,T),[Lov#(Lov,63)/\Stk#(Lov,1)/\ Nr#(Lov,1)]\/[Lov#(Lov,117c)/\Stk#(Lov,1)/\ Nr#(Lov,4)], SkyldigIForholdTil(P,Lov1,§133a Stk.11 Nr.2,T0), SkyldigIForholdTil(P,Lov2,§133a Stk.11 Nr.2,T1), ~=(Lov1,Lov2), <(T0,T1), <(T1,T), -(T,T0,<5år):§133a Stk.10;
 
-SkyldigI(P,§133a Stk.11 nr.1,§133a Stk.11 Nr.2,T) <- SkyldigI(P,Lov,T),[Lov#(Lov,63)/\Stk#(Lov,1)/\ Nr#(Lov,1)]\/[Lov#(Lov,117c)/\Stk#(Lov,1)/\ Nr#(Lov,4)]:§133a Stk.11 Nr.2;
-SkyldigI(P,§133a Stk.8 nr.1,§133a Stk.11 Nr.2,T) <- SkyldigI(P,Lov,T), Lov#(Lov,129), Stk#(Lov,3), Nr#(Lov,1\/2\/3\/4):§133a Stk.11 Nr.2;
+SkyldigIForholdTil(P,§133a Stk.11 nr.1,§133a Stk.11 Nr.2,T) <- SkyldigI(P,Lov,T),[Lov#(Lov,63)/\Stk#(Lov,1)/\ Nr#(Lov,1)]\/[Lov#(Lov,117c)/\Stk#(Lov,1)/\ Nr#(Lov,4)]:§133a Stk.11 Nr.2;
+SkyldigIForholdTil(P,§133a Stk.8 nr.1,§133a Stk.11 Nr.2,T) <- SkyldigI(P,Lov,T), Lov#(Lov,129), Stk#(Lov,3), Nr#(Lov,1\/2\/3\/4):§133a Stk.11 Nr.2;
 
 Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,T), KnallertU#Plade(K), Politiet(Popo), Er(K,konstruktivt ændret med henblik på hastighedsforøgelse), MaxHastighed(K,>43km/t):§133a Stk.14;
 Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,T), Knallert45(K), Politiet(Popo), Er(K,konstruktivt ændret med henblik på hastighedsforøgelse), MaxHastighed(K,>64km/t):§133a Stk.14;

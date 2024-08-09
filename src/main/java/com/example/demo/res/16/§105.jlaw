@@ -1,4 +1,4 @@
 BrudtLoven(P,§105 skt.1 nr.1,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Dækning(D), Type(D,ansvarforsikring), IkkeEr(K,D):§105 skt.1 nr.1;
 BrudtLoven(P,§105 skt.1 nr.1,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Dækning(D), Type(D,ansvarforsikring), Er(K,D), Hos(D,E), IkkeHar(E,finanstilsynets tilladelse):§105 skt.1 nr.1;
 
-BrudtLoven(P,§105 skt.2 nr.1,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Dækning(D), Type(D,ansvarforsikring), Er(K,D), [Dækker(D,personskade\/tab af forsøger){A} /\ På(A,50 millioner)] \/ [Dækker(D,tingsskade){A} /\ På(A,10 millioner], IkkeEr(K,D):§105 skt.1 nr.1:§105 skt.2 nr.1;
+BrudtLoven(P,§105 skt.2 nr.1,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Dækning(D), Type(D,ansvarforsikring), Er(K,D), [Dækker(D,personskade\/tab af forsøger){A} /\ På(A,50 millioner)] \/ [Dækker(D,tingsskade){A} /\ På(A,10 millioner)], IkkeEr(K,D):§105 skt.1 nr.1:§105 skt.2 nr.1;

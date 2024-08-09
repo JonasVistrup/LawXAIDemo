@@ -1,2 +1,2 @@
-Kørselforbud(P,§127 skt.1 nr.1,T) <- Erhverver(P,Kørekort,T1){e}, Type(e,førstegangserhvervelse), Kørekort(Kørekort), -(T,T1,<3år), [BetingetFrakendtFørerret(P,Lov,T)/\Lov#(Lov,125)[[Stk#(Lov,1)/\Nr#(Lov,1\/2\/3\/4\/5\/6\/8)]\/Stk#(Lov,3)]]\/[FrakendtFørerret(P,Lov,T)/\Lov#(Lov,126)/\Stk#(Lov,2)]:§127 stk.1 nr.1;  
+Kørselforbud(P,§127 skt.1 nr.1,T) <- Erhverver(P,Kørekort,T1){e}, Type(e,førstegangserhvervelse), Kørekort(Kørekort), -(T,T1,<3år), [BetingetFrakendtFørerret(P,Lov,T)/\Lov#(Lov,125)/\[[Stk#(Lov,1)/\Nr#(Lov,1\/2\/3\/4\/5\/6\/8)]\/Stk#(Lov,3)]]\/[FrakendtFørerret(P,Lov,T)/\Lov#(Lov,126)/\Stk#(Lov,2)]:§127 stk.1 nr.1;
 FrakendtFørerret(P,§127 stk.1 nr.2,T) <- Kørselforbud(P,§127 stk.1 nr.1,T):§127 stk.1 nr.2;

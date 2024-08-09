@@ -8,7 +8,7 @@ Elmotor(K,M):[M] er en elmotor i [K];
 FaktiskVægt(K,A):Vægten af [K] med driftsmidler, fører og last er [A];
 Forbrændingsmotor(K,M):[K] har forbrændingsmotor [M];
 FærdselForbeholdt(V,A):Færdsel på [V] er forbeholdt [A];
-Færdselstavle(V,A):[V] har færdselstavlen [A];
+Færdselstavle(A):[A] er en færdselstavle;
 Førerret(P):[P] har ret til at føre motordrevet køretøj, hvortil der kræves kørekort, bortset fra lille knallert;
 Hensætning(K,V,H):[K] er laver en hensætning [H] på [V];
 KonstruktivHastighed(K,A):[K] har en konstruktiv maximal hastighed på [A];
