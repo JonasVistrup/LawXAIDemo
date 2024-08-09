@@ -1,0 +1,3 @@
+BrudtLoven(P,§00,T) <- Skal(P,A), IkkeUdfører(A):SKAL NOTERETS;
+
+Skal(P,B) <- Udfører(P,A), Type(A,ansøgning), Af(A,afholdelse af køreprøve), For(B,A), Type(B,betaling), Af(B,200kr):§124b stk.1 nr.1;

@@ -1,0 +1,1 @@
+Kan(P,A) <- TPM(P), Type(A,bemyndighed), Af(A,færdselsstyrelsen)\/[Af(A,P2)/\Under(P2,P)], Til(A,oprettelse af styrelser til at udøve beføjelser tillagt tranport ministeren):§134a Stk.1 Nr.1;

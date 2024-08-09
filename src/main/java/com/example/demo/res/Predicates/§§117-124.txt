@@ -1,0 +1,13 @@
+StraffesMed(P,A,Lov):[P] straffes med [A] via [Lov];
+Bøde(B):[B] er en bøde;
+Fængsling(F):[F] er en fængsling;
+Indtil(A,B):[A] er indtil [B];
+Skyldig(P,A):[P] er skyldig i [B];
+Findes(P,S):[P] findes [S];
+Omfatter(A,B):[A] omfatter [B];
+UdmålesUnder(A,B):[A] udmåles under [B];
+Tidligere(T1,T):[T1] er tidligere end [T];
+Fortager(A,B):[A] fortager [B];
+Indkørsel(K):[K] er en indkørsel;
+Udfor(A,B):[A] er ud for [B];
+TPM(P):[P] er transportminister;

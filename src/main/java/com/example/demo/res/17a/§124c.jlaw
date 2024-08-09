@@ -1,0 +1,1 @@
+Skal(P,B) <- Udfører(P,A), For(B,C), Type(A,ansøgning), Af(A,C), Type(C,udstedelse), Af(C,U), Type(U,uddanelsebevis), Til(U,førere af køretøjer til vejtransport af farligt gods), Type(B,betaling), Af(B,290kr):§124c stk.1 nr.1;

@@ -10,5 +10,5 @@ Hos(A,B):[A] er hos [B];
 HæfterFor(A,B):[A] hæfter for [B];
 Tilhører(K,S):[K] tilhører [S];
 Opretter(A,B):[A] opretter [B];
-Anerkender(A,B):[A] anerkender [B;
+Anerkender(A,B):[A] anerkender [B];
 Sker(A,B):[A] sker [B];

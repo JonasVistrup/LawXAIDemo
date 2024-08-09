@@ -1,0 +1,357 @@
+BrudtLoven(P,A):[P] har brudt [A] af færdselsloven;
+IkkeBrudtLoven(P,A):[P] har ikke brudt [A] af færdselsloven;
+
+AnvendesTil(A,B):[A] anvendes til [B];
+Gør(A,B,C):[A] gør [B] på [C];
+BestemtFor(A,B):[A] er bestemt for [B];
+BestemtTil(A,B):[A] er bestemt til [B];
+IndrettetTil(K,A):[K] er indrettet til [A];
+IndrettetSom(K,A):[K] er indrettet som [A];
+FortagesMed(K,A):[K] fortages med [A];
+MærkeretFor(A,B):[A] er mærkeret for [B];
+MærkeretSom(A,B):[A] er mærkeret som [B];
+TilstrækkeligtFor(A,B):[A] er tilstrækkeligt for [B];
+Utilstrækkelighed(U):[U] er en utilstrækkelighed;
+TilstrækkeligtSom(A,B):[A] er tilstrækkeligt som [B];
+
+SkaberUlempeFor(A,B):[A] skaber ulempe for [B];
+
+Hæmmer(A,B):[A] hæmmer [B];
+Unødigt(A):[A] er unødigt;
+Nødvendigt(A):[A] er nødvendigt;
+NødvendigtFor(A,B):[A] er nødvendigt for [B];
+IkkeNødvendigtFor(A,B):[A] er ikke nødvendigt for [B];
+FareFor(A,B):[A] er i fare for [B];
+UnødvendigtLang(A):[A] er unødvendigt lang;
+
+NokTil(A,B):[A] er nok til [B];
+
+Åbnet(A):[A] er åbnet;
+Lukket(A):[A] er lukket;
+Lukkes(A):[A] lukkes;
+Åbnes(A):[A] åbnes;
+
+Se(A,B):[A] kan se [B];
+Hører(A,B):[A] kan høre [B];
+
+
+
+DelAf(A,B):[A] er en del af [B];
+
+Type(A,B):[A] er af type [B];
+
+BeregnetTil(A,B):[A] er beregnet til [B];
+Årsag(A,B):Årsagen for [A] er [B];
+
+
+Kørsel(A):[A] er en kørsel;
+
+Akseltryk(K,T):Hjulene på aksel på [K] overføres tryk [T] til vejen;
+AltTilbehørSomNormaltMedfører(K,T):[T] er alt tilbehør som normalt medfører [K];
+
+Befordres(P,K):[P] befordres af [K];
+
+Førerret(P):[P] har ret til at føre motordrevet køretøj, hvortil der kræves kørekort, bortset fra lille knallert;
+Hensætning(K,V,H):[K] er laver en hensætning [H] på [V];
+Parkeret(K,V):[K] er parkeret på [V];
+Trækker(A,B):[A] trækker [B];
+UdlukketFraRegistrering(K,A):[K] er udlukket fra registrering pga. [A];
+BenyttesTil(A,B):[A] benyttes til [B];
+Begrundelse(A,B):Begrundelsen for [A] er [B];
+AlmindeligGanghastighed(B):[B] er den almindelige ganghastighed;
+Ansvar(P,A):[P] har ansvar for [A];
+EgnetTil(A,B):[A] er egnet til [B];
+Færdsel(V,F):[V] har færdsel [F];
+LyserMed(A,B,C):[A] lyser med [B] i retningen [C];
+IkkeNær(A,B):[A] er ikke nær [B];
+Nær(A,B):[A] er nær [B];
+Optog(O):[O] er et optog;
+
+ReguleresAf(A,B):[A] reguleres af [B];
+SærligeOmstændinghederTilsiger(P,A,V):Særlige omstændigheder tilsiger at [P] må [A] på [V]; 
+Tegn(A):[A] er et tegn;
+UlempeFor(A,B):[A] er ulempe for [B];
+Vejarbejde(V):Der er vejarbejde på [V];
+VilleBliveUdsatForFare(P,L):[P] ville blive udsat for fare på [L];
+ErstantningsAnsvarlig(P,A):[P] er erstatnings ansvarlig for [A];
+IkkeErstantningsAnsvarlig(P,A):[P] er ikke erstatnings ansvarlig for [A];
+Ansvarlighed(A):[A] er en ansvarlighed;
+Voldelse(V):[V] er en voldelse;
+Erstatning(E):[E] er en erstatning;
+Medvirkning(M):[M] er en medvirkning;
+Dækning(D):[D] er en dækning;
+Dækker(A,B):[A] dækker [B];
+Hos(A,B):[A] er hos [B];
+HæfterFor(A,B):[A] hæfter for [B];
+Tilhører(K,S):[K] tilhører [S];
+
+Sker(A,B):[A] sker [B];
+StraffesMed(P,A,Lov):[P] straffes med [A] via [Lov];
+Bøde(B):[B] er en bøde;
+Fængsling(F):[F] er en fængsling;
+Indtil(A,B):[A] er indtil [B];
+Skyldig(P,A):[P] er skyldig i [B];
+Findes(P,S):[P] findes [S];
+Omfatter(A,B):[A] omfatter [B];
+UdmålesUnder(A,B):[A] udmåles under [B];
+Tidligere(T1,T):[T1] er tidligere end [T];
+
+Indkørsel(K):[K] er en indkørsel;
+Udfor(A,B):[A] er ud for [B];
+TPM(P):[P] er transportminister;
+BetingetFrakendtFørerret(P,Lov):[P] har fået betinget frakendt førerretten til motorkøretøj ud over lille knallert via [Lov];
+BetingetFrakendtFørerretKnallert(P,Lov):[P] har fået betinget frakendt førerretten til lille knallert via [Lov];
+BetingetFrakendtFørerretLastbil(P,Lov):[P] har fået betinget frakendt førerretten til lastbil via [Lov];
+FrakendtFørerret(P,Lov):[P] har fået frakendt føreretten til motorkøretøj ud over lille knallert via [Lov];
+FrakendtFørerretKnallert(P,Lov):[P] har fået frakendt føreretten til lille knallert via [Lov];
+FrakendtFørerretLastbil(P,Lov):[P] har fået frakendt førerretten til lastbil via [Lov];
+TilsidesætterHensyn(P):[P] tilsidesætter væsentlige hensyn til færdselssikkerheden;
+Forvolder(P,A):[P] forvolder [A];
+ForliggerFormilendeOmstændigheder(A):Der forligger formilende omstændingheder om [A];
+UnderSkærpendeOmstændigheder(A):[A] forgik under skærpende omstændigheder;
+SkyldigIForholdTil(P,Lov1,Lov2):[P] er skyldig i [Lov1] i forhold til [Lov2];
+SkyldigI(P,Lov):[P] er skyldig i forhold til [Lov]:;
+Kørselforbud(P,Lov):[P] er under kørselforbud via [Lov];
+Mellem(A,B,C):[A] er mellem [B] og [C];
+Mindst(A,B):[A] er mindst [B];
+Burde(P,A):[P] burde [A];
+Varighed(A,B):[A] varer [B];
+#(V,A,B):[V] har antal [A] af type [B]; 
+Afpasset(A):[A] er afpasset;
+AfstandTilSiden(A,B,C):Afstanden til siden mellem [A] og [B] er [C];
+Afsætter(A,B):[A] afsætter [B];
+AngivetHastighed(A,B):Angivet hastighed for [A] er [B];
+
+Forankørende(K,K2):[K] kører foran [K2];
+ForholdeneTillader(A):Forholdende tillader [A];
+GodTid(T1,A):[T1] er god tid for [A];
+LøberSammen(V1,V2):[V1] løber sammen med [V2];
+
+MestHensigtmæssig(A,B):[A] er mest hensigtmæssig for [B];
+Modkørende(A,B):[A] og [B] er mødkørende;
+
+
+OptagerMegetPlads(K,V):[K] optager meget plads på [V];
+Over(M,V):[M] er over [V];
+Passager(P):[P] er en passager;
+Retning(A,R):[A] har retning [R];
+Sikre(P,A,B):[P] sikre sig at [A] [B];
+SkaberVæsenligUlempe(A):[A] skaber væsenlig ulempe;
+Skal(P,A):[P] skal [A];
+SpecieltOpmærksomPå(P,A):[P] er specielt opmærksom på [A];
+Spæring(S):[S] er en spæring;
+SpærrerUdsynFor(A,P):[A] spærrer udsyn for [P];
+Tilpasning(A):[A] er en tilpasning;
+Tilpasset(A,B):[A] er tilpasset [B];
+Tilstrækkelig(A):[A] er tilstrækkelig;
+TydeligtForbedreder(P,A):[P] tudeligt forbedreder [A];
+Udkørsel(K):[K] er en udkørsel;
+UdviserFor(A,B,C):[A] udviser [B] for [C];
+UnderHensynTil(P,A,B):[P] kan under hensyn til [A], [B];
+ÆndrerPlaceringTilSiden(A,B):[A] ændre placeringen af [B] til siden;
+AndetFølger(P,A):Andet følger om [P] af [A];
+Anlagt(A,B):[A] er anlagt [B];
+BestemmesAf(A,B):[A] bestemmes af [B];
+Dør(A):[A] er en dør;
+Forbi(A,B):[A] er forbi [B];
+Handling(A):[A] er en handling;
+HolderVed(A,B):[A] holder ved [B];
+HævetOver(A,B):[A] er hævet over [B];
+HøjreVigepligt(A):[A] har højre vigepligt;
+Ikke(A,B):[A] er ikke [B];
+IkkeAnbragtPå(A,B,C):[A] er ikke anbragt [B] på [C];
+IkkeGiver(P,P2,A):[P] giver ikke [P2] [A];
+IkkeHolderFor(P,P2):[P] holder ikke for [P2];
+IkkeIagttager(P,A):[P] iagttager ikke [A];
+IkkeMåForkomme(A):[A] må ikke forkomme;
+IkkeTilkendegiver(P,A):[P] tilkendegiver ikke [A];
+KunneUndgå(P,A):[P] kunne undgå [A];
+MuligtAt(A,B):Der er muligt for [A] at [B];
+Parkering(P):[P] er en parkering;
+SkaberFareFor(A,B):[A] skaber fare for [B];
+
+UbetingetVigepligt(A):[A] har ubetinget vigepligt;
+Udkørsel(A):[A] er en udkørsel;
+UdmunderSammen(A,B,C):[A] udmunder sammen med [B] ved [C];
+Undtagelse(A,B):[A] er en undtagelse af [B];
+VæsentligtVanskeliggøres(A,B):[A] væsentligt vanskeliggøre [B];
+Åbning(A):[A] er en åbning;
+IkkeOpfylder(P,A):[P] opfylder ikke [A];Advarder(P,A,B):[P] advarder [A] om [B];
+Anmoder(P,P2,A):[P] anmoder [P2] om [A];
+BemyndigetTilRegulereFærslenAfTBB(A):[A] er bemyndiget til regulere færslen af transport-, bygnings- og boligministeren;
+BetryggendeAfstand(A):[A] er en betryggende afstand;
+Bor(P,V):[P] bor på [V];
+BringerStraksIOrden(P,A,T):[P] bringer [A] i orden straks efter [T];
+Dræbt(P,A):[P] er blevet dræbt at [A];
+Ejer(P,A):[P] ejer [A];
+Ejendom(E):[E] er en ejendom;
+ForstyrrerFærdslen(A):[A] forstyrrer færdslen;
+ForvolderSkade(A):[A] forvolder skade;
+ForvoldtPå(P,A,P2):[P] har forvoldt [A] på [P2];
+FremgårAfOmstændighederne(A,T):[A] fremgår af omstændighederne;
+Færdselsuheld(U):[U] er et færdselsuheld;
+Fører(P,K):[P] er fører af [K];
+GivesVed(A,B):[A] gives ved [B];
+Hastighed(A,B):Hastigheden af [A] er [B];
+HindrerFærdslen(A):[A] hindre færdslen;
+IkkeAfpassetHastighedSå(P,K,A,T):[P] har ikke afpasset hastigheden på [K] så [A];
+IkkeGiverFriPassageFor(P,A):[P] giver ikke fri passage for [A];
+IkkeHolderÅben(P,V):[P] holder ikke [V] åben;
+IkkeOpgiver(P,A,P2):[P] opgiver ikke [A] til [P2];
+IndblandetI(A,B):[A] er indblandet i [B];
+KanModtageOplysninger(P,A,V):[P] kan modtage oplysninger om [A] på [V];
+KommetTilSkadeI(P,U):[P] er kommet til skade i [U];
+Lidelse(P,B):[P] har lidelse [B];
+MuligtAtBringeIOrden(A):Det er muligt at bringe [A] i orden;
+Nær(A,B):[A] er nær [B];
+NærmerSig(A,B):[A] nærmer sig [B];
+Ophold(O):[O] er et ophold;
+OpholderSig(P,A):[P] opholder sig på/ved [A];
+Optræder(P,A):[P] optræder [A];
+Overhaler(K,K2):[K] overhaler [K2];
+SkaberFare(A):[A] skaber fare for færdslen;
+SkaberUlempe(A):[A] skaber ulempe for færdslen;
+Spring(S):[S] er et spring;
+Standsning(S):[S] er en standsning;
+Straks(P,A):[P] straks [A];
+IkkeStraks(A):[A] er ikke straks;
+SærligtGodkendt(P,A):[P] har fået særlig godkendelse til [A];
+Tilkendegiver(A,B):[A] tilkendegiver [B];
+Trinbræt(A):[A] er et trinbræt;
+UberettigetAnvendelseAf(P,A):[P] uberettiget andvender [A];
+Udviser(P,A):[P] udviser [A];
+Underretter(P,P2,A):[P] underretter [P2] om [A];
+Uvedkommende(P,V):[P] er udvedkommende på [V];
+Viser(P,A,P2):[P] viser [A] for [P2];
+ÆndrePåForholdene(P,V):[P] ændre på forholdene på [V];
+Afgiver(A,B):[A] afgiver [B];
+Anvendelse(A):[A] er en anvendelse;
+Begrundet(A,B):[A] er begrundet af [B];
+Blændning(B):[B] er en blændning;
+Er(A,B):[A] er [B];
+Flytning(F):[F] er en flytning;
+Forbyder(A,B):[A] forbyder [B];
+Forstyrende(A):[A] er forstyrende;
+ForsynetMed(A,B):[A] er forsynet med [B];
+HensynTil(A,B):[A] er i hensyn til [B];
+Holder(A,B):[A] holder [B];
+I(A,B):[A] er i [B];
+IkkeGodTidIForholdTil(T,A):[T] er ikke i god tid i forhold til [A];
+
+
+IkkeTændt(L):[L] er ikke tændt;
+IkkeUdfører(A,B):[A] udfører ikke [B];
+IkkeVed(A,B):[A] er ikke ved [B];
+
+Køremåde(A,B):[A] har køremåde [B];
+Ligende(A,B):[A] er ligende [B];
+Muligt(A):[A] er muligt;
+Påbudt(A,B):[A] er påbudt for [B];
+Synsvidde(P,S):[P] har synsvidde [S];
+Træffer(A,B):[A] træffer [B];
+Udføren(A,P):Udførern af [A] er [P];
+Vare(A,B):[A] vare [B];
+Med(A,B):[A] er med [B];
+Fordi(A,B):[A] er fordi [B];
+
+Standselængde(K,A):[K] har standselængde [A];
+Bremselængde(K,A):[K] har bremselængde [A];
+Reaktionslængde(K,A):[K] har reaktionslængde [A];
+Reaktionstid(P,Tid):[P] har reaktionstid [Tid];
+ForventetBremsepræstation(K,P):[K] har forventet bremsepræstation [P];
+
+RegistreringsDato(K,D):[K] er registreret på datoen [D];
+HastighedMprS(K,H):[K] har hastigheden [H] i enheden meter per sekund;
+IkkePassendeLav(A):[A] er ikke passende lav;
+
+RisikoFor(P,A):[P] har risiko for [A];
+Uheld(U):[U] er et uheld;
+
+MaxHastighed(V,H):Man må maksimalt [H] på [V];
+AndenHastighedsGrænse(V):[V] har en anden hastigheds grænse;
+AndenHastighedsGrænseFastsat(V,M):[V] har hastigheds grænse [M];
+Registreret(V):[V] er registreret;
+Godkendt(V):[V] er godkendt;
+Påskrift(A,B):[A] har påskrift [B];
+
+
+Fjernelse(F):[F] er en fjernelse;
+
+PligtTilOpsyn(A,B):[A] har pligt til at holde opsyn med [B];
+
+Hindrer(A,B,C):[A] hindre [B] for [C];
+
+ForsøgerAtFøre(P,K):[P] forsøger at føre [K];
+Koncentration(P,A,B,C):[P]s koncentration af [A] i [B] er [C];
+Indtaget(P,A):[P] har indtaget [A];
+Indtagelse(I):[I] er en indtagelse;
+FarligtStof(A):[A] er klassificeret som farligt stof for færdselssikkerheden i følge transport-, bygnings- og boligministeren;
+Pga(A,B):[A] er pga. [B];
+OverladerFøringTil(P,K,P2):[P] overlader føring af [K] til [P2];
+ErFor(A,B,C):[A] er [B] for [C];
+GrundTilAtAntage(P,A,P2):[P] har grund til at antage [A] om [P2];
+
+Nægtelse(N):[N] er en nægtelse;
+Test(A):[A] er en test;
+Overtrædelse(A):[A] er en overtrædelse;
+IkkeIStandTil(A,B):[A] er ikke i stand til [B];
+Frataget(P,A):[P] har fået frataget [A];
+Fratager(A,B):[A] fratager [B];
+Benytter(P,A):[P] benytter [A];
+IkkeHar(A,B):[A] har ikke [B];
+Visning(A):[A] er en visning;
+IkkeAfleverer(A,B,C):[A] afleverer ikke [B] til [C];
+
+TPMBestemmelse(A,Lov):[A] er en bestemmelse fra transportministeren fremsat for [Lov];
+TPMLempelse(A,Lov):[A] er en lempelse fra transportministeren fremsat for [Lov];
+RetTil(P,A):[P] har ret til [A];
+Kørekort(K):[K] er et kørekort;
+Udstedt(A,B):[A] er udstedt i [B];
+Aflevering(A):[A] er en aflevering;
+KanUdstedes(K,P):[K] kan udstedes til [P];
+Sælger(A,B,C):[A] sælger [B] til [C];
+UnderOpsyn(A,B):[A] er under opsyn af [B];
+IkkeUnderOpsyn(A,B):[A] er ikke under opsyn af [B];
+Øvelseskørsel(A):[A] er øvelseskørsel;
+TilladtAlderFor(A,B):Tilladt alder for [A] er [B];
+FratagetUbetinget(A):[A] er blevet frataget ubetinget;
+Oplysning(A):[A] er en oplysning;
+OverladerFøring(P,K):[P] overlader føringen af [K];
+Kørelærer(P):[P] er en kørelærer;
+Stand(S):[S] er en stand;
+Rådighed(R):[R] er en rådighed;
+Opmærksom(O):[O] er en opmærksomhed;
+Undersøgelse(U):[U] er en undersøgelse;
+Indkaldelse(I):[I] er en indkaldelse;
+Udlejning(U):[U] er en udlejning;
+Siddeplads(S):[S] er en siddeplads;
+Bakning(A):[A] er en bakning;
+LignendeForhold(L,A):[L] har lignende forhold til [A];
+Lignende(L,A):[L] er lignende [A];
+Fare(F):[F] er fare;
+Ulempe(F):[F] er en ulempning;
+Anbragning(A):[A] er en anbragning;
+Skade(S):[S] er skade;
+KanVæreTil(A,B):[A] kan være til [B];
+Henkastning(A):[A] er en henkastning;
+Efterladning(A):[A] er en efterladning;
+Færdring(F):[F] er en færdring;
+
+KanUdfører(A,B):[A] kan udfører [B];
+Regulering(R):[R] er en regulering;
+PludseligtOpstår(S):[S] opstår pludseligt;
+
+FørerTilsynMed(A,B):[A] fører tilsyn med [B];
+Pass(A):PASS;
+
+HarPligt(A,B):[A] har pligt til [B];
+IkkeHarPligt(A,B):[A] har pligt til [B];
+
+Angivelse(A):[A] er en angivelse;
+Skønnes(A,B):[A] skønnes [B];
+
+Privat(V):[V] er privat;
+Fællesvej(V):[V] er en fællesvej;
+Opsætter(P,A):[P] opsætter [A];
+Forestår(A,B):[A] forestår [B];
+Anbringelse(A):[A] er en anbringelse;

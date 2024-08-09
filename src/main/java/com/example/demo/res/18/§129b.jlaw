@@ -1,0 +1,4 @@
+FrakendtFørerretLastbil(P,§129b stk.1 nr.1,T) <- Fører(P,K,T), Burde(P,V), Type(V,vide), Om(V,konstruktivt indgreb i takograf), I(V,K):§129b stk.1 nr.1;
+FrakendtFørerretLastbil(P,§129b stk.1 nr.2,T) <- BetingetFrakendtFørerretLastbil(P,Lov,T), BetingetFrakendtFørerretLastbil(P,Lov2,T2), <(T2,T):§129b stk.1 nr.2:§129b stk.1 nr.3:§129b stk.1 nr.4;
+
+BetingetFrakendtFørerretLastbil(P,§129b stk.4 nr.1,T) <- FrakendtFørerretLastbil(P,Lov,T){brud}, Lov#(Lov,129b), Stk#(Lov,1), ForliggerFormilendeOmstændigheder(brud):§129b stk.4 nr.1;

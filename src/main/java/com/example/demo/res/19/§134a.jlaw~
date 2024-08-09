@@ -1,0 +1,1 @@
+Kan(P,A) <- TPM(P), Type(A,bemyndighed), Af(A,færdselsstyrelsen)\/[Af(A,P2)/\Under(P2,P)]
