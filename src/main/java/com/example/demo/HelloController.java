@@ -389,6 +389,8 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/19/§134b.jlaw");
         XAI.addRules(strPath+"res/19/§134d.jlaw");
         XAI.addRules(strPath+"res/19/§134e.jlaw");
+
+        XAI.printStats();
     }
 
     @FXML

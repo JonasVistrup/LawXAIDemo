@@ -279,4 +279,8 @@ public class ProgramParser {
         copy.clauses.addAll(this.clauses);
         return copy;
     }
+
+    public int predicateSize() {
+        return predicates.size();
+    }
 }

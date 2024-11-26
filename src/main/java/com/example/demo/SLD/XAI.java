@@ -141,6 +141,11 @@ public class XAI {
         }
     }
 
+    public static void printStats(){
+        System.out.println("Number of Clauses: " +clauses.size());
+        System.out.println("Number of Predicates: "+pp.predicateSize());
+    }
+
     public static Program getProgram(){
         ArrayList<Clause> allClauses = new ArrayList<>(clauses);
         ArrayList<String> reasons = new ArrayList<>();
