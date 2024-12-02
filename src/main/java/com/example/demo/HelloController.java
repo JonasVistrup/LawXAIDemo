@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -83,7 +84,7 @@ public class HelloController implements Initializable {
             factList.getItems().addAll(info);
             factInput.setText("");
             return;
-        }else if(factString.startsWith("case")){
+        }else if(factString.startsWith("case") || factString.startsWith("sag")){
             ArrayList<String> info = parseCase(factString);
             List<Atom> atoms = info.stream().map(XAI.pp::parseAtomOld).collect(Collectors.toList());
             this.atomFacts.addAll(atoms);
@@ -96,15 +97,19 @@ public class HelloController implements Initializable {
             factInput.setText("");
             return;
         }
-        Atom a = XAI.pp.parseAtomOld(""+factInput.getCharacters());
-        this.atomFacts.add(a);
-        if(a.predicate().hasExplanation()) factList.getItems().add(a.explain());
-        else factList.getItems().add(a.toString());
+        try {
+            Atom a = XAI.pp.parseAtomOld("" + factInput.getCharacters());
 
-        facts.add(""+ factInput.getCharacters());
-        System.out.println("Added to facts: "+factInput.getCharacters());
+            this.atomFacts.add(a);
+            if(a.predicate().hasExplanation()) factList.getItems().add(a.explain());
+            else factList.getItems().add(a.toString());
 
+            facts.add(""+ factInput.getCharacters());
+            System.out.println("Added to facts: "+factInput.getCharacters());
 
+        } catch (Exception e) {
+            System.out.println("Invalid ATOM: "+e.toString());
+        }
         factInput.setText("");
         //factList.setItems(oList);
         //factList.refresh();
@@ -391,6 +396,11 @@ public class HelloController implements Initializable {
         XAI.addRules(strPath+"res/19/§134e.jlaw");
 
         XAI.printStats();
+        try {
+            XAI.printOccurences("Kørende");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

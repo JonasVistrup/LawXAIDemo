@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -160,5 +161,21 @@ public class XAI {
             }
         }
         return new Program(allClauses);
+    }
+
+    public static void printOccurences(String predicate) throws IOException {
+        String[] dirs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12", "13", "14", "15", "16", "17", "17a", "18", "19", "Predicates"};
+        String prefix = "C:\\Users\\vistrup\\Desktop\\LawXAI\\src\\main\\java\\com\\example\\demo\\res\\";
+
+        for(String dir: dirs){
+            File dirF = new File(prefix + dir);
+            for(File f: dirF.listFiles()){
+                String ss = Files.readString(f.toPath());
+                if(ss.contains(predicate)){
+                    System.out.println("File "+f.getName() + " contains " + predicate);
+
+                }
+            }
+        }
     }
 }

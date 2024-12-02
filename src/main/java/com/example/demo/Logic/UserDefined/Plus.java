@@ -29,21 +29,32 @@ public class Plus extends UDFunction {
                 return null;
             }
         }
+        if(args.get(0) instanceof Number && args.get(1) instanceof Number && args.get(2) instanceof Number){
+            Number first = (Number) args.get(0);
+            Number second = (Number) args.get(1);
+            Number result = (Number) args.get(2);
+            if(first.add(second).equals(result)){
+                return new Substitution();
+            }else{
+                return null;
+            }
+        }
 
         if(args.get(0) instanceof Number && args.get(1) instanceof Number){
             Number first = (Number) args.get(0);
             Number second = (Number) args.get(1);
             return new Substitution((Variable) args.get(2), first.add(second));
 
-        }else if(args.get(0) instanceof Number && args.get(2) instanceof Number){
+        }else if(args.get(0) instanceof Constant && args.get(2) instanceof Number){
             Number first = (Number) args.get(0);
             Number result = (Number) args.get(2);
             return new Substitution((Variable) args.get(2), result.subtract(first));
 
-        }else{
-            Number second = (Number) args.get(1);
-            Number result = (Number) args.get(2);
+        }else if(args.get(1) instanceof Constant && args.get(2) instanceof Constant){
+            Number second = Number.constantToNumber((Constant) args.get(1));
+            Number result = Number.constantToNumber((Constant)args.get(2));
             return new Substitution((Variable) args.get(2), result.subtract(second));
         }
+        return null;
     }
 }

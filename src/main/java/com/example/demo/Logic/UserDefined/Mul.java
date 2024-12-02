@@ -30,20 +30,21 @@ public class Mul extends UDFunction {
             }
         }
 
-        if(args.get(0) instanceof Number && args.get(1) instanceof Number){
-            Number first = (Number) args.get(0);
-            Number second = (Number) args.get(1);
+        if(args.get(0) instanceof Constant && args.get(1) instanceof Constant){
+            Number first = Number.constantToNumber((Constant) args.get(0));
+            Number second = Number.constantToNumber((Constant) args.get(1));
             return new Substitution((Variable) args.get(2), first.multiply(second));
 
         }else if(args.get(0) instanceof Constant && args.get(2) instanceof Constant){
-            Number first = (Number) args.get(0);
-            Number result = (Number) args.get(2);
-            return new Substitution((Variable) args.get(2), result.divide(first));
+            Number first = Number.constantToNumber((Constant) args.get(0));
+            Number result = Number.constantToNumber((Constant) args.get(2));
+            return new Substitution((Variable) args.get(1), result.divide(first));
 
-        }else{
-            Number second = (Number) args.get(1);
-            Number result = (Number) args.get(2);
+        }else if(args.get(1) instanceof Constant && args.get(2) instanceof Constant){
+            Number second = Number.constantToNumber((Constant) args.get(1));
+            Number result = Number.constantToNumber((Constant)args.get(2));
             return new Substitution((Variable) args.get(2), result.divide(second));
         }
+        return null;
     }
 }
