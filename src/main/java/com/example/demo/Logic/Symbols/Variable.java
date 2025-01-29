@@ -67,5 +67,11 @@ public class Variable implements Term {
         return id;
     }
 
-
+    public int compareTo(Term o){
+        if(o instanceof Constant){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

@@ -1,0 +1,21 @@
+Lav(A):[A] er lav;
+Bugtet(A):[A] er bugtet;
+Ensrettet(V):[V] er ensrettet;
+Tæt(A):[A] er tæt;
+Smal(A):[A] er smal;
+Muligt(A):[A] er muligt;
+Registreret(V):[V] er registreret;
+Privat(V):[V] er privat;
+Åbnet(A):[A] er åbnet;
+Lukket(A):[A] er lukket;
+Unødigt(A):[A] er unødigt;
+Nødvendigt(A):[A] er nødvendigt;
+IkkeTændt(L):[L] er ikke tændt;
+Godkendt(V):[V] er godkendt;
+Tilstrækkelig(A):[A] er tilstrækkelig;
+SkaberVæsenligUlempe(A):[A] skaber væsenlig ulempe;
+UnødvendigtLang(A):[A] er unødvendigt lang;
+Afpasset(A):[A] er afpasset;
+BetryggendeAfstand(A):[A] er en betryggende afstand;
+Forstyrende(A):[A] er forstyrende;
+

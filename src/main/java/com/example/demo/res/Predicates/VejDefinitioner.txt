@@ -27,7 +27,7 @@ Vejkryds(V):[V] er et vejkryds;
 Vejsving(V):[V] er et vejsving;
 Vejudmunding(V):[V] er en vejudmunding;
 Vognbane(V):[V] er en vognbane;
-
+BaneSomKørebanenKanDelesI(V,VK):[V] er en bane som [VK] kan deles i;
 Signalanlæg(A):[A] er et signalanlæg;
 Afmærkning(A):[A] er en afmærkning;
 Uheldsted(V):[V] er et uheldsted;
@@ -43,3 +43,7 @@ Vejkurve(V):[V] er en vejkurve;
 UoverskueligBakke(V):[V] er en uoverskuelig bakke;
 Parkeringsplads(V):[V] er en parkeringsplads;
 Rasteplads(V):[V] er en rasteplads;
+FærdselForbeholdt(V,A):Færdsel på [V] er forbeholdt [A];
+Færdselstavle(V,A):[V] har færdselstavlen [A];
+DårligFøre(V):Trafikanter på [V] har dårligt føre;
+Fællesvej(V):[V] er en fællesvej;

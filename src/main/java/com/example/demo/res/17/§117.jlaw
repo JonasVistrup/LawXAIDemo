@@ -1,0 +1,48 @@
+StraffesMed(P,Bøde,§117 stk.1 nr.1,T) <- Bøde(Bøde), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), BrudtLoven(P,§54 stk.1 nr.2\/§54 stk.1 nr.4), Koncentration(P,thc,blodet,>0.000mg/kg/\<0.003mg/kg,T\/>T):§117 stk.1 nr.1;
+StraffesMed(P,Bøde,§117 stk.1 nr.1,T) <- Bøde(Bøde), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), BrudtLoven(P,§54 stk.1 nr.2\/§54 stk.1 nr.4), Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T):§117 stk.1 nr.2;
+StraffesMed(P,Bøde,§117 stk.1 nr.1,T) <- Bøde(Bøde), Fører(P,K,T){førelse}, Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), BrudtLoven(P,§54 stk.1 nr.1\/§54 stk.1 nr.3\/§54 stk.2)\/[Er(førelse,spirituskørsel)]:§117 stk.1 nr.2;
+
+
+Indtil(Fængsel,1 år og 6 måned) <- StraffesMed(P,Fængsel,Lov,T), Lov#(Lov,117), Stk#(Lov,2):§117 stk.2;
+StraffesMed(P,Fængsel,§117 stk.2 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Koncentration(P,alkohol,blodet,>2.00promille,T\/>T)\/ Koncentration(P,alkohol,udåndingsluften,>1.00mg/liter,T\/>T):§117 stk.2 nr.1;
+StraffesMed(P,Fængsel,§117 stk.2 nr.2,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), BrudtLoven(P,Lov,T){lovbrud}, Lov#(Lov,54), Stk#(Lov,2), Under(lovbrud,skærpende omstændigheder):§117 stk.2 nr.2;
+StraffesMed(P,Fængsel,§117 stk.2 nr.3,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Skyldig(P,A,T1/\T2), ~=(T1,T2), Type(A,sprirituskørsel)\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,1)/\[Nr#(Lov,1\/3)\/[Nr#(Lov,2\/4)/\Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T)]]]\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,2)]:§117 stk.2 nr.3;
+StraffesMed(P,Fængsel,§117 stk.2 nr.4,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Frataget(P,køreret,T0){fratagelse}, <(T0,T), Pga(fratagelse,A),Type(A,spirituskørsel)\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,1)/\[Nr#(Lov,1\/3)\/[Nr#(Lov,2\/4)/\Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T)]]]\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,2)/\<(T-T0,3år)]:§117 stk.2 nr.4;
+
+StraffesMed(P,Fængsel,§117 stk.2 nr.5,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Under(P,kørselsforbud,T0){a}, <(T0,T), Efter(a,Lov), Lov#(Lov,127), Følger(a,A), Type(A,sprirituskørsel)\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,1)/\[Nr#(Lov,1\/3)\/[Nr#(Lov,2\/4)/\Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T)]]]\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,2)]:§117 stk.2 nr.5;
+
+StraffesMed(P,Fængsel,§117 stk.2 nr.6,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Frataget(P,føreretten ubetinget,T0){a}, <(T0,T), Efter(a,Lov), Lov#(Lov,127), Følger(a,A), Type(A,sprirituskørsel)\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,1)/\[Nr#(Lov,1\/3)\/[Nr#(Lov,2\/4)/\Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T)]]]\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,2)]:§117 stk.2 nr.6;
+
+StraffesMed(P,Fængsel,§117 stk.2 nr.7,T) <- Fængsling(Fængsel), Fører(P,K,T), Type(A,sprirituskørsel)\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,1)/\[Nr#(Lov,1\/3)\/[Nr#(Lov,2\/4)/\Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T)]]]\/[Type(A,lovbrud)/\Af(A,Lov)/\Lov#(Lov,54)/\Stk#(Lov,2)], Udfører(P,A,T){u}, Ved(A,B), Type(B,brug), Er(B,uberettiget), Af(B,K), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K):§117 stk.2 nr.7;
+
+StraffesMed(P,Fængsel,§117 stk.2 nr.8,T) <- Fængsling(Fængsel), Fører(P,K,T), Motorkøretøj(K)\/Knallert45(K)\/Traktor(K)\/Motorredskab(K), Findes(P,S), Type(S,skyldig), I(S,F), Type(F,forhold), Omfatter(F,Lov), [Lov#(Lov,125)/\Stk#(Lov,1)/\Nr#(Lov,1\/3\/4)]\/[Lov#(Lov,126)/\Stk#(Lov,1)/\Nr#(Lov,3)]:§117 stk.2 nr.8;
+Skyldig(P,l,T) <- BrudtLoven(P,Lov,T){l}:;
+Type(l,lovbrud) <- BrudtLoven(P,Lov,T){l}:;
+Af(l,Lov) <- BrudtLoven(P,Lov,T){l}:;
+
+Kræver(K,kørekort) <- MotordrevetKøretøj(K):§56 stk.1 nr.1;
+Indtil(Fængsel,1 år og 6 måned) <- StraffesMed(P,Fængsel,Lov,T), Lov#(Lov,117a), Stk#(Lov,2):§117a stk.2;
+StraffesMed(P,Bøde,§117a stk.1 nr.1,T) <- Bøde(Bøde), Fører(P,K,T), MotordrevetKøretøj(K), ~KnallertU#Plade(K), Kræver(K,kørekort), Frataget(P,køreret,T0){f}, Er(f,ubetinget), <(T0,T):§117a stk.1 nr.1;
+StraffesMed(P,Fængsel,§117a stk.2 nr.1,T1) <- Fængsling(Fængsel), Fører(P,K,T0), Fører(P,K,T1), MotordrevetKøretøj(K), ~KnallertU#Plade(K), Kræver(K,kørekort), Frataget(P,køreret,T){f},  Er(f,ubetinget), <(T1,T), <(T0,T1), <(T0,T):§117a stk.2 nr.1;
+StraffesMed(P,Fængsel,§117a stk.2 nr.2,T) <- Fængsling(Fængsel), StraffesMed(P,Bøde,§117a stk.1 nr.1,<T), Fører(P,K,T), MotordrevetKøretøj(K), ~KnallertU#Plade(K), Kræver(K,kørekort), Frataget(P,køreret,T0){f}, Er(f,ubetinget), <(T0,T):§117a stk.2 nr.2;
+StraffesMed(P,Fængsel,§117a stk.2 nr.3,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), ~KnallertU#Plade(K), Kræver(K,kørekort), Frataget(P,køreret,T1){f}, Er(f,ubetinget), <(T1,T), Pga(f,Kø), Kørsel(Kø), <(T3,T1), Koncentration(P,alkohol,blodet,>2.00promille,T3) \/ Koncentration(P,alkohol,udåndingsluften,>1.00mg/liter,T3), Under(Kø,T3)\/Efter(Kø,T3):§117a stk.2 nr.3;
+
+
+UdmålesUnder(Bøde,Hensyn) <- StraffesMed(P,Bøde,Lov,T), Lov#(Lov,117), Stk#(Lov,1), Type(Hensyn,hensyn), Til(Hensyn,I,T), Type(I,indtægtsforhold), Af(I,P):§117b stk.1 nr.1;
+UdmålesUnder(Bøde,Hensyn) <- StraffesMed(P,Bøde,Lov,T){s}, Pga(S,spirituskørsel,T), Lov#(Lov,117), Stk#(Lov,1), Type(Hensyn,hensyn), Til(Hensyn,K,T), Koncentration(P,alkohol,blodet,K,T\/>T)\/Koncentration(P,alkohol,udåndingsluften,K,T\/>T):§117b stk.1 nr.2;
+UdmålesUnder(Bøde,Hensyn) <- StraffesMed(P,Bøde,Lov,T), Lov#(Lov,117a), Stk#(Lov,1), Type(Hensyn,hensyn), Til(Hensyn,I,T), Type(I,indtægtsforhold), Af(I,P):§117b stk.1 nr.1;
+
+StraffesMed(P,Bøde,§117c stk.1 nr.1,T) <- Bøde(Bøde), Fører(P,K,T), KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2\/4), Koncentration(P,thc,blodet,>0.000mg/kg/\<0.003mg/kg,T\/>T):§117c stk.1 nr.1;
+StraffesMed(P,Bøde,§117c stk.1 nr.2,T) <- Bøde(Bøde), Fører(P,K,T), KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2\/4), Koncentration(P,thc,blodet,>0.003mg/kg,T\/>T):§117c stk.1 nr.2;
+StraffesMed(P,Bøde,§117c stk.1 nr.3,T) <- Bøde(Bøde), Fører(P,K,T){f}, KnallertU#Plade(K), Er(F,spirituskørsel)\/[BrudtLoven(P,Lov,T)/\Lov#(Lov,54)/\[Stk#(Lov,2)\/[Stk#(Lov,1)/\Nr#(Lov,1\/3)]]]:§117c stk.1 nr.3;
+
+Indtil(Fængsel,1 år) <- StraffesMed(P,Fængsel,§117c stk.2 nr.1,T):§117c stk.2;
+StraffesMed(P,Fængsel,§117c stk.2 nr.1,T) <- Fængsling(Fængsel), StraffesMed(P,Bøde,Lov,T/\T1), Lov#(Lov,117c), Stk#(Lov,1), Tidligere(T1,T):§117c stk.2 nr.1;
+
+Indtil(Fængsel,1 år) <- Fængsling(Fængsel), StraffesMed(P,Fængsel,§117d stk.1 nr.1,T):§117d stk.1;
+Indtil(Fængsel,1 år) <- Fængsling(Fængsel), StraffesMed(P,Fængsel,§117d stk.2 nr.1,T):§117d stk.2;
+StraffesMed(P,Fængsel,§117d stk.1 nr.1,T) <- Fængsling(Fængsel), BrudtLoven(P,§9 stk.2 nr.1,T):§117d stk.1 nr.1;
+StraffesMed(P,Bøde,§117d stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,§9 stk.2 nr.1,T){b}, Under(b,formildende omståndigheder):§117d stk.1 nr.1;
+
+StraffesMed(P,Bøde,§117d stk.2 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,56\/62), Stk#(Lov,1):§117d stk.2 nr.1;
+StraffesMed(P,Fængsel,§117d stk.2 nr.1,T) <- Fængsling(Fængsel), BrudtLoven(P,Lov,T){b}, Lov#(Lov,56\/62), Stk#(Lov,1), Under(b,skærpende omståndigheder):§117d stk.2 nr.1;

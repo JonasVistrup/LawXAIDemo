@@ -1,2 +1,2 @@
-BrudtLoven(P,§56_stk.1,T), <- IkkeHar(P,Kørekort,T), Type(Kørekort,kørekort), Fører(P,K,T), Motorkøretøj(K) \/ Knallert45(K):§56_stk.1;
-BrudtLoven(P,§56_stk.1,T), <- Politiet(Popo), Kræver(Popo,A,T), Nægter(P,A,T)\/IkkeIStandTil(P,A,T), Visning(A), Af(A,Kørekort), Type(Kørekort,kørekort), Fører(P,K,T), Motorkøretøj(K) \/ Knallert45(K):§56_stk.1;
+BrudtLoven(P,§56 stk.1,T) <- IkkeHar(P,Kørekort,T), Type(Kørekort,kørekort), Fører(P,K,T), Motorkøretøj(K) \/ Knallert45(K):§56_stk.1;
+BrudtLoven(P,§56 stk.1,T) <- Politiet(Popo), Kræver(Popo,A,T), Nægter(P,A,T)\/IkkeIStandTil(P,A,T), Visning(A), Af(A,Kørekort), Type(Kørekort,kørekort), Fører(P,K,T), Motorkøretøj(K) \/ Knallert45(K):§56_stk.1;

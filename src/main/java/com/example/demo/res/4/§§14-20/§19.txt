@@ -1,4 +1,0 @@
-BrudtLoven(P1,§19 stk.1) <- Kører(P1,K1,VB,Ta,Tb), By(VB), Bus(K2), Manøvre(M2,igangsætning,P2,K2,VSS,T3), Stoppested(VSS), GiverTegn(K2,M,T1), ~Manøvre(M1,decelerer,P1,K1,VB,T2), NødvendigtPga(M1,M2), <(Ta,T1,T2,T3,Tb); §19 stk.1 
-IkkeBrudtLoven(P,§18 stk.2) <- Udfører(P,M), Manøvre(M,igangsætning,K,VSS,T2), Bus(K), Stoppested(VSS), By(VSS), GiverTegn(K,M,T1), SkaberUlempe(M), <(T1,T2);§19 stk.1;;TfK 2014.119/2 V
-
-BrudtLoven(P,§19 stk.2) <- Kører(P,K1,VB,Ta,Tb), ~UdviserSærligAgtpågivnehed(P,T), Optager/AfsætterPassagerer(K2,VB,T), SkoleBus(K2), <(Ta,T,Tb); §19 stk.2

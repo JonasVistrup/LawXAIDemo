@@ -1,0 +1,2 @@
+Kan(P,generhverve førerretten,T) <- <(T0,T), FrakendtFørerret(P,Lov,T0){Frakendt}, Begrundet(Frakendt,spirituskørsel), DeltagerI(P,alkolåsordning,T){D}, Varighed(Frakendt,A), Indtil(D,T0+A):§132a stk.1 nr.1;
+

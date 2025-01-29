@@ -36,10 +36,11 @@ Efter(A,B):[A] er efter [B];
 Om(A,B):[A] er om [B];
 Igang(A):[A] er i gang;
 Mod(A,B):[A] er mod [B];
-
+Som(A,B):[A] er som [B];
 Længde(A,B):[A] har længde [B];
 Bredde(A,B):[A] har bredde [B];
 Højde(A,B):[A] har højde [B];
+Under(A,B):[A] er under [B];
 
 HøjreFor(A,B):[A] er til højre for [B];
 VenstreFor(A,B):[A] er venstre for [B];

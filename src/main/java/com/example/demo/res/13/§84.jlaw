@@ -1,0 +1,2 @@
+BrudtLoven(P,§84 stk.1 nr.1,T) <- Fører(P,K,T), Køretøj(K)\/Vogntog(K), TPMBestemmelse(A,§84 stk.1 nr.1), IkkeFølger(K,A):§84 stk.1 nr.1;
+BrudtLoven(P,§84 stk.2 nr.1,T) <- Køretøj(K)\/Vogntog(K), Kørsel(Kø), Af(Kø,K), Udfører(P,Kø,T), Under(Kø,viadukt\/ledninger)\/[Under(Kø,F) /\ Lignende(F,viadukt\/ledninger)], SkaberFare(Kø)\/SkaberUlempe(Kø):§84 stk.1 nr.1;

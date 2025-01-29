@@ -1,0 +1,2 @@
+IkkeEfterkommer(P,A,T) <- TPMBestemmelse(B,A), GivesVed(A,F), Færdselstavle(F)\/[Afmærkning(F)/\På(F,K)/\Kørebane(K)]\/Signalanlæg(F)\/Afmærkning(F)\/Type(F,indretning), IkkeEfterkommer(P,B,T):§95 stk.1;
+IkkeBrudtLoven(P,Lov,T) <- Efterkommer(P,A), GivesVed(A,F), Færdselstavle(F)\/[Afmærkning(F)/\På(F,K)/\Kørebane(K)]\/Signalanlæg(F)\/Afmærkning(F)\/Type(F,indretning), Fraviger(A,Lov):§95 stk.2 nr.1;

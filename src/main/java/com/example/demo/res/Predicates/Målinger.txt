@@ -1,0 +1,15 @@
+Længde(A,B):[A] har længde [B];
+Bredde(A,B):[A] har bredde [B];
+Højde(A,B):[A] har højde [B];
+Vægt(A,B):Vægten af [A] er [B];
+Alder(A,B):Alderen af [A] er [B];
+Afstand(A,B,C):Afstanden mellem [A] og [B] er [C];
+RullefeltResultat(K,A):Rullefelt resultat på [K] er [A];
+Måling(A):[A] er en måling;
+Gyldig(A):[A] er gyldig;
+Kalibreret(A,D):[A] er sidst kalibreret [D];
+Hastighed(A,B):Hastigheden af [A] er [B];
+MaxHastighed(V,H):Man må maksimalt [H] på [V];
+AndenHastighedsGrænse(V):[V] har en anden hastigheds grænse;
+AndenHastighedsGrænseFastsat(V,M):[V] har hastigheds grænse [M];
+Koncentration(P,A,B,C):[P]s koncentration af [A] i [B] er [C];

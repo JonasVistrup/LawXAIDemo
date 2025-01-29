@@ -1,0 +1,1 @@
+Kan(P,A) <- Type(P,justistminister), Type(A,bemyndighed), Af(A,politiet)\/[Af(A,P2)/\Under(P2,P)], Til(A,at udøve beføjelser tillagt justistsministeren):§134b Stk.1 Nr.1;

@@ -1,0 +1,10 @@
+Længde(A,B):[A] har længde [B];
+Bredde(A,B):[A] har bredde [B];
+Højde(A,B):[A] har højde [B];
+Vægt(A,B):Vægten af [A] er [B];
+Alder(A,B):Alderen af [A] er [B];
+Afstand(A,B,C):Afstanden mellem [A] og [B] er [C];
+RullefeltResultat(K,A):Rullefelt resultat på [K] er [A];
+Måling(A):[A] er en måling;
+Gyldig(A):[A] er gyldig;
+Kalibreret(A,D):[A] er sidst kalibreret [D];

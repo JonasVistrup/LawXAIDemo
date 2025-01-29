@@ -1,0 +1,1 @@
+HæfterFor(E,S,T) <- Er(P,tiltalte), Fører(P,K,<T), ErstantningsAnsvarlig(P,S,T), Har(K,D), Type(D,ansvarforsikring), Skade(S), Hos(D,E):§112 stk.2 nr.1;

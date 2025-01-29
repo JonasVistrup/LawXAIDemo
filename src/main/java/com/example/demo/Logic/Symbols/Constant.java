@@ -47,4 +47,12 @@ public class Constant implements Term {
     public Term applySub(Substitution substitution) {
         return this;
     }
+
+    public int compareTo(Term o){
+        if(o instanceof Variable){
+            return -1;
+        }else{
+            return this.toString().compareTo(o.toString());
+        }
+    }
 }

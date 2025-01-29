@@ -1,0 +1,23 @@
+BrudtLoven(P,§70 stk.1 nr.1,T) <- Bil(K), ~Er(K,ledbus), Fører(P,K,T), Påhængskøretøj(A), Påhængskøretøj(B), ~=(A,B), På(A,K,T), På(B,K,T):§70 stk.1 nr.1;
+BrudtLoven(P,§70 stk.1 nr.2,T) <- Motorcykel(K), Fører(P,K,T), Påhængsvogn(A)\/Påhængsredskab(A), Påhængsvogn(B)\/Påhængsredskab(B), ~=(A,B), På(A,K,T), På(B,K,T):§70 stk.1 nr.2;
+BrudtLoven(P,§70 stk.1 nr.2,T) <- Motorcykel(K), Fører(P,K,T), Påhængskøretøj(A), ~Påhængsvogn(A), ~Påhængsredskab(A), På(A,K,T):§70 stk.1 nr.2;
+BrudtLoven(P,§70 stk.1 nr.3,T) <- Traktor(K)\/Motorredskab(K), Fører(P,K,T), Påhængsredskab(A), Påhængsredskab(B), ~=(A,B), På(A,K,T), På(B,K,T):§70 stk.1 nr.3;
+BrudtLoven(P,§70 stk.1 nr.3,T) <- Traktor(K)\/Motorredskab(K), Fører(P,K,T), Påhængsvogn(A), Påhængsvogn(B), Påhængsvogn(C), ~=(A,B), ~=(A,C), ~=(B,C), På(A,K,T), På(B,K,T), På(C,K,T):§70 stk.1 nr.3;
+BrudtLoven(P,§70 stk.1 nr.3,T) <- Traktor(K)\/Motorredskab(K), Fører(P,K,T), Påhængsvogn(A), Påhængsredskab(B), Påhængsvogn(C), ~=(A,B), ~=(A,C), ~=(B,C), På(A,K,T), På(B,K,T), På(C,K,T):§70 stk.1 nr.3;
+BrudtLoven(P,§70 stk.1 nr.4,T) <- Cykel(K), Fører(P,K,T), Påhængsvogn(A), Påhængsvogn(B), ~=(A,B), På(A,K,T), På(B,K,T):§70 stk.1 nr.4;
+BrudtLoven(P,§70 stk.1 nr.4,T) <- Cykel(K), Fører(P,K,T), Påhængskøretøj(A), ~Påhængsvogn(A), På(A,K,T):§70 stk.1 nr.4;
+BrudtLoven(P,§70 stk.1 nr.5,T) <- KnallertU#Plade(K), Fører(P,K,T), Påhængskøretøj(A), På(A,K,T):§70 stk.1 nr.5;
+
+BrudtLoven(P,§70 stk.2 nr.1,T) <- Cykel(K), Fører(P,K,T), Sidevogn(A), VenstreFor(A,K),På(A,K,T):§70 stk.2 nr.1;
+BrudtLoven(P,§70 stk.2 nr.1,T) <- Motorcykel(K), Fører(P,K,T), Sidevogn(A), VenstreFor(A,K),På(A,K,T), Registreret(K,D), Efter(D,1_06_1995):§70 stk.2 nr.1:§70 stk.2 nr.2;
+BrudtLoven(P,§70 stk.2 nr.3,T) <- Knallert(K), Fører(P,K,T), Sidevogn(A), På(A,K,T):§70 stk.2 nr.3;
+
+BrudtLoven(P,§70 stk.3 nr.1,T) <- TPMBestemmelse(L,§70 stk.3 nr.1), Påhængskøretøj(A)\/Sidevogn(A), IkkeFølger(På(A,K,T),L), Køretøj(K), Fører(P,K,T):§70 stk.3 nr.1;
+BrudtLoven(P,§70 stk.3 nr.2,T) <- TPMBestemmelse(L,§70 stk.3 nr.2), IkkeFølger(Med(A,K,T),L), Køretøj(K), Fører(P,K,T):§70 stk.3 nr.2;
+
+IkkeBrudtLoven(P,§70 stk.1 nr.4,T) <- Cykel(K), Fører(P,K,T), Påhængskøretøj(A), ~Påhængsvogn(A), På(A,K,T), På(K,V,T), Følger(V,L), TPMLempelse(L,§70 stk.3 nr.3):§70 stk.1 nr.4:§70 stk.3 nr.3;
+
+BrudtLoven(P,§70 stk.4 nr.1,T) <- TPMBestemmelse(L,§70 stk.4 nr.1), IkkeFølger(Trækker(K,K2,T),L), Køretøj(K), Køretøj(K2), Fører(P,K,T):§70 stk.4 nr.1;
+
+IkkeBrudtLoven(P,§70 stk.1 nr.1,T) <- TPMLempelse(L,§70a stk.1 nr.1), Bil(K), ~Er(K,ledbus), Fører(P,K,T), Påhængskøretøj(A), Påhængskøretøj(B), ~=(A,B), På(A,K,T), På(B,K,T), På(K,V,T), Følger(V,L,T):§70 stk.1 nr.1:§70a stk.1 nr.1;
+

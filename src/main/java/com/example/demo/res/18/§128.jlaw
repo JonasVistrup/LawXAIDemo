@@ -1,0 +1,5 @@
+Mellem(frakendelse,6 måneder,10 år,T) <- FrakendtFørerret(P,Lov,T){frakendelse}:§128 skt.1 nr.1;
+Mindst(frakendelse,3 år,T) <- FrakendtFørerret(P,Lov,T){frakendelse}, SkyldigIForholdTil(P,spirituskøresel,T), ~Lov#(Lov,126) \/ ~Stk#(Lov,1) \/ ~Nr#(Lov,6):§128 skt.2 nr.1;
+Mindst(frakendelse,3 år,T) <- FrakendtFørerret(P,Lov,T){frakendelse}, Lov#(Lov,126), Stk#(Lov,1), Nr#(Lov,10\/11\/12\/13):§128 skt.2 nr.2;
+
+Fra(frakendelse,T1) <- FrakendtFørerret(P,Lov,T){frakendelse}, Barn(P,T), Alder(P,A), -(18år,A,B), +(T,B,T1):§128 skt.4 nr.1;

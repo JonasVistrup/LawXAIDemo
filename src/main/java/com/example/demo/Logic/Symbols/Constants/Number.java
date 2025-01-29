@@ -78,4 +78,28 @@ public class Number extends Constant implements Comparable<Number> {
     public int compareTo(Number o) {
         return this.numerator*o.denominator-o.numerator*this.denominator;
     }
+
+    public static Number constantToNumber(Constant c){
+        Double d = null;
+        int i;
+        try {
+            for (i = 1; i <= c.toString().length(); i++) {
+                d = Double.parseDouble(c.toString().substring(0,i));
+            }
+            return doubleToNumber(d);
+        } catch (Exception ignored) {
+        }
+        if(d == null) throw new IllegalArgumentException(c.toString()+" is not a valid number");
+        return doubleToNumber(d);
+    }
+
+    public static Number doubleToNumber(double d){
+        String dString = d + "";
+        if(!dString.contains(".")) return new Number(Integer.parseInt(dString));
+
+        String[] parts = dString.split("\\.");
+        int denominator = (int) Math.pow(10,parts[1].length());
+        int numerator = Integer.parseInt(parts[0])*denominator+Integer.parseInt(parts[1]);
+        return new Number(numerator,denominator);
+    }
 }

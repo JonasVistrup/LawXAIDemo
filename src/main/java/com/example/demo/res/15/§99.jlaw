@@ -1,0 +1,5 @@
+BrudtLoven(P,§99 stk.1 nr.1,T) <- Anbringelse(A), Af(A,F), Udfører(P,A,T), Færdselstavle(F)\/Signalanlæg(F)\/Type(F,indretning), Til(F,regulereing af færdsel), UdenFor(A,de tilfælde der er angivet i færdselsloven eller bekendtgørelser):§99 stk.1 nr.1;
+BrudtLoven(P,§99 stk.2 nr.1,T) <- Anbringelse(A), Af(A,F), Udfører(P,A,T), På(A,M), Afmærkning(M), Type(F,skilt\/opslag\/lysindretning):§99 stk.2 nr.1;
+BrudtLoven(P,§99 stk.3 nr.1,T) <- Kræver(Popo,F,<T), Fjernelse(F), Politiet(Popo), Af(F,A), Type(A,skilt\/opslag\/lysindretning), Nægter(P,F,T):§99 skt.3 nr.1;
+BrudtLoven(P,§99 stk.4 nr.1,T) <- Anbringelse(A), Af(A,F), Udfører(P,A,T), Er(F,reflekterende), Kan(F,B), Type(B,tilbagekastning), Af(B,L), Type(L,lys), Fra(L,K), På(K,V,>T), Vej(V), Køretøj(K):§99 stk.4 nr.1;
+

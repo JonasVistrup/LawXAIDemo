@@ -1,0 +1,6 @@
+ErstantningsAnsvarlig(P,S,T) <- Ansvarlighed(A), For(A,K), Har(P,A,T), MotordrevetKøretøj(K/\K2), Skade(S), Type(S,personskade\/tab af forsøger), Følger(S,U), Type(U,sammenstød), Af(U,K/\K2), Er(K,brug som trafikmiddel,T), Voldelse(Vo), Ved(Vo,U), Udfører(K,Vo,T), Af(Vo,S):§101 stk.1 nr.1:§103 stk.1;
+
+Kan(E,nedsættes) <- Erstatning(E), For(E,S), Skade(S), MotordrevetKøretøj(K/\K2), Type(S,personskade\/tab af forsøger), Følger(S,U), Type(U,sammenstød), Af(U,K/\K2), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig):§101 stk.2 nr.1:§103 stk.1;
+Kan(E,bortfalde) <- Erstatning(E), For(E,S), Skade(S), MotordrevetKøretøj(K/\K2), Type(S,personskade\/tab af forsøger), Følger(S,U), Type(U,sammenstød), Af(U,K/\K2), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Er(M,forsætlig):§101 stk.2 nr.1:§103 stk.1;
+Kan(E,nedsættes) <- Erstatning(E), For(E,S), Skade(S), MotordrevetKøretøj(K/\K2), Type(S,personskade\/tab af forsøger), Følger(S,U), Type(U,sammenstød), Af(U,K/\K2), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Ved(M,grov uagtsomhed):§101 stk.2 nr.2:§103 stk.1;
+Kan(E,bortfalde) <- Erstatning(E), For(E,S), Skade(S), MotordrevetKøretøj(K/\K2), Type(S,personskade\/tab af forsøger), Følger(S,U), Type(U,sammenstød), Af(U,K/\K2), På(S,P2), Medvirkning(M), Udfører(P2,M,T0), Til(M,S), Ved(M,grov uagtsomhed):§101 stk.2 nr.2:§103 stk.1;

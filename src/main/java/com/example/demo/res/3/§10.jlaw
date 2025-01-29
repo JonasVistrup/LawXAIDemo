@@ -11,13 +11,16 @@ SærligeOmstændinghederTilsiger(P,gang_i_højre_side,V,T) <- På(Loc,V,T), Til(
 BrudtLoven(P,§10 Stk.3,T) <- Gående(P,T), På(P,V,T), Fortov(V)\/Sti(V)\/Cykelsti(V), Trækker(P,C,T), Cykel(C)\/Knallert(C), Gående(P2,T), På(P2,V,T), UlempeFor(C,P2,T):§10 Stk.3;
 BrudtLoven(P,§10 Stk.3,T) <- Gående(P,T), På(P,V,T), Cykelsti(V), Kørende(P2,T), På(P,V,T), UlempeFor(X,V,T):§10 Stk.3:U 1935.1003 Ø:U 2000.1486 Ø;
 
-BrudtLoven(P,§10 Stk.4,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(K), ~Udviser(P,nødvendigt_hensyn,T):§10 Stk.4:FED 1996.135 V:U 1993.785 V;
+BrudtLoven(P,§10 Stk.4,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(K), ~Udviser(P,nødvendigt hensyn,T):§10 Stk.4:FED 1996.135 V:U 1993.785 V;
 BrudtLoven(P,§10 Stk.4,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(K), Ophold(O), Af(O,P), På(P,V,T), Unødigt(O):§10 Stk.4;
 
 BrudtLoven(P,§10 Stk.5,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(V), Fodgængerfelt(F) \/ [Bro(F) /\ Type(F,fodgængerbro)] \/ [Tunnel(F) /\ Type(F,fodgængertunnel)], Nær(P,F,T):§10 stk.5;
+Nær(P,F,T) <- Gående(P,T), Fodgængerfelt(F), Afstand(P,F,A,T), <(A,30 meter):færdselsloven med kommentarer side 210;
+Afstand(P,B,80 meter,T) <- Gående(P,T), Afstand(P,B,1 minuts gågang,T):www.quora.com/How-far-can-a-person-walk-in-one-minute;
+IkkeBrudtLoven(P,§10 Stk.5,T) <- Gående(P,T), Passerer(P,V,T), Cykelsti(V)\/Kørebane(V), Fodgængerfelt(F) \/ [Bro(F) /\ Type(F,fodgængerbro)] \/ [Tunnel(F) /\ Type(F,fodgængertunnel)], IkkeNær(P,F,T):§10 stk.5;
+IkkeNær(P,F,T) <- Gående(P,T), Fodgængerfelt(F), Afstand(P,F,A,T), <(30meter,A):færdselsloven med kommentarer side 210;
 
 BrudtLoven(P,§10 Stk.6,T) <- Gående(P,T), Laver(P,Passage,T), Kørebane(V)\/Cykelsti(V), Type(Passage,lige_over_vej):§10 stk.6;
-
 BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,Politi), Politiet(Politiet), Tegn(Tegn), Udfører(Politiet,Tegn,T), Til(Tegn,P), Type(Tegn,må_ikke_passerer):§10 stk.7;
 BrudtLoven(P,§10 Stk.7,T) <- Gående(P,T), Betræder(P,V,T), Færdsel(V,Færdslen), ReguleresAf(Færdslen,S), Signalanlæg(S), Tegn(Tegn), Udfører(S,Tegn,T), Til(Tegn,P), Type(Tegn,rødt):§10 Stk.7;
 

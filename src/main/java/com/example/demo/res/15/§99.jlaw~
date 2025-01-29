@@ -1,0 +1,1 @@
+BrudtLoven(P,§99 stk.1 nr.1,T) <- Anbringelse(A), Af(A,F), Udfører(P,A,T), Færdselstavle(F)\/Signalanlæg(F)\/Type(F,indretning), Til(F,regulereing af færdsel), UdenFor(A,de tilfælde der er angivet i færdselsloven eller bekendtgørelser):§99 stk.1 nr.1;

@@ -6,4 +6,6 @@ Solnedgang(D,V,T):Solnedgang for datoen [D] på [V] er [T];
 
 Start(A):[A] starter;
 Slut(A):[A] slutter;
-
+Igang(A):[A] er i gang;
+Begynder(A,B):[A] på begynder med [B];
+Ender(A,B):[A] ender med [B];

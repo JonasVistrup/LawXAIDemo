@@ -1,4 +1,4 @@
-BrudtLoven(P,§43,T) <- Fører(P,K,T), Hastighed(K,H,T), MaxHastighed(K,M,T) <(M,H):§43 stk. 1;
+BrudtLoven(P,§43,T) <- Fører(P,K,T), Hastighed(K,H,T), MaxHastighed(K,M,T), <(M,H):§43 stk. 1;
 
 MaxHastighed(K,80) <- TilladtVægt(K,T), Bus(K), <(T,3500), ~Tempo100Bus(K):§43 stk. 1:§43 stk. 10;
 MaxHastighed(K,100) <- TilladtVægt(K,T), Bus(K), <(T,3500), Tempo100Bus(K):§43 stk. 1:§43 stk. 10;
@@ -9,15 +9,15 @@ MaxHastighed(K,70,T) <- TilladtVægt(K,Vægt), På(K,V,T), ~Motorvej(V), <(3500,
 MaxHastighed(K,70) <- TilladtVægt(K,Vægt), På(K,V,T), ~Motorvej(V), <(3500,Vægt), Campingbil(K):§43 stk. 2:Samling: 2015-16, L 84, bilag 1, side 7;
 MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Campingbil(K):§43 stk. 4;
 
-MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), ~Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
-MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), ~Motorvej(V), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3;
-MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
+MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), ~Tempo100Bil(K), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
+MaxHastighed(K,70) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), ~Motorvej(V), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), ~Motorvej(V), Tempo100Bil(K), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 3:§43 stk. 11;
 
 MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Lastbil(K):§43 stk. 4;
 MaxHastighed(K,80) <- TilladtVægt(K,Vægt), På(K,V,T), Motorvej(V), <(3500,Vægt), Vogntog(K), På(K2,K), Påhængskøretøj(K2):§43 stk. 4;
-MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), ~Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
-MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), Motorvej(V), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4;
-MaxHastighed(K,100) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), Tempo100Bil(K), <=(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), ~Tempo100Bil(K), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
+MaxHastighed(K,80) <- TilladtVægt(K,Vægt), Motorcykel(K), På(K,V,T), Motorvej(V), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4;
+MaxHastighed(K,100) <- TilladtVægt(K,Vægt), Bil(K), På(K,V,T), Motorvej(V), Tempo100Bil(K), ~>(Vægt,3500), På(K2,K), Påhængskøretøj(K2):§43 stk. 4:§43 stk. 11;
 
 MaxHastighed(K,30) <- Køretøj(K), På(V,K), ~Registreret(V), Påhængskøretøj(V):§43 stk. 5;
 MaxHastighed(K,30) <- Traktor(K), ~Godkendt(K), ~Registreret(K):§43 stk. 5;

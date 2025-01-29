@@ -18,7 +18,10 @@ public class Atom implements Comparable<Atom>{
         this.predicate = atom.predicate;
         this.instances = new HashMap<>();
         this.args = atom.args.applySub(substitution);
+        this.reification = atom.reification==null? null : atom.reification.applySub(substitution);
     }
+
+
 
     public enum Type{
         STANDARD,
@@ -40,6 +43,8 @@ public class Atom implements Comparable<Atom>{
      */
     private final Map<Integer, Atom> instances;
 
+    private final Term reification;
+
     /**
      * Constructs an atom.
      * @param predicate predicate of atom.
@@ -58,6 +63,22 @@ public class Atom implements Comparable<Atom>{
         this.predicate = predicate;
         this.args = new Arguments(args);
         this.instances = new HashMap<>();
+        this.reification = null;
+    }
+
+    public Atom(Predicate predicate, List<Term> args, Term reification){
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        if(predicate instanceof PredicateStd) {
+            this.type = Type.STANDARD;
+        }else if (predicate instanceof UDFunction) {
+            this.type = Type.FUNCTION;
+        }else {
+            this.type = Type.RELATION;
+        }
+        this.predicate = predicate;
+        this.args = new Arguments(args);
+        this.instances = new HashMap<>();
+        this.reification = reification;
     }
 
     public Atom(Predicate predicate, Arguments args){
@@ -77,6 +98,27 @@ public class Atom implements Comparable<Atom>{
         this.predicate = predicate;
         this.args = args;
         this.instances = new HashMap<>();
+        this.reification = null;
+    }
+
+    public Atom(Predicate predicate, Arguments args, Term reification){
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        if((predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof UDNegation)) throw new IllegalArgumentException("Illegal use of double negation");
+        if(predicate instanceof PredicateStd){//|| (predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd)) {
+            this.type = Type.STANDARD;
+        }else if (predicate instanceof UDFunction) {
+            if(predicate.nArgs() != args.size()) throw new IllegalArgumentException("Number of arguments does not match function predicate");
+            this.type = Type.FUNCTION;
+        }else {
+            if(predicate.nArgs() != args.size() && !(predicate instanceof UDNegation && ((UDNegation) predicate).predicate instanceof PredicateStd && predicate.nArgs()+1 == args.size())){
+                throw new IllegalArgumentException("Number of arguments does not match relation predicate " +predicate);
+            }
+            this.type = Type.RELATION;
+        }
+        this.predicate = predicate;
+        this.args = args;
+        this.instances = new HashMap<>();
+        this.reification = reification;
     }
 
 
@@ -91,6 +133,7 @@ public class Atom implements Comparable<Atom>{
         this.predicate = predicate;
         this.args = new Arguments(args);
         this.instances = new HashMap<>();
+        this.reification = null;
     }
 
     /**
@@ -104,6 +147,7 @@ public class Atom implements Comparable<Atom>{
         this.predicate = predicate;
         this.args = new Arguments(args);
         this.instances = new HashMap<>();
+        this.reification = null;
     }
 
     /**
@@ -117,6 +161,16 @@ public class Atom implements Comparable<Atom>{
         this.predicate = predicate;
         this.args = new Arguments(args);
         this.instances = new HashMap<>();
+        this.reification = null;
+    }
+
+    public Atom(PredicateStd predicate, List<Term> args, Term reification){
+        if(predicate.nArgs() != args.size() && predicate.nArgs()+1 != args.size()) throw new IllegalArgumentException("Number of arguments does not match predicate");
+        this.type = Type.STANDARD;
+        this.predicate = predicate;
+        this.args = new Arguments(args);
+        this.instances = new HashMap<>();
+        this.reification = reification;
     }
 
     /**
@@ -129,6 +183,7 @@ public class Atom implements Comparable<Atom>{
         this.predicate = parent.predicate;
         this.args = new Arguments(parent.args, version);
         this.instances = new HashMap<>();
+        this.reification = parent.reification;
     }
 
 
@@ -157,7 +212,7 @@ public class Atom implements Comparable<Atom>{
     }
 
     public boolean containsTerm(Term term){
-        return this.args.containTerm(term);
+        return this.args.containTerm(term) || term == this.reification;
     }
 
 
@@ -167,7 +222,7 @@ public class Atom implements Comparable<Atom>{
      */
     @Override
     public String toString() {
-        return predicate.toString(args);
+        return reification == null? predicate.toString(args) : predicate.toString(args)+"{"+reification+"}";
     }
 
     public Type type(){
@@ -187,9 +242,15 @@ public class Atom implements Comparable<Atom>{
     public int compareTo(Atom o) {
         if(this.predicate != o.predicate){
             return this.predicate.toString().compareTo(o.predicate.toString());
-        }
+        }else if(this.reification == null && o.reification != null){
+            return 1; //Having reifications makes you smaller
+        }else if(this.reification != null && o.reification == null)
+            return -1;
 
-        return this.args.compareTo(o.args);
+        int comparison = this.args.compareTo(o.args);
+        if(comparison != 0 || (this.reification == null)) return comparison;
+
+        return this.reification.compareTo(o.reification);
     }
 
     /**
@@ -203,9 +264,6 @@ public class Atom implements Comparable<Atom>{
         if(!(obj instanceof Atom)){
             return false;
         }
-        if(this.toString().equals("BrudtLoven(tiltalte,§4_stk.1,1210)")){
-            System.out.println("in here");
-        }
         return this.compareTo((Atom) obj) == 0;
     }
 
@@ -213,6 +271,9 @@ public class Atom implements Comparable<Atom>{
         return this.predicate.nArgs() + 1 == this.args.size();
     }
 
+    public boolean hasReificationTerm(){
+        return this.reification != null;
+    }
 
     public String explain(){
         return this.predicate.explain(this.args);
@@ -221,5 +282,9 @@ public class Atom implements Comparable<Atom>{
     @Override
     public int hashCode() {
         return toString().hashCode();
+    }
+
+    public Term reification(){
+        return this.reification;
     }
 }

@@ -1,20 +1,20 @@
-Bil(K) <- Motorkøretøj(K), #hjul(K,H), ~<(H,4):§2.2;
-Bil(K) <- Motorkøretøj(K), #hjul(K,3), EgenVægt(K,V), ~<(V,400):§2.2;
+Bil(K) <- Motorkøretøj(K), #(K,H,hjul), ~<(H,4):§2.2;
+Bil(K) <- Motorkøretøj(K), #(K,3,hjul), Egenvægt(K,V), ~<(V,400):§2.2;
 
 Blokvogn(K) <- MotordrevetKøretøj(K), UdlukketFraRegistrering(K,vægt\/akseltryk\/dimensioner\/øvrig_konstruktion), BeregnetTil(K,tungt_gods) \/ BeregnetTil(K,omfangsrigt_gods):§2.3;
 
-EgenVægt(K,V) <- Model(K,M), Vægt(M,V1), AltTilbehørSomNormaltMedfører(K,T), Vægt(T,V2), +(V1,V2,V):§2.4;
+Egenvægt(K,V) <- Model(K,M), Vægt(M,V1), AltTilbehørSomNormaltMedfører(K,T), Vægt(T,V2), +(V1,V2,V):§2.4;
 
 Fodgængerfelt(F) <- Vej(F), BestemtFor(F,gående), MærkeretFor(F,gående), Krydser(F,V), Kørebane(V) \/ Cykelsti(V):§2.5;
 
-Knallert(K) <- #hjul(K,3), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§ 2.7;
-Knallert(K) <- #hjul(K,2), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), >=(45,B):§2.7;
-Knallert(K) <- #hjul(K,3), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A):§2.7;
-Knallert(K) <- #hjul(K,2), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A), ~Elcykel(K), ~Segway(K):§2.7;
+Knallert(K) <- #(K,3,hjul), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), ~<(45,B):§ 2.7;
+Knallert(K) <- #(K,2,hjul), Forbrændingsmotor(K,M), Slagvolumen(M,A), ~<(50,A), KonstruktivHastighed(K,B), ~<(45,B):§2.7;
+Knallert(K) <- #(K,3,hjul), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A):§2.7;
+Knallert(K) <- #(K,2,hjul), Elmotor(K,M), KonstruktivHastighed(K,A), ~<(45,A), ~Elcykel(K), ~Segway(K):§2.7;
 Knallert45(K) <- Knallert(K), KonstruktivHastighed(K,B), <(30,B):§2.7;
 KnallertU#Plade(K) <- Knallert(K), KonstruktivHastighed(K,B), ~<(30,B):§2.7;
 
-Krybespor(V) <- Vognbane(V), Færdselstavle(V,langsomtkørende):§2.8;
+Krybespor(V) <- Vognbane(V), Færdselstavle(A), På(A,V), For(V,langsomtkørende):§2.8;
 
 Kørebane(V) <- BestemtFor(V,kørende), ~Cykelsti(V), ~Ridesti(V):§2.9;
 
@@ -28,8 +28,8 @@ Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solopgang(D,V,TOpgang
 Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solnedgang(D,V,TNedgang), <(Nedgang,TDato):§2.12;
 Lygtetændingstiden(V,T) <- DårligFøre(V,T):§2.12;
 
-Motorcykel(K) <- Motorkøretøj(K), #hjul(K,3), EgenVægt(K,V), <(V,400):§2.13;
-Motorcykel(K) <- Motorkøretøj(K), #hjul(K,2), EgenVægt(K,V), <(V,400):§2.13;
+Motorcykel(K) <- Motorkøretøj(K), #(K,3,hjul), Egenvægt(K,V), <(V,400):§2.13;
+Motorcykel(K) <- Motorkøretøj(K), #(K,2,hjul), Egenvægt(K,V), <(V,400):§2.13;
 
 MotordrevetKøretøj(K) <- Motor(K,M), ~Kørestol15(K):§2.14;
 Motorkøretøj(K) <- MotordrevetKøretøj(K), IndrettetTil(K,person_befordring), ~Knallert(K):§2.15;
@@ -51,7 +51,7 @@ Påhængskøretøj(K) <- Køretøj(K), IndrettetTil(K,at_blevet_trukket_af_andet
 Påhængsredskab(K,T) <- Påhængskøretøj(K), ~Påhængsvogn(K), ~Sættevogn(K,T):§2.20;
 Påhængsredskab(K,T) <- Campingvogn(K):§2.20;
 Påhængsvogn(K) <- Påhængsvogn(K), IndrettetTil(K,befordring_af_personer\/befordring_af_gods), ~Sættevogn(K,T):§2.21;
-Sidevogn(K,T) <- #hjul(K,1), På(K,K1,T), Køretøj(K1), #hjul(K,2), IndrettetTil(K,befordring_af_personer\/befordring_af_gods):§2.22;
+Sidevogn(K,T) <- #(K,1,hjul), På(K,K1,T), Køretøj(K1), #(K,2,hjul), IndrettetTil(K,befordring_af_personer\/befordring_af_gods):§2.22;
 Sættevogn(K,T) <- Påhængskøretøj(K), IndrettetTil(K,befordring_af_personer\/befordring_af_gods), Trækker(K1,K,T), LastHvilerPå(K,K1):§2.23;
 
 Trafikant(P,T) <- På(P,V,T), Vej(V):§2.25;
@@ -60,6 +60,7 @@ Trafikant(P,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Køretøj(K):§2.25;
 Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Letbanekøretøj(K):§2.25;
 
 Traktor(K) <- MotordrevetKøretøj(K), IndrettetTil(K,at_trække_andet_køretøj\/at_trække_arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A):§2.26;
+MotordrevetKøretøj(K) <- Traktor(K):§2.26;
 
 TættereBebyggetOmråde(V) <- DelAf(V,O), MærkeretSom(O,tættere_bebygget_område):§2.27;
 

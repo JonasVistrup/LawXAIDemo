@@ -1,0 +1,2 @@
+ReguleresAf(F,Politi){r} <- Politiet(Politi), Færdsel(F), Nødvendigt(r):§89 stk.1 nr.1;
+ReguleresAf(F,P){r} <- TPMBestemmelse(A,§89 stk.2 nr.1), Følger(P,A), Følger(r,A):§89 stk.2 nr.1;

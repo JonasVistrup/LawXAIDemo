@@ -80,21 +80,8 @@ public class Arguments implements Iterable<Term>, Comparable<Arguments>{
         for(int i = 0; i<this.args.length; i++){
             Term one = this.args[i];
             Term two = o.args[i];
-
-            if(one instanceof Constant){
-                if(two instanceof Constant){
-                    if(one != two){
-                        return one.toString().compareTo(two.toString());
-                    }
-                }else{
-                    return -1;  // Constants are smaller than variables.
-                }
-            }else{
-                if(two instanceof Constant) {
-                    return 1; // Variables are larger than constants.
-                }
-                // Variables are equal.
-            }
+            int compare = one.compareTo(two);
+            if(compare != 0) return compare;
         }
         return 0;
     }
@@ -118,5 +105,16 @@ public class Arguments implements Iterable<Term>, Comparable<Arguments>{
         terms.addAll(Arrays.asList(this.args));
         terms.add(other);
         return new Arguments(terms);
+    }
+
+    @Override
+    public String toString() {
+        if(args.length==0) return "";
+        StringBuilder b = new StringBuilder();
+        for(Term t: args){
+            b.append(t).append(",");
+        }
+        b.deleteCharAt(b.length()-1);
+        return b.toString();
     }
 }

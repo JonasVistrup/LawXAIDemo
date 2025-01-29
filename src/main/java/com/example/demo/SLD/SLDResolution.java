@@ -18,7 +18,7 @@ public class SLDResolution {
         Goal startingGoal = new Goal(query);
         TraceNode root = new TraceNode(startingGoal);
         List<Substitution> answers = new ArrayList<>();
-        inOrderTraversal(XAI.pb.getProgram(), 1, root, new ArrayList<>(), answers, groundClausesUsed);
+        inOrderTraversal(XAI.getProgram(), 1, root, new ArrayList<>(), answers, groundClausesUsed);
 
         return answers;
     }
@@ -55,9 +55,6 @@ public class SLDResolution {
         if(!program.clauses.containsKey(selected.predicate())) return false;
 
         for(Clause clause: program.clauses.get(selected.predicate())){
-            if(clause.head.equals(XAI.pb.parseAtomOld("MaxHastighed(V,50km/t)"))){
-                System.out.println("Tested");
-            }
             Clause instance = clause.getInstance(level);
             Substitution unifier = Unify.findMGU(selected, instance.head);
             if (unifier != null) {
@@ -77,7 +74,7 @@ public class SLDResolution {
 
 
     public static boolean inOrderTraversalTest(AtomList toTest){
-        return inOrderTraversalTest(new Goal(toTest), XAI.pb.getProgram(), 1);
+        return inOrderTraversalTest(new Goal(toTest), XAI.getProgram(), 1);
     }
 
     private static boolean inOrderTraversalTest(Goal goal, Program program, int level){

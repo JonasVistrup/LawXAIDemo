@@ -1,0 +1,1 @@
+Kan(P,F) <- TPM(P)\/Er(P,justitsminister), Type(F,fastsætning af regler), Om(F,B), Type(B,betaling), Efter(F,Lov), Lov#(Lov,§124):§124q stk.1 nr.1;

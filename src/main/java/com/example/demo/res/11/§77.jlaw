@@ -1,0 +1,5 @@
+BrudtLoven(P,§77 stk.1 nr.1,T) <- Undersøgelse(U), Af(U,K), Kræver(Popo,U), Fører(P,K,<T), Nægter(P,U,T), Politiet(Popo):§77 stk.1 nr.1;
+BrudtLoven(P,§77 stk.1 nr.2,T) <- Undersøgelse(U), Af(U,K), Udfører(Popo,U), TPMBestemmelse(A,Lov), IkkeFølger(K,Lov), Indkaldelse(I), Af(I,K), Kræver(Popo,I), Nægter(P,I,T):§77 stk.1 nr.2;
+BrudtLoven(P,§77 stk.1 nr.3,T) <- Undersøgelse(U), Af(U,K), Udfører(Popo,U), TPMBestemmelse(A,Lov), IkkeFølger(K,Lov), Er(K,til fare for færdselssikkerheden), Indkaldelse(I), Er(NP,nummerplade), Af(NP,K), Af(I,NP), Kræver(Popo,I), Nægter(P,I,T):§77 stk.1 nr.3;
+
+

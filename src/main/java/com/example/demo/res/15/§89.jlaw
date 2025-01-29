@@ -1,0 +1,3 @@
+KanUdfører(Popo,R,T) <- Regulering(R), Af(R,Færdsel), Type(Færdsel,færdsel), Politiet(Popo), Nødvendigt(R,T):§89 stk.1 nr.1;
+KanUdfører(P,R,T) <- Regulering(R), Af(R,Færdsel), Type(Færdsel,færdsel), TPMBestemmelse(A,§89 stk.2 nr.1), Følger(P,A,T), Nødvendigt(R,T):§89 stk.2 nr.1;
+BrudtLoven(P,§89 stk.3 nr.1,T) <- Udfører(P,R,T), Regulering(R), Tegn(Tegn), Til(Tegn,R), Udfører(P,Tegn,T), IkkeFølger(Tegn,A), TPMBestemmelse(A,§89 stk.3 nr.1):§89 stk.3 nr.1;

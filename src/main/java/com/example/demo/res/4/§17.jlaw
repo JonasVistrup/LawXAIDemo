@@ -1,3 +1,3 @@
-BrudtLoven(P,§16 stk.2,T) <- Manøvre(M), Type(M,ændring_af_færdselsretning), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), På(M,VK,T), Fra(M,V)\/Over(M,V), Kørebane(V) <(T,T1), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§16 stk.2:§17 stk.1;
+BrudtLoven(P,§16 stk.2,T) <- Manøvre(M), Type(M,ændring_af_færdselsretning), Skal(P,M,T1), Fører(P,K,T), På(K,VVB,T), På(M,VK,T), Fra(M,V)\/Over(M,V), Kørebane(V), <(T,T1), ~Sikre(P,M,kan_ske_uden_unødvendig_ulempe\/kan_ske_uden_fare):§16 stk.2:§17 stk.1;
 
 IkkeBrudtLoven(P,§16,T) <- Fører(P,Kørsel,T), Af(Kørsel,K), AnvendesTil(K,vejarbejde), Kørsel(Kørsel), Nødvendigt(Kørsel), FortagesMed(Kørsel,fornøden_forsigtighed):§17 stk.1;

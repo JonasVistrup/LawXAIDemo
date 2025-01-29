@@ -1,2 +1,0 @@
-~BrudtLoven(P,Paragraf,T) <- BrudtLoven(P,Paragraf,T), Kører(P,K,V,Ta,Tb), <(Ta,T,Tb), ForsvarsKøretøj(K), NødvendigtBrud(P,Paragraf,T), Træffet(P,Foranstaltning), UndgårFare(Foranstaltning), UndgårUnødigUlempe(Foranstaltning);§39
-~BrudtLoven(P,Paragraf,T) <- BrudtLoven(P,Paragraf,T), Kører(P,K,V,Ta,Tb), <(Ta,T,Tb), RedningsberedskabetsKøretøj(K), NødvendigtBrud(P,Paragraf,T), Træffet(P,Foranstaltning), UndgårFare(Foranstaltning), UndgårUnødigUlempe(Foranstaltning);§39

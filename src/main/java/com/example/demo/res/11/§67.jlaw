@@ -1,0 +1,4 @@
+BrudtLoven(K,§67 stk.1 nr.1,T) <- Køretøj(K), Stand(S), I(K,S), Skaber(S,fare for andre\/ulempe for andre\/skade for vejene):§67 stk.1 nr.1;
+BrudtLoven(P,§67 stk.2 nr.1,T) <- Køretøj(K), Ejer(P,K,T)\/[Rådighed(R)/\Har(P,R)/\Over(R,K)], BrudtLoven(K,§67 stk.1 nr.1,T):§67 stk.2 nr.1;
+BrudtLoven(P,§67 stk.3 nr.1,T) <- Fører(P,K,T), Køretøj(K), Stand(S), I(K,S), Opmærksom(O), IkkeEr(P,O), På(O,S):§67 stk.3 nr.1;
+BrudtLoven(P,§67 stk.3 nr.1,T) <- Fører(P,K,T), Køretøj(K), Påhængskøretøj(K2), På(K2,K), Stand(S), I(K2,S), Opmærksom(O), IkkeEr(P,O), På(O,S):§67 stk.3 nr.1; 

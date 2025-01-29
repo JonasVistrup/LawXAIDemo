@@ -1,0 +1,21 @@
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.1,T) <- TilsidesætterHensyn(P,T), Skade(S), Forvolder(P,S,T), På(S,A), Person(A)\/Type(A,ting):§129 stk.1 nr.1;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.1,T) <- TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§129 stk.1 nr.1;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.2,T) <- BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§129 stk.1 nr.2;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.3,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.4,T) <- Er(P,skyldig i spirituskørsel,T):§129 stk.1 nr.4;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.5,T) <- BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
+BetingetFrakendtFørerretKnallert(P,§129 stk.1 nr.6,T) <- Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>43km/t):§129 stk.1 nr.6;
+
+
+Mellem(frakendelse,2 år,10 år,T) <- FrakendtFørerretKnallert(P,Lov,T){frakendelse}:§128 skt.3;
+
+FrakendtFørerretKnallert(P,§129 stk.2 nr.1,T) <- SkyldigIForholdTil(P,spirituskøresel,T), Koncentration(P,alkohold,blodet,>1.2promille,T)\/Koncentration(P,alkohol,udåndingsluft,>0.6mg/liter,T\/>T):§129 skt.2 nr.1;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.2,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.2,T) <- BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54), Stk#(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.3,T) <- Fører(P,K,T), Knallert(K), Forvolder(P,S), Skade(S), På(S,A), Person(A)\/Type(A,ting), TilsidesætterHensyn(P,T):§129 stk.2 nr.3;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.4,T) <- Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54):§129 stk.2 nr.4;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.4,T) <- Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(2,A):§129 stk.2 nr.4;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.5,T) <- <(T2,T), ~=(Lov,Lov2), BetingetFrakendtFørerretKnallert(P,Lov,T), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1), BetingetFrakendtFørerretKnallert(P,Lov2,T):§126 stk.1 nr.5;
+FrakendtFørerretKnallert(P,§129 stk.2 nr.6,T) <- <(T2,T), ~=(Lov,Lov2), BetingetFrakendtFørerretKnallert(P,Lov,T), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1), BetingetFrakendtFørerretKnallert(P,Lov2,T):§126 stk.1 nr.6;
+
+Fra(frakendelse,T1) <- FrakendtFørerret(P,Lov,T){frakendelse}, Alder(P,A), <(A,15år),-(15år,A,B), +(T,B,T1):§129 skt.6 nr.1;

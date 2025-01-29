@@ -1,0 +1,1 @@
+BrudtLoven(P,§97 stk.1 nr.1,T) <- Afmærkning(A), På(A,V)\/Ved(A,V), Privat(V), Fællesvej(V)

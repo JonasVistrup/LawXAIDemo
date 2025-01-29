@@ -1,4 +1,0 @@
-BrudtLoven(P,§24 stk.1) <- Kører(P,K,VBB,Ta1,Tb1), Kører(P2,K2,VBB2,Ta2,Tb2), Tætfærdsel(VBB), Tætfærdsel(VBB2), HastighedBestemmesAfForanKørende(VBB), HastighedBestemmesAfForanKørende(VBB2), Manøvre(M,vognbaneskift,K,VBB,T), Udfører(P,M), Til(M,VBB2), ~PåkrævetEfter(M,§16 stk.1), ~PåkrævetEfter(M,§17 stk.1), ~PåkrævetEfter(M,§18 stk.3), ~PåkrævetEfter(M,§18 stk.4), ~PåkrævetEfter(M,§18 stk.5), ~NødvendigtPga(M,standsning), ~NødvendigtPga(M,parkering);§24 stk.1
-Manøvre(M,forbikøresel,K,T) <- FøresForbi(K,K2,T), Kører(P,K,VBB,Ta1,Tb1), Kører(P2,K2,VBB2,Ta2,Tb2), Tætfærdsel(VBB), Tætfærdsel(VBB2), HastighedBestemmesAfForanKørende(VBB), HastighedBestemmesAfForanKørende(VBB2);§24 stk.1
-
-Manøvre(M,forbikøresel,K,T) <- FøresForbi(K,K2,T), Kører(P,K,VBB,Ta1,Tb1), Kører(P2,K2,VBB2,Ta2,Tb2), ForbeholdtArtAfFærdsel(VBB,A), ForbeholdtArtAfFærdsel(VBB2,B), ~=(A,B);§24 stk.2

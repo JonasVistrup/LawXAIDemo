@@ -1,0 +1,3 @@
+BrudtLoven(P,§85 stk.1 nr.1,T) <- Køretøj(K), Fører(P,K,T), TPMBestemmelse(A,§85 stk.1 nr.1), IkkeFølger(K,A,T):§85 stk.1 nr.1;
+IkkeBrudtLoven(P,§85 stk.1 nr.1,T) <- Køretøj(K), Fører(P,K,T), TPMBestemmelse(A,§85 stk.1 nr.1), IkkeFølger(K,A,T), Har(P,Tilladelse,T), Fra(Tilladelse,Popo), Politiet(Popo), Er(Tilladelse,fravigelse af bestemmelse for §85 stk.1 nr.1):§85 stk.1 nr.1:§85 stk.2 nr.1:§85 stk.2 nr.2;
+

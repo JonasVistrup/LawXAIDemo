@@ -1,6 +1,6 @@
-BrudtLoven(P,§44 stk.1,T) <- Fører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], ~Motorkøretøj(K):§44 stk.1;
-BrudtLoven(P,§44 stk.1,T) <- Fører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], KonstruktivHastighed(K,H), <(H,50):§44 stk.1;
-BrudtLoven(P,§44 stk.1,T) <- Fører(P,K,T), På(K,V), Motorvej(V) \/ [Tilkørsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [Frakørsel(V) /\ Til(V,VM) /\ Motorvej(VM)], MaxHastighed(K,H), <(H,50):§44 stk.1;
-IkkeBrudtLoven(P,§44 stk.2,T) <- Kørsel(Kø), Af(Kø,K), Type(Kø, transport), Fører(P,Kø,T), På(B,K,T), Blokvogn(B), Tillader(Popo,Kø), Politiet(Popo), ~Kan(Kø,rimeligt_gennemføres_på_anden_måde):§44 stk.2;
+BrudtLoven(P,Â§44 stk.1,T) <- FÃ¸rer(P,K,T), PÃ¥(K,V), Motorvej(V) \/ [TilkÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [FrakÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)], ~MotorkÃ¸retÃ¸j(K):Â§44 stk.1;
+BrudtLoven(P,Â§44 stk.1,T) <- FÃ¸rer(P,K,T), PÃ¥(K,V), Motorvej(V) \/ [TilkÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [FrakÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)], KonstruktivHastighed(K,H), <(H,50):Â§44 stk.1;
+BrudtLoven(P,Â§44 stk.1,T) <- FÃ¸rer(P,K,T), PÃ¥(K,V), Motorvej(V) \/ [TilkÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)] \/ [FrakÃ¸rsel(V) /\ Til(V,VM) /\ Motorvej(VM)], MaxHastighed(K,H), <(H,50):Â§44 stk.1;
+IkkeBrudtLoven(P,Â§44 stk.2,T) <- KÃ¸rsel(KÃ¸), Af(KÃ¸,K), Type(KÃ¸, transport), FÃ¸rer(P,KÃ¸,T), PÃ¥(B,K,T), Blokvogn(B), Tillader(Popo,KÃ¸), Politiet(Popo), ~Kan(KÃ¸,rimeligt_gennemfÃ¸res_pÃ¥_anden_mÃ¥de):Â§44 stk.2;
 
-IkkeBrudtLoven(P,§44 stk.2,T) <- Kørsel(Kø), Af(Kø,K), Fra(Kø,VF), Frakørsel(VF), Til(Kø,VT), Tilkørsel(VT), Type(Kø, erhvervsuddanlse), Fører(P,Kø,T), Tillader(Popo,Kø), Politiet(Popo), ~Kan(Kø,rimeligt_gennemføres_på_anden_måde), ~Knallert(K):§44 stk.3;
+IkkeBrudtLoven(P,Â§44 stk.2,T) <- KÃ¸rsel(KÃ¸), Af(KÃ¸,K), Fra(KÃ¸,VF), FrakÃ¸rsel(VF), Til(KÃ¸,VT), TilkÃ¸rsel(VT), Type(KÃ¸, erhvervsuddanlse), FÃ¸rer(P,KÃ¸,T), Tillader(Popo,KÃ¸), Politiet(Popo), ~Kan(KÃ¸,rimeligt_gennemfÃ¸res_pÃ¥_anden_mÃ¥de), ~Knallert(K):Â§44 stk.3;

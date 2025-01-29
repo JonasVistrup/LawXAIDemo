@@ -1,0 +1,11 @@
+BrudtLoven(P,§63 stk.1 nr.1,T) <- Fører(P,K,T), KnallertU#Plade(K), ~Erhverver(P,K), Kørekort(K), Til(K,lille knallert\/stor knallert\/bil\/motorcykel):§63 stk.1 nr.1;
+BrudtLoven(P,§63 stk.1 nr.2,T) <- Fører(P,K,T), KnallertU#Plade(K), IkkeHar(P,K,T)\/[IkkeFølger(P,A,T0)/\Politiet(Popo)/\[Aflevering(A)\/Visning(A)]/\Af(A,K)/\Kræver(Popo,A)], Kørekort(K), Til(K,lille knallert\/stor knallert\/bil\/motorcykel):§63 stk.1 nr.2;
+
+KanUdstedes(K,P,T) <- Kørekort(K), Til(K,lille knallert), Alder(P,15år~>), Har(P,modtaget undervisning i færdselsreglerne/\modtaget undervisning i kørsel med lille knallert/\bestået en teoriprøve/\bestået en praktisk prøve):§63 stk.2 nr.1;
+KanUdstedes(K,P,T) <- Kørekort(K), Til(K,lille knallert), Alder(P,18år~>), Har(P,bestået en teoriprøve):§63 stk.2 nr.2;
+
+BrudtLoven(P,§63 stk.6 nr.1,T) <- Fører(P,K,T), KnallertU#Plade(K), IkkeHar(P,K,T)\/[IkkeFølger(P,A,T0)/\Politiet(Popo)/\[Aflevering(A)\/Visning(A)]/\Af(A,K)/\Kræver(Popo,A)], Er(K,præmiekvittering), Til(K,lille knallert\/stor knallert\/bil\/motorcykel):§63 stk.6 nr.1;
+
+BrudtLoven(P,§63 stk.6 nr.2,T) <- IkkeAfleverer(P,K,Popo,T), Politiet(Popo), Har(P,mistet retten til at føre lille knallert),Er(K,knallertbevis) \/ [Kørekort(K)/\ Til(K,lille knallert)]:§63 stk.7 nr.1:§63 stk.7 nr.2;
+
+BrudtLoven(P,§63a stk.1 nr.1,T) <- Sælger(P,K,P2,T), Knallert(K), Alder(P,<16år), Har(P2,skriftligt samtykke fra forældremyndoghedens indehaver):§63a stk.1 nr.1:§63a stk.1 nr.2;
