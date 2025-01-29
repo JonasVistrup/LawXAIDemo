@@ -1,0 +1,2 @@
+Fører(P,K,T)<-Kører(P,K,V,T0,T1),<=(T0,T),<=(T,T1):Definitation;
+På(K,V,T)<-Kører(P,K,V,T0,T1),<=(T0,T),<=(T,T1):Definitation;

@@ -1,0 +1,3 @@
+BrudtLoven(P,§62_stk.1,T) <- Fører(P,K,T), Traktor(K) \/ Motorredskab(K), IkkeErhverver(P,bilkørekort), IkkeErhverver(P,traktorkørekort):§62 stk.1;
+IkkeBrudtLoven(P,§62_stk.1,T) <- Fører(P,K,T), Traktor(K) \/ Motorredskab(K), Vej(V), På(K,V,T), Begrænsning(B), Af(B,V), På(B,betryggende_måde), Ved(B,afspærring\/afmærkning):§62 stk.1:§62 stk.2;
+IkkeBrudtLoven(P,§62_stk.1,T) <- Fører(P,K,T), Motorredskab(K), BestemtTil(K,føres_af_en_gående):§62 stk.1:§62 stk.2;

@@ -1,6 +1,7 @@
 Bom(V):[V] er et bom;
 Bro(V):[V] er en bro;
 By(V):[V] er en by;
+Byvej(V):[B] er en vej i en byen;
 Cykelsti(V):[V] er en cykelsti;
 Fodgængerfelt(V):[V] er et fodgængerfelt;
 Fortov(V):[V] er et fortov;
