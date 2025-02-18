@@ -1,7 +1,7 @@
 Bom(V):[V] er et bom;
 Bro(V):[V] er en bro;
 By(V):[V] er en by;
-Byvej(V):[B] er en vej i en byen;
+Byvej(V):[V] er en vej i en byen;
 Cykelsti(V):[V] er en cykelsti;
 Fodgængerfelt(V):[V] er et fodgængerfelt;
 Fortov(V):[V] er et fortov;
@@ -44,6 +44,5 @@ UoverskueligBakke(V):[V] er en uoverskuelig bakke;
 Parkeringsplads(V):[V] er en parkeringsplads;
 Rasteplads(V):[V] er en rasteplads;
 FærdselForbeholdt(V,A):Færdsel på [V] er forbeholdt [A];
-Færdselstavle(V,A):[V] har færdselstavlen [A];
 DårligFøre(V):Trafikanter på [V] har dårligt føre;
 Fællesvej(V):[V] er en fællesvej;

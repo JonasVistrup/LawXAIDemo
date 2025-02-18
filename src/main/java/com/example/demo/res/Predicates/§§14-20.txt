@@ -8,7 +8,6 @@ Ensrettet(V):[V] er ensrettet;
 Forankørende(K,K2):[K] kører foran [K2];
 ForholdeneTillader(A):Forholdende tillader [A];
 GodTid(T1,A):[T1] er god tid for [A];
-Lav(A):[A] er lav;
 LøberSammen(V1,V2):[V1] løber sammen med [V2];
 Manøvre(M):[M] er en manøvre;
 MestHensigtmæssig(A,B):[A] er mest hensigtmæssig for [B];

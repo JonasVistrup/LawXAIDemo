@@ -56,7 +56,7 @@ public class XAI {
                 try {
                     pp.addPredicate(parts[0], parts[1]);
                 }catch (IllegalArgumentException e){
-                    throw new IllegalArgumentException(e.getMessage()+" (Line "+lineNumber+"), [" +line+"].");
+                    throw new IllegalArgumentException(e.getMessage()+"| Path="+predicatePath+" (Line "+lineNumber+"), [" +line+"].");
                 }
             }
         } catch (FileNotFoundException e) {
@@ -77,6 +77,8 @@ public class XAI {
             throw new IllegalStateException("file is missing at location "+rulesPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }catch (Exception e){
+            throw new IllegalStateException("Exception at "+rulesPath+": "+e.getMessage());
         }
     }
     public static void addRulesOLD(String rulesPath){
@@ -165,15 +167,16 @@ public class XAI {
 
     public static void printOccurences(String predicate) throws IOException {
         String[] dirs = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12", "13", "14", "15", "16", "17", "17a", "18", "19", "Predicates"};
-        String prefix = "C:\\Users\\vistrup\\Desktop\\LawXAI\\src\\main\\java\\com\\example\\demo\\res\\";
-
+        String prefix = "C:\\Users\\vistrup\\Desktop\\LawXAIDemo\\src\\main\\java\\com\\example\\demo\\res\\";
+        String predicateE = predicate + "(";
         for(String dir: dirs){
             File dirF = new File(prefix + dir);
-            for(File f: dirF.listFiles()){
+            File[] files = dirF.listFiles();
+            if(files == null) continue;
+            for(File f: files){
                 String ss = Files.readString(f.toPath());
-                if(ss.contains(predicate)){
+                if(ss.contains(predicateE)){
                     System.out.println("File "+f.getName() + " contains " + predicate);
-
                 }
             }
         }

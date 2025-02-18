@@ -127,7 +127,7 @@ SkaberUlempe(A):[A] skaber ulempe for færdslen;
 SkaberUlempeFor(A,B):[A] skaber ulempe for [B];
 Skal(P,A):[P] skal [A];
 Sker(A,B):[A] sker [B];
-Skyldig(P,A):[P] er skyldig i [B];
+Skyldig(P,A):[P] er skyldig i [A];
 Skønnes(A,B):[A] skønnes [B];
 SpecieltOpmærksomPå(P,A):[P] er specielt opmærksom på [A];
 SpærrerUdsynFor(A,P):[A] spærrer udsyn for [P];

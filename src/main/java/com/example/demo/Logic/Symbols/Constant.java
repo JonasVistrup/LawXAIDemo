@@ -19,6 +19,7 @@ public class Constant implements Term {
     public Constant(String id){
         this.id = id;
     }
+    public Constant(double d){ this.id = d+"";}
 
     /**
      * Any variant is also itself, since constants do not allow instantiation.
@@ -54,5 +55,44 @@ public class Constant implements Term {
         }else{
             return this.toString().compareTo(o.toString());
         }
+    }
+
+    public Constant plus(Constant other){
+        String suffix = getSuffix();
+        String oSuffix = other.getSuffix();
+        if(!suffix.equals(oSuffix)) throw new IllegalArgumentException(this +" and "+other.toString()+" does not have same suffix");
+        return new Constant(Double.parseDouble(id.substring(0,id.length()-suffix.length()))+Double.parseDouble(other.id.substring(0,other.id.length()-oSuffix.length())));
+    }
+
+    public Constant minus(Constant other){
+        String suffix = getSuffix();
+        String oSuffix = other.getSuffix();
+        if(suffix.equals(oSuffix)) throw new IllegalArgumentException(this +" and "+other.toString()+" does not have same suffix");
+        return new Constant(Double.parseDouble(id.substring(0,id.length()-suffix.length())) - Double.parseDouble(other.id.substring(0,other.id.length()-oSuffix.length())));
+    }
+
+    public Constant mul(Constant other){
+        String suffix = getSuffix();
+        String oSuffix = other.getSuffix();
+        if(suffix.equals(oSuffix)) throw new IllegalArgumentException(this +" and "+other.toString()+" does not have same suffix");
+        return new Constant(Double.parseDouble(id.substring(0,id.length()-suffix.length())) * Double.parseDouble(other.id.substring(0,other.id.length()-oSuffix.length())));
+    }
+
+    public Constant div(Constant other){
+        String suffix = getSuffix();
+        String oSuffix = other.getSuffix();
+        if(suffix.equals(oSuffix)) throw new IllegalArgumentException(this +" and "+other.toString()+" does not have same suffix");
+        return new Constant(Double.parseDouble(id.substring(0,id.length()-suffix.length())) / Double.parseDouble(other.id.substring(0,other.id.length()-oSuffix.length())));
+    }
+
+    private String getSuffix(){
+        for(int i = 0; i<id.length(); i++){
+            if(!isNumber(id.charAt(i))) return id.substring(i);
+        }
+        return "";
+    }
+
+    private boolean isNumber(char c){ //TODO allows for multiple ., as in 17.856.1
+        return c=='0' || c=='1' || c=='2' || c=='3' || c=='4' || c=='5' || c=='6' || c=='7' || c=='8' || c=='9' || c=='.';
     }
 }

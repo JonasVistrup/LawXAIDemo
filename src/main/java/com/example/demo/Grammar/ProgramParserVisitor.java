@@ -153,7 +153,7 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
         }else if(ctx.CONSTANT() != null) {
             s = ctx.CONSTANT().toString();
         }else{
-            throw new IllegalStateException();
+            throw new IllegalStateException(ctx.getText());
         }
         if(ctx.NEGATED() != null){
             return "~" + s;

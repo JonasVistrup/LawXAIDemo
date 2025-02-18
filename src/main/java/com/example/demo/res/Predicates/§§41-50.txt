@@ -13,7 +13,6 @@ ForventetBremsepræstation(K,P):[K] har forventet bremsepræstation [P];
 
 RegistreringsDato(K,D):[K] er registreret på datoen [D];
 HastighedMprS(K,H):[K] har hastigheden [H] i enheden meter per sekund;
-IkkePassendeLav(A):[A] er ikke passende lav;
 
 RisikoFor(P,A):[P] har risiko for [A];
 Uheld(U):[U] er et uheld;

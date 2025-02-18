@@ -1,4 +1,3 @@
-Lav(A):[A] er lav;
 Bugtet(A):[A] er bugtet;
 Ensrettet(V):[V] er ensrettet;
 Tæt(A):[A] er tæt;

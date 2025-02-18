@@ -29,7 +29,7 @@ public class SLDResolution {
      * @param level the current level of the SLD-tree.
      */
     private static boolean inOrderTraversal(Program program, int level, TraceNode current, List<Clause> usedOnThePath, List<Substitution> answers, HashMap<Atom,List<Clause>> groundClauses){
-        if(level > 10){
+        if(level > 50){
             System.out.println("Deep");
         }
         if(current.goal.isEmpty()){
