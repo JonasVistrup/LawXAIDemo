@@ -225,9 +225,31 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for(String path: findAllFilesInDirectory(new File(strPath+"res/Predicates"))){
+        /*for(String path: findAllFilesInDirectory(new File(strPath+"res/Predicates"))){
             XAI.addPredicates(path);
-        }
+        }*/
+
+        XAI.addPredicates(strPath+"res/Predicates/Køretøjer.txt");
+        //XAI.addPredicates(strPath+"res/Predicates/Matematik.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Lov.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Personer.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Standard.txt");
+        XAI.addPredicates(strPath+"res/Predicates/Tid.txt");
+        XAI.addPredicates(strPath+"res/Predicates/VejDefinitioner.txt");
+
+        XAI.addPredicates(strPath+"res/Predicates/§2.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§3-9.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§10-13.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§14-20.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§21-40.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§31-40.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§41-50.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§51-60.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§61-90.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§91-100.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§101-116.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§117-124.txt");
+        XAI.addPredicates(strPath+"res/Predicates/§§125-133.txt");
 
         XAI.addUDPs(strPath+"res/UDPs.txt");
 

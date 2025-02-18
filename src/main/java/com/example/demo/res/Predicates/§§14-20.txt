@@ -16,7 +16,6 @@ Møder(A,B):[A] møder [B];
 Optager(A,B):[A] optager [B];
 OptagerMegetPlads(K,V):[K] optager meget plads på [V];
 Over(M,V):[M] er over [V];
-Passager(P):[P] er en passager;
 Retning(A,R):[A] har retning [R];
 Sikre(P,A,B):[P] sikre sig at [A] [B];
 SkaberVæsenligUlempe(A):[A] skaber væsenlig ulempe;

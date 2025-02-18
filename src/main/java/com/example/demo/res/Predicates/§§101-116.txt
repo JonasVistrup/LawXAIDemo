@@ -1,5 +1,3 @@
-ErstantningsAnsvarlig(P,A):[P] er erstatnings ansvarlig for [A];
-IkkeErstantningsAnsvarlig(P,A):[P] er ikke erstatnings ansvarlig for [A];
 Ansvarlighed(A):[A] er en ansvarlighed;
 Voldelse(V):[V] er en voldelse;
 Erstatning(E):[E] er en erstatning;
@@ -12,3 +10,5 @@ Tilhører(K,S):[K] tilhører [S];
 Opretter(A,B):[A] opretter [B];
 Anerkender(A,B):[A] anerkender [B];
 Sker(A,B):[A] sker [B];
+IkkeSkal(A,B):[A] skal ikke [B];
+Anlægger(A,B):[A] anlægger [B];

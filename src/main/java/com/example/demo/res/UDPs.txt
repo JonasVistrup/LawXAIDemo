@@ -4,3 +4,4 @@ com.example.demo.Logic.UserDefined.Less
 com.example.demo.Logic.UserDefined.Minus
 com.example.demo.Logic.UserDefined.Mul
 com.example.demo.Logic.UserDefined.Plus
+com.example.demo.Logic.UserDefined.Equal

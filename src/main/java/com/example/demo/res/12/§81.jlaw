@@ -6,7 +6,7 @@ IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- IkkeAnvender(P,styrthjelm), Siddeplads(S�
 
 BrudtLoven(P,§81 stk.3 nr.1,T) <- Fører(P,K,T), Befordres(P2,K,T),Alder(P,<15år),Alder(P,~<5år) , BrudtLoven(P2,§81 stk.1 nr.1), Siddeplads(Sæde), I(Sæde,K), IkkeHar(Sæde,SS), Type(SS,sikkerhedssele), Benytter(P2,Sæde,T):§81 skt.1 nr.1:§81 skt.3 nr.1;
 
-IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Igang(Kørsel,T), På(Kørsel,V), Parkeringsplads(V)\/Type(V,servicestation\/værkstedsområde)\/[Type(V,Type) /\ LigendeForhold(V,parkeringsplads\/servicestation\/værkstedsområde)], IkkeAnvender(P,fastspændt styrthjelm,T):§81 stk.1 nr.1:§81 stk.4 nr.1;
+IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Igang(Kørsel,T), På(Kørsel,V), Parkeringsplads(V)\/Type(V,servicestation\/værkstedsområde)\/[Type(V,Type) /\ LignendeForhold(V,parkeringsplads\/servicestation\/værkstedsområde)], IkkeAnvender(P,fastspændt styrthjelm,T):§81 stk.1 nr.1:§81 stk.4 nr.1;
 
 IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- IkkeAnvender(P,fastspændt styrthjelm,T), Følger(P,A,T), TPMBestemmelse(A,§81 stk.5 nr.1):§81 stk.1 nr.1:§81 stk.5 nr.1;
 

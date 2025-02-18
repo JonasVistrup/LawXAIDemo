@@ -1,9 +1,5 @@
 Følger(A,B):[A] følger [B];
-TPMBestemmelse(A,Lov):[A] er en bestemmelse fra transportministeren fremsat for [Lov];
-TPMLempelse(A,Lov):[A] er en lempelse fra transportministeren fremsat for [Lov];
-RetTil(P,A):[P] har ret til [A];
 Kørekort(K):[K] er et kørekort;
-Udstedt(A,B):[A] er udstedt i [B];
 IkkeFølger(A,B):[A] følger ikke [B];
 Aflevering(A):[A] er en aflevering;
 KanUdstedes(K,P):[K] kan udstedes til [P];
@@ -15,7 +11,6 @@ TilladtAlderFor(A,B):Tilladt alder for [A] er [B];
 FratagetUbetinget(A):[A] er blevet frataget ubetinget;
 Oplysning(A):[A] er en oplysning;
 OverladerFøring(P,K):[P] overlader føringen af [K];
-Kørelærer(P):[P] er en kørelærer;
 Stand(S):[S] er en stand;
 Rådighed(R):[R] er en rådighed;
 Opmærksom(O):[O] er en opmærksomhed;

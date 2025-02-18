@@ -10,4 +10,3 @@ Tidligere(T1,T):[T1] er tidligere end [T];
 Fortager(A,B):[A] fortager [B];
 Indkørsel(K):[K] er en indkørsel;
 Udfor(A,B):[A] er ud for [B];
-TPM(P):[P] er transportminister;

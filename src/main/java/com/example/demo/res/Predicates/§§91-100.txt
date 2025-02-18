@@ -1,11 +1,8 @@
 HarPligt(A,B):[A] har pligt til [B];
 IkkeHarPligt(A,B):[A] har pligt til [B];
-Parkant(P):[P] er en parkant;
 Angivelse(A):[A] er en angivelse;
 Skønnes(A,B):[A] skønnes [B];
 Fraviger(A,B):[A] fraviger [B];
 Privat(V):[V] er privat;
-Fællesvej(V):[V] er en fællesvej;
 Opsætter(P,A):[P] opsætter [A];
-Forestår(A,B):[A] forestår [B];
 Anbringelse(A):[A] er en anbringelse;

@@ -60,7 +60,7 @@ public class ProgramParser {
     }
 
     public void addPredicate(String atomRep, String explanation){
-        Atom atom = parseAtomOld(atomRep);
+        Atom atom = parseNewAtom(atomRep);
         ArrayList<String> explanationParts = new ArrayList<>();
         ArrayList<Integer> termPos = new ArrayList<>();
         StringBuilder current = new StringBuilder();
@@ -149,6 +149,37 @@ public class ProgramParser {
         }
 
         Predicate p = getPredicate(parts[0], numberOfArgs);
+
+        // Get terms arguments
+        List<Term> arguments = new ArrayList<>(numberOfArgs);
+        for (int i = 0; i<numberOfArgs; i++) {
+            arguments.add(getTerm(strArguments[i]));
+        }
+
+        return new Atom(p,arguments);
+    }
+
+    public Atom parseNewAtom(String atomRep) {
+        //atomRep = atomRep.replaceAll(" ", "");
+        String[] strArguments;
+        if (atomRep.length() == 0) {
+            throw new IllegalArgumentException("In Line: "+line+".\n Atom representation must not be empty");
+        }
+        String[] parts = atomRep.split("\\(");
+        int numberOfArgs;
+        if (parts.length >= 2) {
+            if (!parts[1].contains(")"))
+                throw new IllegalArgumentException("In Line: "+line+".\n ( must end with a )");
+            strArguments = parts[1].split("\\)");
+            strArguments = strArguments[0].split(",");
+            numberOfArgs = strArguments.length;
+        } else {
+            throw new IllegalArgumentException("In Line: "+line+".\n All predicates must contain a temporal argument");
+        }
+
+        if (predicates.containsKey(parts[0])) throw new IllegalArgumentException("Predicate "+parts[0]+" has already been defined");
+        Predicate p = new PredicateStd(parts[0], numberOfArgs);
+        predicates.put(parts[0],p);
 
         // Get terms arguments
         List<Term> arguments = new ArrayList<>(numberOfArgs);
@@ -264,8 +295,9 @@ public class ProgramParser {
             if(name.charAt(0) == '~'){
                 String positiveName = name.substring(1);
                 res = new UDNegation(getPredicate(positiveName, numberOfArgs));
-            }else {
-                res = new PredicateStd(name, numberOfArgs);
+            }else { //TODO rewrite this
+                throw new IllegalArgumentException("In Line: "+line+".\n Logic.Predicate " + name + " has not been previously specified");
+                //res = new PredicateStd(name, numberOfArgs);
             }
             predicates.put(name, res);
         }

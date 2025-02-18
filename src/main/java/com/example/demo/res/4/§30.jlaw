@@ -1,5 +1,5 @@
 IkkeBrudtLoven(P,§28,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), AnvendesTil(K,vejarbejde), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;
 IkkeBrudtLoven(P,§29,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Af(S,K), AnvendesTil(K,vejarbejde), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;
 
-IkkeBrudtLoven(P,§28,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Politi(P)\/Type(P,kriminalforsorg\/redningsberedskab\/redningskorps), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;
-IkkeBrudtLoven(P,§29,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Politi(P)\/Type(P,kriminalforsorg\/redningsberedskab\/redningskorps), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;
+IkkeBrudtLoven(P,§28,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Politiet(P)\/Type(P,kriminalforsorg\/redningsberedskab\/redningskorps), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;
+IkkeBrudtLoven(P,§29,T) <- Standsning(S) \/ Parkering(S), Udfører(P,S), Igang(S,T), Politiet(P)\/Type(P,kriminalforsorg\/redningsberedskab\/redningskorps), Nødvendigt(S), FortagesMed(S,fornøden_forsigtighed):§30 stk.1;

@@ -1,6 +1,3 @@
-BrudtLoven(P,A):[P] har brudt [A] af færdselsloven;
-IkkeBrudtLoven(P,A):[P] har ikke brudt [A] af færdselsloven;
-
 AnvendesTil(A,B):[A] anvendes til [B];
 Gør(A,B,C):[A] gør [B] på [C];
 BestemtFor(A,B):[A] er bestemt for [B];
@@ -23,8 +20,6 @@ NødvendigtFor(A,B):[A] er nødvendigt for [B];
 IkkeNødvendigtFor(A,B):[A] er ikke nødvendigt for [B];
 FareFor(A,B):[A] er i fare for [B];
 UnødvendigtLang(A):[A] er unødvendigt lang;
-Begynder(A,B):[A] på begynder med [B];
-Ender(A,B):[A] ender med [B];
 
 Foran(A,B):[A] er foran [B];
 Til(A,B):[A] er til [B];
@@ -34,7 +29,6 @@ For(A,B):[A] er for [B];
 Før(A,B):[A] er før [B];
 Efter(A,B):[A] er efter [B];
 Om(A,B):[A] er om [B];
-Igang(A):[A] er i gang;
 Mod(A,B):[A] er mod [B];
 Som(A,B):[A] er som [B];
 Længde(A,B):[A] har længde [B];

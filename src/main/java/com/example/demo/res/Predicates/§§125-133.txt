@@ -1,16 +1,5 @@
-BetingetFrakendtFørerret(P,Lov):[P] har fået betinget frakendt førerretten til motorkøretøj ud over lille knallert via [Lov];
-BetingetFrakendtFørerretKnallert(P,Lov):[P] har fået betinget frakendt førerretten til lille knallert via [Lov];
-BetingetFrakendtFørerretLastbil(P,Lov):[P] har fået betinget frakendt førerretten til lastbil via [Lov];
-FrakendtFørerret(P,Lov):[P] har fået frakendt føreretten til motorkøretøj ud over lille knallert via [Lov];
-FrakendtFørerretKnallert(P,Lov):[P] har fået frakendt føreretten til lille knallert via [Lov];
-FrakendtFørerretLastbil(P,Lov):[P] har fået frakendt førerretten til lastbil via [Lov];
 TilsidesætterHensyn(P):[P] tilsidesætter væsentlige hensyn til færdselssikkerheden;
 Forvolder(P,A):[P] forvolder [A];
-ForliggerFormilendeOmstændigheder(A):Der forligger formilende omstændingheder om [A];
-UnderSkærpendeOmstændigheder(A):[A] forgik under skærpende omstændigheder;
-SkyldigIForholdTil(P,Lov1,Lov2):[P] er skyldig i [Lov1] i forhold til [Lov2];
-SkyldigI(P,Lov):[P] er skyldig i forhold til [Lov]:;
-Kørselforbud(P,Lov):[P] er under kørselforbud via [Lov];
 Mellem(A,B,C):[A] er mellem [B] og [C];
 Mindst(A,B):[A] er mindst [B];
 Burde(P,A):[P] burde [A];

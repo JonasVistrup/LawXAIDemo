@@ -10,12 +10,12 @@ import com.example.demo.Logic.Symbols.Constants.Number;
 
 public class Mul extends UDFunction {
     public Mul() {
-        super("x", 3);
+        super("X", 3);
     }
 
     @Override
     public String toString(Arguments args) {
-        return args.get(0)+"x"+args.get(1)+"="+args.get(2);
+        return args.get(0)+" x "+args.get(1)+"="+args.get(2);
     }
 
     @Override
