@@ -148,7 +148,7 @@ public class ProgramParser {
             throw new IllegalArgumentException("In Line: "+line+".\n All predicates must contain a temporal argument");
         }
 
-        Predicate p = getPredicate(parts[0], numberOfArgs);
+        Predicate p = getPredicateOld(parts[0], numberOfArgs);
 
         // Get terms arguments
         List<Term> arguments = new ArrayList<>(numberOfArgs);
@@ -280,7 +280,27 @@ public class ProgramParser {
         return true;
     }
 
+    private Predicate getPredicateOld(String name, int numberOfArgs) {
+        if (numberOfArgs < 0) throw new IllegalArgumentException("In Line: "+line+".\n Only a non-negative amount of arguments allowed");
 
+        Predicate res;
+
+        if (predicates.containsKey(name)) {
+            res = predicates.get(name);
+            if (res.nArgs() != numberOfArgs && (res.nArgs() +1 != numberOfArgs || (res instanceof PredicateUD && !(res instanceof UDNegation)))) {
+                throw new IllegalArgumentException("In Line: "+line+".\n Logic.Predicate " + name + " contains an inconsistent of arguments");
+            }
+        } else {
+            if(name.charAt(0) == '~'){
+                String positiveName = name.substring(1);
+                res = new UDNegation(getPredicate(positiveName, numberOfArgs));
+            }else {
+                res = new PredicateStd(name, numberOfArgs);
+            }
+            predicates.put(name, res);
+        }
+        return res;
+    }
     private Predicate getPredicate(String name, int numberOfArgs) {
         if (numberOfArgs < 0) throw new IllegalArgumentException("In Line: "+line+".\n Only a non-negative amount of arguments allowed");
 
@@ -299,7 +319,7 @@ public class ProgramParser {
                 throw new IllegalArgumentException("In Line: "+line+".\n Logic.Predicate " + name + " has not been previously specified");
                 //res = new PredicateStd(name, numberOfArgs);
             }
-            predicates.put(name, res);
+            //predicates.put(name, res);
         }
         return res;
     }

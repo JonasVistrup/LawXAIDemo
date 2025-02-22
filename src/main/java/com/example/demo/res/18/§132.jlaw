@@ -1,1 +1,1 @@
-Kan(spørgsmålet om generhvervelse af retten inden frakendelsestidens udløb,indbringes for domstolene,T)<- FrakendtFørerret(P,Lov,T0), -(T,T0,>3år):§132 stk.1 nr.1;
+Kan(spørgsmålet om generhvervelse af retten inden frakendelsestidens udløb,indbringes for domstolene,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Får(P,FF,T0), Via(FF,Lov), -(T,T0,>3år):§132 stk.1 nr.1;

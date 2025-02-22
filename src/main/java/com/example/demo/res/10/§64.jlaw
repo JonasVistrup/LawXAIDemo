@@ -6,7 +6,7 @@ BrudtLoven(P,§64 stk.2 nr.1,T) <- Øvelseskørsel(Kø), IkkeUnderOpsyn(Kø,P2),
 BrudtLoven(P2,§64 stk.3 nr.1,T) <- Øvelseskørsel(Kø), IkkeUnderOpsyn(Kø,P2), Udfører(P,Kø,T), På(Kø,M), Motorvej(M), IkkeHar(P,opnået en sådan kørefærdighed, at øvelseskørslen på motorvej kan ske uden fare for færdselssikkerheden/\opnået en sådan kørefærdighed at øvelseskørslen på motorvejen kan ske uden unødigt at sinke færdslens afvikling), Er(P2,kørelærer\/kærelæreraspirant):§64 stk.3 nr.1;
 
 BrudtLoven(P2,§64 stk.4 nr.1,T) <- Øvelseskørsel(Kø), Udfører(P,Kø,T), For(Kø,K), Kørekort(K), Alder(P2,A), TilladtAlderFor(K,A2), <(A2-3måneder,A):§64 stk.4 nr.1;
-BrudtLoven(P2,§64 stk.4 nr.1,T) <- Øvelseskørsel(Kø), Udfører(P,Kø,T), For(Kø,K), Kørekort(K), Alder(P2,A), Førerret(P2,FR), Til(FratagetUbetinget(FR),A2), <(A,A2-3måneder):§64 stk.4 nr.1; 
+BrudtLoven(P2,§64 stk.4 nr.1,T) <- Øvelseskørsel(Kø), Udfører(P,Kø,T), For(Kø,K), Kørekort(K), Alder(P2,A), Frakendelse(F), Af(F,FR), Førerretten(F), Har(P2,F), Til(F,A2), <(A,A2-3måneder):§64 stk.4 nr.1;
 
 
 

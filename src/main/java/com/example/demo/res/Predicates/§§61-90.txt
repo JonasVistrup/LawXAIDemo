@@ -8,7 +8,6 @@ UnderOpsyn(A,B):[A] er under opsyn af [B];
 IkkeUnderOpsyn(A,B):[A] er ikke under opsyn af [B];
 Øvelseskørsel(A):[A] er øvelseskørsel;
 TilladtAlderFor(A,B):Tilladt alder for [A] er [B];
-FratagetUbetinget(A):[A] er blevet frataget ubetinget;
 Oplysning(A):[A] er en oplysning;
 OverladerFøring(P,K):[P] overlader føringen af [K];
 Stand(S):[S] er en stand;

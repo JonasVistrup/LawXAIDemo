@@ -1,4 +1,11 @@
-FrakendtFørerretLastbil(P,§129b stk.1 nr.1,T) <- Fører(P,K,T), Burde(P,V), Type(V,vide), Om(V,konstruktivt indgreb i takograf), I(V,K):§129b stk.1 nr.1;
-FrakendtFørerretLastbil(P,§129b stk.1 nr.2,T) <- BetingetFrakendtFørerretLastbil(P,Lov,T), BetingetFrakendtFørerretLastbil(P,Lov2,T2), <(T2,T):§129b stk.1 nr.2:§129b stk.1 nr.3:§129b stk.1 nr.4;
+Af(FR,lastbiller) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Burde(P,V), Type(V,vide), Om(V,konstruktivt indgreb i takograf), I(V,K):§129b stk.1 nr.1;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Burde(P,V), Type(V,vide), Om(V,konstruktivt indgreb i takograf), I(V,K):§129b stk.1 nr.1;
+Via(FF,§129b stk.1 nr.1) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Burde(P,V), Type(V,vide), Om(V,konstruktivt indgreb i takograf), I(V,K):§129b stk.1 nr.1;
 
-BetingetFrakendtFørerretLastbil(P,§129b stk.4 nr.1,T) <- FrakendtFørerretLastbil(P,Lov,T){brud}, Lov#(Lov,129b), Stk#(Lov,1), ForliggerFormilendeOmstændigheder(brud):§129b stk.4 nr.1;
+Af(FR,lastbiller) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR),Af(FR,lastbiller), BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,BFF,T), Via(BFF,Lov), BetingetFrakendelse(BFF2), Af(BFF2,FR), Får(P,BFF2,T2), Via(BFF2,Lov2), <(T2,T):§129b stk.1 nr.2:§129b stk.1 nr.3:§129b stk.1 nr.4;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR),Af(FR,lastbiller), BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,BFF,T), Via(BFF,Lov), BetingetFrakendelse(BFF2), Af(BFF2,FR), Får(P,BFF2,T2), Via(BFF2,Lov2), <(T2,T):§129b stk.1 nr.2:§129b stk.1 nr.3:§129b stk.1 nr.4;
+Via(FF,§129b stk.1 nr.2) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR),Af(FR,lastbiller), BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,BFF,T), Via(BFF,Lov), BetingetFrakendelse(BFF2), Af(BFF2,FR), Får(P,BFF2,T2), Via(BFF2,Lov2), <(T2,T):§129b stk.1 nr.2:§129b stk.1 nr.3:§129b stk.1 nr.4;
+
+Af(FR,lastbiller) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,FF,T), Frakendelse(FF), Af(FF,FR), Førerretten(FR), Af(FF,lastbiler), Via(FF,Lov), Lov#(Lov,129b), Stk#(Lov,1), ForliggerFormilendeOmstændigheder(brud):§129b stk.4 nr.1;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,FF,T), Frakendelse(FF), Af(FF,FR), Førerretten(FR), Af(FF,lastbiler), Via(FF,Lov), Lov#(Lov,129b), Stk#(Lov,1), ForliggerFormilendeOmstændigheder(brud):§129b stk.4 nr.1;
+Via(BFF,§129b stk.4 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Får(P,FF,T), Frakendelse(FF), Af(FF,FR), Førerretten(FR), Af(FF,lastbiler), Via(FF,Lov), Lov#(Lov,129b), Stk#(Lov,1), ForliggerFormilendeOmstændigheder(brud):§129b stk.4 nr.1;

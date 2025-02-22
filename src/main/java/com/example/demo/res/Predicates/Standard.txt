@@ -21,6 +21,7 @@ IkkeNødvendigtFor(A,B):[A] er ikke nødvendigt for [B];
 FareFor(A,B):[A] er i fare for [B];
 UnødvendigtLang(A):[A] er unødvendigt lang;
 
+Får(A,B):[A] får [B];
 Foran(A,B):[A] er foran [B];
 Til(A,B):[A] er til [B];
 Fra(A,B):[A] er fra [B];

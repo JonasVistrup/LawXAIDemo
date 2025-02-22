@@ -1,20 +1,29 @@
-BetingetFrakendtFørerret(P,§125 stk.1 nr.1,T) <- TilsidesætterHensyn(P,T), Skade(S), Forvolder(P,S,T), På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
-BetingetFrakendtFørerret(P,§125 stk.1 nr.1,T) <- TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Skade(S), Forvolder(P,S,T), På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
+Via(BFF,§125 stk.1 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Skade(S), Forvolder(P,S,T), På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.2,T) <- BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§125 stk.1 nr.2;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
+Via(BFF,§125 stk.1 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§125 stk.1 nr.1;
 
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§125 stk.1 nr.2;
+Via(BFF,§125 stk.1 nr.2) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§125 stk.1 nr.2;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.3,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,42\/43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), [/(H,M,A) /\ [<(1.6,A)\/[På(vejarbejde,V,T)/\<(1.4,A)]]] \/ <(160km/t,H) :§125 stk.1 nr.3;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), [/(H,M,A) /\ [<(1.6,A)\/[På(vejarbejde,V,T)/\<(1.4,A)]]] \/ <(160km/t,H) :§125 stk.1 nr.3;
+Via(BFF,§125 stk.1 nr.3) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), [/(H,M,A) /\ [<(1.6,A)\/[På(vejarbejde,V,T)/\<(1.4,A)]]] \/ <(160km/t,H) :§125 stk.1 nr.3;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.4,T) <- BrudtLoven(P,Lov,T), Lov#(Lov,43), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.4;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,43), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.4;
+Via(BFF,§125 stk.1 nr.4) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,43), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.4;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.5,T) <- Er(P,skyldig i spirituskørsel,T):§125 stk.1 nr.5;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Er(P,skyldig i spirituskørsel,T):§125 stk.1 nr.5;
+Via(BFF,§125 stk.1 nr.5) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Er(P,skyldig i spirituskørsel,T):§125 stk.1 nr.5;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.6,T) <- BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§125 stk.1 nr.6;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§125 stk.1 nr.6;
+Via(BFF,§125 stk.1 nr.6) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§125 stk.1 nr.6;
 
-BetingetFrakendtFørerret(P,§125 stk.1 nr.7,T) <- Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>64km/t):§125 stk.1 nr.7;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>64km/t):§125 stk.1 nr.7;
+Via(BFF,§125 stk.1 nr.7) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>64km/t):§125 stk.1 nr.7;
 
-BetingetFrakendtFørerret(P,§125 stk.2,T) <- <(T3,T2), <(T2,T), SkyldigIForholdTil(P,Lov1,§125 skt.2,T), SkyldigIForholdTil(P,Lov2,§125 skt.2,T2), SkyldigIForholdTil(P,Lov3,§125 skt.2,T3), ~=(Lov1,Lov2), ~=(Lov2,Lov3), ~=(Lov1,Lov3):§125 skt.2;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), <(T3,T2), <(T2,T), SkyldigIForholdTil(P,Lov1,§125 skt.2,T), SkyldigIForholdTil(P,Lov2,§125 skt.2,T2), SkyldigIForholdTil(P,Lov3,§125 skt.2,T3), ~=(Lov1,Lov2), ~=(Lov2,Lov3), ~=(Lov1,Lov3):§125 skt.2;
+Via(BFF,§125 stk.2) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), <(T3,T2), <(T2,T), SkyldigIForholdTil(P,Lov1,§125 skt.2,T), SkyldigIForholdTil(P,Lov2,§125 skt.2,T2), SkyldigIForholdTil(P,Lov3,§125 skt.2,T3), ~=(Lov1,Lov2), ~=(Lov2,Lov3), ~=(Lov1,Lov3):§125 skt.2;
 
 SkyldigIForholdTil(P,Lov,§125 skt.2,T) <- BrudtLoven(P,Lov,T), [Lov#(Lov,5) /\ Stk#(Lov,2)] \/ [Lov#(Lov,15) /\ Stk#(Lov,3)/\ Nr#(Lov,1)] \/ [Lov#(Lov,15) /\ Stk#(Lov,4)] \/ [Lov#(Lov,16) /\ Stk#(Lov,1)] \/ [Lov#(Lov,18) /\ Stk#(Lov,1\/2)] \/ [Lov#(Lov,21) /\ Stk#(Lov,1\/2\/3\/4)] \/ [Lov#(Lov,22) /\ Stk#(Lov,1)] \/ [Lov#(Lov,24) /\ Stk#(Lov,1)] \/ [Lov#(Lov,25)] \/ [Lov#(Lov,51) /\ Stk#(Lov,7)] \/ [Lov#(Lov,52) /\ Stk#(Lov,7)] \/ [Lov#(Lov,55a) /\ Stk#(Lov,1)] \/ [Lov#(Lov,80) /\ Stk#(Lov,4) /\ Nr#(Lov,1)] \/ [Lov#(Lov,80a) /\ Stk#(Lov,1\/2)] \/ [Lov#(Lov,80b) /\ Stk#(Lov,4) /\ Nr#(Lov,2)] \/ [Lov#(Lov,81) /\ Stk#(Lov,3)]:§125 stk.2 nr.1;
 
