@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demo.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <SplitPane dividerPositions="0.5036674816625917" prefHeight="410.0" prefWidth="390.0" VBox.vgrow="ALWAYS">
+     <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="157.0" prefWidth="128.0">
+            <children>
+               <ListView fx:id="factList" editable="true" layoutY="72.0" onMouseClicked="#removeFact" prefHeight="316.0" prefWidth="379.0" AnchorPane.bottomAnchor="20.80000000000001" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0" />
+               <TextField fx:id="factInput" layoutX="115.0" layoutY="34.0" onAction="#onFactInputClick" AnchorPane.leftAnchor="115.00000000000003" AnchorPane.rightAnchor="114.6" />
+               <Label fx:id="factLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="4.0" prefHeight="18.0" prefWidth="83.0" text="Indsæt Fakta" textAlignment="CENTER" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0" />
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="backButton" centerShape="false" layoutX="318.0" layoutY="14.0" onAction="#onBackClick" text="Tilbage" AnchorPane.rightAnchor="14.800000000000026" />
+               <ListView fx:id="answerList" layoutY="72.0" onMouseClicked="#onClickAnswerList" prefHeight="316.0" prefWidth="373.0" AnchorPane.bottomAnchor="20.80000000000001" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0" />
+               <Label fx:id="answerInfo" layoutX="7.0" layoutY="45.0" prefHeight="17.0" prefWidth="366.0" text="Query for at se svar" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.20000000000004547" />
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="13.0" mnemonicParsing="false" onAction="#onReasoningClick" prefHeight="26.0" prefWidth="178.0" text="Begrundelser for argument" textAlignment="CENTER" AnchorPane.leftAnchor="97.99999999999997" AnchorPane.rightAnchor="97.20000000000002" />
+            </children>
+         </AnchorPane>
+     </items>
+   </SplitPane>
+   <Button fx:id="queryButton" mnemonicParsing="false" onAction="#onQueryClick" text="Query" />
+   <ToggleButton fx:id="forImod" mnemonicParsing="false" onMouseClicked="#forImodToggle" prefHeight="26.0" prefWidth="50.0" text="For" />
+</VBox>
