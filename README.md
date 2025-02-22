@@ -7,7 +7,7 @@ Use Maven to install dependencies, compile and run FærdXel located at src/java/
 ## Using FærdXel:
 When you run FærdXel, you will be presented with the following screen.
 
-![Error Getting Picture](https://github.com/JonasVistrup/LawXAIDemo/tree/master/intro.png "Start Screen")
+![Error Getting Picture](https://github.com/JonasVistrup/LawXAIDemo/blob/master/intro.png "Start Screen")
 
 You can input facts about a traffic case in the "Insert Fakta" box in the top left (Note: Facts must be giving in correct Datalog format). Facts can be removed by clicking.
 
@@ -17,4 +17,4 @@ Clicking an answer will provide explanations for that answer. There might be mor
 
 The following is an example of how an example could look:
 
-![Error Getting Picture](https://github.com/JonasVistrup/LawXAIDemo/tree/master/running.png "Start Screen")
+![Error Getting Picture](https://github.com/JonasVistrup/LawXAIDemo/blob/master/running.png "Running Screen")
