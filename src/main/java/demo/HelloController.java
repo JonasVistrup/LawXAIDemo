@@ -4,8 +4,10 @@ import demo.Logic.High.Atom;
 import demo.Logic.High.AtomList;
 import demo.Logic.High.Clause;
 import demo.Logic.High.Substitution;
+import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.PredicateUD;
 import demo.Logic.Symbols.Predicates.UDNegation;
+import demo.Logic.Symbols.Term;
 import demo.SLD.Answer;
 import demo.SLD.History;
 import demo.SLD.XAI;
@@ -60,6 +62,101 @@ public class HelloController implements Initializable {
 
     private List<Substitution> answers;
 
+    private static boolean allVariableArguments(Atom a){
+        for(Term t: a.args){
+            if(t instanceof Constant) return false;
+        }
+        return true;
+    }
+    public void replace(String atom, String[] resultingAtoms) throws FileNotFoundException {
+        Atom a = XAI.pp.parseAtomOld(atom);
+
+        assert allVariableArguments(a);
+
+        String aStr = a.predicate().toString() + "(";
+        ArrayList<Atom> rAtoms = new ArrayList<>();
+        for(String s: resultingAtoms) rAtoms.add(XAI.pp.parseAtomOld(s));
+
+        int[][] variables = new int[rAtoms.size()][];
+        for(int i=0; i<rAtoms.size(); i++){
+            Atom rAtom = rAtoms.get(i);
+            variables[i] = new int[rAtom.args.size()];
+            for(int j=0; j<rAtom.args.size(); j++){
+                int k;
+                for(k=0; k<a.args.size(); k++){
+                    if(rAtom.args.get(j).toString().equals(a.args.get(k).toString())){
+                        break;
+                    }
+                }
+                variables[i][j] = k==a.args.size()? -1: k;
+            }
+        }
+
+
+        String[] folders = {"1","2","3","4","5","6","7","8","10","11","12","13","14","15","16","17","17a","18","19"};
+        for(String folder : folders) {
+            for(String path : findAllFilesInDirectory(new File(strPath + "res/"+folder))) {
+
+                Scanner scanner = new Scanner(new File(path));
+                int linenr = 0;
+                while (scanner.hasNextLine()) {
+                    linenr++;
+                    String line = scanner.nextLine();
+                    if(!line.contains("<-")) continue;
+
+                    String body = line.split("<-")[1];
+
+
+
+                    for(int i = 0; i<body.length(); i++){
+                        if(body.charAt(i) != aStr.charAt(0) ) continue;
+                        int j;
+                        for(j = 1; (j+i)<body.length() && j<aStr.length() && aStr.charAt(j)==body.charAt(i+j); j++);
+
+                        if(j != aStr.length()) continue;
+                        String[] aArgsStr = new String[a.args.size()];
+                        for(int z=0; z<a.args.size(); z++){
+                            int k;
+                            for(k = 0; body.charAt(i+j+k) != ',' || body.charAt(i+j+k)==')'; k++);
+                            aArgsStr[z] = body.substring(i+j,i+j+k);
+                            j += k;
+                        }
+
+                        //Replace
+                        System.out.println("Folder ("+folder+"), Line nr="+linenr+":\n\t"+line+"\n\t");
+
+                        StringBuilder sb = new StringBuilder();
+                        sb.append(line.split("<-")[0]).append("<-").append(body, 0, i);
+
+                        StringBuilder insertStr = new StringBuilder();
+                        for(int k=0; k<rAtoms.size(); k++){
+                            Atom rAtom = rAtoms.get(i);
+                            int[] pos = variables[i];
+                            insertStr.append(rAtom.predicate().toString());
+                            insertStr.append("(");
+                            for(int z=0; z<pos.length; z++){
+                                insertStr.append(aArgsStr[pos[z]]);
+                                insertStr.append(",");
+                            }
+                            insertStr.deleteCharAt(insertStr.length()-1);
+                            insertStr.append("),");
+                        }
+                        insertStr.deleteCharAt(insertStr.length()-1);
+
+                        sb.append(insertStr);
+
+                        sb.append(body.substring(i+j+1));
+
+
+                        System.out.print(sb);
+                    }
+
+                }
+
+            }
+        }
+
+    }
     @FXML
     protected void onFactInputClick(){
         String factString = ""+factInput.getCharacters();
@@ -274,9 +371,14 @@ public class HelloController implements Initializable {
         for(String path:findAllFilesInDirectory(new File(strPath+"res/19"))) XAI.addRules(path);
 
         XAI.printStats();
-        try {
+        /*try {
             XAI.printOccurences("IkkePassendeLav");
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
+        try {
+            replace("Pass(a)", new String[]{"Pass(B)"});
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
