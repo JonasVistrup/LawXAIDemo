@@ -1,1 +1,0 @@
-Kan(Popo,A,T) <- Type(A,konfiskering), Af(A,K), Anvender(P,K,T), Udfører(P,grov overtrædelse af færdselsloven):;

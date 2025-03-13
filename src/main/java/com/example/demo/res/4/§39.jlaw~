@@ -1,1 +1,0 @@
-IkkeBrudtLoven(P,§39_stk.1,T) <- Fører(P,K,T), Køretøj(K), Ejer(forsvaret\/redningsberedskabets,K), Træffer(P,F,<T), Er(F,foranstaltninger), Til(F,undgå_fare)\/Til(F,undgå_unødig_ulempe_for_andre_traffikanter):§39_stk.1;

@@ -1,1 +1,0 @@
-BrudtLoven(P,§94 stk.1 nr.1,T) <- I(T,tøbrudsperiode), TPMBestemmelse(A,§94 stk.1 nr.1), På(K,V,T), Vej(V), Skønnes(V,særlig udsat for beskadigelse,T), Fører(P,K,T), Køretøj(K), Vægt(K,B)\/Hastighed(K,B), <(A,B):§94 stk.1 nr.1;

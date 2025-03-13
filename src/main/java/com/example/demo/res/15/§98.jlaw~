@@ -1,1 +1,0 @@
-Er(P,A) <- Vejarbejde(VA), Forstår(P,VA), Ansvar(A), For(A,M), Afmærkning(M), For(M,VA), Er(M,forsvarlig):§98 stk.1 nr.1;

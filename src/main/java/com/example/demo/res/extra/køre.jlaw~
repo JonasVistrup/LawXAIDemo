@@ -1,2 +1,0 @@
-Fødddddadasdarer(P,K,T)<-Kører(P,K,V,T0,T1),<=(T0,T),<=(T,T1):Definitation;
-Udfør<-Kørsel(Kø),Af(Kø,K,T),Kører(P,K,V,T0,T1),<=(T0,T),<=(T,T1):Definitation;

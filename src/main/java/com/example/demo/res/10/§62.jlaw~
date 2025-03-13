@@ -1,1 +1,0 @@
-BrudtLoven(P,§62_stk.1,T) <- Fører(P,K,T), Traktor(K) \/ Motorredskab(K), IkkeErhverver(P,bilkørekort), IkkeErhverver(P,traktorkørekort):§62 stk.1;  

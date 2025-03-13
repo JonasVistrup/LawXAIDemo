@@ -1,5 +1,0 @@
-Kan(P,F) <- TPM(P), Type(F,fastsætning af regler), Om(F,G), Type(G,gebyr), For(G,A), [Type(A,afholdelse) /\ Af(A,K) /\ Type(K,praktisk prøve\/teoriprøve\/kontrollerende køreprøve\/kørelærerprøve)]\/[Type(A,udeblivelse)/\Fra(A,teoretisk køreprøve\/praktisk køreprøve)]\/Type(A,del af prøven bestårs ikke):§124a stk.1 nr.1;
-
-Kan(P,F) <- TPM(P), Type(F,fastsætning af regler), Om(F,G), Type(G,gebyr), For(G,A), Type(A,udstedelse\/ombytning\/fornyelse), Af(A,kørekort):§124a stk.2 nr.1;
-Kan(P,F) <- TPM(P), Type(F,fastsætning af regler), Om(F,G), Type(G,gebyr), For(G,A), Type(A,ombytning), Af(A,kørekort), Med(A,vilkår om alkolås), Til(A,uden vilkår om alkolås):§124a stk.3 nr.1;
-Kan(P,F) <- TPM(P), Type(F,fastsætning af regler), Om(F,G), Type(G,gebyr), For(G,A), Type(A,udstedelse), Af(A,takografkort):§124a stk.4 nr.1;

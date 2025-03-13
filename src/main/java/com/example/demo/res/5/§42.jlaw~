@@ -1,9 +1,0 @@
-BrudtLoven(P,§42_stk.1,T) <- Fører(P,K,T),Hastighed(K,H,T), På(K,V,T), MaxHastighed(V,M),>(H,M):§42_stk.1;
-
-MaxHastighed(V,50) <- Byvej(V), ~AndenHastighedsGrænse(V);§42 stk. 1.1;§42 stk. 4
-MaxHastighed(V,80) <- Landevej(V), ~AndenHastighedsGrænse(V);§42 stk. 1.2
-MaxHastighed(V,130) <- Motorvej(V), ~AndenHastighedsGrænse(V);§42 stk. 2
-MaxHastighed(V,50) <- Motortraffikvej(V), ~AndenHastighedsGrænse(V);§42 stk. 3
-MaxHastighed(V,M) <- AndenHastighedsGrænseFastsat(V,M);§42 stk. 4;§42 stk. 5
-
-AndenHastighedsGrænse(V) <- AndenHastighedsGrænseFastsat(V,M)

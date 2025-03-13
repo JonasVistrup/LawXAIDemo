@@ -1,1 +1,0 @@
-ReguleresAf(F,Politi){r} <- Politiet(Politi), Færdsel(F), Nødvendigt(r);
