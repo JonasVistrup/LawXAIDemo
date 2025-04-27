@@ -43,6 +43,9 @@ Køretøj(K,T) <- MotordrevetKøretøj(K,T):§2 stk.14;
 MotordrevetKøretøj(K,T) <- Motorkøretøj(K,T):§2 stk.15;
 Motorredskab(K,T) <- MotordrevetKøretøj(K,T):§2 stk.16;
 
+MotordrevetKøretøj(K) <- Bil(K)
+IndrettetTil(K,person_befordring) <- Bil(K), ~IndrettetTil(K,gods_transport)
+
 
 Parkeret(K,V,T) <- Hensætning(K,V,Hensætning), Start(Hensætning,Tstart), Slut(Hensætning,Tslut), -(Tslut,Tstart,M), ~<(M,3m), ~Årsag(Hensætning,afstigning\/påstigning\/aflæsning\/pålæsning\/uheld\/teknisk_fejl), ~<(T,Tstart), ~<(Tslut,T):§2.18;
 Parkeret(K,V,T) <- Hensætning(K,V,Hensætning), Start(Hensætning,Tstart), Slut(Hensætning,Tslut), -(Tslut,Tstart,M), ~<(M,18t), Årsag(Hensætning,teknisk_fejl\/uheld), ~<(T,Tstart), ~<(Tslut,T):§2.18;

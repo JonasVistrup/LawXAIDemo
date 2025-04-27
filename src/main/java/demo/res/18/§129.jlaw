@@ -6,21 +6,21 @@ Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Til
 Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§129 stk.1 nr.1;
 Via(BFF,§129 stk.1 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), TilsidesætterHensyn(P,T), Fare(S), Forvolder(P,S,T) , På(S,A), Person(A)\/Type(A,ting):§129 stk.1 nr.1;
 
-Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§129 stk.1 nr.2;
-Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§129 stk.1 nr.2;
-Via(BFF,§129 stk.1 nr.2) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,1):§129 stk.1 nr.2;
+Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,9), Stk(Lov,2), Nr(Lov,1):§129 stk.1 nr.2;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,9), Stk(Lov,2), Nr(Lov,1):§129 stk.1 nr.2;
+Via(BFF,§129 stk.1 nr.2) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),  BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,9), Stk(Lov,2), Nr(Lov,1):§129 stk.1 nr.2;
 
-Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
-Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
-Via(BFF,§129 stk.1 nr.3) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
+Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
+Via(BFF,§129 stk.1 nr.3) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,43a), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(1.6,A):§125 stk.1 nr.3;
 
 Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Er(P,skyldig i spirituskørsel,T):§129 stk.1 nr.4;
 Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Er(P,skyldig i spirituskørsel,T):§129 stk.1 nr.4;
 Via(BFF,§129 stk.1 nr.4) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Er(P,skyldig i spirituskørsel,T):§129 stk.1 nr.4;
 
-Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
-Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
-Via(BFF,§129 stk.1 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
+Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,54), Stk(Lov,1), Nr(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
+Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,54), Stk(Lov,1), Nr(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
+Via(BFF,§129 stk.1 nr.1) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, ~ForliggerFormilendeOmstændigheder(brud), Lov(Lov,54), Stk(Lov,1), Nr(Lov,2), Koncentration(P,thc,blodet,>0.003,T\/>T):§129 stk.1 nr.5;
 
 Af(FR,knallerter) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>43km/t):§129 stk.1 nr.6;
 Får(P,BFF,T) <- BetingetFrakendelse(BFF), Af(BFF,FR), Førerretten(FR),Fører(P,K,T), Knallert(K), Er(K,konstruktivt ændret), MaxHastighed(K,>43km/t):§129 stk.1 nr.6;
@@ -32,32 +32,32 @@ Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), SkyldigIForho
 Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), SkyldigIForholdTil(P,spirituskøresel,T), Koncentration(P,alkohold,blodet,>1.2promille,T)\/Koncentration(P,alkohol,udåndingsluft,>0.6mg/liter,T\/>T):§129 skt.2 nr.1;
 Via(FF,§129 stk.2 nr.1) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), SkyldigIForholdTil(P,spirituskøresel,T), Koncentration(P,alkohold,blodet,>1.2promille,T)\/Koncentration(P,alkohol,udåndingsluft,>0.6mg/liter,T\/>T):§129 skt.2 nr.1;
 
-Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
-Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
-Via(FF,§129 stk.2 nr.2) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,1), Nr#(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
+Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,54), Stk(Lov,1), Nr(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,54), Stk(Lov,1), Nr(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
+Via(FF,§129 stk.2 nr.2) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T), Lov(Lov,54), Stk(Lov,1), Nr(Lov,1\/2), Koncentration(P,thc,blodet,>0.009mg/kg,T):§129 stk.2 nr.2;
 
-Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54), Stk#(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
-Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54), Stk#(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
-Via(FF,§129 stk.2 nr.2) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54), Stk#(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
+Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov(Lov,54), Stk(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov(Lov,54), Stk(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
+Via(FF,§129 stk.2 nr.2) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), BrudtLoven(P,Lov,T){brud}, Lov(Lov,54), Stk(Lov,2), UnderSkærpendeOmstændigheder(brud):§129 stk.2 nr.2;
 
 Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Forvolder(P,S), Skade(S), På(S,A), Person(A)\/Type(A,ting), TilsidesætterHensyn(P,T):§129 stk.2 nr.3;
 Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Forvolder(P,S), Skade(S), På(S,A), Person(A)\/Type(A,ting), TilsidesætterHensyn(P,T):§129 stk.2 nr.3;
 Via(FF,§129 stk.2 nr.3) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Knallert(K), Forvolder(P,S), Skade(S), På(S,A), Person(A)\/Type(A,ting), TilsidesætterHensyn(P,T):§129 stk.2 nr.3;
 
-Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54):§129 stk.2 nr.4;
-Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54):§129 stk.2 nr.4;
-Via(FF,§129 stk.2 nr.4) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov#(Lov,54):§129 stk.2 nr.4;
+Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov(Lov,54):§129 stk.2 nr.4;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov(Lov,54):§129 stk.2 nr.4;
+Via(FF,§129 stk.2 nr.4) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), Hastighed(K,>100km/t,T),  BrudtLoven(P,Lov,T){brud}, Lov(Lov,54):§129 stk.2 nr.4;
 
 Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(2,A):§129 stk.2 nr.4;
 Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(2,A):§129 stk.2 nr.4;
 Via(FF,§129 stk.2 nr.4) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), Fører(P,K,T), På(K,V,T), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,A), <(2,A):§129 stk.2 nr.4;
 
-Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.5;
-Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.5;
-Via(FF,§129 stk.2 nr.5) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.5;
+Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.5;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.5;
+Via(FF,§129 stk.2 nr.5) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.5;
 
-Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.6;
-Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.6;
-Via(FF,§129 stk.2 nr.6) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov#(Lov/\Lov2,129), Stk#(Lov/\Lov2,1):§126 stk.1 nr.6;
+Af(FR,knallerter) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.6;
+Får(P,FF,T) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.6;
+Via(FF,§129 stk.2 nr.6) <- Frakendelse(FF), Af(FF,FR), Førerretten(FR), <(T2,T), ~=(Lov,Lov2), Får(P,BFF1,T), BetingetFrakendelse(BFF1), Af(BFF1,FR), Får(P,BFF2,T2), BetingetFrakendelse(BFF2), Af(BFF2,FR), Førerretten(FR), Af(FR,knallerter), Via(BFF1,Lov), Via(BFF2,Lov2), Lov(Lov/\Lov2,129), Stk(Lov/\Lov2,1):§126 stk.1 nr.6;
 
 Fra(FF,T1) <- Får(P,FF,T), Af(FR,knallerter), Frakendelse(FF), Af(FF,FR), Førerretten(FR), Alder(P,A), <(A,15år),-(15år,A,B), +(T,B,T1):§129 skt.6 nr.1;

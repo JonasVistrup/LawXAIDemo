@@ -1,12 +1,11 @@
-Lov#(A,B):[A] er paragraf [B];
-Stk#(A,B):[A] er stk. [B];
-Nr#(A,B):[A] er nr. [B];
 TPM(P):[P] er transportminister;
 BetingetFrakendelse(A):[A] er en betinget frakendelse;
 Frakendelse(A):[A] er en frakendelse;
 Førerretten(A):[A] er førerretten;
 SkyldigIForholdTil(P,Lov1,Lov2):[P] er skyldig i [Lov1] i forhold til [Lov2];
 SkyldigI(P,Lov):[P] er skyldig i forhold til [Lov];
+StraffesMedBøde(P,Lov):[P] straffes med bøde for lovbrud via [Lov];
+StraffesMedFængsel(P,Lov):[P] straffes med fængsling for lovbrud via [Lov];
 UnderSkærpendeOmstændigheder(A):[A] forgik under skærpende omstændigheder;
 ForliggerFormilendeOmstændigheder(A):Der forligger formilende omstændingheder om [A];
 BemyndigetTilRegulereFærdslenAfTPM(A):[A] er bemyndiget til regulere færdslen af transportministeren;

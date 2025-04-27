@@ -6,7 +6,6 @@ import demo.Logic.High.Substitution;
 import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.UDFunction;
 import demo.Logic.Symbols.Variable;
-import demo.Logic.Symbols.Constants.Number;
 
 public class Plus extends UDFunction {
     public Plus() {

@@ -310,7 +310,6 @@ public class ProgramParserVisitor extends LawXAIBaseVisitor<Object>{
         else return termToG_term(visitTerm(ctx.term()));
     }
     @Override public Pair<Term, List<AtomList>> visitTerm(LawXAIParser.TermContext ctx) {
-        Term t;
         if(ctx.variable() != null){
             return new Pair<>(visitVariable(ctx.variable()),arrayWithElm(new AtomList()));
         }else if(ctx.constant() != null){

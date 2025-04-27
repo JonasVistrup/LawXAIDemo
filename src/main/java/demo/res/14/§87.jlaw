@@ -4,6 +4,6 @@ BrudtLoven(P,§87 stk.2 nr.1,T) <- Type(B,tabning\/spildning), Af(B,A), På(B,V)
 BrudtLoven(P,§87 stk.2 nr.2,T) <- Type(B,tabning\/spildning), Af(B,A), På(B,V), Vej(V), Udfører(P,B,<T), KanVæreTil(A,F), Ikke(A,fjernes,T), Kan(A,fjernes,T):§87 stk.2 nr.2;
 BrudtLoven(P,§87 stk.2 nr.2,T) <- Type(B,tabning\/spildning), Af(B,A), På(B,V), Vej(V), Udfører(P,B,T), KanVæreTil(A,F), IkkeKan(A,fjernes), Ikke(P,afmærkning eller på anden lignende måde gøres opmærksom på forholdet,T):§87 stk.2 nr.2;
 
-BrudtLoven(P,Lov,T) <- TPMBestemmelse(A,Lov), Lov#(Lov,87), Stk#(Lov,3), IkkeFølger(P,A,T):§87 stk.3 nr.1:§87 stk.3 nr.2;
+BrudtLoven(P,Lov,T) <- TPMBestemmelse(A,Lov), Lov(Lov,87), Stk(Lov,3), IkkeFølger(P,A,T):§87 stk.3 nr.1:§87 stk.3 nr.2;
 
 BrudtLoven(P,§87 stk.4 nr.1,T) <- Politiet(Popo), Kræver(Popo,F,T), Fjernelse(F), Af(F,A), Type(A,privat luftledning), Ejer(P,A,T), Nægter(P,F,T):§87 stk.4 nr.1;

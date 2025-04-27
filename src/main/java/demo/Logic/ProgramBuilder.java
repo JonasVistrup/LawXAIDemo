@@ -63,7 +63,6 @@ public class ProgramBuilder {
         Atom atom = parseAtomOld(atomRep);
         ArrayList<String> explanationParts = new ArrayList<>();
         ArrayList<Integer> termPos = new ArrayList<>();
-        StringBuilder current = new StringBuilder();
 
         String[] parts = explanation.split("[\\[\\]]",explanation.length());
         for(int i = 0; i<parts.length; i++){
@@ -89,13 +88,13 @@ public class ProgramBuilder {
 
 
     public void addUDPredicate(String classString) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class functionClass = Class.forName(classString);
+        Class<?> functionClass = Class.forName(classString);
         if(UDRelation.class.isAssignableFrom(functionClass)) {
-            Constructor ct = functionClass.getConstructor(new Class[0]);
+            Constructor<?> ct = functionClass.getConstructor(new Class[0]);
             UDRelation udr = (UDRelation) ct.newInstance(new Object[0]);
             addUDRelation(udr);
         }else if(UDFunction.class.isAssignableFrom(functionClass)){
-            Constructor ct = functionClass.getConstructor(new Class[0]);
+            Constructor<?> ct = functionClass.getConstructor(new Class[0]);
             UDFunction udf = (UDFunction) ct.newInstance(new Object[0]);
             addUDFunction(udf);
         }else{
@@ -637,7 +636,7 @@ public class ProgramBuilder {
 
     private boolean isInt(String intRep){
         try{
-            int i = Integer.parseInt(intRep);
+            Integer.parseInt(intRep);
         }catch (Exception e){
             return false;
         }

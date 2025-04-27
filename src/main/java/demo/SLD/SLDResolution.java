@@ -56,6 +56,8 @@ public class SLDResolution {
 
         for(Clause clause: program.clauses.get(selected.predicate())){
             Clause instance = clause.getInstance(level);
+            
+
             Substitution unifier = Unify.findMGU(selected, instance.head);
             if (unifier != null) {
                 Goal nextGoal = current.goal.applyClause(instance, 0, unifier).runAndRemoveGroundUDPs();

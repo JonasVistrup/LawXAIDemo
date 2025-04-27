@@ -4,7 +4,6 @@ package demo.Logic.UserDefined;
 import demo.Logic.High.Arguments;
 import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.UDRelation;
-import demo.Logic.Symbols.Constants.Number;
 
 public class Equal extends UDRelation {
     public Equal() {

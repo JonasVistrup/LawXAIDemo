@@ -20,6 +20,14 @@ public class Number extends Constant implements Comparable<Number> {
         this.denominator = 1;
     }
 
+
+    public static Number convertToIntNumber(Constant constant) {
+        try {
+            return new Number(Integer.parseInt(constant.toString()));
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
     public Number(int numerator, int denominator){
         super(""+ ((double)numerator/(double)denominator));
         while(numerator % 2 == 0 && denominator % 2 == 0){
