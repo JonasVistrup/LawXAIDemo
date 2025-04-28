@@ -1,0 +1,1 @@
+Bødeværdi(P,V,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,53), ÅrligBruttoIndtægt(P,B,T), Koncentration(P,alkohol,blodet,Promille,T\/>T), GetNumber(Promille,PVærdi), /(B,25,X), X(X,PVærdi,V):Anklagemyndighedens Videnbase (Færdsel - Sprituskørsel 5.1.1);

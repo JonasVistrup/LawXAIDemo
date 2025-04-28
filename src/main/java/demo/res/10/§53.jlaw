@@ -1,2 +1,2 @@
-BrudtLoven(P,§53 stk.1,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), Koncentration(P,alkohol,blodet,>0.5promille,T\/>T) \/ Koncentration(P,alkohol,udåndingsluften,>0.25mg_per_liter_luft,T\/>T):§53_stk.1;
-BrudtLoven(P,§53 stk.2,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), Indtaget(P,alkohol,<T), IkkeKan(P,føre_køretøjet_på_betryggende_måde,T):§53_stk.2;
+BrudtLoven(P,§53 stk.1,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), Koncentration(P,alkohol,blodet,>0.5promille,T\/>T) \/ Koncentration(P,alkohol,udåndingsluften,>0.25mg_per_liter_luft,T\/>T):§53 stk.1;
+BrudtLoven(P,§53 stk.2,T) <- Fører(P,K,T)\/ForsøgerAtFøre(P,K,T),MotordrevetKøretøj(K), Indtaget(P,alkohol,<T), IkkeKan(P,føre_køretøjet_på_betryggende_måde,T):§53 stk.2;

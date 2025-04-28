@@ -1,8 +1,8 @@
-BrudtLoven(P,§41_stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Tilpasning(A), Af(A,H), IkkeUdfører(P,A,T), Efter(A,F,T), Er(F,forholdene), Med(F,særligt_hensyn_til_andres_sikkerhed):§41 stk.1;
-BrudtLoven(P,§41_stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Tilpasning(A), Af(A,H), IkkeUdfører(P,A,T), Efter(A,F,T), Er(F,forholdene), Type(F,vejforholdene\/vejrforholdene\/sigtforholdene\/køretøjets_tilstand\/køretøjets_belastning\/øvrige_færdselsforhold):§41 stk.1;
-BrudtLoven(P,§41_stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Er(H,større_end_at_føreren_bevarer_fuldt_herredømme_over_køretøjet):§41 stk.1;
+BrudtLoven(P,§41 stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Tilpasning(A), Af(A,H), IkkeUdfører(P,A,T), Efter(A,F,T), Er(F,forholdene), Med(F,særligt_hensyn_til_andres_sikkerhed):§41 stk.1;
+BrudtLoven(P,§41 stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Tilpasning(A), Af(A,H), IkkeUdfører(P,A,T), Efter(A,F,T), Er(F,forholdene), Type(F,vejforholdene\/vejrforholdene\/sigtforholdene\/køretøjets_tilstand\/køretøjets_belastning\/øvrige_færdselsforhold):§41 stk.1;
+BrudtLoven(P,§41 stk.1,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), Er(H,større_end_at_føreren_bevarer_fuldt_herredømme_over_køretøjet):§41 stk.1;
 
-BrudtLoven(P,§41_stk.1,T) <- Fører(P,K,T), Foran(K,K2,T), Afstand(K,K2,A,T), Standselængde(K,A<,T):§41 stk. 1;
+BrudtLoven(P,§41 stk.1,T) <- Fører(P,K,T), Foran(K,K2,T), Afstand(K,K2,A,T), Standselængde(K,A<,T):§41 stk. 1;
 Standselængde(K,A3,T) <- Reaktionslængde(K,A1,T), Bremselængde(K,A2,T), +(A1,A2,A3): 1999/1 LSF 263 stk. 2.3;
 Reaktionslængde(K,A,T) <- Hastighed(K,H), Fører(P,K,T), Reaktionstid(P,Tid,T), X(H,T,A):Udregning;
 Reaktionstid(P,1.5,T) <-:Givet ved lov;
@@ -13,9 +13,9 @@ ForventetBremsepræstation(K,5.8,T) <- Bil(K), RegistreringsDato(K,D), <(D,01/01
 ForventetBremsepræstation(K,5,T) <- Varebil(K)\/Bus(K)\/Lastbil(K):krav (Skal dokumenters);
 
 
-BrudtLoven(P,§41_stk.2,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), IkkeEr(H,passende_lav,T), [På(K,V,T)/\I(V,By)/\By(By)]\/[Er(S,nedsat_sigtparhed)/\For(S,P,T)/\Fordi(S,lysforholdende\/vejforholdene)]\/[Ved(K,V,T)/\Vejkryds(V)]\/[I(K,V,T)/\Vejsving(V)]\/[Foran(K,V,T)/\[Fodgængerfelt(V)\/Er(V,bakketop)]]\/[På(K,V,T)/\For(oversigten_er_begrænset,V,T)]\/RisikoFor(P,blive_blændet)\/[Møder(K,K2,T)/\På(K,V,T)/\Smal(V)/\Vej(V)]\/[På(K,V,T)/\Er(V,glat\/vådt\/fedtet)]\/[NærmerSig(K,K2,T)/\[Bus(K2)\/Letbanekøretøj(K2)]/\Holder(K2,V,T)/\[Optager(K2,passagerer,T)\/Afsætter(K2,passagerer,T)]]\/[NærmerSig(K,B,T)/\Barn(B)/\[På(B,V,T)\/Ved(B,V,T)]/\Vej(V)]\/[NærmerSig(K,K2,T)/\Er(K2,heste\/kreatur)/\På(K2,V,T)/\Vej(V)]\/[På(K,V,T)/\På(der_fortages_arbejde,V,T)]\/[Forbi(K,U,T)/\Uheld(U)/\På(U,V,T)/\Vej(V)] :§41_stk.2;
+BrudtLoven(P,§41 stk.2,T) <- Køretøj(K), Fører(P,K,T), Hastighed(K,H,T), IkkeEr(H,passende_lav,T), [På(K,V,T)/\I(V,By)/\By(By)]\/[Er(S,nedsat_sigtparhed)/\For(S,P,T)/\Fordi(S,lysforholdende\/vejforholdene)]\/[Ved(K,V,T)/\Vejkryds(V)]\/[I(K,V,T)/\Vejsving(V)]\/[Foran(K,V,T)/\[Fodgængerfelt(V)\/Er(V,bakketop)]]\/[På(K,V,T)/\For(oversigten_er_begrænset,V,T)]\/RisikoFor(P,blive_blændet)\/[Møder(K,K2,T)/\På(K,V,T)/\Smal(V)/\Vej(V)]\/[På(K,V,T)/\Er(V,glat\/vådt\/fedtet)]\/[NærmerSig(K,K2,T)/\[Bus(K2)\/Letbanekøretøj(K2)]/\Holder(K2,V,T)/\[Optager(K2,passagerer,T)\/Afsætter(K2,passagerer,T)]]\/[NærmerSig(K,B,T)/\Barn(B)/\[På(B,V,T)\/Ved(B,V,T)]/\Vej(V)]\/[NærmerSig(K,K2,T)/\Er(K2,heste\/kreatur)/\På(K2,V,T)/\Vej(V)]\/[På(K,V,T)/\På(der_fortages_arbejde,V,T)]\/[Forbi(K,U,T)/\Uheld(U)/\På(U,V,T)/\Vej(V)] :§41 stk.2;
 
-BrudtLoven(P,§41_stk.3,T) <- Kørende(P,T), SkaberUlempeFor(K,P2,T), Kørende(P2,T), Udfører(P,M,T), Type(M,pludslig_bremsning), Er(M,unødigt):§41_stk.3;
-BrudtLoven(P,§41_stk.3,T) <- Kørende(P,T), SkaberUlempeFor(K,P2,T), Kørende(P2,T), Fører(P,K,T), Hastighed(K,H,T), Er(H,overdreven_lav), Er(H,unødigt):§41_stk.3;
+BrudtLoven(P,§41 stk.3,T) <- Kørende(P,T), SkaberUlempeFor(K,P2,T), Kørende(P2,T), Udfører(P,M,T), Type(M,pludslig_bremsning), Er(M,unødigt):§41 stk.3;
+BrudtLoven(P,§41 stk.3,T) <- Kørende(P,T), SkaberUlempeFor(K,P2,T), Kørende(P2,T), Fører(P,K,T), Hastighed(K,H,T), Er(H,overdreven_lav), Er(H,unødigt):§41 stk.3;
 
-BrudtLoven(P,§41_stk.4,T) <- Kørende(P,T), SkaberUlempeFor(A,P2,T), Kørende(P2,T), Er(A,afpasning), Af(A,H), Udfører(P,A,T), Fører(P,K,T), Hastighed(K,H,T):§41_stk.4;
+BrudtLoven(P,§41 stk.4,T) <- Kørende(P,T), SkaberUlempeFor(A,P2,T), Kørende(P2,T), Er(A,afpasning), Af(A,H), Udfører(P,A,T), Fører(P,K,T), Hastighed(K,H,T):§41 stk.4;

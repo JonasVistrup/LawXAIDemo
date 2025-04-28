@@ -1,7 +1,7 @@
-BrudtLoven(P,§37_stk.1,T) <- Holder(P,C,T), Er(C,cykelløb), IkkeTillader(Politi,C), Politiet(C):§37_stk.1;
-BrudtLoven(P,§37_stk.1,T) <- Holder(P,C,T), Er(C,træningskørsel), Forbyder(Politi,C,T), Politiet(C):§37_stk.1;
+BrudtLoven(P,§37 stk.1,T) <- Holder(P,C,T), Er(C,cykelløb), IkkeTillader(Politi,C), Politiet(C):§37 stk.1;
+BrudtLoven(P,§37 stk.1,T) <- Holder(P,C,T), Er(C,træningskørsel), Forbyder(Politi,C,T), Politiet(C):§37 stk.1;
 
-BrudtLoven(P,§37_stk.4,T) <- Holder(P,C,T), Er(C,kapkørsel\/væddekørsel):§37_stk.4:TfK 2013.406/2 V:TfK 2000.566 V:TfK 2003.335 V;
+BrudtLoven(P,§37 stk.4,T) <- Holder(P,C,T), Er(C,kapkørsel\/væddekørsel):§37 stk.4:TfK 2013.406/2 V:TfK 2000.566 V:TfK 2003.335 V;
 
-BrudtLoven(P,§37_stk.6,T) <- Holder(P,C,T), Er(C,motorløb), På(C,V), ~Vej(V), BenyttesTil(V,almindelig_færdsel), IkkePå(C,en_af_politiet_godkendt_afspærret_bane)\/ [IkkeTillader(Politi,C) /\ Politiet(C)]:§37_stk.6;
+BrudtLoven(P,§37 stk.6,T) <- Holder(P,C,T), Er(C,motorløb), På(C,V), ~Vej(V), BenyttesTil(V,almindelig_færdsel), IkkePå(C,en_af_politiet_godkendt_afspærret_bane)\/ [IkkeTillader(Politi,C) /\ Politiet(C)]:§37 stk.6;
 

@@ -264,31 +264,31 @@ public class AtomList implements Iterable<Atom>{
 
         copyAndApplySub(list.standardAtoms, this.standardAtoms, substitution);
 
-        int nextIndex = 0;
+        int nextIndex_function = 0;
         int offset = list.standardAtoms.length;
-        int nextPos = removedPositions[nextIndex]-offset;
+        int nextPos = removedPositions[nextIndex_function]-offset;
         for(int i = 0; i<list.functionAtoms.length; i++){
             if(nextPos == i){
-                if(++nextIndex < removedPositions.length){
-                    nextPos = removedPositions[nextIndex]-offset;
+                if(++nextIndex_function < removedPositions.length){
+                    nextPos = removedPositions[nextIndex_function]-offset;
                 }
             }else{
-                this.functionAtoms[i-nextIndex] = list.functionAtoms[i].applySub(substitution);
+                this.functionAtoms[i-nextIndex_function] = list.functionAtoms[i].applySub(substitution);
             }
         }
 
         offset = list.standardAtoms.length + list.functionAtoms.length;
-        nextPos = removedPositions[nextIndex]-offset;
+        int nextIndex_relation = 0;
+        nextPos = nextIndex_function < removedPositions.length? removedPositions[nextIndex_function]-offset: -1;
         for(int i = 0; i<list.relationAtoms.length; i++){
             if(nextPos == i){
-                if(++nextIndex < removedPositions.length){
-                    nextPos = removedPositions[nextIndex]-offset;
+                if(++nextIndex_relation + nextIndex_function < removedPositions.length){
+                    nextPos = removedPositions[nextIndex_relation+nextIndex_function]-offset;
                 }
             }else{
-                this.relationAtoms[i-nextIndex] = list.relationAtoms[i].applySub(substitution);
+                this.relationAtoms[i-nextIndex_relation] = list.relationAtoms[i].applySub(substitution);
             }
         }
-
     }
 
     private void copyAndApplySub(Atom[] src, Atom[] dest, Substitution substitution){
@@ -452,6 +452,9 @@ public class AtomList implements Iterable<Atom>{
         }
 
         for (Atom relationAtom : this.relationAtoms) {
+            if(relationAtom == null){
+                System.out.println("null relation atom in getRunnableUDPsPositions()");
+            }
             if (((UDRelation) relationAtom.predicate()).runnable(relationAtom.args)) {
                 amount++;
             }
