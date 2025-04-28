@@ -5,3 +5,8 @@ demo.Logic.UserDefined.Minus
 demo.Logic.UserDefined.Mul
 demo.Logic.UserDefined.Plus
 demo.Logic.UserDefined.Equal
+demo.Logic.UserDefined.Lov
+demo.Logic.UserDefined.Stk
+demo.Logic.UserDefined.Nr
+demo.Logic.UserDefined.Combine
+demo.Logic.UserDefined.GetNumber

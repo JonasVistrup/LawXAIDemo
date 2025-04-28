@@ -5,12 +5,8 @@ import demo.Grammar.LawXAILexer;
 import demo.Grammar.LawXAIParser;
 import demo.Grammar.ProgramParserVisitor;
 import demo.Logic.High.*;
-import demo.Logic.ProgramBuilder;
 import demo.Logic.ProgramParser;
-import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.PredicateUD;
-import demo.Logic.Symbols.Term;
-import demo.Logic.Symbols.Variable;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -62,6 +58,7 @@ public class XAI {
                     throw new IllegalArgumentException(e.getMessage()+"| Path="+predicatePath+" (Line "+lineNumber+"), [" +line+"].");
                 }
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             throw new IllegalStateException("file is missing at location "+predicatePath);
         }
@@ -95,6 +92,7 @@ public class XAI {
                 ArrayList<String> reasons = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length));
                 //pp.parseClause(parts[0],reasons,line);
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             throw new IllegalStateException("file is missing at location "+rulesPath);
         }

@@ -1,6 +1,3 @@
-StraffesMed(P,A,Lov):[P] straffes med [A] via [Lov];
-Bøde(B):[B] er en bøde;
-Fængsling(F):[F] er en fængsling;
 Indtil(A,B):[A] er indtil [B];
 Skyldig(P,A):[P] er skyldig i [A];
 Findes(P,S):[P] findes [S];

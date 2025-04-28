@@ -1,2 +1,2 @@
-BrudtLoven(P,Lov) <- TPMBestemmelse(A,Lov), Lov#(Lov,68), Køretøj(K), Ejer(P,K), IkkeFølger(K,A):§68;
-IkkeBrudtLoven(P,§68 stk.1 nr.1) <- TPMLempelse(B,Lov), TPMBestemmelse(A,Lov), Lov#(Lov,68), Stk#(Lov,1),Nr#(Lov,1), Køretøj(K), Ejer(P,K), IkkeFølger(K,A), Følger(K,B), Type(K,forsvarets køretøj\/redningsbredskabets køretøj):§68 stk.1 nr.1:§68 skt.1 nr.2;
+BrudtLoven(P,Lov) <- TPMBestemmelse(A,Lov), Lov(Lov,68), Køretøj(K), Ejer(P,K), IkkeFølger(K,A):§68;
+IkkeBrudtLoven(P,§68 stk.1 nr.1) <- TPMLempelse(B,Lov), TPMBestemmelse(A,Lov), Lov(Lov,68), Stk(Lov,1),Nr(Lov,1), Køretøj(K), Ejer(P,K), IkkeFølger(K,A), Følger(K,B), Type(K,forsvarets køretøj\/redningsbredskabets køretøj):§68 stk.1 nr.1:§68 skt.1 nr.2;

@@ -1,11 +1,11 @@
-BrudtLoven(P,§55_stk.1,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,udåndningsprøve\/spytprøver\/svedprøve\/øjenbesigtigelse), Af(Test,P), Nægter(P,Test,T):§55_stk.1;
-BrudtLoven(P,§55_stk.1,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,udåndningsprøve), På(Test,Sted), På(P,V,T), Af(Test,P), Nægter(P,Test,T), ~=(Sted,V), Overtrædelse(O), Af(O,§53), Af(O,P), GrundTilAtAntage(Popo,O,T):§55_stk.1;
+BrudtLoven(P,§55 stk.1,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,udåndningsprøve\/spytprøver\/svedprøve\/øjenbesigtigelse), Af(Test,P), Nægter(P,Test,T):§55 stk.1;
+BrudtLoven(P,§55 stk.1,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,udåndningsprøve), På(Test,Sted), På(P,V,T), Af(Test,P), Nægter(P,Test,T), ~=(Sted,V), Overtrædelse(O), Af(O,§53), Af(O,P), GrundTilAtAntage(Popo,O,T):§55 stk.1;
 
-BrudtLoven(P,§55_stk.2,T) <- Kræver(Popo,Test2,T), Politiet(Popo), Test(Test2), Test(Test), Type(Test,udåndningsprøve\/spytprøver\/svedprøve\/øjenbesigtigelse), Af(Test,P), Nægter(P,Test,T)\/IkkeIStandTil(P,Test,T),Test(Test2), Af(Test2,P), Type(Test2,blodprøve\/urinprøve), Nægter(P,Test2,T):§55_stk.2;
-BrudtLoven(P,§55_stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,blodprøve\/urinprøve), Af(Test,P), Nægter(P,Test,T), Overtrædelse(O), Af(O,§53\/§54_stk.1\/§54_stk.1\/§54_stk.2\/§54_stk.3), Af(O,P), GrundTilAtAntage(Popo,O,T):§55_stk.2;
-BrudtLoven(P,§55_stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,lægeundersøgelse), Af(Test,P), Nægter(P,Test,T), Er(O,andre_forhold_end_spirituspåvirkning), For(O,P), GrundTilAtAntage(Popo,O,T):§55_stk.2;
-BrudtLoven(P,§55_stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,lægeundersøgelse), Af(Test,P), Nægter(P,Test,T), Er(O,spirituspåvirkning), For(O,P), GrundTilAtAntage(Popo,O,T), Type(O,særlige_omstændigheder):§55_stk.2;
+BrudtLoven(P,§55 stk.2,T) <- Kræver(Popo,Test2,T), Politiet(Popo), Test(Test2), Test(Test), Type(Test,udåndningsprøve\/spytprøver\/svedprøve\/øjenbesigtigelse), Af(Test,P), Nægter(P,Test,T)\/IkkeIStandTil(P,Test,T),Test(Test2), Af(Test2,P), Type(Test2,blodprøve\/urinprøve), Nægter(P,Test2,T):§55 stk.2;
+BrudtLoven(P,§55 stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,blodprøve\/urinprøve), Af(Test,P), Nægter(P,Test,T), Overtrædelse(O), Af(O,§53\/§54 stk.1\/§54 stk.1\/§54 stk.2\/§54 stk.3), Af(O,P), GrundTilAtAntage(Popo,O,T):§55 stk.2;
+BrudtLoven(P,§55 stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,lægeundersøgelse), Af(Test,P), Nægter(P,Test,T), Er(O,andre_forhold_end_spirituspåvirkning), For(O,P), GrundTilAtAntage(Popo,O,T):§55 stk.2;
+BrudtLoven(P,§55 stk.2,T) <- Kræver(Popo,Test,T), Politiet(Popo), Test(Test), Type(Test,lægeundersøgelse), Af(Test,P), Nægter(P,Test,T), Er(O,spirituspåvirkning), For(O,P), GrundTilAtAntage(Popo,O,T), Type(O,særlige_omstændigheder):§55 stk.2;
 
-Frataget(P,Kørekort,T) <- Er(Kørekort,kørekort), For(Kørekort,P), Fratager(Popo,Kørekort,T), Politiet(Popo), Overtrædelse(O), Af(O,§53\/§54_stk.1\/§54_stk.1\/§54_stk.2), Af(O,P), GrundTilAtAntage(Popo,O,T):§55_stk.3;
+Frataget(P,Kørekort,T) <- Er(Kørekort,kørekort), For(Kørekort,P), Fratager(Popo,Kørekort,T), Politiet(Popo), Overtrædelse(O), Af(O,§53\/§54 stk.1\/§54 stk.1\/§54 stk.2), Af(O,P), GrundTilAtAntage(Popo,O,T):§55 stk.3;
 
-BrudtLoven(P,§55a_stk.1,T) <- Fører(P,K,T), Køretøj(K), Kørsel(Kø), Udfører(P,Kø,T), Benytter(P,håndholdt_mobiltelefon,T):§55a_stk.1;
+BrudtLoven(P,§55a stk.1,T) <- Fører(P,K,T), Køretøj(K), Kørsel(Kø), Udfører(P,Kø,T), Benytter(P,håndholdt_mobiltelefon,T):§55a stk.1;

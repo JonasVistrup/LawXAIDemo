@@ -1,43 +1,43 @@
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,3), Stk#(Lov,1\/2):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,4\/5\/6\/7\/8):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,9), Stk#(Lov,1):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,9), Stk#(Lov,2), Nr#(Lov,2\/3\/4\/5\/6):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,10\/12):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,Nummer), ~<(Nummer,14), ~<(52,Nummer):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,54), Stk#(Lov,3\/4\/5):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,55a), Stk#(Lov,1):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,60d):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,62), Stk#(Lov,2\/3):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,63\/64\/65):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,66a), Stk#(Lov,4):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,67):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,70), Stk#(Lov,1\/2):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,80\/81\/82\/83a):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,84), Stk#(Lov,2):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.1,T) <- Bøde(Bøde), BrudtLoven(P,Lov,T), Lov#(Lov,86\/87\/88\/97\/98\/99\/105):§118 stk.1 nr.1;
-StraffesMed(P,Bøde,§118 stk.1 nr.3,T) <- IkkeEfterkommer(P,A,T), Er(A,forbud\/påbud), For(A,Loven):§118 stk.1 nr.3;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,3), Stk(Lov,1\/2):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,4\/5\/6\/7\/8):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,9), Stk(Lov,1):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,2\/3\/4\/5\/6):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,10\/12):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,Nummer), ~<(Nummer,14), ~<(52,Nummer):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,54), Stk(Lov,3\/4\/5):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,55a), Stk(Lov,1):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,60d):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,62), Stk(Lov,2\/3):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,63\/64\/65):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,66a), Stk(Lov,4):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,67):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,70), Stk(Lov,1\/2):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,80\/81\/82\/83a):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,84), Stk(Lov,2):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <-  BrudtLoven(P,Lov,T), Lov(Lov,86\/87\/88\/97\/98\/99\/105):§118 stk.1 nr.1;
+StraffesMedBøde(P,Lov,T) <- IkkeEfterkommer(P,A,T), Er(A,forbud\/påbud), For(A,Loven):§118 stk.1 nr.3;
 
-StraffesMed(P,Bøde,§118 stk.1 nr.3,T) <- IkkeEfterkommer(P,A,T), Er(A,forbud\/påbud), For(A,Loven):§118 stk.2 nr.1;
+StraffesMedBøde(P,Lov,T) <- IkkeEfterkommer(P,A,T), Er(A,forbud\/påbud), For(A,Loven):§118 stk.2 nr.1;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,42\/43), Fører(P,K,T), På(K,V,T), Motortrafikvej(V)\/Motorvej(V), Hastighed(K,>100km/t,T):§118 stk.2 nr.2;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,42\/43), Fører(P,K,T), På(K,V,T), Motortrafikvej(V)\/Motorvej(V), Hastighed(K,>100km/t,T):§118 stk.2 nr.2;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,42\/43), Fører(P,K,T), På(K,V,T), Vej(V), For(M,V), Afmærkning(M)\/Færdselstavle(M), For(M,hastighedsgrænse), Hastighed(K,>140km/t,T):§118 stk.3 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,42\/43), Fører(P,K,T), På(K,V,T), Vej(V), For(M,V), Afmærkning(M)\/Færdselstavle(M), For(M,hastighedsgrænse), Hastighed(K,>140km/t,T):§118 stk.3 nr.1;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,42\/43), Fører(P,K,T), På(K,V,T), Vej(V), ~Motorvej(V),~Motortrafikvej(V), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,>1.3):§118 stk.4 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,42\/43), Fører(P,K,T), På(K,V,T), Vej(V), ~Motorvej(V),~Motortrafikvej(V), MaxHastighed(V,M), Hastighed(K,H,T), /(H,M,>1.3):§118 stk.4 nr.1;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,67), Stk#(Lov,2\/4), Fører(P,K,T), På(K,V,T), Fortager(P,A,<T), På(A,K), Type(A,ulovlige konstruktive ændringer af køretøjets motor\/ulovlige konstruktive ændringer af forureningsbegrænsende udstyr):§118 stk.6 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,67), Stk(Lov,2\/4), Fører(P,K,T), På(K,V,T), Fortager(P,A,<T), På(A,K), Type(A,ulovlige konstruktive ændringer af køretøjets motor\/ulovlige konstruktive ændringer af forureningsbegrænsende udstyr):§118 stk.6 nr.1;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,67), Stk#(Lov,1\/2\/3), Fører(P,K,T), På(K,V,T), Lastbil(K)\/Bus(K), TilladtVægt(K,>3500kg), Har(K,alvorlige sikkerhedskritiske fejl\/alvorlige sikkerhedskritiske mangler,T):§118 stk.7 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,67), Stk(Lov,1\/2\/3), Fører(P,K,T), På(K,V,T), Lastbil(K)\/Bus(K), TilladtVægt(K,>3500kg), Har(K,alvorlige sikkerhedskritiske fejl\/alvorlige sikkerhedskritiske mangler,T):§118 stk.7 nr.1;
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, [Lov#(Lov,38) /\ Stk#(Lov,1)] \/ [Lov#(Lov,67) /\ Stk#(Lov,2\/4)], Fører(P,K,T){f}, På(K,V,T), MotordrevetKøretøj(K), Afgiver(f,unødig støj)\/Er(K,S), Stand(S), Er(S,ulovlig stand), Afgiver(K,unødigt støj):§118 stk.8 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, [Lov(Lov,38) /\ Stk(Lov,1)] \/ [Lov(Lov,67) /\ Stk(Lov,2\/4)], Fører(P,K,T){f}, På(K,V,T), MotordrevetKøretøj(K), Afgiver(f,unødig støj)\/Er(K,S), Stand(S), Er(S,ulovlig stand), Afgiver(K,unødigt støj):§118 stk.8 nr.1;
 
 
-Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov#(Lov,46), Stk#(Lov,2), Nr#(Lov,2), Fører(P,K,T), TilladtVægt(K,>3500kg):§118 stk.9 nr.1;
+Under(b,skærpende omståndigheder) <- BrudtLoven(P,Lov,T){b}, Lov(Lov,46), Stk(Lov,2), Nr(Lov,2), Fører(P,K,T), TilladtVægt(K,>3500kg):§118 stk.9 nr.1;
 
-Indtil(Fængsel,1 år og 6 måneder) <- Fængsling(Fængsel), StraffesMed(P,Fængsel,§118 stk.11 nr.1,T):§118 stk.11;
-StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,37), Stk#(Lov,4):§118 stk.11 nr.1;
-StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43), Hastighed(K,<200km/t,T):§118 stk.11 nr.2;
-StraffesMed(P,Fængsel,§118 stk.11 nr.1,T) <- Fængsling(Fængsel), Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov#(Lov,42\/43), Hastighed(K,H,T), <(100km/t,H), På(K,V,T), MaxHastighed(K,M), /(H,M,>2):§118 stk.11 nr.3;
+Indtil(Fængsel,1 år og 6 måneder) <-  StraffesMedFængsel(P,§118 stk.11 nr.1,T):§118 stk.11;
+StraffesMedFængsel(P,§118 stk.11 nr.1,T) <-  Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov(Lov,37), Stk(Lov,4):§118 stk.11 nr.1;
+StraffesMedFængsel(P,§118 stk.11 nr.1,T) <-  Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov(Lov,42\/43), Hastighed(K,<200km/t,T):§118 stk.11 nr.2;
+StraffesMedFængsel(P,§118 stk.11 nr.1,T) <-  Fører(P,K,T), MotordrevetKøretøj(K), Kræver(K,kørekort), ~KnallertU#Plade(K), BrudtLoven(P,Lov,T), Lov(Lov,42\/43), Hastighed(K,H,T), <(100km/t,H), På(K,V,T), MaxHastighed(K,M), /(H,M,>2):§118 stk.11 nr.3;
 
 
 

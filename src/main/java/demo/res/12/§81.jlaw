@@ -10,4 +10,4 @@ IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- Kørsel(Kørsel), Af(Kørsel,K), Igang(K�
 
 IkkeBrudtLoven(P,§81 stk.1 nr.1,T) <- IkkeAnvender(P,fastspændt styrthjelm,T), Følger(P,A,T), TPMBestemmelse(A,§81 stk.5 nr.1):§81 stk.1 nr.1:§81 stk.5 nr.1;
 
-BrudtLoven(P,Lov,T) <- TPMBestemmelse(A,Lov), Lov#(Lov,81a), IkkeFølger(P,A,T):§81a;
+BrudtLoven(P,Lov,T) <- TPMBestemmelse(A,Lov), Lov(Lov,81a), IkkeFølger(P,A,T):§81a;

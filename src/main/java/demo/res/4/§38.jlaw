@@ -1,3 +1,3 @@
-BrudtLoven(P,§38_stk.1,T) <- Fører(P,K,T), MotordrevetKøretøj(K), Afgiver(K,A,T), Er(A,støj\/gasarter\/røg), Unødigt(A):§38_stk.1;
-BrudtLoven(P,§38_stk.2,T) <- Kørsel(Kø), I(Kø,By), By(By), Udfører(P,Kø,T), Unødigt(A,T), Forstyrende(A,T):§38_stk.2;
-BrudtLoven(P,§38_stk.2,T) <- Kørsel(Kø), I(Kø,By), Af(Kø,K), By(By), Udfører(P,Kø,T), Tilpasning(A), For(A,K), Hastighed(K,H,T)\/Køremåde(P,H,T), Af(A,H), IkkeUdfører(P,A,T), Forstyrende(H,T):§38_stk.2;
+BrudtLoven(P,§38 stk.1,T) <- Fører(P,K,T), MotordrevetKøretøj(K), Afgiver(K,A,T), Er(A,støj\/gasarter\/røg), Unødigt(A):§38 stk.1;
+BrudtLoven(P,§38 stk.2,T) <- Kørsel(Kø), I(Kø,By), By(By), Udfører(P,Kø,T), Unødigt(A,T), Forstyrende(A,T):§38 stk.2;
+BrudtLoven(P,§38 stk.2,T) <- Kørsel(Kø), I(Kø,By), Af(Kø,K), By(By), Udfører(P,Kø,T), Tilpasning(A), For(A,K), Hastighed(K,H,T)\/Køremåde(P,H,T), Af(A,H), IkkeUdfører(P,A,T), Forstyrende(H,T):§38 stk.2;

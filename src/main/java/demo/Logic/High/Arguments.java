@@ -1,6 +1,5 @@
 package demo.Logic.High;
 
-import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Term;
 import demo.Logic.Symbols.Variable;
 

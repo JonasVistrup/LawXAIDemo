@@ -5,10 +5,6 @@ import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.*;
 import demo.Logic.Symbols.Term;
 import demo.Logic.Symbols.Variable;
-import demo.Logic.UserDefined.Less;
-import demo.Logic.UserDefined.Minus;
-import demo.Logic.UserDefined.Mul;
-import demo.Logic.UserDefined.Plus;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -63,7 +59,6 @@ public class ProgramParser {
         Atom atom = parseNewAtom(atomRep);
         ArrayList<String> explanationParts = new ArrayList<>();
         ArrayList<Integer> termPos = new ArrayList<>();
-        StringBuilder current = new StringBuilder();
 
         String[] parts = explanation.split("[\\[\\]]",explanation.length());
         for(int i = 0; i<parts.length; i++){
@@ -89,13 +84,13 @@ public class ProgramParser {
 
 
     public void addUDPredicate(String classString) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class functionClass = Class.forName(classString);
+        Class<?> functionClass = Class.forName(classString);
         if(UDRelation.class.isAssignableFrom(functionClass)) {
-            Constructor ct = functionClass.getConstructor(new Class[0]);
+            Constructor<?> ct = functionClass.getConstructor(new Class[0]);
             UDRelation udr = (UDRelation) ct.newInstance(new Object[0]);
             addUDRelation(udr);
         }else if(UDFunction.class.isAssignableFrom(functionClass)){
-            Constructor ct = functionClass.getConstructor(new Class[0]);
+            Constructor<?> ct = functionClass.getConstructor(new Class[0]);
             UDFunction udf = (UDFunction) ct.newInstance(new Object[0]);
             addUDFunction(udf);
         }else{
@@ -273,7 +268,7 @@ public class ProgramParser {
 
     private boolean isInt(String intRep){
         try{
-            int i = Integer.parseInt(intRep);
+            Integer.parseInt(intRep);
         }catch (Exception e){
             return false;
         }

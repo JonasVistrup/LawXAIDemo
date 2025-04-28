@@ -29,9 +29,9 @@ MaxHastighed(K,40) <- Motorredskab(K), Registreret(K), ~AndenHastighedsGrænse(K
 AndenHastighedsGrænse(K) <- AndenHastighedsGrænseFastsat(K,H):Hvis grænse H er sat for K, så er der sat en grænse for K;
 Registreret(K) <- RegistreringsDato(K,D):Hvis K er blevet registret på en dato, så er K blevet registreret;
 
-BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), AndenHastighedsGrænseFastsat(K,M), På(M,V), ~Påskrift(K,Påskrift,T), Om(Påskrift,M):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
-BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(K,V), Hastighed(K,H), AndenHastighedsGrænseFastsat(K,M), På(M,V), <(M,H):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
-BrudtLoven(P,§43_stk.8,T) <- Fører(P,K,T), På(A,K), Påhængsredskab(A), MaxHastighed(A,H), <(30,H), ~Registreret(A):Lov om registrering af køretøjer §2, stk.1 nr 6: registreringsbekendtgørelsen §3, stk. 1. nr 6:TfK 2001.563 Ø;
+BrudtLoven(P,§43 stk.8,T) <- Fører(P,K,T), AndenHastighedsGrænseFastsat(K,M), På(M,V), ~Påskrift(K,Påskrift,T), Om(Påskrift,M):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
+BrudtLoven(P,§43 stk.8,T) <- Fører(P,K,T), På(K,V), Hastighed(K,H), AndenHastighedsGrænseFastsat(K,M), På(M,V), <(M,H):detailforskrifter for køretøjer, pkt. 2.03.001: §43 stk. 8;
+BrudtLoven(P,§43 stk.8,T) <- Fører(P,K,T), På(A,K), Påhængsredskab(A), MaxHastighed(A,H), <(30,H), ~Registreret(A):Lov om registrering af køretøjer §2, stk.1 nr 6: registreringsbekendtgørelsen §3, stk. 1. nr 6:TfK 2001.563 Ø;
 
 MaxHastighed(K,15) <- Motorkøretøj(K)\/Vogntog(K), Har(K,massive_hjulbeklædning):§43 stk.6;
 

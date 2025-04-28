@@ -8,20 +8,13 @@ import demo.Logic.Symbols.Constant;
 import demo.Logic.Symbols.Predicates.PredicateUD;
 import demo.Logic.Symbols.Predicates.UDNegation;
 import demo.Logic.Symbols.Term;
-import demo.SLD.Answer;
-import demo.SLD.History;
 import demo.SLD.XAI;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -130,8 +123,8 @@ public class HelloController implements Initializable {
 
                         StringBuilder insertStr = new StringBuilder();
                         for(int k=0; k<rAtoms.size(); k++){
-                            Atom rAtom = rAtoms.get(i);
-                            int[] pos = variables[i];
+                            Atom rAtom = rAtoms.get(k);
+                            int[] pos = variables[k];
                             insertStr.append(rAtom.predicate().toString());
                             insertStr.append("(");
                             for(int z=0; z<pos.length; z++){
@@ -152,7 +145,7 @@ public class HelloController implements Initializable {
                     }
 
                 }
-
+                scanner.close();
             }
         }
 
@@ -220,6 +213,7 @@ public class HelloController implements Initializable {
             while (scanner.hasNextLine()) {
                 result.add(scanner.nextLine());
             }
+            scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("file is missing at location "+casePath);
             return result;
@@ -377,7 +371,7 @@ public class HelloController implements Initializable {
             throw new RuntimeException(e);
         }*/
         try {
-            replace("Pass(a)", new String[]{"Pass(B)"});
+            replace("IkkeGiverFriPassageFor(P,A)", new String[]{"Blokerer(P,A)"});
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

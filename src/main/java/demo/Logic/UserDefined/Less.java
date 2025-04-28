@@ -6,8 +6,6 @@ import demo.Logic.Symbols.Constants.Number;
 import demo.Logic.Symbols.Predicates.UDRelation;
 import demo.Logic.Symbols.Term;
 
-import java.util.ArrayList;
-
 public class Less extends UDRelation {
     public Less() {
         super("<", 2);

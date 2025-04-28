@@ -1,6 +1,5 @@
 package demo.SLD;
 
-import demo.Logic.High.Clause;
 import demo.Logic.High.Substitution;
 
 public class SimpleTrace {

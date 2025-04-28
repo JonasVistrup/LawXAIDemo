@@ -5,7 +5,6 @@ import demo.Logic.Symbols.Predicates.Predicate;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.stream.Stream;
 
 public class resRewriter {
 

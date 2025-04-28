@@ -1,8 +1,5 @@
 package demo.SLD;
 
-
-import demo.Logic.High.Substitution;
-
 import java.util.ArrayList;
 import java.util.List;
 
