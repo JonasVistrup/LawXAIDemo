@@ -1,5 +1,5 @@
-Bil(K) <- Motorkøretøj(K), #(K,H,hjul), ~<(H,4):§2.2;
-Bil(K) <- Motorkøretøj(K), #(K,3,hjul), Egenvægt(K,V), ~<(V,400):§2.2;
+Bil(K) <- #(K,H,hjul), ~<(H,4), Motorkøretøj(K):§2.2;
+Bil(K) <- #(K,3,hjul), Egenvægt(K,V), ~<(V,400), Motorkøretøj(K):§2.2;
 
 Blokvogn(K) <- MotordrevetKøretøj(K), UdlukketFraRegistrering(K,vægt\/akseltryk\/dimensioner\/øvrig_konstruktion), BeregnetTil(K,tungt_gods) \/ BeregnetTil(K,omfangsrigt_gods):§2.3;
 
@@ -28,8 +28,8 @@ Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solopgang(D,V,TOpgang
 Lygtetændingstiden(V,T) <- Dato(T,D), Dagenstid(T,TDato), Solnedgang(D,V,TNedgang), <(Nedgang,TDato):§2.12;
 Lygtetændingstiden(V,T) <- DårligFøre(V,T):§2.12;
 
-Motorcykel(K) <- Motorkøretøj(K), #(K,3,hjul), Egenvægt(K,V), <(V,400):§2.13;
-Motorcykel(K) <- Motorkøretøj(K), #(K,2,hjul), Egenvægt(K,V), <(V,400):§2.13;
+Motorcykel(K) <- #(K,3,hjul), Egenvægt(K,V), <(V,400), Motorkøretøj(K):§2.13;
+Motorcykel(K) <- #(K,2,hjul), Egenvægt(K,V), <(V,400), Motorkøretøj(K):§2.13;
 
 MotordrevetKøretøj(K) <- Motor(K,M), ~Kørestol15(K):§2.14;
 Motorkøretøj(K) <- MotordrevetKøretøj(K), IndrettetTil(K,person_befordring), ~Knallert(K):§2.15;
@@ -40,11 +40,9 @@ Motorredskab(K) <- MotordrevetKøretøj(K), BestemtTil(K,at_føres_af_en_gående
 Motorvej(V) <- FærdselForbeholdt(V,motorkøretøjer), MærkeretSom(V,motorvej):§2.17;
 Motortrafikvej(V) <- FærdselForbeholdt(V,motorkøretøjer), MærkeretSom(V,motortrafikvej):§2.17;
 Køretøj(K,T) <- MotordrevetKøretøj(K,T):§2 stk.14;
-MotordrevetKøretøj(K,T) <- Motorkøretøj(K,T):§2 stk.15;
-Motorredskab(K,T) <- MotordrevetKøretøj(K,T):§2 stk.16;
 
-MotordrevetKøretøj(K) <- Bil(K)
-IndrettetTil(K,person_befordring) <- Bil(K), ~IndrettetTil(K,gods_transport)
+MotordrevetKøretøj(K) <- Bil(K):§2;
+IndrettetTil(K,person_befordring) <- Bil(K), ~IndrettetTil(K,gods_transport):§2;
 
 
 Parkeret(K,V,T) <- Hensætning(K,V,Hensætning), Start(Hensætning,Tstart), Slut(Hensætning,Tslut), -(Tslut,Tstart,M), ~<(M,3m), ~Årsag(Hensætning,afstigning\/påstigning\/aflæsning\/pålæsning\/uheld\/teknisk_fejl), ~<(T,Tstart), ~<(Tslut,T):§2.18;
@@ -62,7 +60,7 @@ Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Køretøj(K):§2.25;
 Trafikant(P,T) <- Fører(P,K,T), På(K,V,T), Vej(V), Køretøj(K):§2.25;
 Trafikant(P,T) <- Befordres(P,K,T), På(K,V,T), Vej(V), Letbanekøretøj(K):§2.25;
 
-Traktor(K) <- MotordrevetKøretøj(K), IndrettetTil(K,at_trække_andet_køretøj\/at_trække_arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A):§2.26;
+Traktor(K) <- IndrettetTil(K,at_trække_andet_køretøj\/at_trække_arbejdsredskab), KonstruktivHastighed(K,A), ~<(40,A), MotordrevetKøretøj(K):§2.26;
 MotordrevetKøretøj(K) <- Traktor(K):§2.26;
 
 TættereBebyggetOmråde(V) <- DelAf(V,O), MærkeretSom(O,tættere_bebygget_område):§2.27;

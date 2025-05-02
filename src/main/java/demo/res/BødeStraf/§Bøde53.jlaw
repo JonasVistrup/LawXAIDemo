@@ -1,1 +1,3 @@
-Bødeværdi(P,V,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,53), ÅrligBruttoIndtægt(P,B,T), Koncentration(P,alkohol,blodet,Promille,T\/>T), GetNumber(Promille,PVærdi), /(B,25,X), X(X,PVærdi,V):Anklagemyndighedens Videnbase (Færdsel - Sprituskørsel 5.1.1);
+Bødeværdi(P,V,Lov,T) <- ÅrligBruttoIndtægt(P,B,T), StraffesMedBøde(P,Lov,T), Lov(Lov,53), Koncentration(P,alkohol,blodet,Promille,T\/>T), GetNumber(Promille,PVærdi), /(B,25,X), X(X,PVærdi,V1), Combine(V1,kr,V) :Anklagemyndighedens Videnbase (Færdsel - Sprituskørsel 5.1.1);
+Bødeværdi(P,V,Lov,T) <- ~Angivet(P,årlig bruttoindtægt,T), StraffesMedBøde(P,Lov,T), Lov(Lov,53), Koncentration(P,alkohol,blodet,Promille,T\/>T), GetNumber(Promille,PVærdi), Combine(årlig bruttoindtægt x ,PVærdi,V1), Combine(V1, divideret med 25,V):Anklagemyndighedens Videnbase (Færdsel - Sprituskørsel 5.1.1);
+Angivet(P,årlig bruttoindtægt,T) <- ÅrligBruttoIndtægt(P,B,T):Årlig bruttoindtægt er angivet hviss den er givet i faktaerne;

@@ -31,6 +31,7 @@ Tempo100Bus(K):[K] er godkendt som tempo 100 bus;
 Traktor(K):[K] er en traktor;
 Transportmiddel(K):[K] er et transportmiddel;
 Tog(K):[K] er et tog;
+TungtKøretøj(K):[K] er et tungt køretøj;
 Varebil(K):[K] er en varebil;
 Vogntog(K):[K] er et vogntog;
 Udrykningskøretøj(K):[K] er et udrykningskøretøj;

@@ -1,0 +1,95 @@
+TungtKøretøj(K,T) <- Bil(K,T), På(K1,K,T), Påhængsvogn(K1,T)\/Sættevogn(K1,T)\/Påhængsredskab(K1,T):§118 stk.2;
+TungtKøretøj(K,T) <- Lastbil(K,T), Egenvægt(K,V), <(3500,V):118 stk.2;
+TungtKøretøj(K,T) <- Bus(K,T), Egenvægt(K,V), <(3500,V):118 stk.2;
+TungtKøretøj(K,T) <- Motorcykel(K,T), På(K1,K,T), Påhængsvogn(K1,T):118 stk.2;
+
+Bødeværdi(P,V,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,42), FartBøde(P,V,T):Anklagemyndighedens Videnbase (Færdsel - Hastighed);
+FartBøde(P,Værdi,T) <- Fører(P,K,T), På(K,Vej,T), MaxHastighed(Vej,M,T), Hastighed(K,H,T), /(H,M,Forskel), FartBødeVærdi(P,Forskel,V1,T), FartTillæg(P,Forskel,V2,T), VejarbejdeFaktor(Vej,F,T), +(V1,V2,V3), X(V3,F,Værdi):Anklagemyndighedens Videnbase (Færdsel - Hastighed);
+
+VejarbejdeFaktor(V,1,T) <- ~Vejarbejde(V):(Færdsel - Hastighed 4.1);
+VejarbejdeFaktor(V,2,T) <- Vejarbejde(V):(Færdsel - Hastighed 4.1);
+
+
+
+FartBødeVærdi(P,Forskel,1800,T) <- TungtKøretøj(K,T), Fører(P,K,T), <(Forskel,1.2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,1800,T) <- TungtKøretøj(K,T), Fører(P,K,T), ~<(Forskel,1.2), <(Forskel,1.3):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,2400,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3500,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3600,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,3000,T) <-  TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4200,T) <-  TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,3600,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4800,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4800,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,4200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,5400,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,5400,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,5400,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,6600,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,6600,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,6000,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,7200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,7200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,7800,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,9000,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,9000,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,9000,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V)\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,10200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V), ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,10200,T) <- TungtKøretøj(K,T), Fører(P,K,T), På(K,V,T), Motortrafikvej(V), ~=(M,100), ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+
+FartBødeVærdi(P,Forskel,1200,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), <(Forskel,1.2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,1800,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~<(Forskel,1.2), <(Forskel,1.3):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,1800,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), Motorvej(V), <(M,100), ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,2400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.3), <(Forskel,1.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,2400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), Motorvej(V), <(M,100), ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3600,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.4), <(Forskel,1.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,2400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V), <(M,100), ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3600,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,3600,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.5), <(Forskel,1.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,3000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V), <(M,100), ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4200,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4200,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.6), <(Forskel,1.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,3600,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V), <(M,100), ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,5400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,4800,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.7), <(Forskel,1.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,4200,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), Motorvej(V), <(M,100), ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,6000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,5400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.8), <(Forskel,1.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,5400,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V), <(M,100), ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,7800,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,6600,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,1.9), <(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartBødeVærdi(P,Forskel,6000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T),Motorvej(V), <(M,100), ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,9000,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), [Motorvej(V)/\~<(M,100)]\/[Motortrafikvej(V)/\=(M,100)], ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+FartBødeVærdi(P,Forskel,7200,T) <- ~TungtKøretøj(K,T), ~Knallert(K,T), Fører(P,K,T), På(K,V,T), ~Motorvej(V), ~Motortrafikvej(V)\/[Motortrafikvej(V)/\~=(M,100)], ~<(Forskel,2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.1);
+
+FartTillæg(P,Forskel,0,T) <- <(Forskel,2.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,1200,T) <- ~<(Forskel,2.4), <(Forskel,2.5):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,1800,T) <- ~<(Forskel,2.5), <(Forskel,2.6):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,2400,T) <- ~<(Forskel,2.6), <(Forskel,2.7):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,3000,T) <- ~<(Forskel,2.7), <(Forskel,2.8):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,3600,T) <- ~<(Forskel,2.8), <(Forskel,2.9):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,4200,T) <- ~<(Forskel,2.9), <(Forskel,3):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,4800,T) <- ~<(Forskel,3), <(Forskel,3.1):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,5400,T) <- ~<(Forskel,3.1), <(Forskel,3.2):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,6000,T) <- ~<(Forskel,3.2), <(Forskel,3.3):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);
+FartTillæg(P,Forskel,6600,T) <- ~<(Forskel,3.3), <(Forskel,3.4):Anklagemyndighedens Videnbase (Færdsel - Hastighed 5.2.3);

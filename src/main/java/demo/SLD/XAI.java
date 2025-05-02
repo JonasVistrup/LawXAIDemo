@@ -151,7 +151,7 @@ public class XAI {
     }
 
     public static Program getProgram(){
-        ArrayList<Clause> allClauses = new ArrayList<>(clauses);
+        ArrayList<Clause> allClauses = new ArrayList<>();
         ArrayList<String> reasons = new ArrayList<>();
         reasons.add("Faktum");
 
@@ -163,6 +163,8 @@ public class XAI {
                 allClauses.add(new Clause(new Atom(a.predicate(), a.args.add(pp.generateTerm("Var0"))), new AtomList(a), temporalReason));
             }
         }
+        
+        allClauses.addAll(clauses);
         return new Program(allClauses);
     }
 

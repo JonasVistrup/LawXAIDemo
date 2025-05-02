@@ -8,7 +8,7 @@ import demo.Logic.Symbols.Variable;
 
 public class Combine extends UDFunction {
     public Combine() {
-        super("++", 3);
+        super("Combine", 3);
     }
 
     @Override

@@ -23,19 +23,20 @@ public class Main {
         List<Atom> facts = info.stream().map(XAI.pp::parseAtomOld).collect(Collectors.toList());
         HashMap<Atom, List<Clause>> groundClausesUsed = new HashMap<>();
         AtomList query = new AtomList(XAI.pp.parseAtomOld("BrudtLoven(A,Lov,T)"));
-        query.add(XAI.pp.parseAtomOld("BrudtLoven(X,Y,T)"));
         //List<Substitution> answers = XAI.query(query, facts, groundClausesUsed);
         //List<Substitution> answers = XAI.query(new AtomList(XAI.pp.parseAtomOld("StraffesMedBøde(P,Lov,T)")), facts, groundClausesUsed);
-        List<Substitution> answers = XAI.query(new AtomList(XAI.pp.parseAtomOld("Bødeværdi(P,V,Lov,T)")), facts, groundClausesUsed);
+        List<Substitution> answers = XAI.query(new AtomList(XAI.pp.parseAtomOld("Bødeværdi(P,V,Lov,T)")), facts, groundClausesUsed); //Takes 20-30 minuttes to run 
+        //List<Substitution> answers = XAI.query(new AtomList(XAI.pp.parseAtomOld("Bødeværdi(P,V,§42 stk.1,T)")), facts, groundClausesUsed);
+        //List<Substitution> answers = XAI.query(new AtomList(XAI.pp.parseAtomOld("FartBøde(P,V,T)")), facts, groundClausesUsed);
         if (answers.size() > 0) {
-            System.out.println("StraffesMedBøde(X,Y,T) is true for the following substitutions:");
+            System.out.println("Query is true for the following substitutions:");
             for (Substitution answer : answers) {
                 System.out.println(answer);
             }
         } else {
-            System.out.println("BrudtLoven(X,Y,T) is false.");
+            System.out.println("Query is false.");
         }
-        System.out.println("Facts: " + facts);
+        //System.out.println("Facts: " + facts);
 
     }
 

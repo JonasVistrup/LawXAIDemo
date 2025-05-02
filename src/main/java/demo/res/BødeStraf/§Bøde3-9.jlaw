@@ -1,0 +1,25 @@
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,3), Stk(Lov,1) :Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,3), Stk(Lov,2) :Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,5), Stk(Lov,1) :Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,5), Stk(Lov,2), KnallertU#Plade(K), Fører(P,K,T) :Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,2000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,5), Stk(Lov,2), Knallert45(K)\/Motorkøretøj(K), Fører(P,K,T) :Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,5), Stk(Lov,3):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,5), Stk(Lov,4):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,6), Stk(Lov,2):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+
+Bødeværdi(P,1500kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,7), Stk(Lov,2), Knallert45(K)\/Motorkøretøj(K), Fører(P,K,T):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,7), Stk(Lov,2), KnallertU#Plade(K), Fører(P,K,T):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,7), Stk(Lov,5):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+Bødeværdi(P,1500kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,7), Stk(Lov,6):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+
+
+Bødeværdi(P,1000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,8):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.1);
+
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,1):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,2):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,3):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,4):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,5):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);
+Bødeværdi(P,5000kr,Lov,T) <- StraffesMedBøde(P,Lov,T), Lov(Lov,9), Stk(Lov,2), Nr(Lov,6):Anklagemyndighedens Videnbase (Færdsel -  Grundregler 5.2.2);

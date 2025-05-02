@@ -66,3 +66,4 @@ Alder(A,B):Alderen af [A] er [B];
 Afstand(A,B,C):Afstanden mellem [A] og [B] er [C];
 
 Kørsel(A):[A] er en kørsel;
+Angivet(P,A):[P] har angivet [A];

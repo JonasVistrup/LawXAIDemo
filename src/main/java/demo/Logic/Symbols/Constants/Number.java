@@ -43,6 +43,7 @@ public class Number extends Constant implements Comparable<Number> {
         this.denominator = denominator;
     }
 
+
     public Number extend(int extender){
         return new Number(this.numerator*extender, this.denominator*extender);
     }
@@ -97,7 +98,9 @@ public class Number extends Constant implements Comparable<Number> {
             return doubleToNumber(d);
         } catch (Exception ignored) {
         }
-        if(d == null) throw new IllegalArgumentException(c.toString()+" is not a valid number");
+        if(d == null){
+            throw new IllegalArgumentException(c.toString()+" is not a valid number");
+        } 
         return doubleToNumber(d);
     }
 

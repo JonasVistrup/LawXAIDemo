@@ -24,6 +24,8 @@ public class Less extends UDRelation {
             return ((Date) args.get(0)).compareTo((Date) args.get(1)) < 0;
         }
 
+
+
         int suffixPos = getSameSuffix(args.get(0),args.get(1));
         return compareIfComparable(args.get(0).toString().substring(0,args.get(0).toString().length()-suffixPos), args.get(1).toString().substring(0,args.get(1).toString().length()-suffixPos));
     }
@@ -32,6 +34,7 @@ public class Less extends UDRelation {
         try {
             double d0 = Double.parseDouble(s0);
             double d1 = Double.parseDouble(s1);
+
             return d0 < d1;
         }catch (Exception e){
             return false;
@@ -42,8 +45,9 @@ public class Less extends UDRelation {
         String str0 = term0.toString();
         String str1 = term1.toString();
         int smallestTermLength = Math.min(str0.length(), str1.length());
+        int length = smallestTermLength;
         for(int i = 1; i<=smallestTermLength; i++){
-            if(str0.charAt(str0.length()-i) != str1.charAt(str1.length()-i)){
+            if(Character.isDigit(str0.charAt(str0.length()-i)) || str0.charAt(str0.length()-i) != str1.charAt(str1.length()-i)){
                 return i-1;
             }
         }
