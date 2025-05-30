@@ -15,6 +15,6 @@ Pressing the Query button at the bottom, queries the system if anyone in the des
 
 Clicking an answer will provide explanations for that answer. There might be more than one explanation for an answer.
 
-The following is an example of how an example could look:
+The following is an example:
 
 ![Error Getting Picture](https://github.com/JonasVistrup/LawXAIDemo/blob/master/running.png "Running Screen")
